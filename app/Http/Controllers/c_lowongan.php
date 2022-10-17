@@ -13,8 +13,29 @@ class c_lowongan extends Controller
         $this->lowongan = new lowongan();
     }
 
-    public function index()
+    public function indexuser()
     {
         
+    }
+
+    public function indexperusahaan()
+    {
+        $id_perusahaan = Auth::user()->id;
+
+        $data = [
+            'lowongan' => $this->lowongan->perusahaanData($id_perusahaan),
+        ];
+    }
+
+    public function create()
+    {
+        
+    }
+
+    public function store(Request $request)
+    {
+        $request->Validate([
+            
+        ]);
     }
 }
