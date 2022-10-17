@@ -21,6 +21,11 @@ class perusahaan extends Model
         return DB::table('perusahaans')->get();
     }
 
+    public function userData()
+    {
+        return DB::table('perusahaans')->where('id_perusahaan', Auth::user()->id)->frist();
+    }
+
     public function addData($data)
     {
         DB::table('perusahaans')->insert($data);
