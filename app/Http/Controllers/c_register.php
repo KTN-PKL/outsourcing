@@ -30,16 +30,16 @@ class c_register extends Controller
 
     public function cpelamar(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'password' => 'required|string|min:8|confirmed',
-            'email' => 'required|string|email|max:255|unique:users',
-            'alamatpel' => 'required',
-            'umur' => 'required',
-            'ttl' => 'required',
-            'foto' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
-            'gender' => 'required',
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'password' => 'required|string|min:8|confirmed',
+        //     'email' => 'required|string|email|max:255|unique:users',
+        //     'alamatpel' => 'required',
+        //     'umur' => 'required',
+        //     'ttl' => 'required',
+        //     'foto' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
+        //     'gender' => 'required',
+        // ]);
         $level = 3;
         $name = $request->name;
         $data = [

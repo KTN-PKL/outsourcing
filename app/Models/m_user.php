@@ -16,7 +16,7 @@ class m_user extends Model
         'id', 'name', 'email', 'password', 'level', 'status'
     ];
 
-    public function addData()
+    public function addData($data)
     {
         DB::table('users')->insert($data);
     }
