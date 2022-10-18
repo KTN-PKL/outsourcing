@@ -9,37 +9,47 @@
     <title>Portal Kerja</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="http://localhost/outsourcings/outsourcings/asset/landingpage/style.css" />
+    <link rel="stylesheet" href="{{asset('template2')}}/landingpage/style.css" />
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+   
+    <nav class="navbar navbar-expand-lg fixed-top bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Portal Kerja</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="#">Lowongan Kerja</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Perusahaan</a>
             </li>
           </ul>
-          <ul class="navbar-nav ms-auto">
+          @auth
+          <ul class="navbar-nav mr-3">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                Bagas Kurniawan
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  User
               </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Profil</a></li>
-                <li><a class="dropdown-item" href="#">Logout</a></li>
-                <li><hr class="dropdown-divider"></li>
-              </ul>
-            </li>
-          </ul>
+
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              </div>
+          </li>
+          @endauth
+        </ul>
           @guest
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -55,33 +65,6 @@
       </div>
     </nav>
 
-
-    {{-- <div class="container py-2">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Logo</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-         
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active px-2" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link px-2" href="{{ route('register') }}"  data-bs-toggle="modal" data-bs-target="#register">Lowongan Kerja</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link px-2" href="{{ route('login')}}"  data-bs-toggle="modal" data-bs-target="#masuk">Login</a>
-              </li>
-           </ul>
-          </div>
-            </ul>
-          </div>
-        </div>
-    
-      </nav>  --}}
   
 
      
@@ -95,11 +78,11 @@
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, molestias maiores non doloribus impedit ut illo, fugiat quam nisi autem accusamus nobis, similique sapiente eius provident vel aperiam quaerat pariatur?</p>
               </div>
               <div class="hero1 text-center">
-                <img src="http://localhost/outsourcings/outsourcings/asset/landingpage/img/ilus2.svg" alt="" />
+                <img src="./template2/landingpage/img/ilus2.svg" alt="" />
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="hero"><img src="http://localhost/outsourcings/outsourcings/asset/landingpage/img/ilust4.svg" alt="" /></div>
+              <div class="hero"><img src="./template2/landingpage/img/ilust4.svg" alt="" /></div>
             </div>
           </div>
         </div>
@@ -214,7 +197,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script>
+    {{-- <script>
     function login() {
       var formElement = document.getElementById("form-login");
       var formData = new FormData(formElement);
@@ -301,7 +284,7 @@
         }
       });
     });
-  </script>
+  </script> --}}
 
   </body>
 </html>
