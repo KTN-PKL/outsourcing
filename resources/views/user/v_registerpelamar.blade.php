@@ -60,7 +60,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Register') }}</div>
                     <div class="card-body">
-                      <form method="POST" action="{{ route('register.pelamar') }}">
+                      <form enctype="multipart/form-data" method="POST" action="{{ route('register.pelamar') }}">
                         @csrf
                       <div class="mb-3">
                         <label for="name" class="form-label">Nama Lengkap</label>
