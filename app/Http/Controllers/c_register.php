@@ -49,7 +49,7 @@ class c_register extends Controller
             'level' => $level, 
         ];
         $this->m_user->addData($data);
-        $data1 = $this->m_user->nameData($name);
+        $data1 = $this->m_user->nameData($email);
         $file  = $request->foto;
         $filename = "Logo".$request->email.'.'.$file->extension();
         $file->move(public_path('foto'),$filename);

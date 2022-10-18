@@ -21,8 +21,8 @@ class m_user extends Model
         DB::table('users')->insert($data);
     }
 
-    public function nameData($name)
+    public function nameData($email)
     {
-        DB::table('users')->where('name', $name)->first();
+        return DB::table('users')->where('email', $email)->first();
     }
 }
