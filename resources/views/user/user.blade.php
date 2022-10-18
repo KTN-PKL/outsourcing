@@ -53,7 +53,10 @@
           @guest
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link px-2" href="{{ route('register')}}"  data-bs-toggle="modal" data-bs-target="#register">DAFTAR</a>
+              <a class="nav-link px-2" href="#" data-bs-toggle="modal" data-bs-target="#pilihRegister">DAFTAR</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-2" href="{{ route('register')}}"  data-bs-toggle="modal" data-bs-target="#register">BACKUP</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-2" href="{{ route('login')}}"  data-bs-toggle="modal" data-bs-target="#masuk">MASUK</a>
@@ -201,6 +204,41 @@
       </div>
     </div>
   </div>
+
+
+
+  <!-- Modal Pilih -->
+  <div class="modal fade" id="pilihRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+          <div class="modal-body">
+            <div class="card" style="width: 18rem;">
+              <a href="{{url('/perusahaan')}}">
+              <img class="card-img-top" src="./" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Pelamar</p>
+              </a>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Perusahaan</p>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
