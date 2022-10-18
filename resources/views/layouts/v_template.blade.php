@@ -53,7 +53,7 @@
     <div style="color: white">
     <ul class="navbar-nav">
       <li class="nav-item">
-      SISTEM INFORMASI ODD JOB
+      
       </li>
     </ul>
     </div>
@@ -81,7 +81,7 @@
     <!-- Brand Logo -->
     <span class="brand-link">
       <img src="{{ asset('template') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Kelompok 4</span>
+      <span class="brand-text font-weight-light"></span>
     </span>
 
     <!-- Sidebar -->
@@ -92,12 +92,7 @@
           <img src="" class="img-circle elevation-2" alt="Logi SIOJ">
         </div> --}}
         <div class="info">
-          @if (Auth::user()->level == '1')
-          <a class="d-block" href="/home">HOME</a>
-              
-          @else
-          <span class="d-block">ADMIN</span>  
-          @endif
+         
           
           
         </div>
@@ -130,7 +125,7 @@
     <div class="float-right d-none d-sm-block">
       <b>Version</b> Beta
     </div>
-    <strong>Copyright &copy; 2022-Future <a href="https://adminlte.io">Kelompok 4</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2022-Future <a href="https://adminlte.io"></a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    return view('layouts/daftartemp');
+    return view('v_from_perusahaan');
 });
 
 Auth::routes();
