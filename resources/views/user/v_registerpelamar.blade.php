@@ -125,5 +125,33 @@
 
      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-     </body>
+    <script>
+      function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+  
+          reader.onload = function (e) {
+              $('#imageResult')
+                  .attr('src', e.target.result);
+          };
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
+  
+  $(function () {
+      $('#upload').on('change', function () {
+          readURL(input);
+      });
+  });
+  
+  </script>
+      
+  @push('scripts')
+  <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+  <script>
+      CKEDITOR.replace('my-editor');
+      </script>
+  @endpush   
+  </body>
+
 </html>
