@@ -56,9 +56,6 @@
               <a class="nav-link px-2" href="#" data-bs-toggle="modal" data-bs-target="#pilihRegister">DAFTAR</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-2" href="{{ route('register')}}"  data-bs-toggle="modal" data-bs-target="#register">BACKUP</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link px-2" href="{{ route('login')}}"  data-bs-toggle="modal" data-bs-target="#masuk">MASUK</a>
             </li>
             

@@ -90,7 +90,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">LOWONGAN KERJA</a>
+              <a class="nav-link active" aria-current="page" href="{{url('/')}}">LOWONGAN KERJA</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">PERUSAHAAN</a>
@@ -102,10 +102,7 @@
             <li class="nav-item">
               <a class="nav-link px-2" href="#" data-bs-toggle="modal" data-bs-target="#pilihRegister">DAFTAR</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link px-2" href="{{ route('register')}}"  data-bs-toggle="modal" data-bs-target="#register">BACKUP</a>
-            </li>
-            <li class="nav-item">
+             <li class="nav-item">
               <a class="nav-link px-2" href="{{ route('login')}}"  data-bs-toggle="modal" data-bs-target="#masuk">MASUK</a>
             </li>
             
@@ -128,6 +125,89 @@
     <!-- /.card -->
 
   </section>
+
+  <section class="content2">
+      
+
+    <!-- Default box -->
+    @yield('content2')
+    <!-- /.card -->
+
+  </section>
+
+
+ <!-- Modal Pilih -->
+ <div class="modal fade" id="pilihRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+          <div class="modal-body">
+            <div style="margin-center:4em" class="card-group">
+              <div class="card">
+                <a href="{{url('/registerpelamar')}}">
+                <img src="./template2/landingpage/img/job.png" class="card-img-top" style="margin:center" alt="...">
+                <div class="card-body">
+                  <h5 style="color:black" class="text-center">PELAMAR</h5>
+                </div>
+              </a>
+              </div>
+              <div class="card">
+                <a href="{{url('/registerperusahaan')}}">
+                <img src="./template2/landingpage/img/perusahaan.png" class="card-img-top" style="margin:center" alt="...">
+                <div class="card-body">
+                  <h5 style="color: black" class="text-center">PERUSAHAAN</h5>
+                </div>
+              </a>
+              </div>
+                        
+            </div>
+          
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Login-->
+  <div class="modal fade" id="masuk" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+            <form id="form-login" method="POST" action="{{ route('login') }}">
+                @csrf
+          <div class="modal-body">
+            <div id="alert"></div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" name="email">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <h6>Tidak Punya Akun?</h6><a href="{{route('register')}}">Daftar</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <div id="tombol_login">
+              <input class="btn btn-primary" type="submit" value="Masuk">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
  
 
 
