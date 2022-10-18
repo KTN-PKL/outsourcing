@@ -21,6 +21,11 @@ class lowongan extends Model
         return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->get();
     }
 
+    public function perusahaanData($id_perusahaan)
+    {
+        return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('lowongans.id_perusahaan', $id_perusahaan)->get();
+    }
+
     public function addData($data)
     {
         DB::table('lowongans')->insert($data);

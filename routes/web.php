@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('user/user');
 });
 
+Route::get('/test', function () {
+    return view('layouts/daftartemp');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
