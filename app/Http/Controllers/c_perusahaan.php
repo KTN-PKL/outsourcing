@@ -47,7 +47,7 @@ class c_perusahaan extends Controller
             'ukuran' => 'required',
         ]);
             $file  = $request->logo;
-            $filename = "Logo".Auth::user()->id.'.'.$file->extension();
+            $filename = "Logo".Auth::user()->name.'.'.$file->extension();
             $file->move(public_path('logo'),$filename);
             $data = [
                 'id' => Auth::user()->id,
@@ -86,7 +86,7 @@ class c_perusahaan extends Controller
             'ukuran' => 'required',
         ]);
             $file  = $request->logo;
-            $filename = "Logo".Auth::user()->id.'.'.$file->extension();
+            $filename = "Logo".Auth::user()->name.'.'.$file->extension();
             $file->move(public_path('logo'),$filename);
             $data = [
                 'id' => Auth::user()->id,
