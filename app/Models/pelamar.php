@@ -13,7 +13,14 @@ class pelamar extends Model
     public $table = 'pelamars';
 
     protected $fileable = [
-        'id_pelamar', 'id_perusahaan', 'posisi', 'jobdesk', 'kualifikasi', 'skill'
+        'id_pelamar', 'namapel', 'umur', 'gender', 'ttl', 'alamatpel', 'foto'
     ];
+
+    public function addData($data2)
+    {
+        DB::table('pelamars')->insert($data2);
+    }
+
+
 
 }
