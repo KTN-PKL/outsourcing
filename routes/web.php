@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\c_perusahaan;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::controller(c_perusahaan::class)->group(function () {
+    Route::get('/perusahaan/index', 'index')->name('perusahaan.index');
+    Route::get('/perusahaan/create', 'create')->name('perusahaan.create');
+    Route::post('/perusahaan/store', 'store')->name('perusahaan.store');
+});
