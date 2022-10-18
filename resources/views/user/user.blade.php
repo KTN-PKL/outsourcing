@@ -63,6 +63,8 @@
             
 
           </ul>
+          
+
           @endguest
         </div>
       </div>
@@ -149,6 +151,7 @@
             </div>
           </div>
           <div class="modal-footer">
+            <h6>Tidak Punya Akun?</h6><a href="{{route('register')}}">Daftar</a>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <div id="tombol_login">
               <input class="btn btn-primary" type="submit" value="Masuk">
