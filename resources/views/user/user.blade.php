@@ -62,8 +62,7 @@
               <a class="nav-link px-2" href="{{ route('login')}}"  data-bs-toggle="modal" data-bs-target="#masuk">MASUK</a>
             </li>
             
-              <a href="{{url('perusahaan')}}" class="btn btn-primary" >UNTUK PERUSAHAAN <i class="fa fa-angle-double-right"></i></a>
-            
+                      
 
           </ul>
           
