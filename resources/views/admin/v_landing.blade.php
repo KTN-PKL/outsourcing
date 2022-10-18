@@ -59,7 +59,7 @@
               <a class="nav-link px-2" href="{{ route('login')}}"  data-bs-toggle="modal" data-bs-target="#masuk">MASUK</a>
             </li>
             
-              {{-- <a button href="{{url('')}}" class="btn btn-primary" ></a> --}}
+            <a href="{{url('/')}}" class="btn btn-primary" >UNTUK PELAMAR <i class="fa fa-angle-double-right"></i></a>
             
 
           </ul>
@@ -128,7 +128,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+          <h5 class="modal-title" id="exampleModalLabel">MASUK PERUSAHAAN</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
             <form id="form-login" method="POST" action="{{ route('login') }}">
@@ -159,7 +159,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Registrasi</h5>
+          <h5 class="modal-title" id="exampleModalLabel">DAFTAR PERUSAHAAN</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form method="POST" action="{{ route('register') }}">
