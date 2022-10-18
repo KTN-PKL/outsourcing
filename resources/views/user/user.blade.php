@@ -227,7 +227,7 @@
               </a>
               </div>
               <div class="card">
-                <a href="{{url('/perusahaan')}}">
+                <a href="{{url('/registerperusahaan')}}">
                 <img src="./template2/landingpage/img/perusahaan.png" class="card-img-top" style="margin:center" alt="...">
                 <div class="card-body">
                   <h5 style="color: black" class="text-center">PERUSAHAAN</h5>

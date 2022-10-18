@@ -82,6 +82,7 @@ class c_register extends Controller
         ]);
         $level = 2;
         $name = $request->name;
+        $email = $request->email;
         $data = [
             'name' => $name,
             'email' => $request->email,
@@ -89,12 +90,12 @@ class c_register extends Controller
             'level' => $level, 
         ];
         $this->m_user->addData($data);
-        $data1 = $this->m_user->nameData($name);
+        $data1 = $this->m_user->nameData($email);
         $file  = $request->logo;
         $filename = "Logo".$request->email.'.'.$file->extension();
         $file->move(public_path('logo'),$filename);
         $data2 = [
-            'id' => $data1->id,
+            'id_perusahaan' => $data1->id,
             'logo' => $filename,
             'nama' => $name,
             'deskripsi' => $request->deskripsi,

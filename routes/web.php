@@ -26,6 +26,9 @@ Route::get('/test', function () {
 Route::get('/registerpelamar', function () {
     return view('user/v_registerpelamar');
 });
+Route::get('/registerperusahaan', function () {
+    return view('perusahaan/v_registerperusahaan');
+});
 
 Auth::routes();
 
@@ -40,5 +43,6 @@ Route::controller(c_perusahaan::class)->group(function () {
 Route::controller(c_register::class)->group(function () {
     Route::get('/register/index', 'index')->name('register.index');
     Route::post('/register/create', 'cpelamar')->name('register.pelamar');
+    Route::post('/register/createperusahaan', 'cperusahaan')->name('register.perusahaan');
     Route::post('/register/store', 'store')->name('register.store');
 });
