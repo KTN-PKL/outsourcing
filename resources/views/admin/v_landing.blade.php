@@ -16,17 +16,17 @@
    
     <nav class="navbar navbar-expand-lg fixed-top bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><h4>PORTAL KERJA</h4></a>
+        <a class="navbar-brand" href="#"><h4>PORTAL PERUSAHAAN</h4></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">LOWONGAN KERJA</a>
+              <a class="nav-link active" aria-current="page" href="#">SOLUSI</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">PERUSAHAAN</a>
+              <a class="nav-link" href="#">STRUKTUR BIAYA</a>
             </li>
           </ul>
           @auth
@@ -59,7 +59,7 @@
               <a class="nav-link px-2" href="{{ route('login')}}"  data-bs-toggle="modal" data-bs-target="#masuk">MASUK</a>
             </li>
             
-              <a href="{{url('perusahaan')}}" class="btn btn-primary" >UNTUK PERUSAHAAN <i class="fa fa-angle-double-right"></i></a>
+              {{-- <a button href="{{url('')}}" class="btn btn-primary" ></a> --}}
             
 
           </ul>
@@ -68,15 +68,11 @@
       </div>
     </nav>
 
-  
-
-     
       <div class="jumbotron p-5 rounded-3">
         <div class="container py-4">
           <div class="row">
             <div class="col-sm-6">
-              <h1>Portal Loker</h1>
-              <h2>Cari kerjaan online</h2>
+              <h1>Portal Perusahaan</h1>
               <div class="desc">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, molestias maiores non doloribus impedit ut illo, fugiat quam nisi autem accusamus nobis, similique sapiente eius provident vel aperiam quaerat pariatur?</p>
               </div>
@@ -85,15 +81,15 @@
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="hero"><img src="./template2/landingpage/img/ilust4.svg" alt="" /></div>
-              
+              {{-- <div class="hero"><img src="./template2/landingpage/img/ilust4.svg" alt="" /></div> --}}
+              <div class="hero"><img src="./template2/landingpage/img/undraw_posting_photo.svg" alt="" /></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <section id="search" class="search py-5">
+    {{-- <section id="search" class="search py-5">
       <div class="search-bar px-2">
         <div class="container">
           <div class="card search-card">
@@ -105,9 +101,9 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
 
-    <section class="tablesec">
+    {{-- <section class="tablesec">
       <div class="container shadow">
         <div class="card-table">
           <h3 class="text-center py-2">Data Loker</h3>
@@ -115,7 +111,7 @@
           
         </div>
       </div>
-    </section>
+    </section> --}}
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
       <path
         fill="#0099ff"
@@ -191,7 +187,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <div id="tombol_login">
-              <input class="btn btn-primary" type="submit" value="Register">
+              <input class="btn btn-primary" type="submit" value="Masuk">
             </div>
           </div>
         </form>

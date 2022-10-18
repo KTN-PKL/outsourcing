@@ -81,7 +81,7 @@
     <!-- Brand Logo -->
     <span class="brand-link">
       <img src="{{ asset('template') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">perusahaan</span>
+      <span class="brand-text font-weight-light">Perusahaan</span>
     </span>
 
     <!-- Sidebar -->
@@ -125,7 +125,7 @@
     <div class="float-right d-none d-sm-block">
       <b>Version</b> Beta
     </div>
-    <strong>Copyright &copy; 2022-Future <a href="https://adminlte.io">Kelompok 4</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2022-Future <a href="https://adminlte.io"></a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
