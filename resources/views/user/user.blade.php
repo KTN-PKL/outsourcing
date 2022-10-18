@@ -217,20 +217,26 @@
         </div>
 
           <div class="modal-body">
-            <div class="card" style="width: 18rem;">
-              <a href="{{url('/perusahaan')}}">
-              <img class="card-img-top" src="./" alt="Card image cap">
-              <div class="card-body">
-                <p class="card-text">Pelamar</p>
+            <div style="margin-center:4em" class="card-group">
+              <div class="card">
+                <a href="{{url('/registerpelamar')}}">
+                <img src="./template2/landingpage/img/job.png" class="card-img-top" style="margin:center" alt="...">
+                <div class="card-body">
+                  <h5 style="color:black" class="text-center">PELAMAR</h5>
+                </div>
               </a>
               </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="..." alt="Card image cap">
-              <div class="card-body">
-                <p class="card-text">Perusahaan</p>
+              <div class="card">
+                <a href="{{url('/perusahaan')}}">
+                <img src="./template2/landingpage/img/perusahaan.png" class="card-img-top" style="margin:center" alt="...">
+                <div class="card-body">
+                  <h5 style="color: black" class="text-center">PERUSAHAAN</h5>
+                </div>
+              </a>
               </div>
+                        
             </div>
+          
 
           </div>
         </form>
