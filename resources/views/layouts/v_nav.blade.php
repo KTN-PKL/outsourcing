@@ -18,21 +18,21 @@
       {{-- @if(auth()->user()->is_admin==1) --}}
       <li class="nav-item">
         <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-building"></i>
-          <p>Lowongan Kerja</p>
+          <i class="nav-icon fas fa-users"></i>
+          <p>Daftar Pelamar</p>
         </a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-user"></i>
-          <p>Form Lamaran</p>
+        <a href="{{url('perusahaan/lowongan')}}" class="nav-link">
+          <i class="nav-icon fas fa-building"></i>
+          <p>Daftar Lowongan</p>
         </a>
       </li>
       
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-file"></i>
-          <p>Input Link Wawancara</p>
+          <p>Input Link Lowongan</p>
         </a>
       </li>
 

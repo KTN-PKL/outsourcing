@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\c_perusahaan;
 use App\Http\Controllers\c_register;
+use App\Http\Controllers\c_lowongan;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,11 @@ Route::controller(c_perusahaan::class)->group(function () {
     Route::get('/perusahaan/create', 'create')->name('perusahaan.create');
     Route::post('/perusahaan/store', 'store')->name('perusahaan.store');
 });
+
+Route::controller(c_lowongan::class)->group(function () {
+    Route::get('/perusahaan/lowongan', 'indexperusahaan')->name('perusahaan.lowongan.index');
+});
+
 
 Route::controller(c_register::class)->group(function () {
     Route::get('/registerpelamar', 'regpelamar');
