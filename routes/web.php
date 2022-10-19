@@ -41,7 +41,7 @@ Route::controller(c_lowongan::class)->group(function () {
     Route::get('/perusahaan/lowongan/edit', 'edit')->name('perusahaan.lowongan.edit');
    
 });
-Route::get('/lowongan/destroy/{$id_lowongan}', [c_lowongan::class, 'destroy']);
+Route::get('/lowongan/delete/{$id_lowongan}', [c_lowongan::class, 'delete']);
 
 Route::controller(c_register::class)->group(function () {
     Route::get('/registerpelamar', 'regpelamar');

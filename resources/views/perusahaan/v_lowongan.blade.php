@@ -54,7 +54,7 @@ Portal Kerja
                                 Apakah Anda Ingin Menghapus Data Dosen Yang Bernama <b>{{$lowongans->posisi}} ?</b>
                             </div>
                             <div class="modal-footer">
-                                <a href="/lowongan/destroy/{{$lowongans->id_lowongan}}" class="btn btn-outline-light pull-left">Yes</a>
+                                <a href="/lowongan/delete/{{$lowongans->id_lowongan}}" class="btn btn-outline-light pull-left">Yes</a>
                                 <button type="button" class="btn btn-outline-light" data-dismiss="modal">No</button>
                             </div>
                         </div>
