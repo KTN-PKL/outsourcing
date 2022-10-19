@@ -15,7 +15,22 @@
 
 
       {{-- Navbar Admin --}}
-      {{-- @if(auth()->user()->is_admin==1) --}}
+      @if(auth()->user()->level==1)
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-users"></i>
+          <p>Daftar Perusahaan</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url('perusahaan/lowongan')}}" class="nav-link">
+          <i class="nav-icon fas fa-building"></i>
+          <p>Daftar Lowongan</p>
+        </a>
+      </li>
+
+      @endif
+      @if(auth()->user()->level==2)
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-users"></i>
@@ -36,7 +51,7 @@
         </a>
       </li>
 
-      {{-- @endif --}}
+      @endif
       <li class="nav-item"></li>
       <div style="height: 50vh">  </div>
       <li class="nav-item">
