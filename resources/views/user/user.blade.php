@@ -115,22 +115,24 @@
           <div id="result"></div>
 
           {{-- daftar lowongan --}}
-          <div class="col-md-3 mb-3">
-            <div class="card shadow">
+          <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="card shadow" style="margin-left: auto; margin-top:1em;">
                 <div class="card-header">
                     <h4> IT Support</h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="width:24rem">
                      <p><img height="30px" width="60px" src="./template2/landingpage/img/ktn.png" alt="logo">CV. Kreasi Teknologi Nusantara</p> <br>
                     <i class="fa fa-map-marker-alt me-3 mt-3" aria-hidden="true">Subang</i><br>
-                    <a class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <a class="btn btn-primary mt-3">
                         Detail <span class="badge bg-secondary"></span>
                     </a><br>
                 </div>
             </div>
-
-            
+          </div>   
+          
       </div>
+      
     </section>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
       <path
