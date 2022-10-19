@@ -84,4 +84,12 @@ class c_lowongan extends Controller
         $this->lowongan->deleteData($id_lowongan);
         return redirect()->route('perusahaan.lowongan.index');
     }
+
+    public function detailLowongan($id_lowongan)
+    {
+        $data = [
+            'lowongan' =>$this->lowongan->detailData($id_lowongan),
+        ];
+        return view('user/v_jobdetail',$data);
+    }
 }
