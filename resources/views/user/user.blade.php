@@ -113,8 +113,23 @@
         <div class="card-table">
           <h3 class="text-center py-2">Data Loker</h3>
           <div id="result"></div>
-          
-        </div>
+
+          {{-- daftar lowongan --}}
+          <div class="col-md-3 mb-3">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h4> IT Support</h4>
+                </div>
+                <div class="card-body">
+                     <p><img height="30px" width="60px" src="./template2/landingpage/img/ktn.png" alt="logo">CV. Kreasi Teknologi Nusantara</p> <br>
+                    <i class="fa fa-map-marker-alt me-3 mt-3" aria-hidden="true">Subang</i><br>
+                    <a class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Detail <span class="badge bg-secondary"></span>
+                    </a><br>
+                </div>
+            </div>
+
+            
       </div>
     </section>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
