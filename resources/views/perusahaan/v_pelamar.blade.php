@@ -6,21 +6,22 @@ Portal Kerja
 @endsection
 
 @section('content')
+<h3>PELAMAR</h3>
 <br>
 <br>
 <a class="btn btn-primary" href="#"><i class="fa fa-plus"></i>Tambah Loker</a>
 <br>
 <br>
-<div style="width:500px" class="card">
-  <table style="width:500px" class="table table-bordered table-hover">
+<div style="width:600px" class="card">
+  <table style="width:600px" class="table table-bordered table-hover">
     <tr>
-      <th style="width:50px">No</th>
+      <th>No</th>
       <th>Posisi</th>
-      <th style="width:150px">Action</th>
+      <th>Action</th>
     </tr>
 
     <td>1</td>
-    <td>IT Support Business Analyst</td>
+    <td>IT</td>
     <td><a class="btn btn-warning" href="#">Edit</a>
         <a href="#" class="btn btn-danger">Delete</a>   
     </td>
