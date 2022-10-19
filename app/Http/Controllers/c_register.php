@@ -20,12 +20,12 @@ class c_register extends Controller
 
     public function regpelamar()
     {
-        
+        return view('user/v_registerpelamar');
     }
 
     public function regperusahaan()
     {
-        
+        return view('perusahaan/v_registerperusahaan');
     }
 
     public function cpelamar(Request $request)
