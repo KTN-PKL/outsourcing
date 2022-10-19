@@ -44,6 +44,7 @@ Route::controller(c_lowongan::class)->group(function () {
     Route::post('/perusahaan/lowongan/update/{id_lowongan}', 'update')->name('perusahaan.lowongan.update');
     Route::get('/perusahaan/lowongan/edit/{id_lowongan}', 'edit')->name('perusahaan.lowongan.edit');
     Route::get('/perusahaan/lowongan/destroy/{id_lowongan}', 'destroy')->name('perusahaan.lowongan.destoy');
+    Route::get('/detailLowongan/{id_lowongan}', 'detailLowongan');
 });
 
 Route::controller(c_register::class)->group(function () {

@@ -135,6 +135,15 @@
 
   </section>
 
+  <section class="content3">
+      
+
+    <!-- Default box -->
+    @yield('content3')
+    <!-- /.card -->
+
+  </section>
+
 
  <!-- Modal Pilih -->
  <div class="modal fade" id="pilihRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
