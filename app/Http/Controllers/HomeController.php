@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect()->back();
+        if (Auth::user()->level == 1){
+            return redirect()->route('admin.v_admin');
+        }
+        elseif (Auth::user()->level == 2) {
+            return redirect()->route('perusahaan.v_perusahaan');
+        }
+        else {
+            return redirect()->back();
+        };
     }
 }
