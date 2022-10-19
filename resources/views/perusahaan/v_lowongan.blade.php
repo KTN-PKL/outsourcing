@@ -18,18 +18,51 @@ Portal Kerja
       <th>Posisi</th>
       <th style="width:150px">Action</th>
     </tr>
-
-    <td>1</td>
-    <td>IT Support Business Analyst</td>
-    <td><a class="btn btn-warning" href="#">Edit</a>
-        <a href="#" class="btn btn-danger">Delete</a>   
+    @php
+        $i=0;
+    @endphp
+    @foreach($lowongan as $lowongans)
+    @php
+        $i=$i+1;
+    @endphp
+    <td>{{$i}}</td>
+    <td>{{$lowongans->posisi}}</td>
+    <td>
+      <a href="/perusahaan/lowongan/edit/{{$lowongans->id_lowongan}}" class="btn btn-sm btn-warning">Edit</a>
+      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{$lowongans->id_lowongan}}">
+        Delete
+      </button>
     </td>
-
+@endforeach
   </table>
 
 </div>
 
-
+@endsection
+                  <!-- Modal Delete -->
+                  @foreach ($lowongan as $lowongans)                  
+                  <div class="modal fade" id="delete{{$lowongans->id_lowongan}}">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content bg-danger">
+                            <div class="modal-header">
+                                <h6 class="modal-title">{{$lowongans->posisi}}</h6>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Apakah Anda Ingin Menghapus Data Dosen Yang Bernama <b>{{$lowongans->posisi}} ?</b>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/lowongan/destroy/{{$lowongans->id_lowongan}}" class="btn btn-outline-light pull-left">Yes</a>
+                                <button type="button" class="btn btn-outline-light" data-dismiss="modal">No</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+                  @endforeach
 
 
 {{-- @section('content')
@@ -64,4 +97,3 @@ Portal Kerja
 </div>     --}}
 
 
-  @endsection
