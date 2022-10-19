@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('id_lowongan');
             $table->integer('id_user');
             $table->text('resume');
-            $table->string('telp_resume');
+            $table->string('no_telp');
             $table->timestamps();
         });
     }
