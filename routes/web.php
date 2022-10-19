@@ -39,9 +39,8 @@ Route::controller(c_lowongan::class)->group(function () {
     Route::get('/perusahaan/lowongan', 'indexperusahaan')->name('perusahaan.lowongan.index');
     Route::get('/perusahaan/lowongan/create', 'create')->name('perusahaan.lowongan.create');
     Route::get('/perusahaan/lowongan/edit', 'edit')->name('perusahaan.lowongan.edit');
-   
+    Route::get('/perusahaan/lowongan/destroy/{id_lowongan}', 'destroy')->name('perusahaan.lowongan.destoy');
 });
-Route::get('/lowongan/delete/{$id_lowongan}', [c_lowongan::class, 'delete']);
 
 Route::controller(c_register::class)->group(function () {
     Route::get('/registerpelamar', 'regpelamar');

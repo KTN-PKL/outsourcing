@@ -135,29 +135,33 @@
         <div class="col-md-8">
             <div class="card">
 <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Daftar Perusahaan</h5>
+    <h5 class="modal-title" id="exampleModalLabel">Buat Lowongan</h5>
   </div>
   <form method="POST" action="{{ route('register') }}">
       @csrf
     <div class="modal-body">
       <div id="alert"></div>
       <div class="mb-3">
-        <label class="form-label">Nama Perusahaan</label>
-        <input type="text" class="form-control" name="nama" placeholder="Nama Perusahaan ...">
+        <label class="form-label">Posisis</label>
+        <input type="text" class="form-control" name="posisi" placeholder="Posisis ...">
+      </div>
+      <div class="row mb-3">                       
+        <label class="form-label">Jobdesk</label>
+        <div class="col-md-16">
+         <textarea name="jobdesk" class="my-editor form-control" id="my-editor1" cols="30" rows="10"></textarea>
+        </div>
+      </div>
+      <div class="row mb-3">                       
+        <label class="form-label">Kualifikasi</label>
+        <div class="col-md-16">
+         <textarea name="kualifikasi" class="my-editor form-control" id="my-editor" cols="30" rows="10"></textarea>
+        </div>
       </div>
       <div class="mb-3">
-        <label class="form-label">Industri Perusahaan</label>
-        <input type="text" class="form-control" name="industri" placeholder="Industri Perusahaan ...">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Ukuran Perusahaan</label>
-        <input type="text" class="form-control" name="ukuran" placeholder="Ukuran Perusahaan ...">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Alamat Perusahaan</label>
-        <input type="test" class="form-control" name="alamat" placeholder="Alamat Perusahaan ...">
+        <label class="form-label">Skill</label>
+        <input type="test" class="form-control" name="skill" placeholder="Skill ...">
     </div>
-    <div class="mb-3">
+    {{-- <div class="mb-3">
         <label class="form-label">Website Perusahaan</label>
         <input type="test" class="form-control" name="website" placeholder="Website Perusahaan ...">
     </div>
@@ -175,12 +179,12 @@
             <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
 
        
-    </div>
+    </div> --}}
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
       <div id="tombol_login">
-        <input class="btn btn-primary" type="submit" value="Masuk">
+        <input class="btn btn-primary" type="submit" value="Buat">
       </div>
     </div>
   </form>
@@ -219,5 +223,6 @@ $(function () {
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('my-editor');
+    CKEDITOR.replace('my-editor1');
     </script>
 @endpush

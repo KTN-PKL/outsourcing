@@ -30,7 +30,7 @@ class c_lowongan extends Controller
 
     public function create()
     {
-        
+        return view('perusahaan.v_createlowongan');
     }
 
     public function store(Request $request)
@@ -78,9 +78,9 @@ class c_lowongan extends Controller
         return redirect()->route('perusahaan.lowongan.index');
     }
 
-    public function delete($id_lowongan)
+    public function destroy($id_lowongan)
     {
         $this->lowongan->deleteData($id_lowongan);
-        return redirect()->route('lowongan');
+        return redirect()->route('perusahaan.lowongan.index');
     }
 }
