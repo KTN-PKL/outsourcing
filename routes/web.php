@@ -37,8 +37,11 @@ Route::controller(c_perusahaan::class)->group(function () {
 
 Route::controller(c_lowongan::class)->group(function () {
     Route::get('/perusahaan/lowongan', 'indexperusahaan')->name('perusahaan.lowongan.index');
+    Route::get('/perusahaan/lowongan/create', 'create')->name('perusahaan.lowongan.create');
+    Route::get('/perusahaan/lowongan/edit', 'edit')->name('perusahaan.lowongan.edit');
+   
 });
-
+Route::get('/lowongan/delete/{$id_lowongan}', [c_lowongan::class, 'delete']);
 
 Route::controller(c_register::class)->group(function () {
     Route::get('/registerpelamar', 'regpelamar');

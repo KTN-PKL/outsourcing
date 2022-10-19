@@ -78,9 +78,9 @@ class c_lowongan extends Controller
         return redirect()->route('perusahaan.lowongan.index');
     }
 
-    public function destroy($id_lowongan)
+    public function delete($id_lowongan)
     {
         $this->lowongan->deleteData($id_lowongan);
-        return redirect()->route('perusahaan.lowongan.index');
+        return redirect()->route('lowongan');
     }
 }
