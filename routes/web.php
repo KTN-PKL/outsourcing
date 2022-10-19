@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\c_perusahaan;
 use App\Http\Controllers\c_register;
 use App\Http\Controllers\c_lowongan;
+use App\Http\Controllers\c_landingpage;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +18,13 @@ use App\Http\Controllers\c_lowongan;
 |
 */
 
-Route::get('/', function () {
-    return view('user/user');
-});
+
 
 Route::get('/test', function () {
     return view('v_from_perusahaan');
 });
+
+Route::get('/', [App\Http\Controllers\c_landingpage::class, 'landingPage'])->name('landingPage');
 
 
 Auth::routes();
