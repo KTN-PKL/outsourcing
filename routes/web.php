@@ -38,7 +38,9 @@ Route::controller(c_perusahaan::class)->group(function () {
 Route::controller(c_lowongan::class)->group(function () {
     Route::get('/perusahaan/lowongan', 'indexperusahaan')->name('perusahaan.lowongan.index');
     Route::get('/perusahaan/lowongan/create', 'create')->name('perusahaan.lowongan.create');
-    Route::get('/perusahaan/lowongan/edit', 'edit')->name('perusahaan.lowongan.edit');
+    Route::post('/perusahaan/lowongan/store', 'store')->name('perusahaan.lowongan.store');
+    Route::post('/perusahaan/lowongan/update/{id_lowongan}', 'update')->name('perusahaan.lowongan.update');
+    Route::get('/perusahaan/lowongan/edit/{id_lowongan}', 'edit')->name('perusahaan.lowongan.edit');
     Route::get('/perusahaan/lowongan/destroy/{id_lowongan}', 'destroy')->name('perusahaan.lowongan.destoy');
 });
 

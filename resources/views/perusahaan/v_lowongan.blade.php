@@ -25,14 +25,16 @@ Portal Kerja
     @php
         $i=$i+1;
     @endphp
+    <tr>
     <td>{{$i}}</td>
     <td>{{$lowongans->posisi}}</td>
     <td>
-      <a href="/perusahaan/lowongan/edit/{{$lowongans->id_lowongan}}" class="btn btn-sm btn-warning">Edit</a>
+      <a href="{{ route('perusahaan.lowongan.edit', $lowongans->id_lowongan) }}" class="btn btn-sm btn-warning">Edit</a>
       <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{$lowongans->id_lowongan}}">
         Delete
       </button>
     </td>
+  </tr>
 @endforeach
   </table>
 

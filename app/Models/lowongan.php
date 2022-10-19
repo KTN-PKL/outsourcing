@@ -33,7 +33,7 @@ class lowongan extends Model
 
     public function detailData($id_lowongan)
     {
-        return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('id_lowongan', $id_lowongan)->frist();
+        return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('id_lowongan', $id_lowongan)->first();
     }
 
     public function editData($id_lowongan, $data)
