@@ -11,13 +11,14 @@ Portal Kerja
 <a class="btn btn-primary" href="#"><i class="fa fa-plus"></i>  Tambah Perusahaan</a>
 <br>
 <br>
-<div style="width:500px" class="card">
-  <table style="width:500px" class="table table-bordered table-hover">
+<div style="width:700px" class="card">
+  <table style="width:700px" class="table table-bordered table-hover">
     <tr>
       <th style="width:50px">No</th>
       <th>Nama Perusahaan</th>
       <th>Industri</th>
-      <th style="width:150px">Action</th>
+      <th>Status</th>
+      <th style="width:200px">Action</th>
     </tr>
     @php
         $i=0;
@@ -28,9 +29,16 @@ Portal Kerja
     @endphp
     <tr>
     <td>{{$i}}</td>
-    <td>{{$perusahaans->name}}</td>
+    <td>{{$perusahaans->nama}}</td>
     <td>{{$perusahaans->industri}}</td>
+    @if ($perusahaans->status == 1)
+    <td>Verified</td>      
+    @else
+    <td>Not Verified</td>
+    @endif
+    
     <td>
+      <a href="#" class="btn btn-sm btn-success">Detail</a>
       <a href="#" class="btn btn-sm btn-warning">Edit</a>
       <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete">
         Delete
