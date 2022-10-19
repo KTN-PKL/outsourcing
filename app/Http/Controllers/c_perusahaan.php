@@ -15,7 +15,9 @@ class c_perusahaan extends Controller
 
     public function index()
     {
-        
+        $data = [
+            'perusahaan' => $this->perusahaan->allData(),
+        ];
     }
 
     public function create()
