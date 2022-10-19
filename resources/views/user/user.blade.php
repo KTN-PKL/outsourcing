@@ -114,7 +114,7 @@
           <h3 class="text-center py-2">Data Loker</h3>
           <div id="result"></div>
 
-          {{-- daftar lowongan --}}
+          {{-- daftar loker --}}
           <div class="row">
           <div class="col-md-4 mb-3">
             <div class="card shadow" style="margin-left: auto; margin-top:1em;">
