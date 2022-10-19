@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('industri');
             $table->string('ukuran');
+            $table->string('website');
             $table->timestamps();
         });
     }
