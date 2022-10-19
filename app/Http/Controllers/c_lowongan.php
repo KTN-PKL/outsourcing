@@ -25,6 +25,7 @@ class c_lowongan extends Controller
         $data = [
             'lowongan' => $this->lowongan->perusahaanData($id_perusahaan),
         ];
+        return view('perusahaan.v_lowongan',$data);
     }
 
     public function create()
