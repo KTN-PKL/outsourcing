@@ -35,15 +35,15 @@ class c_lowongan extends Controller
 
     public function store(Request $request)
     {
-        $request->Validate([
-            'posisis' => 'required',
+        $request->validate([
+            'posisi' => 'required',
             'jobdesk' => 'required',
             'kualifikasi' => 'required',
             'skill' => 'required',
         ]);
         $data = [
             'id_perusahaan' => Auth::user()->id,
-            'posisis' => $request->posisi,
+            'posisi' => $request->posisi,
             'jobdesk' => $request->jobdesk,
             'kualifikasi' => $request->kualifikasi,
             'skill' => $request->skill,
@@ -57,19 +57,20 @@ class c_lowongan extends Controller
         $data = [
             'lowongan' =>$this->lowongan->detailData($id_lowongan),
         ];
+        return view('perusahaan.v_editlowongan', $data);
     }
 
     public function update(Request $request, $id_lowongan)
     {
-        $request->Validate([
-            'posisis' => 'required',
+        $request->validate([
+            'posisi' => 'required',
             'jobdesk' => 'required',
             'kualifikasi' => 'required',
             'skill' => 'required',
         ]);
         $data = [
             'id_perusahaan' => Auth::user()->id,
-            'posisis' => $request->posisi,
+            'posisi' => $request->posisi,
             'jobdesk' => $request->jobdesk,
             'kualifikasi' => $request->kualifikasi,
             'skill' => $request->skill,

@@ -135,31 +135,31 @@
         <div class="col-md-8">
             <div class="card">
 <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Buat Lowongan</h5>
+    <h5 class="modal-title" id="exampleModalLabel">Edit Lowongan</h5>
   </div>
-  <form method="POST" action="{{ route('perusahaan.lowongan.store') }}">
+  <form method="POST" action="{{ route('perusahaan.lowongan.update', $lowongan->id_lowongan) }}">
       @csrf
     <div class="modal-body">
       <div id="alert"></div>
       <div class="mb-3">
         <label class="form-label">Posisis</label>
-        <input type="text" class="form-control" name="posisi" placeholder="Posisis ...">
+        <input type="text" class="form-control" name="posisi" value="{{ $lowongan->posisi }}">
       </div>
       <div class="row mb-3">                       
         <label class="form-label">Jobdesk</label>
         <div class="col-md-16">
-         <textarea name="jobdesk" class="my-editor form-control" id="my-editor1" cols="30" rows="10"></textarea>
+         <textarea name="jobdesk" class="my-editor form-control" id="my-editor1" cols="30" rows="10">{{ $lowongan->jobdesk }}</textarea>
         </div>
       </div>
       <div class="row mb-3">                       
         <label class="form-label">Kualifikasi</label>
         <div class="col-md-16">
-         <textarea name="kualifikasi" class="my-editor form-control" id="my-editor" cols="30" rows="10"></textarea>
+         <textarea name="kualifikasi" class="my-editor form-control" id="my-editor" cols="30" rows="10">{{ $lowongan->kualifikasi }}</textarea>
         </div>
       </div>
       <div class="mb-3">
         <label class="form-label">Skill</label>
-        <input type="test" class="form-control" name="skill" placeholder="Skill ...">
+        <input type="test" class="form-control" name="skill" value="{{ $lowongan->skill }}">
     </div>
     {{-- <div class="mb-3">
         <label class="form-label">Website Perusahaan</label>
@@ -184,7 +184,7 @@
     <div class="modal-footer">
       {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
       <div id="tombol_login">
-        <input class="btn btn-primary" type="submit" value="Buat">
+        <input class="btn btn-primary" type="submit" value="Edit">
       </div>
     </div>
   </form>
