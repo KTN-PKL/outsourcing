@@ -15,19 +15,7 @@ class c_perusahaan extends Controller
 
     public function index()
     {
-        $perusahaan = $this->perusahaan->userData();
-        if ($perusahaan->nama <> "") {
-            if (Auth::user()->status == 1) {
-            $data = [
-                'perusahaan' =>  $perusahaan,
-            ];
-            //view di acc
-         } else {
-            //view belum diacc
-         }
-        } else {
-            return redirect()->route('perusahaan.create');
-        }
+        
     }
 
     public function create()
