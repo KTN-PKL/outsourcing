@@ -8,7 +8,7 @@ Portal Kerja
 @section('content')
 <br>
 <br>
-<a class="btn btn-primary" href="#"><i class="fa fa-plus"></i>Tambah Loker</a>
+<a class="btn btn-primary" href="{{ route('perusahaan.lowongan.create') }}"><i class="fa fa-plus"></i>Tambah Loker</a>
 <br>
 <br>
 <div style="width:500px" class="card">
@@ -60,7 +60,6 @@ Portal Kerja
                         </div>
                         <!-- /.modal-content -->
                     </div>
-                    <!-- /.modal-dialog -->
                   </div>
                   @endforeach
 

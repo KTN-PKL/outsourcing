@@ -30,7 +30,7 @@ class c_lowongan extends Controller
 
     public function create()
     {
-        
+        return view('perusahaan.v_createlowongan');
     }
 
     public function store(Request $request)
