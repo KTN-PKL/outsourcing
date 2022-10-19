@@ -29,6 +29,16 @@ class c_perusahaan extends Controller
         return view('perusahaan/v_create');
     }
 
+    public function verifikasi($id)
+    {
+        $data = [
+            'status' => 1,
+        ];
+
+        $this->m_user->update($id, $data);
+        return redirect()->back();
+    }
+
     public function store(Request $request)
     {
         $request->validate([
