@@ -35,7 +35,45 @@ class c_lowongan extends Controller
     public function store(Request $request)
     {
         $request->Validate([
-            
+            'posisis' => 'required',
+            'jobdesk' => 'required',
+            'kualifikasi' => 'required',
+            'skill' => 'required',
         ]);
+        $data = [
+            'id_perusahaan' => Auth::user()->id,
+            'posisis' => $request->posisi,
+            'jobdesk' => $request->jobdesk,
+            'kualifikasi' => $request->kualifikasi,
+            'skill' => $request->skill,
+        ];
+        $this->lowongan->addData($data);
+        return redirect()->route('perusahaan.lowongan.index');
+    }
+
+    public function edit($id_lowongan)
+    {
+        $data = [
+            'lowongan' =>$this->lowongan->detailData($id_lowongan),
+        ];
+    }
+
+    public function update(Request $request, $id_lowongan)
+    {
+        $request->Validate([
+            'posisis' => 'required',
+            'jobdesk' => 'required',
+            'kualifikasi' => 'required',
+            'skill' => 'required',
+        ]);
+        $data = [
+            'id_perusahaan' => Auth::user()->id,
+            'posisis' => $request->posisi,
+            'jobdesk' => $request->jobdesk,
+            'kualifikasi' => $request->kualifikasi,
+            'skill' => $request->skill,
+        ];
+        $this->lowongan->editData($id_lowongan, $data);
+        return redirect()->route('perusahaan.lowongan.index');
     }
 }
