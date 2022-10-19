@@ -22,16 +22,17 @@ Portal Kerja
     @php
         $i=0;
     @endphp
-    @foreach($lowongan as $lowongans)
+    @foreach($perusahaan as $perusahaans)
     @php
         $i=$i+1;
     @endphp
     <tr>
     <td>{{$i}}</td>
-    <td>{{$lowongans->posisi}}</td>
+    <td>{{$perusahaans->name}}</td>
+    <td>{{$perusahaans->industri}}</td>
     <td>
-      <a href="{{ route('perusahaan.lowongan.edit', $lowongans->id_lowongan) }}" class="btn btn-sm btn-warning">Edit</a>
-      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{$lowongans->id_lowongan}}">
+      <a href="#" class="btn btn-sm btn-warning">Edit</a>
+      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete">
         Delete
       </button>
     </td>
@@ -43,7 +44,7 @@ Portal Kerja
 
 @endsection
                   <!-- Modal Delete -->
-                  @foreach ($lowongan as $lowongans)                  
+                  {{-- @foreach ($lowongan as $lowongans)                  
                   <div class="modal fade" id="delete{{$lowongans->id_lowongan}}">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content bg-danger">
@@ -64,7 +65,7 @@ Portal Kerja
                         <!-- /.modal-content -->
                     </div>
                   </div>
-                  @endforeach
+                  @endforeach --}}
 
 
 {{-- @section('content')

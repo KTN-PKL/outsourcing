@@ -20,6 +20,8 @@ class c_perusahaan extends Controller
         $data = [
             'perusahaan' => $this->perusahaan->allData(),
         ];
+
+        return view('admin.v_perusahaan', $data);
     }
 
     public function create()
@@ -74,7 +76,7 @@ class c_perusahaan extends Controller
             'perusahaan' => $this->perusahaan->detailData($id_perusahaan),
         ];
 
-        return view('admin.v_perusahaan', $data);
+        
     }
 
     public function update(Request $request, $id_perusahaan)
