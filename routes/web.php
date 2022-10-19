@@ -38,5 +38,5 @@ Route::controller(c_register::class)->group(function () {
     Route::get('/registerpelamar', 'regpelamar');
     Route::post('/register/create', 'cpelamar')->name('register.pelamar');
     Route::post('/register/createperusahaan', 'cperusahaan')->name('register.perusahaan');
-    Route::post('/registerperusahaan', 'regperusahaan');
+    Route::get('/registerperusahaan', 'regperusahaan');
 });
