@@ -35,7 +35,7 @@ class c_perusahaan extends Controller
             'status' => 1,
         ];
 
-        $this->m_user->update($id, $data);
+        $this->m_user->editData($id, $data);
         return redirect()->back();
     }
 

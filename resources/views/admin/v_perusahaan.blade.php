@@ -67,7 +67,7 @@ Portal Kerja
                             <div class="modal-body">
                             </div>
                             <div class="modal-footer">
-                                <a href="{{ route('perusahaan.lowongan.destoy', $lowongans->id_lowongan) }}" class="btn btn-outline-success float-left">Verifikasi</a>
+                                <a href="{{ route('admin.perusahaan.verifikasi', $perusahaans->id) }}" class="btn btn-outline-success float-left">Verifikasi</a>
                                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Batal Verifikasi</button>
                             </div>
                         </div>
