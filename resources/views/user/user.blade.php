@@ -57,12 +57,10 @@
                 <div class="card-body" style="width:24rem">
                      <p><img height="30px" width="60px" src="{{asset('/logo/'. $lowongans->logo)}}" alt="logo">{{$lowongans->nama}}</p> <br>
                     <i class="fa fa-map-marker-alt me-3 mt-3" aria-hidden="true">{{$lowongans->alamat}}</i><br>
-                    @auth
+                    
                     <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" class="btn btn-primary mt-3">Detail <span class="badge bg-secondary"></span> </a><br>
-                    @endauth
-                    @guest
-                    <a href="{{ route('login') }}" class="btn btn-primary mt-3">Detail <span class="badge bg-secondary"></span> </a><br>
-                    @endguest
+                    
+                  
                   </div>
             </div>
           </div>   

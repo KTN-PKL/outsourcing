@@ -26,7 +26,12 @@
  </table>
 
  <div class="card">
+ @auth
 <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kirimLamaran">Kirim Lamaran</a>
+@endauth
+@guest
+<a href="{{ route('login')}}" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#masuk">Kirim Lamaran</a>
+@endguest
  </div>
 
 
