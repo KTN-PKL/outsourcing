@@ -50,6 +50,7 @@ Route::controller(c_lowongan::class)->group(function () {
     Route::get('/perusahaan/lowongan/edit/{id_lowongan}', 'edit')->name('perusahaan.lowongan.edit');
     Route::get('/perusahaan/lowongan/destroy/{id_lowongan}', 'destroy')->name('perusahaan.lowongan.destoy');
     Route::get('/detailLowongan/{id_lowongan}', 'detailLowongan');
+    Route::get('/admin/lowongan/{id_perusahaan}', 'indexadin')->name('admin.lowongan.perusahaan');
 });
 
 Route::controller(c_register::class)->group(function () {

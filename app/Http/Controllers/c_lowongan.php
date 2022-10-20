@@ -13,9 +13,12 @@ class c_lowongan extends Controller
         $this->lowongan = new lowongan();
     }
 
-    public function indexuser()
+    public function indexadmin($id_perusahaan)
     {
-        
+        $data = [
+            'lowongan' => $this->lowongan->perusahaanData($id_perusahaan),
+        ];
+        return view('admin.v_lowonganperusahaan',$data);
     }
 
     public function indexperusahaan()
