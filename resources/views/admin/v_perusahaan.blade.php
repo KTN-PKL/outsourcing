@@ -87,7 +87,7 @@ Portal Kerja
                               <span aria-hidden="true">&times;</span>
                           </button>
                           </div>
-                          <form method="POST" action="{{ route('perusahaan.lowongan.store') }}">
+                          <form enctype="multipart/form-data" method="POST" action="{{ route('perusahaan.store') }}">
                             @csrf
                           <div class="modal-body">
                             <div id="alert"></div>
