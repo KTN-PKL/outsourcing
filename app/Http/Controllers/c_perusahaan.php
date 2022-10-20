@@ -24,6 +24,15 @@ class c_perusahaan extends Controller
         return view('admin.v_perusahaan', $data);
     }
 
+    public function lowongan()
+    {
+        $data = [
+            'perusahaan' => $this->perusahaan->allData(),
+        ];
+
+        return view('admin.v_lowongan', $data);
+    }
+
     public function create()
     {
         return view('perusahaan/v_create');
