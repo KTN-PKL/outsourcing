@@ -8,17 +8,18 @@
             <div class="col-sm-6">
                 
                 <div class="row">
-                    {{-- @foreach($lowongan as $lowongans) --}}
+                    @foreach($perusahaan as $perusahaans)
                   <div class="col-md-6 mb-6">
                     <div class="card shadow col-md-12" style="margin-left: 1em; margin-top:1em;">
                         <br>
                         <img src="./template2/landingpage/img/ktn.png" alt="">
                                  <div class="card-body" style="width:18rem">
-                             <h6>CV Kreasi Teknologi Nusantara</h6> <br>
-                            <i class="fa fa-map-marker-alt me-3 mt-3" aria-hidden="true">Subang</i><br>
+                             <h6>{{$perusahaans->name}}</h6> <br>
+                            <i class="fa fa-map-marker-alt me-3 mt-3" aria-hidden="true">{{$perusahaans->alamat}}</i><br>
                                    </div>
                     </div>
-                        </div>   
+                        </div>  
+                        @endforeach 
                 
               </div>
               
