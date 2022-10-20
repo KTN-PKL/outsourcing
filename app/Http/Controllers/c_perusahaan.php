@@ -20,11 +20,23 @@ class c_perusahaan extends Controller
         $data = [
             'perusahaan' => $this->perusahaan->allData(),
         ];
+
+        return view('admin.v_perusahaan', $data);
     }
 
     public function create()
     {
         return view('perusahaan/v_create');
+    }
+
+    public function verifikasi($id)
+    {
+        $data = [
+            'status' => 1,
+        ];
+
+        $this->m_user->update($id, $data);
+        return redirect()->back();
     }
 
     public function store(Request $request)
@@ -74,7 +86,7 @@ class c_perusahaan extends Controller
             'perusahaan' => $this->perusahaan->detailData($id_perusahaan),
         ];
 
-        return view('admin.v_perusahaan', $data);
+        
     }
 
     public function update(Request $request, $id_perusahaan)

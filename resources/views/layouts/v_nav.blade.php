@@ -17,7 +17,7 @@
       {{-- Navbar Admin --}}
       @if(auth()->user()->level==1)
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="{{ route('admin.perusahaan') }}" class="nav-link">
           <i class="nav-icon fas fa-users"></i>
           <p>Daftar Perusahaan</p>
         </a>

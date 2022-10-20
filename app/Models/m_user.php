@@ -25,4 +25,9 @@ class m_user extends Model
     {
         return DB::table('users')->where('email', $email)->first();
     }
+
+    public function editData($id, $data)
+    {
+        DB::table('users')->where('id', $id)->update($data);
+    }
 }

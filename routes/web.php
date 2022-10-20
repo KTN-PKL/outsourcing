@@ -32,7 +32,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::controller(c_perusahaan::class)->group(function () {
-    Route::get('/perusahaan/index', 'index')->name('perusahaan.index');
+    Route::get('/admin/perusahaan', 'index')->name('admin.perusahaan');
+    Route::get('/admin/perusahaan/verifikasi/{id}', 'verifikasi')->name('admin.perusahaan.verifikasi');
     Route::get('/perusahaan/create', 'create')->name('perusahaan.create');
     Route::post('/perusahaan/store', 'store')->name('perusahaan.store');
 });
