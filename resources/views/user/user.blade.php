@@ -2,6 +2,7 @@
  @section('content1')  
 <br>
 <br>
+  @guest
        <div class="jumbotron p-5 rounded-3">
         <div class="container py-4">
           <div class="row">
@@ -22,7 +23,7 @@
           </div>
         </div>
       </div>
-    </div>
+  @endguest
 
     <section id="search" class="search py-5">
       <div class="search-bar px-2">
