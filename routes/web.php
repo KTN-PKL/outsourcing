@@ -26,7 +26,7 @@ Route::get('/test', function () {
 });
 
 Route::get('/', [App\Http\Controllers\c_landingpage::class, 'landingPage'])->name('landingPage');
-Route::get('/daftarPerusahaan', [App\Http\Controllers\c_landingpage::class, 'daftarPerusahaan'])->name('daftarPerusahaan');
+
 
 Auth::routes();
 
@@ -38,6 +38,7 @@ Route::controller(c_perusahaan::class)->group(function () {
     Route::get('/admin/perusahaan/create', 'create')->name('perusahaan.create');
     Route::post('/admin/perusahaan/store', 'store')->name('admin.perusahaan.store');
     Route::post('/admin/perusahaan/update/{id_perusahaan}', 'update')->name('admin.perusahaan.update');
+    Route::get('/daftarPerusahaan', 'daftarPerusahaan')->name('user.daftarPerusahaan');
 });
 
 Route::controller(c_lowongan::class)->group(function () {

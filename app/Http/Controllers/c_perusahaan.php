@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Models\perusahaan;
 use App\Models\m_user;
 use Auth;
@@ -94,12 +93,13 @@ class c_perusahaan extends Controller
     {
         $perusahaan = $this->perusahaan->detailData($id_perusahaan);
 
-        
-        $id = $id_perusahaan;
+        unlink(public_path('logo'). '/' .$perusahaan->logo);
 
             $request->validate([
                 'name' => 'required',
-                'logo' => 'mimes:png,jpg,jpeg,bpm|max:2048',
+                'password' => 'required|string|min:8|confirmed',
+                'email' => 'required|string|email|max:255|unique:users',
+                'logo' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
                 'deskripsi' => 'required',
                 'alamat' => 'required',
                 'industri' => 'required',
@@ -111,12 +111,12 @@ class c_perusahaan extends Controller
             $email = $request->email;
             $data = [
                 'name' => $name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
                 'level' => $level, 
             ];
-            $this->m_user->editData($id, $data);
+            $this->m_user->updateData($data);
             $data1 = $this->m_user->nameData($email);
-            if ($request->logo <> "") {
-            unlink(public_path('logo'). '/' .$perusahaan->logo);
             $file  = $request->logo;
             $filename = "Logo".$request->email.'.'.$file->extension();
             $file->move(public_path('logo'),$filename);
@@ -129,19 +129,16 @@ class c_perusahaan extends Controller
                 'website' => $request->website,
                 'ukuran' => $request->ukuran,
             ];
-            } else {
-            $data2 = [
-                'nama' => $name,
-                'deskripsi' => $request->deskripsi,
-                'alamat' => $request->alamat,
-                'industri' => $request->industri,
-                'website' => $request->website,
-                'ukuran' => $request->ukuran,
-            ];
-            }
-           
-            $this->perusahaan->editData($id_perusahaan, $data2);
+            $this->perusahaan->updateData($data2);
             return redirect()->route('admin.perusahaan');
+    }
+    public function daftarPerusahaan()
+    {
+        $data = [
+            'perusahaan' => $this->perusahaan->allData(),
+        ];
+
+        return view('user.v_daftarperusahaan', $data);
     }
 
 }
