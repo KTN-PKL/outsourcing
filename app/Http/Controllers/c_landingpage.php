@@ -19,4 +19,11 @@ class c_landingpage extends Controller
         ]; 
         return view('user.user',$data);       
     }
+    public function daftarPerusahaan()
+    {
+        // $data=[
+        //     'lowongan'=>$this->lowongan->allData(),
+        // ]; 
+        return view('user.v_daftarperusahaan');       
+    }
 }

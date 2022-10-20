@@ -93,7 +93,7 @@
               <a class="nav-link active" aria-current="page" href="{{url('/')}}">LOWONGAN KERJA</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">PERUSAHAAN</a>
+              <a class="nav-link" href="{{url('/daftarPerusahaan')}}">PERUSAHAAN</a>
             </li>
           </ul>
         </ul>
@@ -112,10 +112,10 @@
 
           @endguest
            @auth
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-3">
             <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  User
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{url('/')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{Auth::user()->name}}
               </a>
 
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -227,8 +227,9 @@
             </div>
           </div>
           <div class="modal-footer">
-            <h6>Tidak Punya Akun?</h6><a href="{{route('register')}}">Daftar</a>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <h6>Tidak Punya Akun? <a href="#" data-bs-toggle="modal" data-bs-target="#pilihRegister" data-bs-dismiss="modal">Daftar</a>
+            </h6>
+            <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             <div id="tombol_login">
               <input class="btn btn-primary" type="submit" value="Masuk">
             </div>
@@ -238,7 +239,90 @@
     </div>
   </div>
 
-
+        <!-- Modal Register -->
+    <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Registrasi</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form method="POST" action="{{ route('register') }}">
+              @csrf
+            <div class="modal-body">
+              <div id="alert"></div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Full Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Full Name ...">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email" placeholder="Email Address ...">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Password ...">
+                <input type="hidden" name="level" value="user">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password ...">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <div id="tombol_login">
+                <input class="btn btn-primary" type="submit" value="Register">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+    <!-- Modal Pilih -->
+    <div class="modal fade" id="pilihRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+  
+            <div class="modal-body">
+              <div style="margin-center:4em" class="card-group">
+                <div class="card">
+                  <a href="{{url('/registerpelamar')}}">
+                  <img src="./template2/landingpage/img/job.png" class="card-img-top" style="margin:center" alt="...">
+                  <div class="card-body">
+                    <h5 style="color:black" class="text-center">PELAMAR</h5>
+                  </div>
+                </a>
+                </div>
+                <div class="card">
+                  <a href="{{url('/registerperusahaan')}}">
+                  <img src="./template2/landingpage/img/perusahaan.png" class="card-img-top" style="margin:center" alt="...">
+                  <div class="card-body">
+                    <h5 style="color: black" class="text-center">PERUSAHAAN</h5>
+                  </div>
+                </a>
+                </div>
+                          
+              </div>
+            
+  
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
  
 
 

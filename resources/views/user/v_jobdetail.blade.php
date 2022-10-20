@@ -1,5 +1,5 @@
 @extends('layouts.v_templateregister')
- @section('content3') 
+ @section('content1') 
  <br>
  <table width = "100%" border = "0">
           
