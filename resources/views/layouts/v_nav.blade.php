@@ -23,7 +23,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="{{url('perusahaan/lowongan')}}" class="nav-link">
+        <a href="{{ route('admin.lowongan')}}" class="nav-link">
           <i class="nav-icon fas fa-building"></i>
           <p>Daftar Lowongan</p>
         </a>

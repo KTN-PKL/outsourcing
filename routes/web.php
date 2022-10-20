@@ -39,6 +39,7 @@ Route::controller(c_perusahaan::class)->group(function () {
     Route::post('/admin/perusahaan/store', 'store')->name('admin.perusahaan.store');
     Route::post('/admin/perusahaan/update/{id_perusahaan}', 'update')->name('admin.perusahaan.update');
     Route::get('/daftarPerusahaan', 'daftarPerusahaan')->name('user.daftarPerusahaan');
+    Route::get('/admin/lowongan', 'lowongan')->name('admin.lowongan');
 });
 
 Route::controller(c_lowongan::class)->group(function () {
