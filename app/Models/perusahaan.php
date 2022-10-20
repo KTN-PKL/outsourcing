@@ -23,7 +23,7 @@ class perusahaan extends Model
 
     public function userData()
     {
-        return DB::table('perusahaans')->where('id_perusahaan', Auth::user()->id)->frist();
+        return DB::table('perusahaans')->where('id_perusahaan', Auth::user()->id)->first();
     }
 
     public function addData($data2)
@@ -33,12 +33,12 @@ class perusahaan extends Model
 
     public function detailData($id_perusahaan)
     {
-        return DB::table('perusahaans')->where('id_perusahaan', $id_perusahaan)->frist();
+        return DB::table('perusahaans')->where('id_perusahaan', $id_perusahaan)->first();
     }
 
-    public function editData($id_perusahaan, $data)
+    public function editData($id_perusahaan, $data2)
     {
-        DB::table('perusahaans')->where('id_perusahaan', $id_perusahaan)->update($data);
+        DB::table('perusahaans')->where('id_perusahaan', $id_perusahaan)->update($data2);
     }
 
     public function deleteData($id_perusahaan)

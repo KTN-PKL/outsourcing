@@ -89,7 +89,7 @@ Portal Kerja
                               <span aria-hidden="true">&times;</span>
                           </button>
                           </div>
-                          <form enctype="multipart/form-data" method="POST" action="{{ route('perusahaan.store') }}">
+                          <form enctype="multipart/form-data" method="POST" action="{{ route('admin.perusahaan.store') }}">
                             @csrf
                           <div class="modal-body">
                             <div id="alert"></div>
@@ -165,7 +165,7 @@ Portal Kerja
                               <span aria-hidden="true">&times;</span>
                           </button>
                           </div>
-                          <form enctype="multipart/form-data" method="POST" action="{{ route('perusahaan.store') }}">
+                          <form enctype="multipart/form-data" method="POST" action="{{ route('admin.perusahaan.update', $perusahaans->id_perusahaan) }}">
                             @csrf
                           <div class="modal-body">
                             <div id="alert"></div>
@@ -207,7 +207,7 @@ Portal Kerja
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Alamat</label>
-                              <input type="test" class="form-control" name="alamat" placeholder="Masukan Alamat" value="{{$perusahaans->email}}">
+                              <input type="test" class="form-control" name="alamat" placeholder="Masukan Alamat" value="{{$perusahaans->email}}" readonly>
                           </div>
                           <div class="mb-3">
                                   <!-- Upload image input-->
@@ -222,7 +222,7 @@ Portal Kerja
                           <div class="modal-footer">
                             {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
                             <div id="tombol_login">
-                              <input class="btn btn-primary" type="submit" value="Tambah">
+                              <input class="btn btn-primary" type="submit" value="Edit">
                             </div>
                           </div>
                         </form>

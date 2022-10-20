@@ -35,8 +35,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::controller(c_perusahaan::class)->group(function () {
     Route::get('/admin/perusahaan', 'index')->name('admin.perusahaan');
     Route::get('/admin/perusahaan/verifikasi/{id}', 'verifikasi')->name('admin.perusahaan.verifikasi');
-    Route::get('/perusahaan/create', 'create')->name('perusahaan.create');
-    Route::post('/perusahaan/store', 'store')->name('perusahaan.store');
+    Route::get('/admin/perusahaan/create', 'create')->name('perusahaan.create');
+    Route::post('/admin/perusahaan/store', 'store')->name('admin.perusahaan.store');
+    Route::post('/admin/perusahaan/update/{id_perusahaan}', 'update')->name('admin.perusahaan.update');
 });
 
 Route::controller(c_lowongan::class)->group(function () {
