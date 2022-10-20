@@ -38,7 +38,7 @@
          <h5 class="modal-title" id="exampleModalLabel">Kirim Lamaran</h5>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
-           <form enctype="multipart/form-data" id="form-login" method="POST" action="{{ route('login') }}">
+           <form enctype="multipart/form-data" id="form-login" method="POST" action="{{ route('detailLowongan.create') }}">
                @csrf
          <div class="modal-body">
            <div id="alert"></div>
@@ -52,11 +52,18 @@
              <label for="exampleInputPassword1" class="form-label">Nomor Telepon</label>
              <input type="text" class="form-control" name="telp">
            </div>
+           <div class="mb-3">
+            <input type="text" class="form-control" name="id_perusahaan" value="{{$lowongan->id_perusahaan}}" hidden> 
+          </div>
+           <div class="mb-3">
+            
+            <input type="text" class="form-control" name="id_lowongan" value="{{$lowongan->id_lowongan}}" hidden > 
+          </div>
          </div>
          <div class="modal-footer">
                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-           <div id="tombol_login">
-             <input class="btn btn-primary" type="submit" value="Masuk">
+           <div id="tombol_kirim">
+             <input class="btn btn-primary" type="submit" value="Kirim">
            </div>
          </div>
        </form>

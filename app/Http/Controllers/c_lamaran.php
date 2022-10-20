@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\lowongan;
+use App\Models\lamaran;
 use Auth;
 
 class c_lamaran extends Controller
 {
     public function __construct()
     {
-        $this->lowongan = new lowongan();
+        $this->lamaran = new lamaran();
     }
 
     public function index()
@@ -23,10 +23,12 @@ class c_lamaran extends Controller
 
     public function create(Request $request)
     {
-        $request->Validate([
+       
+        $request->validate([
             'resume' => 'required|mimes:pdf|max:3000',
             'telp' => 'required',
         ]);
+        
 
         $id_lowongan = $request->id_lowongan;
         $file = $request->resume;

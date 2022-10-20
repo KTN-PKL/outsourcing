@@ -5,6 +5,7 @@ use App\Http\Controllers\c_perusahaan;
 use App\Http\Controllers\c_register;
 use App\Http\Controllers\c_lowongan;
 use App\Http\Controllers\c_landingpage;
+use App\Http\Controllers\c_lamaran;
 
 
 /*
@@ -53,5 +54,9 @@ Route::controller(c_register::class)->group(function () {
     Route::post('/register/create', 'cpelamar')->name('register.pelamar');
     Route::post('/register/createperusahaan', 'cperusahaan')->name('register.perusahaan');
     Route::get('/registerperusahaan', 'regperusahaan');
+});
+
+Route::controller(c_lamaran::class)->group(function(){
+    Route::post('/detailLowongan/kirimLamaran', 'create')->name('detailLowongan.create'); 
 });
 
