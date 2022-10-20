@@ -26,7 +26,7 @@ Route::get('/test', function () {
 });
 
 Route::get('/', [App\Http\Controllers\c_landingpage::class, 'landingPage'])->name('landingPage');
-
+Route::get('/daftarPerusahaan', [App\Http\Controllers\c_landingpage::class, 'daftarPerusahaan'])->name('daftarPerusahaan');
 
 Auth::routes();
 

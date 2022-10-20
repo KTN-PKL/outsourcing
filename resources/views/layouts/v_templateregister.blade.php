@@ -93,7 +93,7 @@
               <a class="nav-link active" aria-current="page" href="{{url('/')}}">LOWONGAN KERJA</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">PERUSAHAAN</a>
+              <a class="nav-link" href="{{url('/daftarPerusahaan')}}">PERUSAHAAN</a>
             </li>
           </ul>
         </ul>
