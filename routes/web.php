@@ -54,3 +54,4 @@ Route::controller(c_register::class)->group(function () {
     Route::post('/register/createperusahaan', 'cperusahaan')->name('register.perusahaan');
     Route::get('/registerperusahaan', 'regperusahaan');
 });
+
