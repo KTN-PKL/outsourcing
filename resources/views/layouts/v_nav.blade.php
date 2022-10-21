@@ -4,14 +4,7 @@
            with font-awesome or any other icon font library -->
           
       {{-- @if(auth()->user()->is_admin==0) --}}
-      <li class="nav-item">
-        <a href="{{url('home')}}" class="nav-link {{request()->is('beranda')? 'active':''}}">
-          <i class="nav-icon fas fa-home"></i>
-          <p>
-            Dashboard
-          </p>
-        </a>
-      </li>
+      
 
 
       {{-- Navbar Admin --}}
@@ -37,6 +30,14 @@
 
       @endif
       @if(auth()->user()->level==2)
+      <li class="nav-item">
+        <a href="{{url('home')}}" class="nav-link {{request()->is('beranda')? 'active':''}}">
+          <i class="nav-icon fas fa-home"></i>
+          <p>
+            Dashboard
+          </p>
+        </a>
+      </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-users"></i>

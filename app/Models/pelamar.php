@@ -23,6 +23,6 @@ class pelamar extends Model
 
     public function jumlahData()
     {
-        DB::table('pelamars')->count();
+        return DB::table('pelamars')->count();
     }
 }
