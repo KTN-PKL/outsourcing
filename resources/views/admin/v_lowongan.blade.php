@@ -26,7 +26,7 @@ Portal Kerja
     <td>{{$i}}</td>
     <td>{{$perusahaans->nama}}</td>
     <td>
-      <a class="btn btn-sm btn-primary">Loker</a>
+      <a class="btn btn-sm btn-primary" href="{{route ('admin.lowongan.perusahaan', $perusahaans->id_perusahaan)}}">Loker</a>
     </td>
   </tr>
 @endforeach
