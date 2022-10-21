@@ -6,26 +6,31 @@ Portal Kerja
 @endsection
 
 @section('content')
+<br>
 <h3>DAFTAR PELAMAR</h3>
 <br>
-<br>
-<br>
-<br>
-<div style="width:600px" class="card">
-  <table style="width:600px" class="table table-bordered table-hover">
+<div style="width:800px" class="card">
+  <table style="width:800px" class="table table-bordered table-hover">
     <tr>
       <th>No</th>
       <th>Nama Pelamar</th>
+      <th>Umur</th>
+      <th>Jenis Kelamin</th>
       <th>Posisi</th>
       <th>Action</th>
     </tr>
     @foreach($lamaran as $lamarans)
+    <tr>
     <td>1</td>
     <td>{{$lamarans->namapel}}</td>
+    <td>{{$lamarans->umur}}</td>
+    <td>{{$lamarans->gender}}</td>
     <td>{{$lamarans->posisi}}</td>
-    <td><a class="btn btn-warning" href="#">Edit</a>
-        <a href="#" class="btn btn-danger">Delete</a>   
+    <td><a class="btn btn-primary" href="#">Detail</a>
+        <a href="#" class="btn btn-success">Lulus</a>   
+        <a href="#" class="btn btn-danger">Tidak Lulus</a>
     </td>
+  </tr>
     @endforeach
 
   </table>
