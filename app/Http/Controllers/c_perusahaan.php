@@ -44,11 +44,6 @@ class c_perusahaan extends Controller
         return view('admin.v_admin', $data);
     }
 
-    public function create()
-    {
-        return view('perusahaan/v_create');
-    }
-
     public function verifikasi($id)
     {
         $data = [
@@ -98,15 +93,6 @@ class c_perusahaan extends Controller
         ];
         $this->perusahaan->addData($data2);
         return redirect()->route('admin.perusahaan');
-    }
-
-    public function edit($id_perusahaan)
-    {
-        $data = [
-            'perusahaan' => $this->perusahaan->detailData($id_perusahaan),
-        ];
-
-        
     }
 
     public function update(Request $request, $id_perusahaan)
@@ -159,6 +145,16 @@ class c_perusahaan extends Controller
         ];
 
         return view('user.v_daftarperusahaan', $data);
+    }
+
+    public function destroy($id)
+    {
+        $id_perusahaan = $id;
+        $perusahaan = $this->perusahaan->detailData($id_perusahaan);
+        unlink(public_path('logo'). '/' .$perusahaan->logo);
+        $this->m_user->deleteData($id);
+        $this->perusahaan->deleteData($id_perusahaan);
+        return redirect()->route('admin.perusahaan');
     }
 
 }
