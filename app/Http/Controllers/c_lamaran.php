@@ -62,7 +62,7 @@ class c_lamaran extends Controller
 
     public function lulus($id_lamaran)
     {
-        $status = "lulus";
+        $status = "Lulus";
         $data = [
             'status' => $status,
         ];
@@ -72,7 +72,7 @@ class c_lamaran extends Controller
 
     public function tidaklulus($id_lamaran)
     {
-        $status = "tidaklulus";
+        $status = "Tidak Lulus";
         $data = [
             'status' => $status,
         ];

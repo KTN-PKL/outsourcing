@@ -9,14 +9,15 @@ Portal Kerja
 <br>
 <h3>DAFTAR PELAMAR</h3>
 <br>
-<div style="width:800px" class="card">
-  <table style="width:800px" class="table table-bordered table-hover">
+<div style="width:1000px" class="card">
+  <table style="width:1000px" class="table table-bordered table-hover">
     <tr>
       <th>No</th>
       <th>Nama Pelamar</th>
       <th>Umur</th>
       <th>Jenis Kelamin</th>
       <th>Posisi</th>
+      <th>Status</th>
       <th>Action</th>
     </tr>
     @foreach($lamaran as $lamarans)
@@ -26,9 +27,14 @@ Portal Kerja
     <td>{{$lamarans->umur}}</td>
     <td>{{$lamarans->gender}}</td>
     <td>{{$lamarans->posisi}}</td>
+    <td>@if ($lamarans->status == "")
+        Baru
+    @else
+        {{ $lamarans->status }}
+    @endif</td>
     <td><a class="btn btn-primary" href="#">Detail</a>
-        <a href="{{ route('lamaran.lulus') }}" class="btn btn-success">Lulus</a>   
-        <a href="{{ route('lamaran.tidaklulus') }}" class="btn btn-danger">Tidak Lulus</a>
+        <a href="{{ route('lamaran.lulus', $lamarans->id_lamaran) }}" class="btn btn-success">Lulus</a>   
+        <a href="{{ route('lamaran.tidaklulus', $lamarans->id_lamaran) }}" class="btn btn-danger">Tidak Lulus</a>
     </td>
   </tr>
     @endforeach
