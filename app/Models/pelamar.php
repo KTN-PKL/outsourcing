@@ -21,6 +21,8 @@ class pelamar extends Model
         DB::table('pelamars')->insert($data2);
     }
 
-
-
+    public function jumlahData()
+    {
+        DB::table('pelamars')->count();
+    }
 }
