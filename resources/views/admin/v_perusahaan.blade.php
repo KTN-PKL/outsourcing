@@ -212,9 +212,9 @@ Portal Kerja
                           <div class="mb-3">
                                   <!-- Upload image input-->
                                   <label class="form-label">Logo</label>
-                                      <input type="file" onchange="readURL1(this);" class="form-control"  name="logo" placeholder="Logo ...">
+                                      <input type="file" onchange="readURL{{ $perusahaans->id_perusahaan }}(this);" class="form-control"  name="logo" placeholder="Logo ...">
                                   <!-- Uploaded image area-->
-                                  <div class="image-area mt-4"><img id="imageResult1" src="{{asset('/logo/'. $perusahaans->logo)}}" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                                  <div class="image-area mt-4"><img id="imageResult{{ $perusahaans->id_perusahaan }}" src="{{asset('/logo/'. $perusahaans->logo)}}" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
                       
                              
                           </div>
@@ -287,13 +287,14 @@ $(function () {
 });
 
 </script>
+@foreach ($perusahaan as $perusahaans)
 <script>
-  function readURL1(input) {
+  function readURL{{ $perusahaans->id_perusahaan }}(input) {
   if (input.files && input.files[0]) {
       var reader = new FileReader();
 
       reader.onload = function (e) {
-          $('#imageResult1')
+          $('#imageResult{{ $perusahaans->id_perusahaan }}')
               .attr('src', e.target.result);
       };
       reader.readAsDataURL(input.files[0]);
@@ -309,6 +310,8 @@ $(function () {
 });
 
 </script>
+@endforeach
+
   
 @push('scripts')
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
