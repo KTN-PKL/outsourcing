@@ -15,11 +15,21 @@
                         @csrf
                       <div class="mb-3">
                         <label for="name" class="form-label">Nama Lengkap</label>
-                        <input name="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukkan Nama Lengkap">
+                        <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Nama Lengkap">
+                          @error('name')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
                       </div>
                       <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input name="email" type="email" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Email">
+                        <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Masukkan Email">
+                          @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                          @enderror
                       </div>
                       <div class="mb-3">
                         <label for="password" class="form-label">Password</label>

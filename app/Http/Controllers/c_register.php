@@ -35,10 +35,18 @@ class c_register extends Controller
             'password' => 'required|string|min:8|confirmed',
             'email' => 'required|string|email|max:255|unique:users',
             'alamatpel' => 'required',
-            'umur' => 'required',
+            'umur' => 'required|numeric',
             'ttl' => 'required',
             'foto' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
             'gender' => 'required',
+        ],[
+            'name.required'=>'Nama Wajib terisi',
+            'email.required'=>'Email wajib terisi',
+            'email.unique'=>'Email sudah terdaftar di database',
+            'email.email'=>'Gunakan Format Email yang benar',
+            'alamatpel.required'=>'Alamat Wajib Diisi',
+            'umur.required'=>'Umur Wajib Diisi',
+
         ]);
         $level = 3;
         $name = $request->name;

@@ -56,7 +56,9 @@
                 </div>
                 <div class="card-body" style="width:24rem">
                      <p><img height="30px" width="60px" src="{{asset('/logo/'. $lowongans->logo)}}" alt="logo">{{$lowongans->nama}}</p> <br>
-                    <i class="fa fa-map-marker-alt me-3 mt-3" aria-hidden="true">{{$lowongans->alamat}}</i><br>
+                    <i class="bi bi-geo-alt-fill" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                      <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                    </svg>{{$lowongans->alamat}}</i><br>
                     
                     <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" class="btn btn-primary mt-3">Detail <span class="badge bg-secondary"></span> </a><br>
                     
