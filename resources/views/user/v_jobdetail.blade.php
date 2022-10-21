@@ -1,13 +1,10 @@
 @extends('layouts.v_templateregister')
  @section('content1') 
  <br>
+
+ <h2>Detail Loker</h2>
+ <div class="card  bg-secondary">
  <table width = "100%" border = "0">
-          
-    <tr>
-       <td colspan = "2">
-         <h1>Detail Loker</h1>
-       </td>
-    </tr>
     <td  colspan="2" height = "60" >
     </td>
     <tr valign = "top">
@@ -17,22 +14,45 @@
         
        <td  width = "90%" >
         <h4>{{$lowongan->nama}} </h4>
-        <h4 style="color: blue">{{$lowongan->posisi}}</h4>
+        <h4 style="color: rgb(153, 153, 153)">{{$lowongan->posisi}}</h4>
        </td>
     </tr>
     <td  colspan="2" height = "60" >
     </td> 
-     
  </table>
+ 
+ 
+<br>
 
- <div class="card">
+ <div class="card col-sm-6 bg-primary">
  @auth
-<a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kirimLamaran">Kirim Lamaran</a>
+<a href="#" class="btn btn-primary col-sm-6" data-bs-toggle="modal" data-bs-target="#kirimLamaran">Kirim Lamaran</a>
 @endauth
 @guest
 <a href="{{ route('login')}}" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#masuk">Kirim Lamaran</a>
 @endguest
  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h4>JOBDESK</h4>
+      <div class="desc">
+        @php
+          echo $lowongan->jobdesk;
+      @endphp
+      </div>
+    </div>
+     <div class="col-sm">
+      <h4>KUALIFIKASI</h4>
+      <div class="desc">
+        @php
+        echo $lowongan->kualifikasi;
+    @endphp
+      </div>
+    </div>
+  </div>
+</div>
 
 
  {{-- modal kirim lamaran --}}
