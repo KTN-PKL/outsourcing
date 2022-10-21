@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\perusahaan;
+use App\Models\pelamar;
 use App\Models\m_user;
 use Auth;
 
@@ -12,6 +13,7 @@ class c_perusahaan extends Controller
     public function __construct()
     {
         $this->perusahaan = new perusahaan();
+        $this->pelamar = new pelamar();
         $this->m_user = new m_user();
     }
 
@@ -31,6 +33,15 @@ class c_perusahaan extends Controller
         ];
 
         return view('admin.v_lowongan', $data);
+    }
+
+    public function dashboard()
+    {
+        $data = [
+            'perusahaan' => $this->perusahaan->jumlahData(),
+            'pelamar' => $this->pelamar->jumlahData(),
+        ];
+
     }
 
     public function create()

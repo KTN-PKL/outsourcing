@@ -8,7 +8,7 @@ Portal Kerja
 @section('content')
 <br>
 <br>
-<a class="btn btn-primary" href="{{ route('perusahaan.lowongan.create') }}"><i class="fa fa-plus"></i>Tambah Loker</a>
+Lowongan Kerja
 <br>
 <br>
 <div style="width:500px" class="card">
@@ -16,6 +16,7 @@ Portal Kerja
     <tr>
       <th style="width:50px">No</th>
       <th>Posisi</th>
+      <th>Jobdesk</th>
       <th style="width:150px">Action</th>
     </tr>
     @php
@@ -28,10 +29,12 @@ Portal Kerja
     <tr>
     <td>{{$i}}</td>
     <td>{{$lowongans->posisi}}</td>
+    <td>@php
+        echo $lowongans->jobdesk;
+    @endphp</td>
     <td>
-      <a href="{{ route('perusahaan.lowongan.edit', $lowongans->id_lowongan) }}" class="btn btn-sm btn-warning">Edit</a>
-      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{$lowongans->id_lowongan}}">
-        Delete
+      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#">
+        Detail
       </button>
     </td>
   </tr>
