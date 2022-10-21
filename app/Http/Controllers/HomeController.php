@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::user()->level == 1){
-            return view('admin.v_admin');
+            return redirect()->route('admin.dashboard');
         }
         elseif (Auth::user()->level == 2) {
             return view('perusahaan.v_perusahaan');

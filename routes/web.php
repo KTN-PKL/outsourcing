@@ -40,6 +40,7 @@ Route::controller(c_perusahaan::class)->group(function () {
     Route::post('/admin/perusahaan/update/{id_perusahaan}', 'update')->name('admin.perusahaan.update');
     Route::get('/daftarPerusahaan', 'daftarPerusahaan')->name('user.daftarPerusahaan');
     Route::get('/admin/lowongan', 'lowongan')->name('admin.lowongan');
+    Route::get('/admin/dashboard', 'dashboard')->name('admin.dashboard');
 });
 
 Route::controller(c_lowongan::class)->group(function () {
@@ -51,6 +52,7 @@ Route::controller(c_lowongan::class)->group(function () {
     Route::get('/perusahaan/lowongan/destroy/{id_lowongan}', 'destroy')->name('perusahaan.lowongan.destoy');
     Route::get('/detailLowongan/{id_lowongan}', 'detailLowongan');
     Route::get('/admin/lowongan/{id_perusahaan}', 'indexadmin')->name('admin.lowongan.perusahaan');
+    
 });
 
 Route::controller(c_register::class)->group(function () {
