@@ -27,8 +27,8 @@ Portal Kerja
     <td>{{$lamarans->gender}}</td>
     <td>{{$lamarans->posisi}}</td>
     <td><a class="btn btn-primary" href="#">Detail</a>
-        <a href="#" class="btn btn-success">Lulus</a>   
-        <a href="#" class="btn btn-danger">Tidak Lulus</a>
+        <a href="{{ route('lamaran.lulus') }}" class="btn btn-success">Lulus</a>   
+        <a href="{{ route('lamaran.tidaklulus') }}" class="btn btn-danger">Tidak Lulus</a>
     </td>
   </tr>
     @endforeach
