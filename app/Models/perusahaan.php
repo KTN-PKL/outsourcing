@@ -45,4 +45,9 @@ class perusahaan extends Model
     {
         DB::table('perusahaans')->where('id_perusahaan', $id_perusahaan)->delete();
     }
+
+    public function jumlahData()
+    {
+        return DB::table('perusahaans')->count();
+    }
 }
