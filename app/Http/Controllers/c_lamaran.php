@@ -20,7 +20,7 @@ class c_lamaran extends Controller
         // ];
         if (Auth::user()->level == '3') {
             $lamaran = [
-                'lamaran' => $this->pekerjaan->userData(),
+                'lamaran' => $this->lamaran->userData(),
                   ];
           
             return view('user.v_lamaranSaya', $lamaran);
