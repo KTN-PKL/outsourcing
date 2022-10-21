@@ -44,8 +44,16 @@ class c_register extends Controller
             'email.required'=>'Email wajib terisi',
             'email.unique'=>'Email sudah terdaftar di database',
             'email.email'=>'Gunakan Format Email yang benar',
+            'password.required'=>'Password Wajib Diisi',
+            'gender.confirmed'=>'Password Tidak Sama',
             'alamatpel.required'=>'Alamat Wajib Diisi',
             'umur.required'=>'Umur Wajib Diisi',
+            'umur.numeric'=>'Umur Wajib Diisi dengan Angka',
+            'ttl.required'=>'Tempat Tanggal Lahir Wajib Diisi',
+            'foto.required'=>'Input File Foto',
+            'foto.mimes'=>'Format Foto berupa png, jpg, jpeg, dan bpm',
+            'gender.required'=>'Jenis Kelamin Wajib Diisi',
+
 
         ]);
         $level = 3;
