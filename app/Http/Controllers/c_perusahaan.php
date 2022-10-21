@@ -42,6 +42,7 @@ class c_perusahaan extends Controller
             'pelamar' => $this->pelamar->jumlahData(),
         ];
 
+        return view('admin.v_admin');
     }
 
     public function create()
