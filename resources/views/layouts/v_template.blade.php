@@ -81,7 +81,14 @@
     <!-- Brand Logo -->
     <span class="brand-link">
       <img src="{{ asset('template') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Perusahaan</span>
+      
+      <span class="brand-text font-weight-light">
+        @if (auth()->user()->level==1)
+            Admin   
+        @else
+            Perusahaan
+        @endif
+      </span>
     </span>
 
     <!-- Sidebar -->
