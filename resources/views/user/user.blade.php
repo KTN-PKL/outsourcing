@@ -32,7 +32,11 @@
             <label for="Search" class="form-label"><i class="fas fa-search"></i> Cari Pekerjaan 
               <br /></label>
             <div class="mb-3 text-center">
-              <input type="text"  id="lowongan" class="form-control" id="Search" />
+             
+              <form action="{{ route('cari') }}" method="POST">
+                @csrf
+              <input type="text" name="cari"  class="form-control"  />
+              </form>
             </div>
           </div>
         </div>

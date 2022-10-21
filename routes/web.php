@@ -53,7 +53,7 @@ Route::controller(c_lowongan::class)->group(function () {
     Route::get('/perusahaan/lowongan/destroy/{id_lowongan}', 'destroy')->name('perusahaan.lowongan.destoy');
     Route::get('/detailLowongan/{id_lowongan}', 'detailLowongan');
     Route::get('/admin/lowongan/{id_perusahaan}', 'indexadmin')->name('admin.lowongan.perusahaan');
-    
+    Route::post('/cari', 'cari')->name('cari');
 });
 
 Route::controller(c_register::class)->group(function () {

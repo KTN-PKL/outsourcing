@@ -48,6 +48,6 @@ class lowongan extends Model
 
     public function cariData($cari)
     {
-        return DB::table('lowongans')->where('posisi','like',"%".$cari."%")->get();
+        return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('posisi','like',"%".$cari."%")->get();
     }
 }
