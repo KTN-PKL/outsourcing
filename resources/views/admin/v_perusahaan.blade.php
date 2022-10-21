@@ -138,9 +138,7 @@ Portal Kerja
                                   <label class="form-label">Logo</label>
                                       <input type="file" onchange="readURL(this);" class="form-control"  name="logo" placeholder="Logo ...">
                                   <!-- Uploaded image area-->
-                                  <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
-                      
-                             
+                                  <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>                            
                           </div>
                           </div>
                           <div class="modal-footer">

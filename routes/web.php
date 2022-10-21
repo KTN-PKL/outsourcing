@@ -53,7 +53,7 @@ Route::controller(c_lowongan::class)->group(function () {
     Route::get('/perusahaan/lowongan/destroy/{id_lowongan}', 'destroy')->name('perusahaan.lowongan.destoy');
     Route::get('/detailLowongan/{id_lowongan}', 'detailLowongan');
     Route::get('/admin/lowongan/{id_perusahaan}', 'indexadmin')->name('admin.lowongan.perusahaan');
-    
+    Route::post('/cari', 'cari')->name('cari');
 });
 
 Route::controller(c_register::class)->group(function () {
@@ -67,6 +67,7 @@ Route::controller(c_lamaran::class)->group(function(){
     Route::post('/detailLowongan/kirimLamaran', 'create')->name('detailLowongan.create');
     Route::get('/lamaranSaya', 'index')->name('lamaran.index');
     Route::get('/perusahaan/pelamar', 'index')->name('perusahaan.index');
-
+    Route::get('/lamaranSaya', 'lulus')->name('lamaran.lulus');
+    Route::get('/lamaranSaya', 'tidaklulus')->name('lamaran.tidaklulus');
 });
 

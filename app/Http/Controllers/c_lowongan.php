@@ -96,8 +96,9 @@ class c_lowongan extends Controller
         return view('user/v_jobdetail',$data);
     }
 
-    public function cari($cari)
+    public function cari(Request $request)
     {
+        $cari = $request->cari;
         $data = [
             'lowongan' =>$this->lowongan->cariData($cari),
         ];

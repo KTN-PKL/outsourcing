@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('id_user');
             $table->text('resume');
             $table->string('no_telp');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
