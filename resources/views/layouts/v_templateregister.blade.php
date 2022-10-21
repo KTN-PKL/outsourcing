@@ -39,6 +39,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('template') }}/dist/css/adminlte.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
       #upload {
@@ -127,7 +128,7 @@
                   <a class="dropdown-item" href="{{ route('logout') }}"
                      onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
-                      {{ __('Logout') }}
+                     <i class="fa fa-sign-out"></i>{{ __('Logout') }}
                   </a>
 
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

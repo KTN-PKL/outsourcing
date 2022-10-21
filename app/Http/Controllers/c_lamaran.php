@@ -15,9 +15,22 @@ class c_lamaran extends Controller
 
     public function index()
     {
-        $data = [
-            'lamaran' => $this->lamaran->allData(),
-        ];
+        // $data = [
+        //     'lamaran' => $this->lamaran->allData(),
+        // ];
+        if (Auth::user()->level == '3') {
+            $lamaran = [
+                'lamaran' => $this->pekerjaan->userData(),
+                  ];
+          
+            return view('user.v_lamaranSaya', $lamaran);
+        } elseif (Auth::user()->level == '2') {
+            $pekerjaan = [
+                'lamaran' => $this->lamaran->allData(),
+            ];
+          
+            return view('perusahaan.v_lamaran', $lamaran);
+        }
         return view('user.v_lamaran');
     }
 
