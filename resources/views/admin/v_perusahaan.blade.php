@@ -46,7 +46,7 @@ Portal Kerja
       <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit{{$perusahaans->id_perusahaan}}">
         Edit
       </button>
-      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete">
+      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{$perusahaans->id_perusahaan}}">
         Delete
       </button>
     </td>
@@ -187,14 +187,6 @@ Portal Kerja
                               <label class="form-label">Email</label>
                               <input type="text" class="form-control" name="email" placeholder="Masukan Email" value="{{$perusahaans->email}}">
                             </div>
-                            {{-- <div class="mb-3">
-                              <label for="password" class="form-label">Password</label>
-                              <input name="password" type="password" class="form-control" id="formGroupExampleInput3" placeholder="Masukkan Password" value="{{$perusahaans->password}}">
-                            </div>
-                            <div class="mb-3">
-                              <label for="password-confirm" class="form-label">Konfirmasi Password</label>
-                              <input name="password_confirmation" type="password" class="form-control" id="formGroupExampleInput4" placeholder="Masukkan Password">
-                            </div> --}}
                             <div class="mb-3">
                               <label class="form-label">Website</label>
                               <input name="website" type="text" class="form-control" placeholder="Masukkan Website" value="{{$perusahaans->website}}">
@@ -212,9 +204,9 @@ Portal Kerja
                           <div class="mb-3">
                                   <!-- Upload image input-->
                                   <label class="form-label">Logo</label>
-                                      <input type="file" onchange="readURL1(this);" class="form-control"  name="logo" placeholder="Logo ...">
+                                      <input type="file" onchange="readURL{{ $perusahaans->id_perusahaan }}(this);" class="form-control"  name="logo" placeholder="Logo ...">
                                   <!-- Uploaded image area-->
-                                  <div class="image-area mt-4"><img id="imageResult1" src="{{asset('/logo/'. $perusahaans->logo)}}" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                                  <div class="image-area mt-4"><img id="imageResult{{ $perusahaans->id_perusahaan }}" src="{{asset('/logo/'. $perusahaans->logo)}}" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
                       
                              
                           </div>
@@ -233,37 +225,31 @@ Portal Kerja
 
                   @endforeach
 
+                  @foreach ($perusahaan as $perusahaans)                  
+                  <div class="modal fade" id="delete{{$perusahaans->id_perusahaan}}">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content bg-danger">
+                            <div class="modal-header">
+                                <h6 class="modal-title">{{$perusahaans->nama}}</h6>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Apakah Anda Ingin Mengahpus Perusahaan yang Bernama <b>{{$perusahaans->nama}} ?</b>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{{ route('admin.perusahaan.destoy', $perusahaans->id) }}" class="btn btn-outline-light pull-left">Yes</a>
+                                <button type="button" class="btn btn-outline-light" data-dismiss="modal">No</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                  </div>
+                  @endforeach
 
-{{-- @section('content')
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('template')}}/plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('template')}}/dist/css/adminlte.min.css">
 
-<script src="{{asset('template')}}/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('template')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('template')}}/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('template')}}/dist/js/demo.js"></script>
 
-<section class="content">
-  <div class="container-fluid">
-    <!-- Small boxes (Stat box) -->
-   
-  <div class="container-fluid">
-    <!-- Small boxes (Stat box) -->
-    <div class="row">
-      <div class="col-lg-6 col-12">
-        <!-- small box -->
-      </div>
-    </div>  
-</div> 
-</div>     --}}
 
 <script>
   function readURL(input) {
@@ -287,13 +273,14 @@ $(function () {
 });
 
 </script>
+@foreach ($perusahaan as $perusahaans)
 <script>
-  function readURL1(input) {
+  function readURL{{ $perusahaans->id_perusahaan }}(input) {
   if (input.files && input.files[0]) {
       var reader = new FileReader();
 
       reader.onload = function (e) {
-          $('#imageResult1')
+          $('#imageResult{{ $perusahaans->id_perusahaan }}')
               .attr('src', e.target.result);
       };
       reader.readAsDataURL(input.files[0]);
@@ -309,6 +296,8 @@ $(function () {
 });
 
 </script>
+@endforeach
+
   
 @push('scripts')
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>

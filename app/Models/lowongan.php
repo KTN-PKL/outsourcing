@@ -45,4 +45,9 @@ class lowongan extends Model
     {
         DB::table('lowongans')->where('id_lowongan', $id_lowongan)->delete();
     }
+
+    public function cariData($cari)
+    {
+        return DB::table('lowongans')->where('posisi','like',"%".$cari."%")->get();
+    }
 }
