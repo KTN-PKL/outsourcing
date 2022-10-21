@@ -98,7 +98,7 @@
                             </span>
                           @enderror
                         <!-- Uploaded image area-->
-                        <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div> 
+                        <div class="image-area mt-4"><img id="imageResult" src="#" alt=""></div> 
                       </div>
                       
 
@@ -123,3 +123,26 @@
      
     
  @endsection
+
+ <script>
+  function readURL(input) {
+  if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+          $('#imageResult')
+              .attr('src', e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+  }
+}
+
+
+
+$(function () {
+  $('#upload').on('change', function () {
+      readURL(input);
+  });
+});
+
+</script>
