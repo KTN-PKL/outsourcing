@@ -25,11 +25,11 @@ class c_lamaran extends Controller
           
             return view('user.v_lamaranSaya', $lamaran);
         } elseif (Auth::user()->level == '2') {
-            $pekerjaan = [
-                'lamaran' => $this->lamaran->allData(),
+            $lamaran = [
+                'lamaran' => $this->lamaran->perusahaanData(),
             ];
           
-            return view('perusahaan.v_lamaran', $lamaran);
+            return view('perusahaan.v_pelamar', $lamaran);
         }
         return view('user.v_lamaran');
     }
