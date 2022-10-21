@@ -30,4 +30,9 @@ class m_user extends Model
     {
         DB::table('users')->where('id', $id)->update($data);
     }
+
+    public function deleteData($id)
+    {
+        DB::table('users')->where('id', $id)->delete();
+    }
 }
