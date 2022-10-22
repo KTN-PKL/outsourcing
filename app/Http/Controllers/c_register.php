@@ -80,7 +80,7 @@ class c_register extends Controller
             'foto' => $filename,
         ];
         $this->pelamar->addData($data2);
-        return redirect('/')->with('registerPelamar', 'Akun Pelamar Berhasil Dibuat');
+        return redirect('/')->with('register', 'Akun Pelamar Berhasil Dibuat');
     }
 
     public function cperusahaan(Request $request)
@@ -136,6 +136,6 @@ class c_register extends Controller
             'ukuran' => $request->ukuran,
         ];
         $this->perusahaan->addData($data2);
-        return redirect('/');
+        return redirect('/')->with('register', 'Akun Perusahaan Berhasil Dibuat. Silahkan Tunggu Persetujuan Verifikasi oleh Admin');
     }
 }

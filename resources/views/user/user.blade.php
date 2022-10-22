@@ -6,10 +6,10 @@
 
 
   @guest
-  @if (session()->has('registerPelamar'))
+  @if (session()->has('register'))
 <div class="alert alert-success alert-block" id="alert">
   <button type="button" class="close" data-dismiss="alert">x</button>
-      <strong>{{session()->get('registerPelamar')}}</strong>
+      <strong>{{session()->get('register')}}</strong>
 </div>
   @endif
 <div class="jumbotron p-5 rounded-3">
@@ -107,9 +107,10 @@
 
       $("document").ready(function()
       {
-        setTimeout(function() => {
+        setTimeout(function()
+        {
           $("div.alert").remove();
-        }, 3000);
+        }, 5000);
       });
 
     </script>
