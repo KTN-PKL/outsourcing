@@ -57,7 +57,7 @@ Portal Kerja
 </div>
 
 @endsection
-                  <!-- Modal Delete -->
+                  <!-- Modal Detail Perusahaan -->
                   @foreach ($perusahaan as $perusahaans)                  
                   <div class="modal fade" id="detail{{$perusahaans->id_perusahaan}}">
                     <div class="modal-dialog modal-sm">

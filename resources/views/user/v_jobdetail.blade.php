@@ -88,9 +88,9 @@
              <label for="exampleInputPassword1" class="form-label">Nomor Telepon</label>
              <input type="text" class="form-control" name="telp">
            </div>
-           <div class="mb-3">
+           {{-- <div class="mb-3">
             <input type="text" class="form-control" name="id_perusahaan" value="{{$lowongan->id_perusahaan}}" hidden> 
-          </div>
+          </div> --}}
           
          </div>
          <div class="modal-footer">
