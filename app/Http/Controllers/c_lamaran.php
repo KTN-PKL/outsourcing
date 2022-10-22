@@ -79,4 +79,17 @@ class c_lamaran extends Controller
         $this->lamaran->editData($id_lamaran, $data);
         return redirect()->back();
     }
+
+    public function datalulus()
+    {
+        $data = [
+            'lamaran' => $this->lamaran->lulusData(),
+        ];
+        return view('perusahaan.v_lamaranlulus', $data);
+    }
+
+    public function downloadcv($resume)
+    {
+        return response()->download(public_path('resume').'/'.$resume);
+    }
 }

@@ -29,6 +29,11 @@ class lamaran extends Model
         return DB::table('lamarans')->join('lowongans', 'lamarans.id_lowongan', '=', 'lowongans.id_lowongan')->join('pelamars', 'lamarans.id_user', '=', 'pelamars.id_pelamar')->where('lamarans.id_perusahaan', Auth::user()->id)->get();
     }
 
+    public function lulusData()
+    {
+        return DB::table('lamarans')->join('lowongans', 'lamarans.id_lowongan', '=', 'lowongans.id_lowongan')->join('pelamars', 'lamarans.id_user', '=', 'pelamars.id_pelamar')->where('lamarans.status', "Lulus")->where('lamarans.id_perusahaan', Auth::user()->id)->get();
+    }
+
     public function addData($data)
     {
         DB::table('lamarans')->insert($data);

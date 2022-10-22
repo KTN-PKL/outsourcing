@@ -7,8 +7,7 @@ Portal Kerja
 
 @section('content')
 <br>
-<h3>DAFTAR PELAMAR<a href="{{ route('perusahaan.lamaran.datalulus') }}" class="btn btn-success  offset-md-7">Peserta Lulus</a></h3>
-
+<h3>PESERTA LULUS</h3>
 <br>
 <div style="width:1000px" class="card">
   <table style="width:1000px" class="table table-bordered table-hover">
@@ -20,15 +19,14 @@ Portal Kerja
       <th>Posisi</th>
       <th>Status</th>
       <th>Action</th>
-    </tr>
-    @php
-        $i = 0;
-    @endphp
+      @php
+      $i = 0;
+      @endphp
     @foreach($lamaran as $lamarans)
     <tr>
-    @php
-        $i = $i+1;
-    @endphp
+      @php
+      $i = $i+1;
+      @endphp
     <td>{{ $i }}</td>
     <td>{{$lamarans->namapel}}</td>
     <td>{{$lamarans->umur}}</td>
@@ -39,19 +37,18 @@ Portal Kerja
     @else
         {{ $lamarans->status }}
     @endif</td>
-    <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail{{$lamarans->id_lamaran}}">
+    <td>
+      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail{{$lamarans->id_lamaran}}">
       Detail
       </button>
-        <a href="{{ route('lamaran.lulus', $lamarans->id_lamaran) }}" class="btn btn-sm btn-success">Lulus</a>   
-        <a href="{{ route('lamaran.tidaklulus', $lamarans->id_lamaran) }}" class="btn btn-sm btn-danger">Tidak Lulus</a>
     </td>
   </tr>
     @endforeach
-
   </table>
 
 </div>
 @endsection
+
 
 @foreach ($lamaran as $lamarans)                  
 <div class="modal fade" id="detail{{$lamarans->id_lamaran}}">
