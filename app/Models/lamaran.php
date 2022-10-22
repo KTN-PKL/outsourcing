@@ -55,6 +55,6 @@ class lamaran extends Model
     }
     public function cekdata($id_lowongan, $id_user)
     {
-        return DB::table('lamarans')->where('id_lowongan', $id_lowongan)->where('id_user', $id_user)->first();
+        return DB::table('lamarans')->where('id_lowongan', $id_lowongan)->where('id_user', $id_user)->count();
     }
 }
