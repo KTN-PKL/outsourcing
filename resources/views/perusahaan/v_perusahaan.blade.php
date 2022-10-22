@@ -19,7 +19,7 @@ Portal Kerja
     <i class="bi bi-person-fill"></i>
     </div>
     <p style="text-align: center">Pelamar</p>
-    <p style="text-align: center">{{ $pelamar }}</p>
+    <p style="text-align: center">{{ $lamaran }}</p>
   </div>
 </div>
 @endsection
