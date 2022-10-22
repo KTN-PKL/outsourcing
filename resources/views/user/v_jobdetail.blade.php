@@ -1,6 +1,11 @@
 @extends('layouts.v_templateregister')
  @section('content1') 
  <br>
+ @if (session('create'))
+<div class="alert alert-success" role="alert">
+    {{ __('Order Berhasil dibuat') }}
+</div>
+@endif
 
  <h2>Detail Loker</h2>
  <div class="card  bg-secondary">
@@ -105,3 +110,4 @@
  
 
  @endsection 
+ 

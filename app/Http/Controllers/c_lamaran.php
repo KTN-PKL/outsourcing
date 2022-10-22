@@ -57,7 +57,7 @@ class c_lamaran extends Controller
         ];
 
         $this->lamaran->addData($data);
-        return redirect()->back();
+        return redirect()->back()->with('create', 'Lamaran Berhasil Dikirim');
     }
 
     public function lulus($id_lamaran)
