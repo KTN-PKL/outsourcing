@@ -87,4 +87,9 @@ class c_lamaran extends Controller
         ];
         return view('perusahaan.v_lamaranlulus', $data);
     }
+
+    public function downloadcv($resume)
+    {
+        return response()->download(public_path('resume').'/'.$resume);
+    }
 }
