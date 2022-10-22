@@ -57,4 +57,8 @@ class lamaran extends Model
     {
         return DB::table('lamarans')->where('id_lowongan', $id_lowongan)->where('id_user', $id_user)->count();
     }
+    public function jumlah()
+    {
+        return DB::table('lamarans')->where('id_perusahaan', Auth::user()->id)->count();
+    }
 }

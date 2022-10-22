@@ -106,7 +106,7 @@ class c_lamaran extends Controller
     public function dashboard()
     {
         $data = [
-            'pelamar' => $this->pelamar->jumlahData(),
+            'lamaran' => $this->lamaran->jumlah(),
         ];
         return view('perusahaan.v_perusahaan', $data);
     }
