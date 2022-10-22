@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header">{{ __('REGISTER PERUSAHAAN') }}</div>
                     <div class="card-body">
                       <form enctype="multipart/form-data" method="POST" action="{{ route('register.perusahaan') }}">
                         @csrf

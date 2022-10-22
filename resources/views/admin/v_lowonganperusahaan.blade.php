@@ -33,7 +33,7 @@ Lowongan Kerja
         echo $lowongans->jobdesk;
     @endphp</td>
     <td>
-      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#">
+      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#lokerDetail">
         Detail
       </button>
     </td>
@@ -56,7 +56,7 @@ Lowongan Kerja
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Apakah Anda Ingin Menghapus Data Dosen Yang Bernama <b>{{$lowongans->posisi}} ?</b>
+                                Apakah Anda Ingin Menghapus Loker<b>{{$lowongans->posisi}} ?</b>
                             </div>
                             <div class="modal-footer">
                                 <a href="{{ route('perusahaan.lowongan.destoy', $lowongans->id_lowongan) }}" class="btn btn-outline-light pull-left">Yes</a>
@@ -67,6 +67,31 @@ Lowongan Kerja
                     </div>
                   </div>
                   @endforeach
+
+                  {{-- Modal Detail Loker --}}
+                    <!-- Modal Detail Perusahaan -->
+                    @foreach ($lowongan as $lowongans)                  
+                    <div class="modal fade" id="lokerDetail{{$lowongans->id_lowongan}}">
+                      <div class="modal-dialog modal-sm">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h6 class="modal-title">{{$lowongans->nama}}</h6>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+                              <div class="modal-body">
+                              </div>
+                              <div class="modal-footer">
+                                  <a href="{{ route('admin.perusahaan.verifikasi', $perusahaans->id) }}" class="btn btn-outline-success float-left">Verifikasi</a>
+                                  <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Batal Verifikasi</button>
+                              </div>
+                          </div>
+                          <!-- /.modal-content -->
+                      </div>
+                    </div>
+                    @endforeach
+
 
 
 {{-- @section('content')
