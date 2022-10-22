@@ -60,14 +60,7 @@
       </li>
       @endif
       @endif
-      <li class="nav-item"></li>
-      <div style="height: 50vh">  </div>
-      <li class="nav-item">
-        <form action="/logout" method="POST">
-          @csrf
-          <button class="btn btn-danger" type="submit">Logout</button>
-        </form>
-      </li>
+     
 
 
     
