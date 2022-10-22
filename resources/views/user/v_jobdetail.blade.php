@@ -30,9 +30,9 @@
         <img width="100%" src="{{asset('/logo/'. $lowongan->logo)}}" alt="logo">
        </td>
         
-       <td  width = "90%" >
-        <h3>{{$lowongan->posisi}} </h3>
-        <a href="{{url('/detailPerusahaan')}}" style="color: rgb(229, 229, 229)"><h6>{{$lowongan->nama}}</h6></a>
+       <td  width = "80%" >
+        <h3 style="color:beige">{{$lowongan->posisi}} </h3>
+        <a href="{{url('/detailPerusahaan')}}" style="color: rgb(255, 255, 255)"><h6>{{$lowongan->nama}}</h6></a>
        </td>
     </tr>
     <td  colspan="2" height = "60" >
