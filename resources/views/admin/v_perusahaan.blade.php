@@ -152,7 +152,6 @@ Portal Kerja
                         <!-- /.modal-content -->
                     </div>
                   </div>
-
                   @foreach ($perusahaan as $perusahaans)   
                   <div class="modal fade" id="edit{{$perusahaans->id_perusahaan}}">
                     <div class="modal-dialog modal-lg">
@@ -192,8 +191,9 @@ Portal Kerja
                             <div class="row mb-3">                       
                               <label class="form-label">Deskripsi</label>
                               <div class="col-md-16">
-                               <textarea name="deskripsi" class="my-editor form-control" id="my-editor" cols="30" rows="10">{{$perusahaans->deskripsi}}</textarea>
+                               <textarea name="deskripsi" class="my-editor form-control" id="my-editor{{$perusahaans->id_perusahaan}}" cols="30" rows="10">{{$perusahaans->deskripsi}}</textarea>
                               </div>
+                              
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Alamat</label>
@@ -299,8 +299,14 @@ $(function () {
   
 @push('scripts')
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+
 <script>
   CKEDITOR.replace('my-editor');
-  CKEDITOR.replace('my-editor1');
-  </script>
+</script>
+
+@foreach ($perusahaan as $perusahaans)
+<script>
+  CKEDITOR.replace('my-editor{{ $perusahaans->id_perusahaan }}');
+</script>
+@endforeach
 @endpush
