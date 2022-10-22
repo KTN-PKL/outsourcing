@@ -64,7 +64,7 @@ Route::controller(c_register::class)->group(function () {
 });
 
 Route::controller(c_lamaran::class)->group(function(){
-    Route::post('/detailLowongan/kirimLamaran', 'create')->name('detailLowongan.create');
+    Route::post('/detailLowongan/kirimLamaran/{id_lowongan}', 'create')->name('detailLowongan.create');
     Route::get('/lamaranSaya', 'index')->name('lamaran.index');
     Route::get('/perusahaan/pelamar/datalulus', 'datalulus')->name('perusahaan.lamaran.datalulus');
     Route::get('/perusahaan/pelamar', 'index')->name('perusahaan.index');

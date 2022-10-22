@@ -36,16 +36,15 @@ class c_lamaran extends Controller
         return view('user.v_lamaran');
     }
 
-    public function create(Request $request)
+    public function create(Request $request, $id_lowongan)
     {
-       
+        $id_user = Auth::user()->id;
+        $this->lamaran->chekdata($id_lamaran);
         $request->validate([
             'resume' => 'required|mimes:pdf|max:3000',
             'telp' => 'required',
         ]);
         
-
-        $id_lowongan = $request->id_lowongan;
         $file = $request->resume;
         $fileName = Auth::user()->email. $id_lowongan.'.'. $file->extension();
         $file->move(public_path('resume'),$fileName);
@@ -53,7 +52,7 @@ class c_lamaran extends Controller
         $data = [
             'id_perusahaan' => $request->id_perusahaan,
             'id_lowongan' => $id_lowongan,
-            'id_user' => Auth::user()->id,
+            'id_user' => $id_user,
             'resume' => $fileName,
             'no_telp' => $request->telp,
         ];

@@ -74,7 +74,7 @@
          <h5 class="modal-title" id="exampleModalLabel">Kirim Lamaran</h5>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
-           <form enctype="multipart/form-data" id="form-login" method="POST" action="{{ route('detailLowongan.create') }}">
+           <form enctype="multipart/form-data" id="form-login" method="POST" action="{{ route('detailLowongan.create', $lowongan->id_lowongan) }}">
                @csrf
          <div class="modal-body">
            <div id="alert"></div>
@@ -91,10 +91,7 @@
            <div class="mb-3">
             <input type="text" class="form-control" name="id_perusahaan" value="{{$lowongan->id_perusahaan}}" hidden> 
           </div>
-           <div class="mb-3">
-            
-            <input type="text" class="form-control" name="id_lowongan" value="{{$lowongan->id_lowongan}}" hidden > 
-          </div>
+          
          </div>
          <div class="modal-footer">
                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
