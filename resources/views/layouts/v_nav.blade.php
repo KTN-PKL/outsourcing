@@ -36,6 +36,9 @@
           <p>Dashboard</p>
         </a>
       </li>
+      @if (auth()->user()->status == 1)
+          
+      
       <li class="nav-item">
         <a href="{{url('/perusahaan/pelamar')}}" class="nav-link">
           <i class="nav-icon fas fa-users"></i>
@@ -55,7 +58,7 @@
           <p>Input Link Lowongan</p>
         </a>
       </li>
-
+      @endif
       @endif
       <li class="nav-item"></li>
       <div style="height: 50vh">  </div>
