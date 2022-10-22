@@ -43,6 +43,11 @@ class c_lowongan extends Controller
             'jobdesk' => 'required',
             'kualifikasi' => 'required',
             'skill' => 'required',
+        ],[
+            'posisi.required'=>'Posisi Wajib terisi',
+            'jobdesk.required'=>'Jobdesk wajib terisi',
+            'kualifikasi.required'=>'Kualifikasi Wajib terisi',
+            'skill.required'=>'Skill wajib terisi',
         ]);
         $data = [
             'id_perusahaan' => Auth::user()->id,
@@ -52,7 +57,7 @@ class c_lowongan extends Controller
             'skill' => $request->skill,
         ];
         $this->lowongan->addData($data);
-        return redirect()->route('perusahaan.lowongan.index');
+        return redirect()->route('perusahaan.lowongan.index')->with('create', 'Lowongan Berhasil Dibuat');
     }
 
     public function edit($id_lowongan)
@@ -79,13 +84,13 @@ class c_lowongan extends Controller
             'skill' => $request->skill,
         ];
         $this->lowongan->editData($id_lowongan, $data);
-        return redirect()->route('perusahaan.lowongan.index');
+        return redirect()->route('perusahaan.lowongan.index')->with('edit', 'Lowongan Berhasil Diupdate');
     }
 
     public function destroy($id_lowongan)
     {
         $this->lowongan->deleteData($id_lowongan);
-        return redirect()->route('perusahaan.lowongan.index');
+        return redirect()->route('perusahaan.lowongan.index')->with('delete', 'Lowongan Berhasil Dihapus');
     }
 
     public function detailLowongan($id_lowongan)

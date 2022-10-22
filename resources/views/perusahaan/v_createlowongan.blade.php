@@ -142,24 +142,44 @@
     <div class="modal-body">
       <div id="alert"></div>
       <div class="mb-3">
-        <label class="form-label">Posisis</label>
-        <input type="text" class="form-control" name="posisi" placeholder="Posisis ...">
-      </div>
+        <label class="form-label">Posisi</label>
+        <input type="text" class="form-control @error('posisi') is-invalid @enderror" value="{{ old('posisi') }}" name="posisi" placeholder="Posisi ...">
+        @error('posisi')
+        <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+   @enderror
+    </div>
       <div class="row mb-3">                       
         <label class="form-label">Jobdesk</label>
         <div class="col-md-16">
-         <textarea name="jobdesk" class="my-editor form-control" id="my-editor1" cols="30" rows="10"></textarea>
+         <textarea name="jobdesk" class="my-editor form-control  @error('jobdesk') is-invalid @enderror" id="my-editor1" cols="30" rows="10">{{ old('jobdesk') }}</textarea>
+         @error('jobdesk')
+         <span class="invalid-feedback" role="alert">
+           <strong>{{ $message }}</strong>
+         </span>
+    @enderror
         </div>
       </div>
       <div class="row mb-3">                       
         <label class="form-label">Kualifikasi</label>
         <div class="col-md-16">
-         <textarea name="kualifikasi" class="my-editor form-control" id="my-editor" cols="30" rows="10"></textarea>
+         <textarea name="kualifikasi" class="my-editor form-control  @error('kualifikasi') is-invalid @enderror" id="my-editor" cols="30" rows="10">{{ old('kualifikasi') }}</textarea>
+         @error('kualifikasi')
+         <span class="invalid-feedback" role="alert">
+           <strong>{{ $message }}</strong>
+         </span>
+    @enderror
         </div>
       </div>
       <div class="mb-3">
         <label class="form-label">Skill</label>
-        <input type="test" class="form-control" name="skill" placeholder="Skill ...">
+        <input type="test" class="form-control  @error('skill') is-invalid @enderror" value="{{ old('skill') }}" name="skill" placeholder="Skill ...">
+         @error('skill')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+         @enderror
     </div>
     {{-- <div class="mb-3">
         <label class="form-label">Website Perusahaan</label>

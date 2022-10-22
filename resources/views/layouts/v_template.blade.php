@@ -41,6 +41,10 @@
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
+   <!-- Preloader -->
+   <div class="preloader flex-column justify-content-center align-items-center">
+    <h1 class="animation__shake">Sistem Cari Kerja</h1>
+</div>
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark navbar-dark">
     <!-- Left navbar links -->

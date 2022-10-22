@@ -6,11 +6,31 @@ Portal Kerja
 @endsection
 
 @section('content')
+ 
+@if (session()->has('create'))
+<div class="alert alert-success alert-block" id="alert">
+  <button type="button" class="close" data-dismiss="alert">x</button>
+      <strong>{{session()->get('create')}}</strong>
+</div>
+  @endif
+  @if (session()->has('delete'))
+<div class="alert alert-success alert-block" id="alert">
+  <button type="button" class="close" data-dismiss="alert">x</button>
+      <strong>{{session()->get('delete')}}</strong>
+</div>
+  @endif
+  @if (session()->has('edit'))
+  <div class="alert alert-success alert-block" id="alert">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+        <strong>{{session()->get('edit')}}</strong>
+  </div>
+    @endif
 <br>
 <br>
 <a class="btn btn-primary" href="{{ route('perusahaan.lowongan.create') }}"><i class="fa fa-plus"></i>Tambah Loker</a>
 <br>
 <br>
+
 <div style="width:500px" class="card">
   <table style="width:500px" class="table table-bordered table-hover">
     <tr>
@@ -53,7 +73,7 @@ Portal Kerja
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Apakah Anda Ingin Menghapus Data Dosen Yang Bernama <b>{{$lowongans->posisi}} ?</b>
+                                Apakah Anda Ingin Menghapus Lowongan <b>{{$lowongans->posisi}} ?</b>
                             </div>
                             <div class="modal-footer">
                                 <a href="{{ route('perusahaan.lowongan.destoy', $lowongans->id_lowongan) }}" class="btn btn-outline-light pull-left">Yes</a>
