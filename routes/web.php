@@ -68,6 +68,7 @@ Route::controller(c_lamaran::class)->group(function(){
     Route::get('/lamaranSaya', 'index')->name('lamaran.index');
     Route::get('/perusahaan/pelamar/datalulus', 'datalulus')->name('perusahaan.lamaran.datalulus');
     Route::get('/perusahaan/pelamar', 'index')->name('perusahaan.index');
+    Route::get('/perusahaan/dashboard', 'dashboard')->name('perusahaan.dashboard');
     Route::get('/perusahaan/pelamar/cv/{resume}', 'downloadcv')->name('perusahaan.lamaran.downloadcv');
     Route::get('/perusahaan/pelamar/lulus/{id_lamaran}', 'lulus')->name('lamaran.lulus');
     Route::get('/perusahaan/pelamar/tidak/{id_lamaran}', 'tidaklulus')->name('lamaran.tidaklulus');

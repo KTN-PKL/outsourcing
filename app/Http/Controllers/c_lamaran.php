@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\lamaran;
+use App\Models\pelamar;
 use Auth;
 
 class c_lamaran extends Controller
@@ -11,6 +12,7 @@ class c_lamaran extends Controller
     public function __construct()
     {
         $this->lamaran = new lamaran();
+        $this->pelamar = new pelamar();
     }
 
     public function index()
@@ -91,5 +93,13 @@ class c_lamaran extends Controller
     public function downloadcv($resume)
     {
         return response()->download(public_path('resume').'/'.$resume);
+    }
+
+    public function dashboard()
+    {
+        $data = [
+            'pelamar' => $this->pelamar->jumlahData(),
+        ];
+        return view('perusahaan.v_perusahaan', $data);
     }
 }
