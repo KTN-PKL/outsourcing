@@ -41,7 +41,7 @@ class c_lamaran extends Controller
     public function create(Request $request, $id_lowongan)
     {
         $id_user = Auth::user()->id;
-        $cek = $this->lamaran->chekdata($id_lamaran, $id_user);
+        $cek = $this->lamaran->chekdata($id_lowongan, $id_user);
         if ($cek->resume <> "") {
             return redirect()->back()->with('create', 'Anda Sudah pernah Mengirim Lamaran Ke Lowongan ini Silakan Cek lamaran Anda');
         } else {
