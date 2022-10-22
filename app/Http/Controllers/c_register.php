@@ -38,21 +38,21 @@ class c_register extends Controller
             'umur' => 'required|numeric',
             'ttl' => 'required',
             'foto' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
-            'gender' => 'required',
+            'gender' => 'max:10',
         ],[
             'name.required'=>'Nama Wajib terisi',
             'email.required'=>'Email wajib terisi',
             'email.unique'=>'Email sudah terdaftar di database',
             'email.email'=>'Gunakan Format Email yang benar',
             'password.required'=>'Password Wajib Diisi',
-            'gender.confirmed'=>'Password Tidak Sama',
+            'password.confirmed'=>'Password Tidak Sama',
             'alamatpel.required'=>'Alamat Wajib Diisi',
             'umur.required'=>'Umur Wajib Diisi',
             'umur.numeric'=>'Umur Wajib Diisi dengan Angka',
             'ttl.required'=>'Tempat Tanggal Lahir Wajib Diisi',
             'foto.required'=>'Input File Foto',
             'foto.mimes'=>'Format Foto berupa png, jpg, jpeg, dan bpm',
-            'gender.required'=>'Jenis Kelamin Wajib Diisi',
+            'gender.max'=>'Pilih Jenis Kelamin',
 
 
         ]);
@@ -80,7 +80,7 @@ class c_register extends Controller
             'foto' => $filename,
         ];
         $this->pelamar->addData($data2);
-        return redirect('/');
+        return redirect('/')->with('registerPelamar', 'Akun Pelamar Berhasil Dibuat');
     }
 
     public function cperusahaan(Request $request)
@@ -94,7 +94,22 @@ class c_register extends Controller
             'alamat' => 'required',
             'industri' => 'required',
             'website' => 'required',
-            'ukuran' => 'required',
+            'ukuran' => 'max:10',
+        ],[
+            'name.required'=>'Nama Wajib terisi',
+            'email.required'=>'Email wajib terisi',
+            'email.unique'=>'Email sudah terdaftar di database',
+            'email.email'=>'Gunakan Format Email yang benar',
+            'password.required'=>'Password Wajib Diisi',
+            'password.confirmed'=>'Terjadi perbedaan antara Password dengan Password Konfirmasi',
+            'alamat.required'=>'Alamat Wajib Diisi',
+            'industri.required'=>'Industri Wajib Diisi',
+            'website.required'=>'Alamat Website Wajib Diisi',
+            'logo.required'=>'Input File Logo Perusahaan',
+            'logo.mimes'=>'Format Logo berupa png, jpg, jpeg, dan bpm',
+            'logo.max'=>'Ukuran Logo tidak melebihi 2048kb',
+            'ukuran.max'=>'Pilih Ukuran Perusahaan',
+            'deskripsi.required'=>'Deskripsi Perusahaan Wajib Diisi',
         ]);
         $level = 2;
         $name = $request->name;
