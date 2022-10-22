@@ -29,7 +29,7 @@ class HomeController extends Controller
             return redirect()->route('admin.dashboard');
         }
         elseif (Auth::user()->level == 2) {
-            return view('perusahaan.v_perusahaan');
+            return redirect()->route('perusahaan.dashboard');
         }
         else {
             return redirect()->back();
