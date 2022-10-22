@@ -33,7 +33,7 @@ Lowongan Kerja
         echo $lowongans->jobdesk;
     @endphp</td>
     <td>
-      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#lokerDetail">
+      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#lokerDetail{{$lowongans->id_lowongan}}">
         Detail
       </button>
     </td>
@@ -69,23 +69,20 @@ Lowongan Kerja
                   @endforeach
 
                   {{-- Modal Detail Loker --}}
-                    <!-- Modal Detail Perusahaan -->
+                    <!-- Modal Detail Loker -->
                     @foreach ($lowongan as $lowongans)                  
                     <div class="modal fade" id="lokerDetail{{$lowongans->id_lowongan}}">
                       <div class="modal-dialog modal-sm">
                           <div class="modal-content">
                               <div class="modal-header">
-                                  <h6 class="modal-title">{{$lowongans->nama}}</h6>
+                                  <h6 class="modal-title">{{$lowongans->posisi}}</h6>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                   </button>
                               </div>
                               <div class="modal-body">
                               </div>
-                              <div class="modal-footer">
-                                  <a href="{{ route('admin.perusahaan.verifikasi', $perusahaans->id) }}" class="btn btn-outline-success float-left">Verifikasi</a>
-                                  <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Batal Verifikasi</button>
-                              </div>
+                             
                           </div>
                           <!-- /.modal-content -->
                       </div>
