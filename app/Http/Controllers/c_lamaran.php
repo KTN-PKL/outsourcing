@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\lamaran;
 use App\Models\pelamar;
+use App\Models\lowongan;
 use Auth;
 
 class c_lamaran extends Controller
@@ -12,6 +13,7 @@ class c_lamaran extends Controller
     public function __construct()
     {
         $this->lamaran = new lamaran();
+        $this->lowongan = new lowongan();
         $this->pelamar = new pelamar();
     }
 
@@ -39,26 +41,33 @@ class c_lamaran extends Controller
     public function create(Request $request, $id_lowongan)
     {
         $id_user = Auth::user()->id;
-        $this->lamaran->chekdata($id_lamaran);
-        $request->validate([
-            'resume' => 'required|mimes:pdf|max:3000',
-            'telp' => 'required',
-        ]);
+        $cek = $this->lamaran->chekdata($id_lamaran, $id_user);
+        if ($cek->resume <> "") {
+            return redirect()->back()->with('create', 'Anda Sudah pernah Mengirim Lamaran Ke Lowongan ini Silakan Cek lamaran Anda');
+        } else {
+            $perusahan = $this->lowongan->detailData($id_lowongan);
+            $id_perusahaan = $perusahan->id_perusahaan;
+            $request->validate([
+                'resume' => 'required|mimes:pdf|max:3000',
+                'telp' => 'required',
+            ]);
+            
+            $file = $request->resume;
+            $fileName = Auth::user()->email. $id_lowongan.'.'. $file->extension();
+            $file->move(public_path('resume'),$fileName);
+    
+            $data = [
+                'id_perusahaan' => $id_perusahaan,
+                'id_lowongan' => $id_lowongan,
+                'id_user' => $id_user,
+                'resume' => $fileName,
+                'no_telp' => $request->telp,
+            ];
+    
+            $this->lamaran->addData($data);
+            return redirect()->back()->with('create', 'Lamaran Berhasil Dikirim');
+        }
         
-        $file = $request->resume;
-        $fileName = Auth::user()->email. $id_lowongan.'.'. $file->extension();
-        $file->move(public_path('resume'),$fileName);
-
-        $data = [
-            'id_perusahaan' => $request->id_perusahaan,
-            'id_lowongan' => $id_lowongan,
-            'id_user' => $id_user,
-            'resume' => $fileName,
-            'no_telp' => $request->telp,
-        ];
-
-        $this->lamaran->addData($data);
-        return redirect()->back()->with('create', 'Lamaran Berhasil Dikirim');
     }
 
     public function lulus($id_lamaran)

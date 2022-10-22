@@ -53,4 +53,8 @@ class lamaran extends Model
     {
         DB::table('lamarans')->where('id_lamaran', $id_lamaran)->delete();
     }
+    public function cekdata($id_lamaran, $id_user)
+    {
+        return DB::table('laarans')->where('id_lamaran', $id_lamaran)->where('id_user', $id_user)->first();
+    }
 }
