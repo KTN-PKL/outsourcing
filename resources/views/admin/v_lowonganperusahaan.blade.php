@@ -81,6 +81,16 @@ Lowongan Kerja
                                   </button>
                               </div>
                               <div class="modal-body">
+                                <div class="desc">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <h6>{{$lowongans->skill}}</h6>
+
+                                    </div>
+
+                                  </div>
+
+                                </div>
                               </div>
                              
                           </div>
