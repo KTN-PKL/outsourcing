@@ -31,11 +31,9 @@
       @endif
       @if(auth()->user()->level==2)
       <li class="nav-item">
-        <a href="{{url('home')}}" class="nav-link {{request()->is('beranda')? 'active':''}}">
+        <a href="{{route('perusahaan.dashboard')}}" class="nav-link">
           <i class="nav-icon fas fa-home"></i>
-          <p>
-            Dashboard
-          </p>
+          <p>Dashboard</p>
         </a>
       </li>
       <li class="nav-item">

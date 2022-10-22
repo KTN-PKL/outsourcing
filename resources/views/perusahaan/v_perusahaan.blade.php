@@ -7,44 +7,20 @@ Portal Kerja
 @endsection
 
 @section('content')
-@section('page')
-@if (session('error'))
-<div class="alert alert-success" role="alert">
-    {{ session('error') }}
+
+<br>
+<br>
+<div class="row">
+<div style="width:40%;" class="card">
+  <div class="icon-demo d-flex align-items-center justify-content-center p-3 py-6">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+      <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+    </svg>
+    <i class="bi bi-person-fill"></i>
+    </div>
+    <p>Pelamar</p>
+    <p>{{ $pelamar }}</p>
+  </div>
 </div>
-@endif
-Halaman Beranda
+</div>
 @endsection
-@section('content')
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('template')}}/plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('template')}}/dist/css/adminlte.min.css">
-
-<script src="{{asset('template')}}/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('template')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('template')}}/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('template')}}/dist/js/demo.js"></script>
-
-<section class="content">
-  <div class="container-fluid">
-    <!-- Small boxes (Stat box) -->
-   
-  <div class="container-fluid">
-    <!-- Small boxes (Stat box) -->
-    <div class="row">
-      <div class="col-lg-6 col-12">
-        <!-- small box -->
-      </div>
-    </div>  
-</div> 
-</div>    
-
-
-  @endsection
