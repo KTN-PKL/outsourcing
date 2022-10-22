@@ -8,7 +8,6 @@ Portal Kerja
 @section('content')
 <br>
 <h3>DAFTAR PELAMAR</h3>
-<a href="{{ route('perusahaan.lamaran.datalulus') }}" class="btn btn-success">Peserta Lulus</a>
 <br>
 <div style="width:1000px" class="card">
   <table style="width:1000px" class="table table-bordered table-hover">
