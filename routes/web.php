@@ -26,6 +26,7 @@ Route::get('/test', function () {
 });
 
 Route::get('/', [App\Http\Controllers\c_landingpage::class, 'landingPage'])->name('landingPage');
+Route::get('/cek', [App\Http\Controllers\c_searc::class, 'cari']);
 
 
 Auth::routes();

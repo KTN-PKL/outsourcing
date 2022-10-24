@@ -16,6 +16,11 @@ class lowongan extends Model
         'id_lowongan', 'id_perusahaan', 'posisi', 'jobdesk', 'kualifikasi', 'skill'
     ];
 
+    public function data()
+    {
+        return DB::table('lowongans')->get();   
+    }
+
     public function allData()
     {
         return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->get();
