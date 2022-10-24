@@ -1,3 +1,4 @@
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 @extends('layouts.v_templateregister')
 @section('content1') 
 <br>
@@ -5,7 +6,18 @@
 <div class="container">
 <h2>DAFTAR PERUSAHAAN</h2>
 {{-- <div class="jumbotron p-5 rounded-3"> --}}
-  
+  {{-- <section id="search" class="search py-5"> --}}
+    <div class="search-bar px-2">
+      <div class="container">
+        <div class="card search-card">
+          <label><i class="fas fa-search"></i>Cari Perusahaan<br /></label>
+          <div class="mb-3 text-center">
+            <input id="inputSearch" type="" name=""  class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+  {{-- </section> --}}
             <div class="col-md-12">
                 
                 <div class="row">
@@ -32,3 +44,32 @@
 
 </div>
 @endsection
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#inputSearch').on('keyup', function(){
+      $inputSearch = $(this).val();
+      if ($search == '') {
+        $('#searchResult').html('');
+        $('#searchResult').hide('');
+      }else{
+        $.ajax({
+          method:"post",
+          url:'search',
+          data:JSON.stringify({
+            inputSearch:$inputSearch
+          }),
+          headers:{
+            'Accept':'application/json',
+            'Content-Type':'application/json'
+          },
+          success:function(data){
+            console.log(data);
+          }
+        })
+      }
+     });
+});
+    
+
+</script>
