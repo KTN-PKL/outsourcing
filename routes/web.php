@@ -31,6 +31,7 @@ Route::get('/', [App\Http\Controllers\c_landingpage::class, 'landingPage'])->nam
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('search',[App\Http\Controllers\c_perusahaan::class, 'search'] );
 
 Route::controller(c_perusahaan::class)->group(function () {
     Route::get('/admin/perusahaan', 'index')->name('admin.perusahaan');
