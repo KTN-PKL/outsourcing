@@ -84,9 +84,16 @@ Lowongan Kerja
                                 <div class="desc">
                                   <div class="row">
                                     <div class="col-md-6">
+                                      <h5>Skill</h5>
                                       <h6>{{$lowongans->skill}}</h6>
 
                                     </div>
+                                    <div class="col-md-6">
+                                      <h5>Jobdesk</h5>
+                                      <h6>@php echo $lowongans->jobdesk; @endphp</h6>
+
+                                    </div>
+                                    
 
                                   </div>
 
