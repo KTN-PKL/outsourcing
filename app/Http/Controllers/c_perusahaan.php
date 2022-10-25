@@ -166,9 +166,7 @@ class c_perusahaan extends Controller
         // ];
         // return view('user/user',$data);
         $inputSearch=$request['inputSearch'];
-        $keyResult=DB::table('perusahaans')
-        ->where('nama','LIKE','%' .$inputSearch.'%')
-        ->get();
+        $keyResult = $this->perusahaan->cari($inputSearch);
         echo $keyResult;
     }
 

@@ -21,12 +21,21 @@
   {{-- </section> --}}
             <div class="col-md-12" id="full">
                
+              @foreach ($perusahaan as $perusahaans)
+                  
+              @endforeach
+
+
             </div>
             <div class="col-md-12">
                 
                 <div id="searchResult" class="row">
-                
-                
+                  '<div class="col-md-3 ">
+                    <div class="card">
+                      <img src="{{asset('/logo/'. $perusahaans->logo)}}" width="250" height="200" style="display:block; margin:auto;" alt=>
+                    </div>
+                    <div class="card-header">
+                    <h6 id="searchResult" class="card-title">{{ $perusahaans->nama }}</h6><br><br>{{ $perusahaans->alamat }}<br></div></div> '
               </div>
               
               
