@@ -7,6 +7,7 @@ use App\Models\perusahaan;
 use App\Models\pelamar;
 use App\Models\m_user;
 use Auth;
+use DB;
 
 class c_perusahaan extends Controller
 {
@@ -157,14 +158,18 @@ class c_perusahaan extends Controller
         return redirect()->route('admin.perusahaan');
     }
 
-    public function Search()
+    public function Search(Request $request)
     {
         // $cari = $request->cari;
         // $data = [
         //     'lowongan' =>$this->lowongan->cariData($cari),
         // ];
         // return view('user/user',$data);
-        echo "connect controller Success";
+        $inputSearch=$request['inputSearch'];
+        $keyResult=DB::table('perusahaans')
+        ->where('nama','LIKE','%' .$inputSearch.'%')
+        ->get();
+        echo $keyResult;
     }
 
 }

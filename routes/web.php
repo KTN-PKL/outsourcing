@@ -32,7 +32,7 @@ Route::get('/cek', [App\Http\Controllers\c_searc::class, 'cari']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('search',[App\Http\Controllers\c_perusahaan::class, 'search'] );
+Route::post('search',[App\Http\Controllers\c_perusahaan::class, 'Search'] );
 
 Route::controller(c_perusahaan::class)->group(function () {
     Route::get('/admin/perusahaan', 'index')->name('admin.perusahaan');
