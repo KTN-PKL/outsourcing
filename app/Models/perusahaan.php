@@ -50,4 +50,9 @@ class perusahaan extends Model
     {
         return DB::table('perusahaans')->count();
     }
+
+    public function cari($inputSearch)
+    {
+        return  DB::table('perusahaans')->where('nama','LIKE','%'.$inputSearch.'%')->get();
+    }
 }
