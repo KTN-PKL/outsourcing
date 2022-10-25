@@ -28,9 +28,8 @@ class c_searc extends Controller
         return $kata;
     }
 
-    public function cek()
+    public function cek($cari)
     {
-        $cari = "a";
         // $request->cari;
         $ar = str_split($cari);
         $a = strlen($cari);
@@ -94,10 +93,11 @@ class c_searc extends Controller
     //     return $result; 
     // }
 
-    public function cari()
+    public function cari(Request $request)
     {
+        $search=$request['search'];
         $n = 1;
-        $h = $this->cek();
+        $h = $this->cek($search);
         $z = count($h);
         $data3[0] = 0;
         $data = $this->lowongan->data();
@@ -119,6 +119,6 @@ class c_searc extends Controller
         }
         
         $hasil = array_unique($data3, SORT_REGULAR);
-        return $hasil;
+        echo $hasil;
     }
 }

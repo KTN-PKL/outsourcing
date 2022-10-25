@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @extends('layouts.v_templateregister')
  @section('content1')  
 <br>
@@ -34,8 +36,33 @@
         </div>
       </div>
   @endguest
+  <div class="search-bar px-2">
+    <div class="container">
+      <div class="card search-card">
+        <label><i class="fas fa-search"></i>Cari Loker<br /></label>
+        <div class="mb-3 text-center">
+          <input id="search" type="" name=""  class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+{{-- </section> --}}
+          <div class="col-md-12" id="full">
+             
+          </div>
+          <div class="col-md-12">
+              
+              <div id="searchResult" class="row">
+              
+              
+            </div>
+            
+            
+          </div>
 
-    <section id="search" class="search py-5">
+
+
+    {{-- <section id="search" class="search py-5">
       <div class="search-bar px-2">
         <div class="container">
           <div class="card search-card">
@@ -58,10 +85,11 @@
         <div class="card-table">
           <h3 class="text-center py-2">Data Loker</h3>
           <div id="result"></div>
+           --}}
 
           {{-- daftar loker --}}
          
-          <div class="row">
+          {{-- <div class="row">
             @foreach($lowongan as $lowongans)
           <div class="col-md-4 mb-3">
             <div class="card shadow" style="margin-left: 1em; margin-top:1em;">
@@ -81,7 +109,7 @@
             </div>
           </div>   
           @endforeach 
-      </div>
+      </div> --}}
     
       
     </section>
@@ -202,3 +230,49 @@
       });
     });
   </script> --}}
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+    
+      $.ajaxSetup({
+        headers:{
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      })
+      $('#search').on('keyup', function(){
+        $search = $(this).val();
+        if($search == ''){
+          document.getElementById("full").style.display="block";
+          $('#searchResult').html('');
+          $('#searchResult').show('');
+          document.getElementById("full").style.display="none";
+        }else{
+          document.getElementById("searchResult").style.display="none";
+          $.ajax({
+            method:"post",
+            url:'cek',
+            data:JSON.stringify({
+              search:$search
+            }),
+            headers:{
+              'Accept':'application/json',
+              'Content-Type':'application/json'
+            },
+            success: function(data1){
+      
+              var searchResultAjax='';
+              // data = JSON.parse(data);
+              console.log(data1);
+              $('#searchResult').show();
+              for(let i=0; i<data1.length;i++){
+               
+                searchResultAjax += 
+                '<div class="col-md-4 mb-3"><div class="card shadow" style="margin-left: 1em; margin-top:1em;"><div class="card-header"><h4>'+data[i].posisi+'</h4></div>'
+              }
+              $('#searchResult').html(searchResultAjax);
+            }
+          })
+        }
+      })
+    })
+    </script>
