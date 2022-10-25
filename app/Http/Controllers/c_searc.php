@@ -30,7 +30,7 @@ class c_searc extends Controller
 
     public function cek()
     {
-        $cari = "qa";
+        $cari = "a";
         // $request->cari;
         $ar = str_split($cari);
         $a = strlen($cari);
@@ -96,9 +96,10 @@ class c_searc extends Controller
 
     public function cari()
     {
-        $n = 0;
+        $n = 1;
         $h = $this->cek();
         $z = count($h);
+        $data3[0] = 0;
         $data = $this->lowongan->data();
         $data1 = $this->lowongan->jumlah();
         for ($u=1; $u < $z; $u++) { 
