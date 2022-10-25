@@ -1,4 +1,5 @@
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @extends('layouts.v_templateregister')
 @section('content1') 
 <br>
@@ -20,20 +21,13 @@
   {{-- </section> --}}
             <div class="col-md-12">
                 
-                <div class="row">
-                    @foreach($perusahaan as $perusahaans)
+                <div id="searchResult" class="row" style="display:none">
                   <div class="col-md-3 ">
-                    <div class="card">
-                        <img src="{{asset('/logo/'. $perusahaans->logo)}}" width="250" height="200" style="display:block; margin:auto;" alt="">
-                        </div>
-                            <div class="card-header">
-                                <h6 class="card-title">{{$perusahaans->name}}</h6>
-                                <br>
-                                <br>
-                                <i class="fa fa-map-marker-alt me-3 mt-3" aria-hidden="true">{{$perusahaans->alamat}}</i><br>
-                            </div>
-                    </div>  
-                        @endforeach 
+                    <div class="card"><img src="" width="250" height="200" style="display:block; margin:auto;" alt=>
+                  </div> 
+                  <div class="card-header"><h6 id="searchResult" class="card-title">SS</h6>
+                    <br><br><br>
+                  </div></div> 
                 
               </div>
               
@@ -47,29 +41,43 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-  $('#inputSearch').on('keyup', function(){
-      $inputSearch = $(this).val();
-      if ($search == '') {
-        $('#searchResult').html('');
-        $('#searchResult').hide('');
-      }else{
-        $.ajax({
-          method:"post",
-          url:'search',
-          data:JSON.stringify({
-            inputSearch:$inputSearch
-          }),
-          headers:{
-            'Accept':'application/json',
-            'Content-Type':'application/json'
-          },
-          success:function(data){
-            console.log(data);
-          }
-        })
-      }
-     });
-});
-    
 
+  $.ajaxSetup({
+    headers:{
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  })
+  $('#inputSearch').on('keyup', function(){
+    $inputSearch = $(this).val();
+    if($inputSearch == ''){
+      $('#searchResult').html('');
+      $('#searchResult').show('');
+    }else{
+      $.ajax({
+        method:"post",
+        url:'search',
+        data:JSON.stringify({
+          inputSearch:$inputSearch
+        }),
+        headers:{
+          'Accept':'application/json',
+          'Content-Type':'application/json'
+        },
+        success: function(data){
+          var gambar='';
+          var searchResultAjax='';
+          data = JSON.parse(data);
+          console.log(data);
+          $('#searchResult').show();
+          for(let i=0; i<data.length;i++){
+            gambar="'/logo/"+data[i].logo+"'";
+            searchResultAjax+=
+             '<div class="col-md-3 "><div class="card"><img src="{{asset('/logo/'.'+data[i].logo+')}}" width="250" height="200" style="display:block; margin:auto;" alt=></div> <div class="card-header"><h6 id="searchResult" class="card-title">'+data[i].nama+'</h6><br><br>'+data[i].alamat+'<br></div></div> '
+          }
+          $('#searchResult').html(searchResultAjax);
+        }
+      })
+    }
+  })
+})
 </script>

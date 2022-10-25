@@ -7,6 +7,7 @@ use App\Models\perusahaan;
 use App\Models\pelamar;
 use App\Models\m_user;
 use Auth;
+use DB;
 
 class c_perusahaan extends Controller
 {
@@ -155,6 +156,20 @@ class c_perusahaan extends Controller
         $this->m_user->deleteData($id);
         $this->perusahaan->deleteData($id_perusahaan);
         return redirect()->route('admin.perusahaan');
+    }
+
+    public function Search(Request $request)
+    {
+        // $cari = $request->cari;
+        // $data = [
+        //     'lowongan' =>$this->lowongan->cariData($cari),
+        // ];
+        // return view('user/user',$data);
+        $inputSearch=$request['inputSearch'];
+        $keyResult=DB::table('perusahaans')
+        ->where('nama','LIKE','%' .$inputSearch.'%')
+        ->get();
+        echo $keyResult;
     }
 
 }
