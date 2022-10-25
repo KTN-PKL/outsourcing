@@ -55,4 +55,8 @@ class lowongan extends Model
     {
         return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('posisi','like',"%".$cari."%")->get();
     }
+    public function jumlah()
+    {
+        return DB::table('lowongans')->count();
+    }
 }
