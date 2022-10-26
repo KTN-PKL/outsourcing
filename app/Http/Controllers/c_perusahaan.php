@@ -158,6 +158,89 @@ class c_perusahaan extends Controller
         return redirect()->route('admin.perusahaan');
     }
 
+    public function kata()
+    {
+        $data = $this->perusahaan->allData();
+        $kata = " ";
+        foreach ($data as $data1) {
+            $data2 = strtolower($data1->nama);
+            $data3 = str_replace(' ', '', $data2);
+            if ($kata == " ") {
+                $kata = $data3;
+            } else {
+                $kata = $kata." ".$data3;
+            }
+        }
+        return $kata;
+    }
+
+    public function cek($cari)
+    {
+        $ar = str_split($cari);
+        $a = strlen($cari);
+        $b = $a-1;
+        $kata = $this->kata();
+        $arr = str_split($kata);
+        $j = strlen($kata);
+        $s = $j-$a;
+        $i = 0;
+        $d = 0;
+        $h[0] = 0;
+        while ($i <= $s) {
+            $c = $b;
+            for ($e=$c; $e >= 0; $e--) { 
+               if ( $arr[$i+$e] ==  $ar[$e]) {
+               } else {
+                break;
+               }
+            }
+            if ($e == -1) {
+                $d = $d+1;
+                $h[$d] = $i + $b;
+                $i = $i + $a;
+            }  else {
+                for ($g=$e; $g >= 0 ; $g--) { 
+                    if ($arr[$i+$g] <> $ar[$g])
+                    {
+                        $i = $i+1;
+                    }
+                    else{
+                        break;
+                    }
+                    
+                }
+            }
+        }
+        return $h;
+    }
+
+    public function cari($cari)
+    {
+        
+        $n = 0;
+        $h = $this->cek($cari);
+        $z = count($h);
+        $data3[0] = 0;
+        $data = $this->perusahaan->allData();
+        $data1 = $this->perusahaan->jumlahData();
+        for ($u=1; $u < $z; $u++) { 
+            $data2 = str_replace(' ', '',  $data[0]->nama);
+                $a = strlen($data2);
+            for ($i=1; $i <= $data1; $i++) {
+                if ($h[$u] <= $a) {
+                    $data3[$n] = $data[$i-1];
+                    $n = $n + 1;
+                    break;
+                }
+                    $data2 = str_replace(' ', '',  $data[$i]->nama);
+                    $x = strlen($data2);
+                    $a = $a + $x + 1;
+            }
+        }
+        $hasil = array_unique($data3, SORT_REGULAR);
+        return $hasil;
+    }
+
     public function Search(Request $request)
     {
         // $cari = $request->cari;
@@ -166,8 +249,12 @@ class c_perusahaan extends Controller
         // ];
         // return view('user/user',$data);
         $inputSearch=$request['inputSearch'];
-        $keyResult = $this->perusahaan->cari($inputSearch);
-        echo $keyResult;
+        $keyResult = $this->cari($inputSearch);
+        echo json_encode($keyResult);
     }
 
+    
 }
+
+
+
