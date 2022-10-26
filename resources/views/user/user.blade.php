@@ -285,7 +285,21 @@
               $('#searchResult').show();
               for(let i=0; i<data.length;i++){
                 searchResultAjax += 
-                '<div class="col-md-4 mb-3"><div class="card shadow" style="margin-left: 1em; margin-top:1em;"><div class="card-header"><h4>'+data[i].posisi+'</h4></div>'
+                ` <div class="col-md-3 ">
+                      <div class="card-header">
+                          <h1 class="card-title">`+data[i].nama+`</h1>
+                          <br><br>
+                          <div class="card-body">
+                              <h4>`+data[i].posisi+`</h4>
+                              <br>
+                              <h6>`+data[i].alamat+`</h6>
+                         </div>
+                          <div class="card-footer">
+                            <a href="{{url('/detailLowongan')}}/`+data[i].id_lowongan+`" class="btn btn-primary mt-3">Detail <span class="badge bg-secondary"></span> </a><br>
+                          </div>
+                         
+                      </div>
+                  </div> `
               }
               $('#searchResult').html(searchResultAjax);
             }
