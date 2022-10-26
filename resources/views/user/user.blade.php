@@ -265,7 +265,6 @@
               console.log(data);
               $('#searchResult').show();
               for(let i=0; i<data.length;i++){
-               
                 searchResultAjax += 
                 '<div class="col-md-4 mb-3"><div class="card shadow" style="margin-left: 1em; margin-top:1em;"><div class="card-header"><h4>'+data[i].posisi+'</h4></div>'
               }
