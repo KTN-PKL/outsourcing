@@ -96,7 +96,7 @@ class c_searc extends Controller
     public function cari(Request $request)
     {
         $search=$request['search'];
-        $n = 1;
+        $n = 0;
         $h = $this->cek($search);
         $z = count($h);
         $data3[0] = 0;
@@ -108,7 +108,6 @@ class c_searc extends Controller
             for ($i=1; $i <= $data1; $i++) {
                 if ($h[$u] <= $a) {
                     $data3[$n] = $data[$i-1];
-                    return $data3[$n];
                     $n = $n + 1;
                     break;
                 }
@@ -119,6 +118,6 @@ class c_searc extends Controller
         }
         
         $hasil = array_unique($data3, SORT_REGULAR);
-        echo $hasil;
+        echo json_encode($hasil);
     }
 }
