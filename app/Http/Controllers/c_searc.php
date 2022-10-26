@@ -14,11 +14,11 @@ class c_searc extends Controller
 
     public function kata()
     {
-        $data = $this->lowongan->data();
+        $data = $this->lowongan->allData();
         $kata = " ";
         foreach ($data as $data1) {
             $data2 = strtolower($data1->posisi);
-            $data3 = str_replace(' ', '', $data2);
+            $data3 = $data2;
             if ($kata == " ") {
                 $kata = $data3;
             } else {
@@ -32,6 +32,7 @@ class c_searc extends Controller
     {
         // $request->cari;
         $ar = str_split($cari);
+
         $a = strlen($cari);
         $b = $a-1;
         $kata = $this->kata();
@@ -97,13 +98,14 @@ class c_searc extends Controller
     {
         $search=$request['search'];
         $n = 0;
-        $h = $this->cek($search);
+        $cari=strtolower($search);
+        $h = $this->cek($cari);
         $z = count($h);
         $data3[0] = 0;
-        $data = $this->lowongan->data();
+        $data = $this->lowongan->allData();
         $data1 = $this->lowongan->jumlah();
         for ($u=1; $u < $z; $u++) { 
-            $data2 = str_replace(' ', '',  $data[0]->posisi);
+            $data2 = $data[0]->posisi;
                 $a = strlen($data2);
             for ($i=1; $i <= $data1; $i++) {
                 if ($h[$u] <= $a) {
@@ -111,13 +113,13 @@ class c_searc extends Controller
                     $n = $n + 1;
                     break;
                 }
-                    $data2 = str_replace(' ', '',  $data[$i]->posisi);
+                    $data2 = $data[$i]->posisi;
                     $x = strlen($data2);
                     $a = $a + $x + 1;
             }
         }
         
-        $hasil = array_unique($data3, SORT_REGULAR);
+        $hasil =  array_values (array_map ("unserialize", array_unique (array_map ("serialize", $data3))));
         echo json_encode($hasil);
     }
 }
