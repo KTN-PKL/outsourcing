@@ -237,7 +237,7 @@ class c_perusahaan extends Controller
                     $a = $a + $x + 1;
             }
         }
-        $hasil = array_unique($data3, SORT_REGULAR);
+        $hasil = array_values (array_map ("unserialize", array_unique (array_map ("serialize", $data3))));
         return $hasil;
     }
 
