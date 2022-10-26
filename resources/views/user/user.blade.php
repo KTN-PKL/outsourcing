@@ -244,7 +244,7 @@
         if($search == ''){
           document.getElementById("full").style.display="block";
           $('#searchResult').html('');
-          $('#searchResult').show('');
+          $('#searchResult').hide('');
           document.getElementById("full").style.display="none";
         }else{
           document.getElementById("searchResult").style.display="none";
@@ -258,13 +258,13 @@
               'Accept':'application/json',
               'Content-Type':'application/json'
             },
-            success: function(data1){
+            success: function(data){
       
               var searchResultAjax='';
-              // data = JSON.parse(data);
-              console.log(data1);
+              data = JSON.parse(data);
+              console.log(data);
               $('#searchResult').show();
-              for(let i=0; i<data1.length;i++){
+              for(let i=0; i<data.length;i++){
                
                 searchResultAjax += 
                 '<div class="col-md-4 mb-3"><div class="card shadow" style="margin-left: 1em; margin-top:1em;"><div class="card-header"><h4>'+data[i].posisi+'</h4></div>'
