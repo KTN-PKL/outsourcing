@@ -21,21 +21,21 @@
   {{-- </section> --}}
             <div class="col-md-12" id="full">
                
+              <div class="row" id="full">
               @foreach ($perusahaan as $perusahaans)
-                  
-              @endforeach
-
-
-            </div>
-            <div class="col-md-12">
-                
-                <div id="searchResult" class="row">
                   '<div class="col-md-3 ">
                     <div class="card">
                       <img src="{{asset('/logo/'. $perusahaans->logo)}}" width="250" height="200" style="display:block; margin:auto;" alt=>
                     </div>
                     <div class="card-header">
-                    <h6 id="searchResult" class="card-title">{{ $perusahaans->nama }}</h6><br><br>{{ $perusahaans->alamat }}<br></div></div> '
+                    <h6  class="card-title">{{ $perusahaans->nama }}</h6><br><br>{{ $perusahaans->alamat }}<br></div></div> '
+  
+              @endforeach
+            </div>
+            </div>
+            <div class="col-md-12">
+                
+                <div id="searchResult" class="row">
               </div>
               
               
@@ -60,9 +60,10 @@ $(document).ready(function(){
       document.getElementById("full").style.display="block";
       $('#searchResult').html('');
       $('#searchResult').show('');
-      document.getElementById("full").style.display="none";
-    }else{
       document.getElementById("searchResult").style.display="none";
+    }else{
+      
+      document.getElementById("full").style.display="none";
       $.ajax({
         method:"post",
         url:'search',
