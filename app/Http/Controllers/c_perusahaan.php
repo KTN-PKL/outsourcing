@@ -176,16 +176,19 @@ class c_perusahaan extends Controller
 
     public function cek($cari)
     {
-        $ar = str_split($cari);
-        $a = strlen($cari);
+        $str = explode(" ",$cari);
+        $d = 0;
+        $h[0] = 0;
+        $z = count($str);
+        for ($l=0; $l < $z; $l++) { 
+        $ar = str_split($str[$l]);
+        $a = strlen($str[$l]);
         $b = $a-1;
         $kata = $this->kata();
         $arr = str_split($kata);
         $j = strlen($kata);
         $s = $j-$a;
         $i = 0;
-        $d = 0;
-        $h[0] = 0;
         while ($i <= $s) {
             $c = $b;
             for ($e=$c; $e >= 0; $e--) { 
@@ -211,6 +214,7 @@ class c_perusahaan extends Controller
                 }
             }
         }
+    }
         return $h;
     }
 
