@@ -32,6 +32,7 @@ class c_searc extends Controller
     {
         // $request->cari;
         $ar = str_split($cari);
+
         $a = strlen($cari);
         $b = $a-1;
         $kata = $this->kata();
@@ -97,7 +98,8 @@ class c_searc extends Controller
     {
         $search=$request['search'];
         $n = 0;
-        $h = $this->cek($search);
+        $cari=strtolower($search);
+        $h = $this->cek($cari);
         $z = count($h);
         $data3[0] = 0;
         $data = $this->lowongan->data();

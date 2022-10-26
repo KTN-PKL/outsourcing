@@ -48,6 +48,26 @@
   </div>
 {{-- </section> --}}
           <div class="col-md-12" id="full">
+            <div class="row" id="full">
+              @foreach ($lowongan as $lowongans)
+                  <div class="col-md-3 ">
+                      <div class="card-header">
+                          <h1 class="card-title">{{ $lowongans->nama }}</h1>
+                          <br><br>
+                          <div class="card-body">
+                              <h4>{{$lowongans->posisi}}</h4>
+                              <br>
+                              <h6>{{$lowongans->alamat}}</h6>
+                         </div>
+                          <div class="card-footer">
+                            <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" class="btn btn-primary mt-3">Detail <span class="badge bg-secondary"></span> </a><br>
+                          </div>
+                         
+                      </div>
+                  </div> 
+  
+              @endforeach
+            </div>
           </div>
           <div class="col-md-12">
               
