@@ -48,7 +48,6 @@
   </div>
 {{-- </section> --}}
           <div class="col-md-12" id="full">
-             
           </div>
           <div class="col-md-12">
               
@@ -245,9 +244,9 @@
           document.getElementById("full").style.display="block";
           $('#searchResult').html('');
           $('#searchResult').hide('');
-          document.getElementById("full").style.display="none";
-        }else{
           document.getElementById("searchResult").style.display="none";
+        }else{
+          document.getElementById("full").style.display="none";
           $.ajax({
             method:"post",
             url:'cek',
