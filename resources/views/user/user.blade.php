@@ -299,9 +299,7 @@
                               <h6>`+data[i].alamat+`</h6>
                          </div>
                           <div class="card-footer">
-                            <a href="{{url('/detailLowongan')}}/`+<?php
-                            $encrypted = Crypt::encryptString($data[$i]->id_perusahan);
-                            echo $encrypted; ?>+`" class="btn btn-primary mt-3">Detail <span class="badge bg-secondary"></span> </a><br>
+                            <a href="{{url('/detailLowongan')}}/`+data[i].id_lowongan+`" class="btn btn-primary mt-3">Detail <span class="badge bg-secondary"></span> </a><br>
                           </div>
                          
                       </div>
