@@ -49,12 +49,13 @@
     <td  colspan="2" height = "60" >
     </td> 
  </table>
+ 
  {{-- <div class="card col-sm-6 bg-primary"> --}}
  
  {{-- </div> --}}
 </div>
 
- 
+<a style="float:right;margin-right:1em; margin-bottom:1em;" href="/lowonganperusahaan/{{ $perusahaan->id_perusahaan}}" class="btn btn-primary col-sm-3">Lihat Lowongan di {{ $perusahaan->nama }}</a> 
 
  @endsection 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\lowongan;
+use Illuminate\Support\Facades\Crypt;
 use Auth;
 
 class c_lowongan extends Controller
@@ -95,8 +96,9 @@ class c_lowongan extends Controller
 
     public function detailLowongan($id_lowongan)
     {
+        $decrypted = Crypt::decryptString($id_lowongan);
         $data = [
-            'lowongan' =>$this->lowongan->detailData($id_lowongan),
+            'lowongan' =>$this->lowongan->detailData($decrypted),
         ];
         return view('user/v_jobdetail',$data);
     }
