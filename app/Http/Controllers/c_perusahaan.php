@@ -275,10 +275,10 @@ class c_perusahaan extends Controller
     public function validasi(Request $request, $id_perusahaan)
     {
         $request->validate([
-            'fotokantor' => 'mimes:png,jpg,jpeg,bpm|max:2048',
-            'deskripsi' => 'required',
-            'alamat' => 'required',
-            'industri' => 'required',
+            'fotokantor' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
+            'nib' => 'required',
+            'npwp' => 'required',
+            'akta' => 'required',
             'website' => 'required',
             'ukuran' => 'required',
         ]);
