@@ -64,7 +64,7 @@
                                 $encrypted = Crypt::encryptString($lowongans->id_lowongan);
                             @endphp
                             
-                            <a href="{{url('/detailLowongan')}}/{{$encrypted}}" class="btn btn-primary mt-3">Detail <span class="badge bg-secondary"></span> </a><br>
+                            <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" class="btn btn-primary mt-3">Detail <span class="badge bg-secondary"></span> </a><br>
                           </div>
                          
                       </div>

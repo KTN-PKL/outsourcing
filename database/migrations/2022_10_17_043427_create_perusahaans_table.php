@@ -21,7 +21,11 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('industri');
             $table->string('ukuran');
-            $table->string('website');
+            $table->string('akta')->nullable();
+            $table->string('nib')->nullable();
+            $table->string('npwp')->nullable();
+            $table->string('pkp')->nullable();
+            $table->string('fotokantor')->nullable();
             $table->timestamps();
         });
     }

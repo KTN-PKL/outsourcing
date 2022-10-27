@@ -96,9 +96,9 @@ class c_lowongan extends Controller
 
     public function detailLowongan($id_lowongan)
     {
-        $decrypted = Crypt::decryptString($id_lowongan);
+        
         $data = [
-            'lowongan' =>$this->lowongan->detailData($decrypted),
+            'lowongan' =>$this->lowongan->detailData($id_lowongan),
         ];
         return view('user/v_jobdetail',$data);
     }
