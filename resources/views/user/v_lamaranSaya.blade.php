@@ -1,11 +1,8 @@
-@extends('layouts.v_templateregister')
-@section('content1') 
-<br>
-<br> 
-<br>
-<h2>LAMARAN SAYA</h2>
-<div class="jumbotron p-5 rounded-3">
-    <div class="container py-4">
+@extends('layouts.v_templateUser')
+@section('content1')
+@endsection
+@section('content2') 
+<div style="margin-left:2em;margin-right:2em;" class="jumbotron p-5 rounded-3">
         <div style="width:600px;" class="card">
             <table style="width:600px" class="table table-bordered table-hover">
               <tr>
@@ -23,7 +20,7 @@
             </table>
           
           </div>
-                    </div>
+                    
                     
                 </div>
             </table>
@@ -31,4 +28,5 @@
 
             </div>
     </div>
-</div>            
+</div>  
+@endsection          

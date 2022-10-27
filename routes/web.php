@@ -19,7 +19,9 @@ use App\Http\Controllers\c_lamaran;
 |
 */
 
-
+Route::get('/link', function () {
+    return view('user.v_link');
+});
 
 Route::get('/test', function () {
     return view('v_from_perusahaan');
