@@ -259,6 +259,15 @@ class c_perusahaan extends Controller
         echo json_encode($keyResult);
     }
 
+    public function detail($id_perusahaan)
+    {
+        $data = [
+            'perusahaan' => $this->perusahaan->detailData($id_perusahaan),
+        ];
+
+        return view('user/v_detailperusahaan', $data);
+    }
+
     
 }
 

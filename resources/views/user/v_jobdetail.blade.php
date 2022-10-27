@@ -32,7 +32,7 @@
         
        <td  width = "80%" >
         <h3 style="color:beige">{{$lowongan->posisi}} </h3>
-        <a href="{{url('/detailPerusahaan')}}" style="color: rgb(255, 255, 255)"><h6>{{$lowongan->nama}}</h6></a>
+        <a href="/detailperusahaan/{{ $lowongan->id_perusahaan }}" style="color: rgb(255, 255, 255)"><h6>{{$lowongan->nama}}</h6></a>
        </td>
     </tr>
     <td  colspan="2" height = "60" >
