@@ -52,7 +52,7 @@ class c_perusahaan extends Controller
         ];
 
         $this->m_user->editData($id, $data);
-        return redirect()->back();
+        return redirect()->back()->with('verified', 'Perusahaan Terverifikasi');
     }
 
     public function store(Request $request)
@@ -67,6 +67,8 @@ class c_perusahaan extends Controller
             'industri' => 'required',
             'website' => 'required',
             'ukuran' => 'required',
+        ],[
+            'name.required'=>'Nama Wajib terisi',
         ]);
         $level = 2;
         $name = $request->name;
@@ -106,7 +108,7 @@ class c_perusahaan extends Controller
                 'name' => 'required',
                 'password' => 'required|string|min:8|confirmed',
                 'email' => 'required|string|email|max:255|unique:users',
-                'logo' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
+                'logo' => 'mimes:png,jpg,jpeg,bpm|max:2048',
                 'deskripsi' => 'required',
                 'alamat' => 'required',
                 'industri' => 'required',

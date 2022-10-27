@@ -3,9 +3,13 @@
 Portal Kerja
 @endsection
 @section('page')
+Daftar Lowongan
 @endsection
 
 @section('content')
+
+<h2 style="margin-left:1em" ><b>Daftar Lowongan</b></h2>
+
  
 @if (session()->has('create'))
 <div class="alert alert-success alert-block" id="alert">
@@ -25,13 +29,12 @@ Portal Kerja
         <strong>{{session()->get('edit')}}</strong>
   </div>
     @endif
-<br>
-<br>
-<a class="btn btn-primary" href="{{ route('perusahaan.lowongan.create') }}"><i class="fa fa-plus"></i>Tambah Loker</a>
+    <br>
+<a style="margin-left:2em" class="btn btn-primary" href="{{ route('perusahaan.lowongan.create') }}"><i class="fa fa-plus"></i>Tambah Loker</a>
 <br>
 <br>
 
-<div style="width:500px" class="card">
+<div style="width:500px;margin-left:2em;" class="card">
   <table style="width:500px" class="table table-bordered table-hover">
     <tr>
       <th style="width:50px">No</th>
