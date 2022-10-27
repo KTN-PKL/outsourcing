@@ -115,6 +115,7 @@ class c_perusahaan extends Controller
                 'website' => 'required',
                 'ukuran' => 'required',
             ]);
+
             $level = 2;
             $name = $request->name;
             $email = $request->email;
@@ -126,18 +127,31 @@ class c_perusahaan extends Controller
             ];
             $this->m_user->updateData($data);
             $data1 = $this->m_user->nameData($email);
-            $file  = $request->logo;
-            $filename = "Logo".$request->email.'.'.$file->extension();
-            $file->move(public_path('logo'),$filename);
-            $data2 = [
-                'logo' => $filename,
-                'nama' => $name,
-                'deskripsi' => $request->deskripsi,
-                'alamat' => $request->alamat,
-                'industri' => $request->industri,
-                'website' => $request->website,
-                'ukuran' => $request->ukuran,
-            ];
+            return $request->logo;
+            if ($request->logo <> "") {
+                unlink(public_path('logo'). '/' .$perusahaan->logo);
+                $file  = $request->logo;
+                $filename = "Logo".$request->email.'.'.$file->extension();
+                $file->move(public_path('logo'),$filename);
+                $data2 = [
+                    'logo' => $filename,
+                    'nama' => $name,
+                    'deskripsi' => $request->deskripsi,
+                    'alamat' => $request->alamat,
+                    'industri' => $request->industri,
+                    'website' => $request->website,
+                    'ukuran' => $request->ukuran,
+                ];
+            } else {
+                $data2 = [
+                    'nama' => $name,
+                    'deskripsi' => $request->deskripsi,
+                    'alamat' => $request->alamat,
+                    'industri' => $request->industri,
+                    'website' => $request->website,
+                    'ukuran' => $request->ukuran,
+                ];
+            }
             $this->perusahaan->updateData($data2);
             return redirect()->route('admin.perusahaan');
     }
