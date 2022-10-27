@@ -47,6 +47,7 @@ Route::controller(c_perusahaan::class)->group(function () {
     Route::get('/daftarPerusahaan', 'daftarPerusahaan')->name('user.daftarPerusahaan');
     Route::get('/admin/lowongan', 'lowongan')->name('admin.lowongan');
     Route::get('/admin/dashboard', 'dashboard')->name('admin.dashboard');
+    Route::get('/detailperusahaan/{id_perusahaan}', 'detail')->name('detailperusahaan');
     Route::get('/admin/perusahaan/destroy/{id}', 'destroy')->name('admin.perusahaan.destoy');
 });
 
