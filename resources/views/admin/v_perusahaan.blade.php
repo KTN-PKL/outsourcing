@@ -191,7 +191,7 @@ Daftar Perusahaan
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Email</label>
-                              <input type="text" class="form-control" name="email" placeholder="Masukan Email" value="{{$perusahaans->email}}">
+                              <input type="text" class="form-control" name="email" placeholder="Masukan Email" value="{{$perusahaans->email}}" readonly>
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Website</label>
@@ -206,7 +206,7 @@ Daftar Perusahaan
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Alamat</label>
-                              <input type="test" class="form-control" name="alamat" placeholder="Masukan Alamat" value="{{$perusahaans->email}}" readonly>
+                              <input type="test" class="form-control" name="alamat" placeholder="Masukan Alamat" value="{{$perusahaans->alamat}}">
                           </div>
                           <div class="mb-3">
                                   <!-- Upload image input-->

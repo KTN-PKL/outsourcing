@@ -102,12 +102,8 @@ class c_perusahaan extends Controller
     {
         $perusahaan = $this->perusahaan->detailData($id_perusahaan);
 
-        unlink(public_path('logo'). '/' .$perusahaan->logo);
-
             $request->validate([
                 'name' => 'required',
-                'password' => 'required|string|min:8|confirmed',
-                'email' => 'required|string|email|max:255|unique:users',
                 'logo' => 'mimes:png,jpg,jpeg,bpm|max:2048',
                 'deskripsi' => 'required',
                 'alamat' => 'required',
@@ -115,19 +111,13 @@ class c_perusahaan extends Controller
                 'website' => 'required',
                 'ukuran' => 'required',
             ]);
-
-            $level = 2;
             $name = $request->name;
             $email = $request->email;
             $data = [
                 'name' => $name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'level' => $level, 
             ];
-            $this->m_user->updateData($data);
+            $this->m_user->editData($id_perusahaan, $data);
             $data1 = $this->m_user->nameData($email);
-            return $request->logo;
             if ($request->logo <> "") {
                 unlink(public_path('logo'). '/' .$perusahaan->logo);
                 $file  = $request->logo;
@@ -152,7 +142,7 @@ class c_perusahaan extends Controller
                     'ukuran' => $request->ukuran,
                 ];
             }
-            $this->perusahaan->updateData($data2);
+            $this->perusahaan->editData($id_perusahaan, $data2);
             return redirect()->route('admin.perusahaan');
     }
     public function daftarPerusahaan()
