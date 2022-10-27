@@ -3,19 +3,19 @@
 Portal Kerja
 @endsection
 @section('page')
+<a href="{{url('perusahaan/pelamar')}}">Daftar Pelamar</a> / Pelamar Lulus
 @endsection
-
 @section('content')
 <br>
-<h3>PESERTA LULUS</h3>
+<h3 style="margin-left:1em" ><b>Peserta Lulus</b></h3>
 <br>
-<div style="width:1000px" class="card">
+<div style="width:1000px;margin-left:2em" class="card">
   <table style="width:1000px" class="table table-bordered table-hover">
     <tr>
       <th>No</th>
       <th>Nama Pelamar</th>
       <th>Umur</th>
-      <th>Jenis Kelamin</th>
+      <th width="150px">Jenis Kelamin</th>
       <th>Posisi</th>
       <th>Status</th>
       <th>Action</th>
@@ -29,7 +29,7 @@ Portal Kerja
       @endphp
     <td>{{ $i }}</td>
     <td>{{$lamarans->namapel}}</td>
-    <td>{{$lamarans->umur}}</td>
+    <td>{{$lamarans->umur}} Tahun</td>
     <td>{{$lamarans->gender}}</td>
     <td>{{$lamarans->posisi}}</td>
     <td>@if ($lamarans->status == "")

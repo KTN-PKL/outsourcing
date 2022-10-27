@@ -2,9 +2,6 @@
 @section('title')
 Portal Kerja
 @endsection
-@section('page')
-
-@endsection
 
 @section('content')
 
@@ -19,7 +16,7 @@ Portal Kerja
   </svg>
   <i class="bi bi-building"></i>
   </div>
-  <p style="text-align: center">Perusahaan</p>
+  <p style="text-align: center"><b>Perusahaan</b></p>
   <p style="text-align: center">{{ $perusahaan }}</p>
 </div>
 <div class="card col-md-2 offset-md-2">
@@ -29,7 +26,7 @@ Portal Kerja
     </svg>
     <i class="bi bi-person-fill"></i>
     </div>
-    <p style="text-align: center">Pelamar</p>
+    <p style="text-align: center"><b>Pelamar</b></p>
     <p style="text-align: center">{{ $pelamar }}</p>
   </div>
 </div>

@@ -3,17 +3,23 @@
 Portal Kerja
 @endsection
 @section('page')
+Daftar Perusahaan
 @endsection
-
 @section('content')
+<h2 style="margin-left: 1em" ><b>Daftar Perusahaan</h2>
 <br>
-<br>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah">
+@if (session()->has('verified'))
+<div class="alert alert-success alert-block" id="alert">
+  <button type="button" class="close" data-dismiss="alert">x</button>
+      <strong>{{session()->get('verified')}}</strong>
+</div>
+  @endif
+<button style="margin-left: 2em" type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah">
   <i class="fa fa-plus"></i>  Tambah Perusahaan
 </button>
 <br>
 <br>
-<div style="width:700px" class="card">
+<div style="width:700px;margin-left:2em" class="card">
   <table style="width:700px" class="table table-bordered table-hover">
     <tr>
       <th style="width:50px">No</th>
@@ -80,11 +86,14 @@ Portal Kerja
                   </div>
                   @endforeach
 
+                  {{-- Modal Tambah Perusahaan --}}
                   <div class="modal fade" id="tambah">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Perusahaan</h5>
+                            <div>
+                            <h4 class="modal-title" id="exampleModalLabel"><b>Tambah Perusahaan</b></h4>
+                          </div>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                           </button>

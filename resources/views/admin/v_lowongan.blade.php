@@ -3,17 +3,18 @@
 Portal Kerja
 @endsection
 @section('page')
+Daftar Lowongan
 @endsection
 
 @section('content')
+<h2 style="margin-left:1em" ><b>Daftar Lowongan</b></h2>
 <br>
-<br>
-<div style="width:500px" class="card">
+<div style="width:500px;margin-left:2em" class="card">
   <table style="width:500px" class="table table-bordered table-hover">
     <tr>
       <th style="width:50px">No</th>
       <th>Nama Perusahaan</th>
-      <th style="width:150px">Action</th>
+      <th style="width:70px">Action</th>
     </tr>
     @php
         $i=0;

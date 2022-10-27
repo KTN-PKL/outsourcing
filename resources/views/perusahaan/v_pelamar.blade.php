@@ -3,23 +3,23 @@
 Portal Kerja
 @endsection
 @section('page')
+Daftar Pelamar
 @endsection
 
 @section('content')
-<br>
-<h3>DAFTAR PELAMAR<a href="{{ route('perusahaan.lamaran.datalulus') }}" class="btn btn-success  offset-md-7">Peserta Lulus</a></h3>
+<h2 style="margin-left:1em"><b>Daftar Pelamar</b><a href="{{ route('perusahaan.lamaran.datalulus') }}" class="btn btn-success  offset-md-7">Peserta Lulus</a></h2>
 
 <br>
-<div style="width:1000px" class="card">
-  <table style="width:1000px" class="table table-bordered table-hover">
+<div style="width:955px;margin-left:2em;" class="card">
+  <table style="width:955px;" class="table table-bordered table-hover">
     <tr>
       <th>No</th>
-      <th>Nama Pelamar</th>
+      <th width="250px">Nama Pelamar</th>
       <th>Umur</th>
       <th>Jenis Kelamin</th>
       <th>Posisi</th>
       <th>Status</th>
-      <th>Action</th>
+      <th style="text-align:center" >Action</th>
     </tr>
     @php
         $i = 0;
@@ -39,7 +39,7 @@ Portal Kerja
     @else
         {{ $lamarans->status }}
     @endif</td>
-    <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail{{$lamarans->id_lamaran}}">
+    <td style="text-align:center;" ><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail{{$lamarans->id_lamaran}}">
       Detail
       </button>
         <a href="{{ route('lamaran.lulus', $lamarans->id_lamaran) }}" class="btn btn-sm btn-success">Lulus</a>   
