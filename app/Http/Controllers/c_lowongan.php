@@ -109,4 +109,12 @@ class c_lowongan extends Controller
         ];
         return view('user/user',$data);
     }
+
+    public function dataperusahaan($id_perusahaan)
+    {
+        $data = [
+            'lowongan' => $this->lowongan->perusahaanData($id_perusahaan),
+        ];
+        return view('user/v_lowonganperusahaan', $data);
+    }
 }
