@@ -272,6 +272,17 @@ class c_perusahaan extends Controller
         return view('user/v_detailperusahaan', $data);
     }
 
+    public function validasi(Request $request, $id_perusahaan)
+    {
+        $request->validate([
+            'fotokantor' => 'mimes:png,jpg,jpeg,bpm|max:2048',
+            'deskripsi' => 'required',
+            'alamat' => 'required',
+            'industri' => 'required',
+            'website' => 'required',
+            'ukuran' => 'required',
+        ]);
+    }
     
 }
 
