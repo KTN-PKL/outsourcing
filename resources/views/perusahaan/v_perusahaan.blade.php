@@ -40,21 +40,21 @@ Portal Kerja
               <div style="margin-left:2em;margin-right:2em" class="mb-3">
                 <!-- Upload PDF input-->
                 <label class="form-label">Akte Pendirian</label>
-                    <input type="file" onchange="readURL(this);" class="form-control"  name="akta" placeholder="CV ...">
+                    <input type="file" onchange="readURL(this);" class="form-control"  name="akta">
             
                         </div>
 
              <div style="margin-left:2em;margin-right:2em" class="mb-3">
               <!-- Upload image input-->
               <label class="form-label"> Foto Kantor </label>
-                  <input type="file" onchange="readURL(this);" class="form-control"  name="fotokantor" placeholder="CV ...">
+                  <input type="file" onchange="readURL(this);" class="form-control"  name="fotokantor">
            
                        </div>       
                        
                  <div style="margin-left:2em;margin-right:2em" class="mb-3">
                         <!-- Upload image input-->
-                        <label class="form-label"> Foto Kantor </label>
-                            <input type="file" onchange="readURL(this);" class="form-control"  name="fotokantor" placeholder="CV ...">
+                        <label class="form-label"> PKP (Opsional) </label>
+                            <input type="file" onchange="readURL(this);" class="form-control"  name="pkp">
                      
                                  </div>       
           </div>
