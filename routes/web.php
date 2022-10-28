@@ -49,6 +49,7 @@ Route::controller(c_perusahaan::class)->group(function () {
     Route::get('/admin/dashboard', 'dashboard')->name('admin.dashboard');
     Route::get('/detailperusahaan/{id_perusahaan}', 'detail')->name('detailperusahaan');
     Route::get('/admin/perusahaan/destroy/{id}', 'destroy')->name('admin.perusahaan.destoy');
+    Route::post('/perusahaan/verifikasi', 'validasi')->name('perusahaan.verifikasi');
 });
 
 Route::controller(c_lowongan::class)->group(function () {
