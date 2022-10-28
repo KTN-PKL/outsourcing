@@ -272,16 +272,33 @@ class c_perusahaan extends Controller
         return view('user/v_detailperusahaan', $data);
     }
 
-    public function validasi(Request $request, $id_perusahaan)
+    public function validasi(Request $request)
     {
         $request->validate([
             'fotokantor' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
             'nib' => 'required',
             'npwp' => 'required',
-            'akta' => 'required',
-            'website' => 'required',
-            'ukuran' => 'required',
+            'akta' => 'required|mimes:pdf|max:3000',
+            'pkp' => 'mimes:pdf|max:3000',
         ]);
+
+        $id_perusahaan = Auth::user()->id;
+        if ($request->pkp == "") {
+           $data = [
+               'akta' => $request->akta,
+               'nib' => $request->nib,
+               'npwp' => $request->npwp,
+               'fotokantor' => $request->fotokantor,
+           ];
+        } else {
+            $data = [
+                'akta' => $request->akta,
+                'nib' => $request->nib,
+                'npwp' => $request->npwp,
+                'fotokantor' => $request->fotokantor,
+                'fotokantor' => $request->fotokantor,
+            ];
+        }
     }
     
 }
