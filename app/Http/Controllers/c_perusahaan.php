@@ -278,16 +278,24 @@ class c_perusahaan extends Controller
             'fotokantor' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
             'nib' => 'required',
             'npwp' => 'required',
-            'akta' => 'required|mimes:pdf|max:3000',
-            'pkp' => 'mimes:pdf|max:3000',
+            'akta' => 'required|mimes:pdf',
+            'pkp' => 'max:3000',
+        ],[
+            'npwp.required'=>'NPWP Wajib terisi',
+            'nib.required'=>'NIB Wajib terisi',
+            'akta.required'=>'Akta Wajib terisi',
+            'akta.mimes'=>'Akta harus format PDF',
+            'fotokantor.required'=>'Foto Kantor Wajib terisi',
+            'fotokantor.mimes'=>'Foto Kantor Harus Format png,jpg,jpeg,bpm',
+            'fotokantor.max'=>'Foto maksimal berukuran 2048kb',
         ]);
 
         $email = Auth::user()->email;
         $file  = $request->fotokantor;
-        $filename = "Foto".$request->email.'.'.$file->extension();
+        $filename = "Foto".$email.'.'.$file->extension();
         $file->move(public_path('fotokantor'),$filename);
         $file1  = $request->akta;
-        $filename1 = "Akta".$request->email.'.'.$file1->extension();
+        $filename1 = "Akta".$email.'.'.$file1->extension();
         $file1->move(public_path('akta'),$filename1);
        
         $id_perusahaan = Auth::user()->id;
@@ -302,7 +310,7 @@ class c_perusahaan extends Controller
         } else {
         
             $file2  = $request->pkp;
-            $filename2 = "PKP".$request->email.'.'.$file2->extension();
+            $filename2 = "PKP".$email.'.'.$file2->extension();
             $file2->move(public_path('pkp'),$filename2);
     
             $data = [

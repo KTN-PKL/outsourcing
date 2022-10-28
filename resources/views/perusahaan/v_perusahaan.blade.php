@@ -29,7 +29,7 @@ Portal Kerja
 
 <div style="margin-left:2em;margin-right:2em;margin-top:1em" class="mb-3">
 <label class="form-label">NIB</label>
-<input type="text" class="form-control @error('posisi') is-invalid @enderror" value="{{ old('nib') }}" name="nib" placeholder="Masukkan Nomor Induk Berusaha">
+<input type="text" class="form-control @error('nib') is-invalid @enderror" value="{{ old('nib') }}" name="nib" placeholder="Masukkan Nomor Induk Berusaha">
 @error('nib')
 <span class="invalid-feedback" role="alert">
   <strong>{{ $message }}</strong>
@@ -41,22 +41,34 @@ Portal Kerja
             <div style="margin-left:2em;margin-right:2em" class="mb-3">
               <!-- Upload PDF input-->
               <label class="form-label">Akte Pendirian</label>
-                  <input type="file" onchange="readURL(this);" class="form-control"  name="akta">
-          
+                  <input type="file" onchange="readURL(this);" class="form-control  @error('akta') is-invalid @enderror"  name="akta">
+                  @error('akta')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
                       </div>
 
            <div style="margin-left:2em;margin-right:2em" class="mb-3">
             <!-- Upload image input-->
             <label class="form-label"> Foto Kantor </label>
-                <input type="file" onchange="readURL(this);" class="form-control"  name="fotokantor">
-         
+                <input type="file" onchange="readURL(this);" class="form-control @error('fotokantor') is-invalid @enderror"  name="fotokantor">
+                @error('fotokantor')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
                      </div>       
                      
                <div style="margin-left:2em;margin-right:2em" class="mb-3">
                       <!-- Upload image input-->
                       <label class="form-label"> PKP (Opsional) </label>
-                          <input type="file" onchange="readURL(this);" class="form-control"  name="pkp">
-                   
+                          <input type="file" onchange="readURL(this);" class="form-control  @error('fotokantor') is-invalid @enderror "  name="pkp">
+                          @error('pkp')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                          @enderror
                                </div> 
                                
                                <div class="row">
@@ -82,7 +94,7 @@ Portal Kerja
       <p style="text-align: center">{{ $lamaran }}</p>
   </div>
   @else
-      <h4>Anda Sedang dalam tahap verifikasi</h4>
+      <h4>Anda Sedang dalam Peninjauan Dokumen Verifikasi</h4>
   @endif
 @endif
 @endsection
