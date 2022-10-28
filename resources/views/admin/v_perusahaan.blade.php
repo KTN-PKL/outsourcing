@@ -77,6 +77,7 @@ Daftar Perusahaan
                             <div class="modal-body">
                               <p>NPWP          : {{ $perusahaans->npwp }}</p>
                               <p>NIB           : {{ $perusahaans->nib }}</p>
+                              {{$perusahaans->akta}}
                               <div class="row">
                               <p>File Dokumen  : <a href="{{ route('admin.perusahaan.downloadakta', $perusahaans->akta) }}" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
                               <path fill-rule="evenodd" d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708l2 2z"/>
