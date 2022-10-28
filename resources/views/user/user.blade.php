@@ -44,14 +44,14 @@
           <input id="search" type="" name=""  class="form-control" placeholder="Cari Berdasarkan Posisi Kerja">
         </div>
       </div>
-    </div>
-  </div>
+    
 {{-- </section> --}}
+
           <div class="col-md-12" id="full">
             <div class="row" id="full">
               @foreach ($lowongan as $lowongans)
                   <div class="col-md-3 ">
-                      <div class="card-header">
+                      <div class="card-header" style="margin-bottom: 2em">
                           <h1 class="card-title">{{ $lowongans->nama }}</h1>
                           <br><br>
                           <div class="card-body">
@@ -80,10 +80,19 @@
               
             </div>
             
-            
+        
           </div>
-
-
+          <table style="width: 100%;margin-left:auto;margin-right:auto">
+            <tr>
+              <td style="width: 40%"></td>
+              <td> {{ $lowongan->links('vendor.pagination.bootstrap-4') }}</td>
+              <td style="width: 40%"></td>
+            </tr>
+          </table>
+         
+         
+        </div>
+      </div>
 
     {{-- <section id="search" class="search py-5">
       <div class="search-bar px-2">
@@ -133,7 +142,7 @@
           </div>   
           @endforeach 
       </div> --}}
-    
+      
       
     </section>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -290,7 +299,7 @@
               for(let i=0; i<data.length;i++){
                 searchResultAjax += 
                 ` <div class="col-md-3 ">
-                      <div class="card-header">
+                      <div class="card-header"  style="margin-bottom: 2em">
                           <h1 class="card-title">`+data[i].nama+`</h1>
                           <br><br>
                           <div class="card-body">
