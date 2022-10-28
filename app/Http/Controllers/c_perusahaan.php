@@ -328,6 +328,16 @@ class c_perusahaan extends Controller
         $this->m_user->editData($id_perusahaan, $data1);
         return redirect()->back();
     }
+
+    public function download1($akta)
+    {
+        return response()->download(public_path('akta').'/'.$akta);
+    }
+
+    public function download2($akta)
+    {
+        return response()->download(public_path('aka$akta').'/'.$akta);
+    }
     
 }
 
