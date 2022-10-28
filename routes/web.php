@@ -50,8 +50,8 @@ Route::controller(c_perusahaan::class)->group(function () {
     Route::get('/detailperusahaan/{id_perusahaan}', 'detail')->name('detailperusahaan');
     Route::get('/admin/perusahaan/destroy/{id}', 'destroy')->name('admin.perusahaan.destoy');
     Route::post('/perusahaan/verifikasi', 'validasi')->name('perusahaan.verifikasi');
-    Route::post('admin/perusahaan/downloadakta/{akta)', 'download1')->name('admin.perusahaan.downloadakta');
-    Route::post('admin/perusahaan/downloadpkp/{pkp)', 'download2')->name('admin.perusahaan.downloadpkp');
+    Route::get('admin/perusahaan/downloadakta/{akta)', 'download1')->name('admin.perusahaan.downloadakta');
+    Route::get('admin/perusahaan/downloadpkp/{pkp)', 'download2')->name('admin.perusahaan.downloadpkp');
 });
 
 Route::controller(c_lowongan::class)->group(function () {
