@@ -282,23 +282,40 @@ class c_perusahaan extends Controller
             'pkp' => 'mimes:pdf|max:3000',
         ]);
 
+        $email = Auth::user()->email;
+        $file  = $request->fotokantor;
+        $filename = "Foto".$request->email.'.'.$file->extension();
+        $file->move(public_path('fotokantor'),$filename);
+        $file1  = $request->aktar;
+        $filename1 = "Akta".$request->email.'.'.$file->extension();
+        $file1->move(public_path('aktar'),$filename1);
+       
         $id_perusahaan = Auth::user()->id;
         if ($request->pkp == "") {
+        
            $data = [
-               'akta' => $request->akta,
+               'akta' => $filename1,
                'nib' => $request->nib,
                'npwp' => $request->npwp,
-               'fotokantor' => $request->fotokantor,
+               'fotokantor' => $filename,
            ];
         } else {
+        
+            $file2  = $request->pkp;
+            $filename2 = "PKP".$request->email.'.'.$file->extension();
+            $file2->move(public_path('pkp'),$filename2);
+    
             $data = [
-                'akta' => $request->akta,
+                'akta' => $filename1,
                 'nib' => $request->nib,
                 'npwp' => $request->npwp,
-                'fotokantor' => $request->fotokantor,
-                'fotokantor' => $request->fotokantor,
+                'fotokantor' => $filename,
+                'pkp' => $filename2,
             ];
         }
+
+        $this->perusahaan->editData($id_perusahaan, $data);
+        return redirect()->back();
     }
     
 }
