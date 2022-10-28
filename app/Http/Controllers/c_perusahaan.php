@@ -334,9 +334,9 @@ class c_perusahaan extends Controller
         return response()->download(public_path('akta').'/'.$akta);
     }
 
-    public function download2($akta)
+    public function download2($pkp)
     {
-        return response()->download(public_path('aka$akta').'/'.$akta);
+        return response()->download(public_path('pkp').'/'.$pkp);
     }
     
 }
