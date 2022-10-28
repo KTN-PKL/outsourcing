@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nama');
             $table->text('deskripsi');
             $table->string('alamat');
+            $table->string('website');
             $table->string('industri');
             $table->string('ukuran');
             $table->string('akta')->nullable();
