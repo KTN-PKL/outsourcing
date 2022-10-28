@@ -274,13 +274,13 @@ class c_perusahaan extends Controller
 
     public function validasi(Request $request)
     {
-        $request->validate([
-            'fotokantor' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
-            'nib' => 'required',
-            'npwp' => 'required',
-            'akta' => 'required|mimes:pdf|max:3000',
-            'pkp' => 'mimes:pdf|max:3000',
-        ]);
+        // $request->validate([
+        //     'fotokantor' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
+        //     'nib' => 'required',
+        //     'npwp' => 'required',
+        //     'akta' => 'required|mimes:pdf|max:3000',
+        //     'pkp' => 'mimes:pdf|max:3000',
+        // ]);
 
         $email = Auth::user()->email;
         $file  = $request->fotokantor;

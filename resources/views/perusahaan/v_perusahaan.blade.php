@@ -15,7 +15,7 @@ Portal Kerja
 <div class="modal-header">
 <h3><b>Form Verifikasi Perusahaan</b></h3>
 </div>
-<form method="POST" action="{{ route('perusahaan.verifikasi') }}">
+<form enctype="multipart/form-data" method="POST" action="{{ route('perusahaan.verifikasi') }}">
 @csrf
 <div style="margin-left:2em;margin-right:2em;margin-top:1em" class="mb-3">
   <label class="form-label">NPWP</label>
