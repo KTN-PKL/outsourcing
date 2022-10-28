@@ -313,8 +313,11 @@ class c_perusahaan extends Controller
                 'pkp' => $filename2,
             ];
         }
-
+        $data1  = [
+            'status' => 0,
+        ];
         $this->perusahaan->editData($id_perusahaan, $data);
+        $this->m_user->editData($id_perusahaan, $data1);
         return redirect()->back();
     }
     
