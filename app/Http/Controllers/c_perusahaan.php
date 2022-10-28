@@ -274,21 +274,21 @@ class c_perusahaan extends Controller
 
     public function validasi(Request $request)
     {
-        // $request->validate([
-        //     'fotokantor' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
-        //     'nib' => 'required',
-        //     'npwp' => 'required',
-        //     'akta' => 'required|mimes:pdf|max:3000',
-        //     'pkp' => 'mimes:pdf|max:3000',
-        // ]);
+        $request->validate([
+            'fotokantor' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
+            'nib' => 'required',
+            'npwp' => 'required',
+            'akta' => 'required|mimes:pdf|max:3000',
+            'pkp' => 'mimes:pdf|max:3000',
+        ]);
 
         $email = Auth::user()->email;
         $file  = $request->fotokantor;
         $filename = "Foto".$request->email.'.'.$file->extension();
         $file->move(public_path('fotokantor'),$filename);
-        $file1  = $request->aktar;
-        $filename1 = "Akta".$request->email.'.'.$file->extension();
-        $file1->move(public_path('aktar'),$filename1);
+        $file1  = $request->akta;
+        $filename1 = "Akta".$request->email.'.'.$file1->extension();
+        $file1->move(public_path('akta'),$filename1);
        
         $id_perusahaan = Auth::user()->id;
         if ($request->pkp == "") {
@@ -302,7 +302,7 @@ class c_perusahaan extends Controller
         } else {
         
             $file2  = $request->pkp;
-            $filename2 = "PKP".$request->email.'.'.$file->extension();
+            $filename2 = "PKP".$request->email.'.'.$file2->extension();
             $file2->move(public_path('pkp'),$filename2);
     
             $data = [
