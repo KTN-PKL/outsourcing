@@ -63,7 +63,7 @@ Daftar Lowongan
 
 </div>
 
-@endsection
+
                   <!-- Modal Delete -->
                   @foreach ($lowongan as $lowongans)                  
                   <div class="modal fade" id="delete{{$lowongans->id_lowongan}}">
@@ -119,5 +119,5 @@ Daftar Lowongan
     </div>  
 </div> 
 </div>     --}}
-
+@endsection
 
