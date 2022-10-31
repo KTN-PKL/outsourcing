@@ -41,8 +41,23 @@ class c_wawancara extends Controller
     public function jadwal($id_lowongan)
     {
         $data = [
-            'lamaran' => $this->lowonganData($id_lowongan),
+            'lamaran' => $this->lamaran->lowonganData($id_lowongan),
+            'id' => $id_lowongan,
         ];
         return view('perusahaan.v_jadwalwawancara', $data);
+    }
+
+    public function simpan(Request $request, $id)
+    {
+        $lamran = $this->lamaran->lowonganData($id);
+        foreach ($lamran as $lamaran) {
+            $id_lamaran = $lamaran->id_lamaran;
+            $input = $request->{"tanggal".$id_lamaran}."++".$request->{"mulai".$id_lamaran}."++".$request->{"selesai".$id_lamaran};
+            $data = [
+                'jadwal' => $input,
+            ];
+            $this->lamaran->editData($id_lamaran, $data);
+        }
+        return redirect()->route('wawancara.index');
     }
 }

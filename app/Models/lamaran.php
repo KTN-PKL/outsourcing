@@ -64,6 +64,6 @@ class lamaran extends Model
 
     public function lowonganData($id_lowongan)
     {
-        return DB::table('lamarans')->join('lowongans', 'lamarans.id_lowongan', '=', 'lowongans.id_lowongan')->join('pelamars', 'lamarans.id_user', '=', 'pelamars.id_pelamar')->where('lamarans.id_lowongan', $id_lowongan)->get();
+        return DB::table('lamarans')->join('lowongans', 'lamarans.id_lowongan', '=', 'lowongans.id_lowongan')->join('pelamars', 'lamarans.id_user', '=', 'pelamars.id_pelamar')->where('lamarans.id_lowongan', $id_lowongan)->where('lamarans.status', "Lulus")->get();
     }
 }
