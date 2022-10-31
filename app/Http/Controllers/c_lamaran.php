@@ -65,7 +65,11 @@ class c_lamaran extends Controller
             ];
     
             $this->lamaran->addData($data);
-            return redirect()->back()->with('create', 'Lamaran Berhasil Dikirim');
+            
+            $lamaran = [
+                'lamaran' => $this->lamaran->userData(),
+                  ];
+            return view('user.v_lamaranSaya', $lamaran)->with('create', 'Lamaran Berhasil Dikirim');
         }
         
     }
