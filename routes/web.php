@@ -57,6 +57,7 @@ Route::controller(c_perusahaan::class)->group(function () {
 
 Route::controller(c_wawancara::class)->group(function () {
     Route::get('/perusahaan/wawancara', 'index')->name('wawancara.index');
+    Route::post('/perusahaan/wawancara/link/{id_lowongan}', 'link')->name('wawancara.link');
 });
 
 Route::controller(c_lowongan::class)->group(function () {
