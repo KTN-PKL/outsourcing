@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('jobdesk');
             $table->text('kualifikasi');
             $table->string('skill');
+            $table->string('wawancara')->nullable();
             $table->timestamps();
         });
     }

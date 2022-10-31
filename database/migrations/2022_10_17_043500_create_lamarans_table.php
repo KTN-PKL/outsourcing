@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('resume');
             $table->string('no_telp');
             $table->string('status')->nullable();
+            $table->string('jadwal')->nullable();
             $table->timestamps();
         });
     }
