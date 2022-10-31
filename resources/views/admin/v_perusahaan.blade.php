@@ -76,7 +76,7 @@ Daftar Perusahaan
                             </div>
                             <div class="modal-body">
                               <div class="col-md-4 offset-md-4">
-                              <img src="{{asset('./akta/'. $perusahaans->fotokantor)}}" width="150px" height="200px" alt="...">
+                              <img src="{{asset('fotokantor/'.$perusahaans->fotokantor)}}" width="150px" height="200px" alt="...">
                               </div>  
                               <table>
                                 <tr>
