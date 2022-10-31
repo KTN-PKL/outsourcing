@@ -6,6 +6,7 @@ use App\Http\Controllers\c_register;
 use App\Http\Controllers\c_lowongan;
 use App\Http\Controllers\c_landingpage;
 use App\Http\Controllers\c_lamaran;
+use App\Http\Controllers\c_wawancara;
 
 
 /*
@@ -52,6 +53,10 @@ Route::controller(c_perusahaan::class)->group(function () {
     Route::post('/perusahaan/verifikasi', 'validasi')->name('perusahaan.verifikasi');
     Route::get('/admin/perusahaan/downloadakta/{akta}', 'download1')->name('admin.perusahaan.downloadakta');
     Route::get('/admin/perusahaan/downloadpkp/{pkp}', 'download2')->name('admin.perusahaan.downloadpkp');
+});
+
+Route::controller(c_wawancara::class)->group(function () {
+    Route::get('/perusahaan/wawancara', 'index')->name('wawancara.index');
 });
 
 Route::controller(c_lowongan::class)->group(function () {

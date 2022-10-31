@@ -61,4 +61,9 @@ class lamaran extends Model
     {
         return DB::table('lamarans')->where('id_perusahaan', Auth::user()->id)->count();
     }
+
+    public function lowonganData($id_lowongan)
+    {
+        return DB::table('lamarans')->join('lowongans', 'lamarans.id_lowongan', '=', 'lowongans.id_lowongan')->join('pelamars', 'lamarans.id_user', '=', 'pelamars.id_pelamar')->where('lamarans.id_lowongan', $id_lowongan)->get();
+    }
 }
