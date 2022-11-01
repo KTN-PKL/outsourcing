@@ -25,12 +25,12 @@
   </section>
 @section('content2') 
 <div style="margin-left:2em;margin-right:2em;" class="jumbotron p-5 rounded-3">
-        <div style="width:600px;" class="card">
-            <table style="width:600px" class="table table-bordered table-hover" id="f5">
+        <div style="width:800px;" class="card">
+            <table style="width:800px" class="table table-bordered table-hover" id="f5">
               <tr>
                 <th style="width:20px">No</th>
-                <th style="width:200px">Perusahaan</th>
-                <th style="width:200px">Posisi</th>
+                <th style="width:300px">Perusahaan</th>
+                <th style="width:300px">Posisi</th>
                 <th style="width:180px">Status</th>
               </tr>
               @foreach($lamaran as $lamarans)
@@ -51,12 +51,13 @@
               @endforeach        
             </table>
             
-            <table style="width:600px; display:none" class="table table-bordered table-hover" id="f6">
+            <table style="width:800px; display:none" class="table table-bordered table-hover" id="f6">
               <tr>
-                <th>No</th>
-                <th>Perusahaan</th>
-                <th>Posisi</th>
-                <th>Jadwal</th>
+                <th style="width:20px">No</th>
+                <th style="width:200px">Perusahaan</th>
+                <th style="width:180px">Posisi</th>
+                <th style="width:200px">Jadwal</th>
+                <th  style="width:200px">Link</th>
               </tr>
               @foreach($lamaran as $lamarans)
               @if ($lamarans->jadwal <> null)
@@ -69,7 +70,7 @@
               @endphp
               
               <td>{{$data[0].", ".$data[1]."-".$data[2]}}</td>
-              
+              <td><a target="_blank" class="btn btn-sm btn-primary" href="{{ $lamarans->wawancara }}">Menuju Wawancara</a></td>
               
             </tr>
             @endif
