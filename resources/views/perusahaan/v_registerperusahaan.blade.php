@@ -34,7 +34,7 @@
                         <div class="col">
                           <label for="ukuran">Ukuran</label>
                           <select name="ukuran" type="text" class="form-control @error('ukuran') is-invalid @enderror" value="{{ old('ukuran') }}" placeholder="Ukuran" aria-label="ukuran">
-                            <option selected> -- Pilih Ukuran Perusahaan --</option>
+                            <option selected disabled> -- Pilih Ukuran Perusahaan --</option>
                             <option value="Kecil">Kecil</option>
                             <option value="Menengah">Menengah</option>
                             <option value="Besar">Besar</option>

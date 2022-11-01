@@ -58,7 +58,7 @@
                           {{-- <label for="jeniskelamin" class="form-label">Jenis Kelamin</label> --}}
                           <label for="gender">Jenis Kelamin</label>
                           <select name="gender" type="text" class="form-control @error('gender') is-invalid @enderror" data-bs-toggle="dropdown" placeholder="Jenis Kelamin" value="{{ old('gender') }}"  aria-label="jeniskelamin" > 
-                            <option selected>--Pilih Jenis Kelamin--</option>
+                            <option selected disabled >--Pilih Jenis Kelamin--</option>
                             <option value="Pria">Pria</option>
                             <option value="Wanita">Wanita</option>
                           </select>
