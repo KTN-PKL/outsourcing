@@ -38,6 +38,8 @@ Portal Kerja
         {{ $lamarans->status }}
     @endif</td>
     <td>
+      <a href="{{ route('lamaran.terima', $lamarans->id_lamaran) }}" class="btn btn-sm btn-success">Terima</a>   
+      <a href="{{ route('lamaran.tidaklulus', $lamarans->id_lamaran) }}" class="btn btn-sm btn-danger">Tidak Lulus</a>
       <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail{{$lamarans->id_lamaran}}">
       Detail
       </button>

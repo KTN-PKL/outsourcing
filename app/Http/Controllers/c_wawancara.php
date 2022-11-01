@@ -51,6 +51,7 @@ class c_wawancara extends Controller
     {
         $lamran = $this->lamaran->lowonganData($id);
         foreach ($lamran as $lamaran) {
+            
             $id_lamaran = $lamaran->id_lamaran;
             $input = $request->{"tanggal".$id_lamaran}."++".$request->{"mulai".$id_lamaran}."++".$request->{"selesai".$id_lamaran};
             $data = [
@@ -58,6 +59,6 @@ class c_wawancara extends Controller
             ];
             $this->lamaran->editData($id_lamaran, $data);
         }
-        return redirect()->route('wawancara.index');
+        return redirect()->back();
     }
 }

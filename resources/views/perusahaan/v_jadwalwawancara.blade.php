@@ -20,21 +20,28 @@ Portal Kerja
       @php
       $i = 0;
       @endphp
-       <form method="POST" action="{{ route('wawancara.jadwal',$id) }}">
+       <form method="POST" action="{{ route('wawancara.simpan',$id) }}">
         @csrf
     @foreach($lamaran as $lamarans)
     <tr>
       @php
       $i = $i+1;
+      $data = explode("++", $lamarans->jadwal);
       @endphp
     <td>{{ $i }}</td>
     <td>{{$lamarans->namapel}}</td>
     <td>{{$lamarans->posisi}}</td>
     <td>
-        <input type="date" name="tanggal{{ $lamarans->id_lamaran }}">
+        <input type="date" name="tanggal{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+        value="{{ $data[0] }}"
+        @endif >
     </td>
     <td>
-        <input type="time" name="mulai{{ $lamarans->id_lamaran }}"> - <input type="time" name="selesai{{ $lamarans->id_lamaran }}">
+        <input type="time" name="mulai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+        value="{{ $data[1] }}"
+        @endif> - <input type="time" name="selesai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+        value="{{ $data[2] }}"
+        @endif>
     </td>
   </tr>
     @endforeach
