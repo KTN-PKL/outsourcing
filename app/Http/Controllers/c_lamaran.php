@@ -94,6 +94,16 @@ class c_lamaran extends Controller
         return redirect()->back();
     }
 
+    public function terima($id_lamaran)
+    {
+        $status = "Diterima";
+        $data = [
+            'status' => $status,
+        ];
+        $this->lamaran->editData($id_lamaran, $data);
+        return redirect()->back();
+    }
+
     public function datalulus()
     {
         $data = [

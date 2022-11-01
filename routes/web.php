@@ -57,7 +57,9 @@ Route::controller(c_perusahaan::class)->group(function () {
 
 Route::controller(c_wawancara::class)->group(function () {
     Route::get('/perusahaan/wawancara', 'index')->name('wawancara.index');
+    Route::get('/perusahaan/wawancara/jadwal/{id_lowongan}', 'jadwal')->name('wawancara.jadwal');
     Route::post('/perusahaan/wawancara/link/{id_lowongan}', 'link')->name('wawancara.link');
+    Route::post('/perusahaan/wawancara/simpan/{id}', 'simpan')->name('wawancara.simpan');
 });
 
 Route::controller(c_lowongan::class)->group(function () {
@@ -89,5 +91,6 @@ Route::controller(c_lamaran::class)->group(function(){
     Route::get('/perusahaan/pelamar/cv/{resume}', 'downloadcv')->name('perusahaan.lamaran.downloadcv');
     Route::get('/perusahaan/pelamar/lulus/{id_lamaran}', 'lulus')->name('lamaran.lulus');
     Route::get('/perusahaan/pelamar/tidak/{id_lamaran}', 'tidaklulus')->name('lamaran.tidaklulus');
+    Route::get('/perusahaan/pelamar/terima/{id_lamaran}', 'terima')->name('lamaran.terima');
 });
 

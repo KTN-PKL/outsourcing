@@ -28,7 +28,7 @@ Portal Kerja
     <td>{{$i}}</td>
     <td>{{$lowongans->posisi}}</td>
     <td>
-      <a href="#" class="btn btn-sm btn-success">Jadwal</a>
+      <a href="{{ route('wawancara.jadwal', $lowongans->id_lowongan) }}" class="btn btn-sm btn-success">Jadwal</a>
       <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#wawancara{{$lowongans->id_lowongan}}">
         Link Wawancara
       </button>
