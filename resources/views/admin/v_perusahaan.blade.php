@@ -153,7 +153,8 @@ Daftar Perusahaan
                             </div>
                             <div class="mb-3">
                               <label for="password" class="form-label">Password</label>
-                              <input name="password" type="password" class="form-control" id="formGroupExampleInput3" placeholder="Masukkan Password">
+                              <input name="password" type="password" class="form-control" pattern="(?=.*\d)(?=.).{8,}" id="formGroupExampleInput3" placeholder="Masukkan Password" >
+                              <p id="invalid-passowrd" style="display:none;color:red">Panjang password minimal 8 kareter, dan harus mengandung huruf kapital, angka, dan simbol</p>
                             </div>
                             <div class="mb-3">
                               <label for="password-confirm" class="form-label">Konfirmasi Password</label>
@@ -208,7 +209,8 @@ Daftar Perusahaan
                             <div id="alert"></div>
                             <div class="mb-3">
                               <label class="form-label">Nama Perusahaan</label>
-                              <input type="text" class="form-control" name="name" placeholder="Masukan Nama Perusahaan" value="{{$perusahaans->name}}">
+                              <input type="text" class="form-control" name="name" placeholder="Masukan Nama Perusahaan" value="{{$perusahaans->name}}" >
+                              <p id="invalid-passowrd" style="display:none;color:red">Panjang password minimal 8 kareter, dan harus mengandung huruf kapital, angka, dan simbol</p>
                             </div>
                             <div class="row">
                               <div class="col">
@@ -350,3 +352,18 @@ $(function () {
 </script>
 @endforeach
 @endpush
+
+
+<script>
+  const passwordField = document.querySelector("[name=password]");
+
+passwordField.addEventListener("keyup", (event) => {
+    if(!passwordField.validity.valid){
+        console.error("passowrd invalid");
+        document.getElementById("invalid-passowrd").style.display = "block";
+    } else {
+         console.info("passowrd valid");
+        document.getElementById("invalid-passowrd").style.display = "none";
+    }
+});
+</script>
