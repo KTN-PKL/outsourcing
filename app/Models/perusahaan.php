@@ -18,7 +18,7 @@ class perusahaan extends Model
 
     public function allData()
     {
-        return DB::table('perusahaans')->join('users','perusahaans.id_perusahaan','=','users.id')->get();
+        return DB::table('perusahaans')->join('users','perusahaans.id_perusahaan','=','users.id')->paginate(8);
     }
 
     public function userData()

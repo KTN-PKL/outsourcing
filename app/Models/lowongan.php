@@ -28,7 +28,7 @@ class lowongan extends Model
 
     public function perusahaanData($id_perusahaan)
     {
-        return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('lowongans.id_perusahaan', $id_perusahaan)->get();
+        return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('lowongans.id_perusahaan', $id_perusahaan)->paginate(8);
     }
 
     public function addData($data)
