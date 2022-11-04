@@ -3,6 +3,12 @@
 @section('content1') 
 <br>
 <br>
+@if (session()->has('update'))
+  <div class="alert alert-success alert-block" id="alert">
+    <button type="button" class="close" data-dismiss="alert"></button>
+        <strong>{{session()->get('update')}}</strong>
+  </div>
+    @endif  
 <div class="container">
     <div class="row gutters">
     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -14,7 +20,7 @@
                         <img src="{{asset('/foto/'. $pelamar->foto)}}" alt="foto">
                     </div>
                     <h5 class="user-name">{{$pelamar->name}}</h5>
-                    {{-- <h6 class="user-email">{{$pelamar->email}}</h6> --}}
+                    <h6 class="user-email">{{$pelamar->email}}</h6>
                 </div>
             </div>
         </div>
@@ -74,7 +80,7 @@
                 <label class="form-label">Ganti Foto Profil</label>
                     <input type="file" onchange="readURL(this);" class="form-control" value="{{$pelamar->foto}}"  name="foto" placeholder="Foto ...">
                 <!-- Uploaded image area-->
-                <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>                            
+                <div class="image-area mt-4"><img style="width:100px" id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>                            
         </div>
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -96,6 +102,16 @@
 
 
 
+    <script type="text/javascript">
 
+        $("document").ready(function()
+        {
+          setTimeout(function()
+          {
+            $("div.alert").remove();
+          }, 5000);
+        });
+  
+      </script>
 
 @endsection
