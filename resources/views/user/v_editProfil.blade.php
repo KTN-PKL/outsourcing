@@ -45,9 +45,12 @@
                     <div class="form-group">
                         <label for="gender">Jenis Kelamin</label>
                         <select name="gender" type="text" class="form-control @error('gender') is-invalid @enderror" data-bs-toggle="dropdown" placeholder="Jenis Kelamin" value="{{ old('gender') }}"  aria-label="jeniskelamin" > 
-                            <option selected disabled >--Pilih Jenis Kelamin--</option>
-                            <option value="Pria">Pria</option>
-                            <option value="Wanita">Wanita</option>
+                            <option value="Pria" @if ($pelamar->gender == "Pria")
+                                selected
+                            @endif>Pria</option>
+                            <option value="Wanita" @if ($pelamar->gender == "Wanita")
+                                selected
+                            @endif>Wanita</option>
                           </select>
                     </div>
                 </div>
