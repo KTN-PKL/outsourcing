@@ -33,9 +33,15 @@
                 <th style="width:300px">Posisi</th>
                 <th style="width:180px">Status</th>
               </tr>
+              @php
+              $i = 0;
+               @endphp
               @foreach($lamaran as $lamarans)
               <tr>
-              <td>1</td>
+              @php
+                $i = $i+1;
+               @endphp
+              <td>{{ $i }}</td>
               <td>{{$lamarans->nama}}</td>
               <td>{{$lamarans->posisi}}</td>
               <td>@if ($lamarans->status == "Diterima")

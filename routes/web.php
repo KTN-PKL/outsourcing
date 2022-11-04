@@ -28,6 +28,10 @@ Route::get('/test', function () {
     return view('v_from_perusahaan');
 });
 
+Route::get('/profile', function () {
+    return view('user.v_editProfil');
+});
+
 Route::get('/', [App\Http\Controllers\c_landingpage::class, 'landingPage'])->name('landingPage');
 Route::get('/cek', [App\Http\Controllers\c_searc::class, 'cari']);
 Route::post('/cek', [App\Http\Controllers\c_searc::class, 'cari']);
