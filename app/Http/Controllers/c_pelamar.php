@@ -42,17 +42,17 @@ class c_pelamar extends Controller
             'foto.mimes'=>'Format Foto berupa png, jpg, jpeg, dan bpm',
             'gender.max'=>'Pilih Jenis Kelamin',
         ]);
+        $id = Auth::user()->id;
         $name = $request->name;
         $data = [
             'name' => $name,
         ];
         $this->m_user->editData($id, $data);
-        $id = Auth::user()->id;
         $pelamar = $this->pelamar->pelamarData(Auth::user()->id);
         if ($request->foto <> null) {
         $data1 = $this->m_user->nameData($email);
         $file  = $request->foto;
-        $filename = "Foto".$request->email.'.'.$file->extension();
+        $filename = "Foto".$email.'.'.$file->extension();
         $file->move(public_path('foto'),$filename);
         $data2 = [
             'namapel' => $name,

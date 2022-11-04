@@ -7,6 +7,7 @@ use App\Http\Controllers\c_lowongan;
 use App\Http\Controllers\c_landingpage;
 use App\Http\Controllers\c_lamaran;
 use App\Http\Controllers\c_wawancara;
+use App\Http\Controllers\c_pelamar;
 
 
 /*
@@ -28,9 +29,6 @@ Route::get('/test', function () {
     return view('v_from_perusahaan');
 });
 
-Route::get('/profile', function () {
-    return view('user.v_editProfil');
-});
 
 Route::get('/', [App\Http\Controllers\c_landingpage::class, 'landingPage'])->name('landingPage');
 Route::get('/cek', [App\Http\Controllers\c_searc::class, 'cari']);
@@ -96,5 +94,11 @@ Route::controller(c_lamaran::class)->group(function(){
     Route::get('/perusahaan/pelamar/lulus/{id_lamaran}', 'lulus')->name('lamaran.lulus');
     Route::get('/perusahaan/pelamar/tidak/{id_lamaran}', 'tidaklulus')->name('lamaran.tidaklulus');
     Route::get('/perusahaan/pelamar/terima/{id_lamaran}', 'terima')->name('lamaran.terima');
+});
+
+Route::controller(c_pelamar::class)->group(function () {
+    Route::get('/profil', 'index');
+    Route::post('/profil/edit', 'edit')->name('profil.edit');
+
 });
 
