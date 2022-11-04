@@ -48,11 +48,10 @@ class c_pelamar extends Controller
             'name' => $name,
         ];
         $this->m_user->editData($id, $data);
-        $pelamar = $this->pelamar->pelamarData(Auth::user()->id);
+        $pelamar = $this->pelamar->pelamarData($id);
         if ($request->foto <> null) {
-        $data1 = $this->m_user->nameData($email);
         $file  = $request->foto;
-        $filename = "Foto".$email.'.'.$file->extension();
+        $filename = "Foto".$pelamar->email.'.'.$file->extension();
         $file->move(public_path('foto'),$filename);
         $data2 = [
             'namapel' => $name,
