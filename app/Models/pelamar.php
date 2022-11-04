@@ -21,8 +21,18 @@ class pelamar extends Model
         DB::table('pelamars')->insert($data2);
     }
 
+    public function pelamarData($id_pelamar)
+    {
+        return DB::table('pelamars')->join('users', 'pelamars.id_pelamar', '=', 'users.id')->where('id_pelamar', $id_pelamar)->first(); 
+    }
+
     public function jumlahData()
     {
         return DB::table('pelamars')->count();
+    }
+
+    public function editData($id_pelamar, $data2)
+    {
+        DB::table('pelamars')->where('id_pelamar', $id_pelamar)->update($data2);
     }
 }
