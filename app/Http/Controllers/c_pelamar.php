@@ -25,23 +25,23 @@ class c_pelamar extends Controller
 
     public function edit(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'alamatpel' => 'required',
-            'umur' => 'required|numeric',
-            'ttl' => 'required',
-            'foto' => 'mimes:png,jpg,jpeg,bpm|max:2048',
-            'gender' => 'max:10',
-        ],[
-            'name.required'=>'Nama Wajib terisi',
-            'alamatpel.required'=>'Alamat Wajib Diisi',
-            'umur.required'=>'Umur Wajib Diisi',
-            'umur.numeric'=>'Umur Wajib Diisi dengan Angka',
-            'ttl.required'=>'Tempat Tanggal Lahir Wajib Diisi',
-            'foto.required'=>'Input File Foto',
-            'foto.mimes'=>'Format Foto berupa png, jpg, jpeg, dan bpm',
-            'gender.max'=>'Pilih Jenis Kelamin',
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'alamatpel' => 'required',
+        //     'umur' => 'required|numeric',
+        //     'ttl' => 'required',
+        //     'foto' => 'mimes:png,jpg,jpeg,bpm|max:2048',
+        //     'gender' => 'max:10',
+        // ],[
+        //     'name.required'=>'Nama Wajib terisi',
+        //     'alamatpel.required'=>'Alamat Wajib Diisi',
+        //     'umur.required'=>'Umur Wajib Diisi',
+        //     'umur.numeric'=>'Umur Wajib Diisi dengan Angka',
+        //     'ttl.required'=>'Tempat Tanggal Lahir Wajib Diisi',
+        //     'foto.required'=>'Input File Foto',
+        //     'foto.mimes'=>'Format Foto berupa png, jpg, jpeg, dan bpm',
+        //     'gender.max'=>'Pilih Jenis Kelamin',
+        // ]);
         $id = Auth::user()->id;
         $name = $request->name;
         $data = [
