@@ -50,7 +50,7 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
                         <label for="gender">Jenis Kelamin</label>
-                        <select name="gender" type="text" class="form-control @error('gender') is-invalid @enderror" data-bs-toggle="dropdown" placeholder="Jenis Kelamin" value="{{ old('gender') }}"  aria-label="jeniskelamin" > 
+                        <select name="gender" type="text" class="form-select @error('gender') is-invalid @enderror" data-bs-toggle="dropdown" placeholder="Jenis Kelamin" value="{{ old('gender') }}"  aria-label="jeniskelamin" > 
                             <option value="Pria" @if ($pelamar->gender == "Pria")
                                 selected
                             @endif>Pria</option>
@@ -75,12 +75,13 @@
                     </div>
                 </div>
             </div>
+    
             <div class="mb-3">
                 <!-- Upload image input-->
                 <label class="form-label">Ganti Foto Profil</label>
                     <input type="file" onchange="readURL(this);" class="form-control" value="{{$pelamar->foto}}"  name="foto" placeholder="Foto ...">
-                <!-- Uploaded image area-->
-                <div class="image-area mt-4"><img style="width:100px" id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>                            
+                <!-- Uploaded image area--> 
+                <div class="image-area mt-4"><img style="width:100px" id="imageResult"  class="img-fluid rounded shadow-sm mx-auto d-block" ></div>                            
         </div>
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

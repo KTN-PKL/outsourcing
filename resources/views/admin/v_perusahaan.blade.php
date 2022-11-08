@@ -6,7 +6,7 @@ Portal Kerja
 Daftar Perusahaan
 @endsection
 @section('content')
-<h2 style="margin-left: 1em" ><b>Daftar Perusahaan</h2>
+<h2 style="margin-left: 1em" ><b>Daftar Perusahaan</b></h2>
 <br>
 @if (session()->has('verified'))
 <div class="alert alert-success alert-block" id="alert">
@@ -68,7 +68,7 @@ Daftar Perusahaan
   </table>
 </div>
 
-@endsection
+
                   <!-- Modal Detail Perusahaan -->
                   @foreach ($perusahaan as $perusahaans)                  
                   <div class="modal fade" id="detail{{$perusahaans->id_perusahaan}}">
@@ -136,6 +136,7 @@ Daftar Perusahaan
                             <div class="mb-3">
                               <label class="form-label">Nama Perusahaan</label>
                               <input type="text" class="form-control" name="name" placeholder="Masukan Nama Perusahaan">
+                              <span class="text-danger" id="nameError"></span>
                             </div>
                             <div class="row">
                               <div class="col">
@@ -183,10 +184,11 @@ Daftar Perusahaan
                           </div>
                           </div>
                           <div class="modal-footer">
-                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
-                            <div id="tombol_login">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                        <div id="tombol_login">
                               <input class="btn btn-primary" type="submit" value="Tambah">
                             </div>
+                           
                           </div>
                         </form>
                         </div>
@@ -354,16 +356,4 @@ $(function () {
 @endpush
 
 
-<script>
-  const passwordField = document.querySelector("[name=password]");
-
-passwordField.addEventListener("keyup", (event) => {
-    if(!passwordField.validity.valid){
-        console.error("passowrd invalid");
-        document.getElementById("invalid-passowrd").style.display = "block";
-    } else {
-         console.info("passowrd valid");
-        document.getElementById("invalid-passowrd").style.display = "none";
-    }
-});
-</script>
+@endsection

@@ -91,10 +91,19 @@ $(document).ready(function(){
           for(let i=0; i<data.length;i++){
             gambar="'/logo/"+data[i].logo+"'";
             searchResultAjax+=
-             '<div class="col-md-3 "><div class="card"><img src="./logo/'+data[i].logo+'" width="250" height="200" style="display:block; margin:auto;" alt=></div> <div class="card-header"><h6 id="searchResult" class="card-title">'+data[i].nama+'</h6><br><br>'+data[i].alamat+'<br><a href="/detailperusahaan/'+data[i].id_perusahaan+'" class="btn btn-primary">Detail</a></div></div> '
+             `<div class="col-md-3 ">
+              <div class="card">
+                <img src="./logo/`+data[i].logo+`" width="250" height="200" style="display:block; margin:auto;" alt=></div> 
+                <div class="card-header">
+                  <h6 id="searchResult" class="card-title">`+data[i].nama+`</h6>
+                  <br><br>`+data[i].alamat+`
+                  <br><a href="/detailperusahaan/`+data[i].id_perusahaan+`" class="btn btn-primary">Detail</a>
+                  </div>
+                </div>`
           }
           $('#searchResult').html(searchResultAjax);
-        }
+        },
+        
       })
     }
   })
