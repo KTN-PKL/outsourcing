@@ -56,7 +56,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-
+  
   $.ajaxSetup({
     headers:{
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -70,7 +70,6 @@ $(document).ready(function(){
       $('#searchResult').show('');
       document.getElementById("searchResult").style.display="none";
     }else{
-      
       document.getElementById("full").style.display="none";
       $.ajax({
         method:"post",
