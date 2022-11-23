@@ -15,69 +15,70 @@ Portal Kerja
 <div class="modal-header">
 <h3><b>Form Verifikasi Perusahaan</b></h3>
 </div>
+{{-- Start Form Verifikasi --}}
 <form enctype="multipart/form-data" method="POST" action="{{ route('perusahaan.verifikasi') }}">
 @csrf
-<div style="margin-left:2em;margin-right:2em;margin-top:1em" class="mb-3">
-  <label class="form-label">NPWP</label>
-  <input type="text" class="form-control @error('npwp') is-invalid @enderror" value="{{ old('npwp') }}" name="npwp" placeholder="Masukkan Nomor Pokok Wajib Pajak">
-  @error('npwp')
-  <span class="invalid-feedback" role="alert">
-    <strong>{{ $message }}</strong>
-  </span>
-@enderror
-</div>
+    <div style="margin-left:2em;margin-right:2em;margin-top:1em" class="mb-3">
+      <label class="form-label">NPWP</label>
+      <input type="text" class="form-control @error('npwp') is-invalid @enderror" value="{{ old('npwp') }}" name="npwp" placeholder="Masukkan Nomor Pokok Wajib Pajak">
+      @error('npwp')
+      <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
+    @enderror
+    </div>
 
-<div style="margin-left:2em;margin-right:2em;margin-top:1em" class="mb-3">
-<label class="form-label">NIB</label>
-<input type="text" class="form-control @error('nib') is-invalid @enderror" value="{{ old('nib') }}" name="nib" placeholder="Masukkan Nomor Induk Berusaha">
-@error('nib')
-<span class="invalid-feedback" role="alert">
-  <strong>{{ $message }}</strong>
-</span>
-@enderror
-</div>
+    <div style="margin-left:2em;margin-right:2em" class="mb-3">
+      <!-- Upload PDF input-->
+      <label class="form-label">NIB</label>
+          <input type="file" onchange="readURL(this);" class="form-control  @error('nib') is-invalid @enderror"  name="nib">
+          @error('nib')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+    </div>
 
+    <div style="margin-left:2em;margin-right:2em" class="mb-3">
+      <!-- Upload PDF input-->
+      <label class="form-label">Akte Pendirian</label>
+          <input type="file" onchange="readURL(this);" class="form-control  @error('akta') is-invalid @enderror"  name="akta">
+          @error('akta')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+      </div>
 
-            <div style="margin-left:2em;margin-right:2em" class="mb-3">
-              <!-- Upload PDF input-->
-              <label class="form-label">Akte Pendirian</label>
-                  <input type="file" onchange="readURL(this);" class="form-control  @error('akta') is-invalid @enderror"  name="akta">
-                  @error('akta')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-                      </div>
-
-           <div style="margin-left:2em;margin-right:2em" class="mb-3">
+      <div style="margin-left:2em;margin-right:2em" class="mb-3">
+      <!-- Upload image input-->
+      <label class="form-label"> Foto Kantor </label>
+          <input type="file" onchange="readURL(this);" class="form-control @error('fotokantor') is-invalid @enderror"  name="fotokantor">
+          @error('fotokantor')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+                </div>       
+                     
+      <div style="margin-left:2em;margin-right:2em" class="mb-3">
             <!-- Upload image input-->
-            <label class="form-label"> Foto Kantor </label>
-                <input type="file" onchange="readURL(this);" class="form-control @error('fotokantor') is-invalid @enderror"  name="fotokantor">
-                @error('fotokantor')
+            <label class="form-label"> PKP (Opsional) </label>
+                <input type="file" onchange="readURL(this);" class="form-control  @error('fotokantor') is-invalid @enderror "  name="pkp">
+                @error('pkp')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                     </div>       
-                     
-               <div style="margin-left:2em;margin-right:2em" class="mb-3">
-                      <!-- Upload image input-->
-                      <label class="form-label"> PKP (Opsional) </label>
-                          <input type="file" onchange="readURL(this);" class="form-control  @error('fotokantor') is-invalid @enderror "  name="pkp">
-                          @error('pkp')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span>
-                          @enderror
-                               </div> 
+      </div> 
                                
-                               <div class="row">
-                                <div class="col-md-12 offset-md-5">
-                                    <button style="margin-bottom: 2em;padding:10px 24px;" type="submit" class="btn btn-primary">
-                                        {{ __('Kirim') }}
-                                    </button>
-                                </div>
-                            </div>
+      <div class="row">
+            <div class="col-md-12 offset-md-5">
+                <button style="margin-bottom: 2em;padding:10px 24px;" type="submit" class="btn btn-primary">
+                    {{ __('Kirim') }}
+                </button>
+            </div>
+      </div>
         </div>
     </div>
 </div>

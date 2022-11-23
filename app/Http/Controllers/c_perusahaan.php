@@ -99,7 +99,7 @@ class c_perusahaan extends Controller
         return redirect()->route('admin.perusahaan');
     }
 
-    public function update(Request $request, $id_perusahaan)
+     public function update(Request $request, $id_perusahaan)
     {
         $perusahaan = $this->perusahaan->detailData($id_perusahaan);
 
@@ -112,12 +112,22 @@ class c_perusahaan extends Controller
                 'website' => 'required',
                 'ukuran' => 'required',
             ]);
+            
             $name = $request->name;
             $email = $request->email;
-            $data = [
+            if($request->password <> null)
+            {
+                $data = [
                 'name' => $name,
-            ];
+                'password'=> Hash::make($request->password),
+                        ];
+            }else{ 
+                $data = [
+                'name' => $name,
+                        ];
+            }
             $this->m_user->editData($id_perusahaan, $data);
+
             $data1 = $this->m_user->nameData($email);
             if ($request->logo <> "") {
                 unlink(public_path('logo'). '/' .$perusahaan->logo);
@@ -146,6 +156,54 @@ class c_perusahaan extends Controller
             $this->perusahaan->editData($id_perusahaan, $data2);
             return redirect()->route('admin.perusahaan');
     }
+     
+    // public function update(Request $request, $id_perusahaan)
+    // {
+    //     $perusahaan = $this->perusahaan->detailData($id_perusahaan);
+
+    //         $request->validate([
+    //             'name' => 'required',
+    //             'logo' => 'mimes:png,jpg,jpeg,bpm|max:2048',
+    //             'deskripsi' => 'required',
+    //             'alamat' => 'required',
+    //             'industri' => 'required',
+    //             'website' => 'required',
+    //             'ukuran' => 'required',
+    //         ]);
+    //         $name = $request->name;
+    //         $email = $request->email;
+    //         $data = [
+    //             'name' => $name,
+    //         ];
+    //         $this->m_user->editData($id_perusahaan, $data);
+    //         $data1 = $this->m_user->nameData($email);
+    //         if ($request->logo <> "") {
+    //             unlink(public_path('logo'). '/' .$perusahaan->logo);
+    //             $file  = $request->logo;
+    //             $filename = "Logo".$request->email.'.'.$file->extension();
+    //             $file->move(public_path('logo'),$filename);
+    //             $data2 = [
+    //                 'logo' => $filename,
+    //                 'nama' => $name,
+    //                 'deskripsi' => $request->deskripsi,
+    //                 'alamat' => $request->alamat,
+    //                 'industri' => $request->industri,
+    //                 'website' => $request->website,
+    //                 'ukuran' => $request->ukuran,
+    //             ];
+    //         } else {
+    //             $data2 = [
+    //                 'nama' => $name,
+    //                 'deskripsi' => $request->deskripsi,
+    //                 'alamat' => $request->alamat,
+    //                 'industri' => $request->industri,
+    //                 'website' => $request->website,
+    //                 'ukuran' => $request->ukuran,
+    //             ];
+    //         }
+    //         $this->perusahaan->editData($id_perusahaan, $data2);
+    //         return redirect()->route('admin.perusahaan');
+    // }
     public function daftarPerusahaan()
     {
         $data = [
@@ -277,13 +335,14 @@ class c_perusahaan extends Controller
     {
         $request->validate([
             'fotokantor' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
-            'nib' => 'required',
+            'nib' => 'required|mimes:pdf',
             'npwp' => 'required',
             'akta' => 'required|mimes:pdf',
             'pkp' => 'max:3000',
         ],[
             'npwp.required'=>'NPWP Wajib terisi',
             'nib.required'=>'NIB Wajib terisi',
+            'nib.mimes'=>'NIB harus format PDF',
             'akta.required'=>'Akta Wajib terisi',
             'akta.mimes'=>'Akta harus format PDF',
             'fotokantor.required'=>'Foto Kantor Wajib terisi',
@@ -298,28 +357,31 @@ class c_perusahaan extends Controller
         $file1  = $request->akta;
         $filename1 = "Akta".$email.'.'.$file1->extension();
         $file1->move(public_path('akta'),$filename1);
+        $file2  = $request->nib;
+        $filename2 = "NIB".$email.'.'.$file2->extension();
+        $file2->move(public_path('nib'),$filename2);
        
         $id_perusahaan = Auth::user()->id;
         if ($request->pkp == "") {
         
            $data = [
                'akta' => $filename1,
-               'nib' => $request->nib,
+               'nib' => $filename2,
                'npwp' => $request->npwp,
                'fotokantor' => $filename,
            ];
         } else {
         
-            $file2  = $request->pkp;
-            $filename2 = "PKP".$email.'.'.$file2->extension();
-            $file2->move(public_path('pkp'),$filename2);
+            $file3  = $request->pkp;
+            $filename3 = "PKP".$email.'.'.$file3->extension();
+            $file3->move(public_path('pkp'),$filename3);
     
             $data = [
                 'akta' => $filename1,
-                'nib' => $request->nib,
+                'nib' => $filename2,
                 'npwp' => $request->npwp,
                 'fotokantor' => $filename,
-                'pkp' => $filename2,
+                'pkp' => $filename3,
             ];
         }
         $data1  = [
@@ -338,6 +400,11 @@ class c_perusahaan extends Controller
     public function download2($pkp)
     {
         return response()->download(public_path('pkp').'/'.$pkp);
+    }
+
+    public function download3($nib)
+    {
+        return response()->download(public_path('nib').'/'.$nib);
     }
     
 }

@@ -56,6 +56,7 @@ class c_wawancara extends Controller
             $input = $request->{"tanggal".$id_lamaran}."++".$request->{"mulai".$id_lamaran}."++".$request->{"selesai".$id_lamaran};
             $data = [
                 'jadwal' => $input,
+                'statusjadwal' => "Sudah Dikirim"
             ];
             $this->lamaran->editData($id_lamaran, $data);
         }

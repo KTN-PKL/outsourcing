@@ -58,6 +58,13 @@
           <p>Daftar Wawancara</p>
         </a>
       </li>
+
+      <li class="nav-item">
+        <a href="{{ route('perusahaan.lamaran.datalulus') }}" class="nav-link">
+          <i class="nav-icon fas fa-user"></i>
+          <p>Daftar Pelamar diterima</p>
+        </a>
+      </li>
       @endif
       @endif
      

@@ -13,7 +13,7 @@ class lowongan extends Model
     public $table = 'lowongans';
 
     protected $fileable = [
-        'id_lowongan', 'id_perusahaan', 'posisi', 'jobdesk', 'kualifikasi', 'skill'
+        'id_lowongan', 'id_perusahaan','tipe', 'posisi', 'jobdesk', 'kualifikasi', 'skill','gaji','benefit','pengalaman','statusgaji',
     ];
 
     public function data()

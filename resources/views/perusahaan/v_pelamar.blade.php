@@ -7,14 +7,14 @@ Daftar Pelamar
 @endsection
 
 @section('content')
-<h2 style="margin-left:1em"><b>Daftar Pelamar</b><a href="{{ route('perusahaan.lamaran.datalulus') }}" class="btn btn-success  offset-md-7">Peserta Lulus</a></h2>
+{{-- <h2 style="margin-left:1em"><b>Daftar Pelamar</b><a href="{{ route('perusahaan.lamaran.datalulus') }}" class="btn btn-success  offset-md-7">Peserta Lulus</a></h2> --}}
 
 <br>
-<div style="width:955px;margin-left:2em;" class="card">
-  <table style="width:955px;" class="table table-bordered table-hover">
+<div style="width:auto;margin-left:2em;" class="card">
+  <table style="width:auto;" class="table table-bordered table-hover">
     <tr>
       <th>No</th>
-      <th width="250px">Nama Pelamar</th>
+      <th width="150px">Nama Pelamar</th>
       <th>Umur</th>
       <th>Jenis Kelamin</th>
       <th>Posisi</th>
@@ -35,15 +35,28 @@ Daftar Pelamar
     <td>{{$lamarans->gender}}</td>
     <td>{{$lamarans->posisi}}</td>
     <td>@if ($lamarans->status == "")
-        Baru
+      <span class="badge badge-primary">Baru</span>
+    @elseif($lamarans->status == "Lulus")
+    <span class="badge badge-success">{{ $lamarans->status }}</span>
+    @elseif($lamarans->status == "Diterima")
+    <span class="badge badge-success">{{ $lamarans->status }}</span>
     @else
-        {{ $lamarans->status }}
+    <span class="badge badge-danger">{{ $lamarans->status }}</span>
     @endif</td>
-    <td style="text-align:center;" ><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail{{$lamarans->id_lamaran}}">
-      Detail
-      </button>
+    <td> 
+      @if($lamarans->status == "")
+        <a style="text-align:center;"><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail{{$lamarans->id_lamaran}}">
+        Detail
+        </button></a>
         <a href="{{ route('lamaran.lulus', $lamarans->id_lamaran) }}" class="btn btn-sm btn-success">Lulus</a>   
         <a href="{{ route('lamaran.tidaklulus', $lamarans->id_lamaran) }}" class="btn btn-sm btn-danger">Tidak Lulus</a>
+        @elseif($lamarans->status == "Lulus")
+        <span class="badge badge-success">Pelamar sudah dinyatakan Lulus dokumen</span>
+        @elseif($lamarans->status == "Diterima")
+        <span class="badge badge-success">Pelamar sudah dinyatakan Diterima</span>
+        @else
+        <span class="badge badge-danger">Pelamar sudah dinyatakan Tidak Lulus</span>
+      @endif
     </td>
   </tr>
     @endforeach

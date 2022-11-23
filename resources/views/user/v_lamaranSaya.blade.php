@@ -45,12 +45,12 @@
               <td>{{$lamarans->nama}}</td>
               <td>{{$lamarans->posisi}}</td>
               <td>@if ($lamarans->status == "Diterima")
-                  Diterima
+                <span class="badge badge-success">Diterima di perusahaan</span>
               @else
                   @if ($lamarans->jadwal <> null)
-                      Tahap Wawancara
+                  <span class="badge badge-primary">Tahap Wawancara</span>
                   @else
-                      Tahap Pengajuan CV
+                  <span class="badge badge-primary">Tahap Pengajuan CV</span> 
                   @endif
               @endif</td>
             </tr>

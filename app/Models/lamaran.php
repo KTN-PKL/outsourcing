@@ -16,7 +16,7 @@ class lamaran extends Model
     public $table = 'lamarans';
 
     protected $fileable = [
-        'id_lamaran', 'id_perusahaan', 'id_lowongan', 'id_user', 'resume', 'no_telp'
+        'id_lamaran', 'id_perusahaan', 'id_lowongan', 'id_user', 'resume', 'no_telp','statusjadwal'
     ];
 
     public function userData()

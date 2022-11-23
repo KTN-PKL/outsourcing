@@ -16,10 +16,15 @@ return new class extends Migration
         Schema::create('lowongans', function (Blueprint $table) {
             $table->id('id_lowongan');
             $table->integer('id_perusahaan');
+            $table->string('tipe');
             $table->string('posisi');
             $table->text('jobdesk');
             $table->text('kualifikasi');
+            $table->text('benefit');
             $table->string('skill');
+            $table->string('pengalaman');
+            $table->string('gaji')->nullable();
+            $table->string('statusgaji')->nullable();
             $table->string('wawancara')->nullable();
             $table->timestamps();
         });

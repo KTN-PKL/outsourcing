@@ -20,34 +20,36 @@
   @endif
 
 
- <h2>Detail Loker</h2>
- <div class="card  bg-secondary">
- <table width = "100%" border = "0">
-    <td  colspan="2" height = "60" >
-    </td>
-    <tr valign = "top">
-       <td  width = "10%">
-        <img width="100%" src="{{asset('/logo/'. $lowongan->logo)}}" alt="logo">
-       </td>
-        
-       <td  width = "80%" >
-        <h3 style="color:beige">{{$lowongan->posisi}} </h3>
-        <a href="/detailperusahaan/{{ $lowongan->id_perusahaan }}" style="color: rgb(255, 255, 255)"><h6>{{$lowongan->nama}}</h6></a>
-       </td>
-    </tr>
-    <td  colspan="2" height = "60" >
-    </td> 
- </table>
- {{-- <div class="card col-sm-6 bg-primary"> --}}
- @auth
+ 
+ <div class="card" style="background-color: rgb(201, 200, 200)">
+    <div class="card-header">
+      <div class="row">
+      <div class="col-md-2">
+        <img src="{{asset('/logo/'. $lowongan->logo)}}" alt="" style="width:150px;margin-top:5px">
+      </div>
+      <div class="col-md-10">
+        <table>
+          <tr>
+          <td><h2>{{ $lowongan->posisi }}</h2></td>
+        </tr>
+        <tr>
+          <td><a style="text-decoration: none"  href="/detailperusahaan/{{ $lowongan->id_perusahaan }}" style="color: rgb(255, 255, 255)">{{ $lowongan->nama }}</a></td>
+        </tr>
+        </table>
+      </div>
+      </div>
+      
 
+ @auth
 <center>
 <a style="float:right;margin-right:1em; margin-bottom:1em;" href="#" class="btn btn-primary col-sm-3" data-bs-toggle="modal" data-bs-target="#kirimLamaran">Kirim Lamaran</a> 
 @endauth
+
 @guest
-<a href="{{ route('login')}}" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#masuk">Kirim Lamaran</a>
+<a style="float:right;margin-right:1em; margin-bottom:1em;" href="{{ route('login')}}" class="btn btn-primary col-sm-3" data-bs-toggle="modal" data-bs-target="#masuk">Kirim Lamaran</a> 
+{{-- <a href="{{ route('login')}}" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#masuk">Kirim Lamaran</a> --}}
 @endguest
- {{-- </div> --}}
+ </div>
 </div>
 <div class="container">
   <div class="row">
@@ -59,13 +61,19 @@
       @endphp
       </div>
       <br>
+      <h4>TUNJANGAN</h4>
+      <div class="desc">
+        @php
+          echo $lowongan->benefit;
+      @endphp
+      </div>
+      <br>
       <h4>JOBDESK</h4>
       <div class="desc">
         @php
           echo $lowongan->jobdesk;
       @endphp
       </div>
-
     </div>
      <div class="col-sm">
       <h4>KUALIFIKASI</h4>
@@ -74,6 +82,18 @@
         echo $lowongan->kualifikasi;
     @endphp
       </div>
+      <br>
+      @if ($lowongan->statusgaji == "Tampilkan")
+      <h4>GAJI</h4>
+      <div class="desc">
+        <i class="fa fa-money">{{$lowongan->gaji}}</i>
+      </div>
+      @else
+      <h4>GAJI</h4>
+      <div class="desc">
+        <i>{{$lowongan->gaji}}</i>
+      </div>
+      @endif
     </div>
   </div>
 </div>

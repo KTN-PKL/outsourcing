@@ -7,16 +7,17 @@ Portal Kerja
 @endsection
 @section('content')
 <br>
-<h3 style="margin-left:1em" ><b>Jdawal Wawancara</b></h3>
+<h3 style="margin-left:1em" ><b>Jadwal Wawancara</b></h3>
 <br>
-<div style="width:1000px;margin-left:2em" class="card">
-  <table style="width:1000px" class="table table-bordered table-hover">
+<div style="width:auto;margin-left:2em" class="card">
+  <table style="width:auto" class="table table-bordered table-hover">
     <tr>
       <th style="width: 4%">No</th>
       <th style="width: 28%">Nama Pelamar</th>
-      <th style="width: 28%">Posisi</th>
+      <th style="width: 15%">Posisi</th>
       <th style="width: 20%">Tanggal</th>
       <th style="width: 20%">Waktu</th>
+      <th style="width: 20%">Status</th>
       @php
       $i = 0;
       @endphp
@@ -42,6 +43,13 @@ Portal Kerja
         @endif> - <input type="time" name="selesai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
         value="{{ $data[2] }}"
         @endif>
+    </td>
+    <td>
+      @if($lamarans->statusjadwal == null)
+      <span class="badge badge-danger">Belum Mengirim Jadwal</span>
+      @else
+      <span class="badge badge-success">Sudah Mengirim Jadwal</span>
+      @endif
     </td>
   </tr>
     @endforeach

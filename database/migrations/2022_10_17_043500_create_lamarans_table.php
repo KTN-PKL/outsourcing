@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('no_telp');
             $table->string('status')->nullable();
             $table->string('jadwal')->nullable();
+            $table->string('statusjadwal')->nullable();
             $table->timestamps();
         });
     }

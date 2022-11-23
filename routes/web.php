@@ -55,6 +55,7 @@ Route::controller(c_perusahaan::class)->group(function () {
     Route::post('/perusahaan/verifikasi', 'validasi')->name('perusahaan.verifikasi');
     Route::get('/admin/perusahaan/downloadakta/{akta}', 'download1')->name('admin.perusahaan.downloadakta');
     Route::get('/admin/perusahaan/downloadpkp/{pkp}', 'download2')->name('admin.perusahaan.downloadpkp');
+    Route::get('/admin/perusahaan/downloadnib/{nib}', 'download3')->name('admin.perusahaan.downloadnib');
 });
 
 Route::controller(c_wawancara::class)->group(function () {

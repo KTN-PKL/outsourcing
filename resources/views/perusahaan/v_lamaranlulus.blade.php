@@ -35,14 +35,18 @@ Portal Kerja
     <td>@if ($lamarans->status == "")
         Baru
     @else
-        {{ $lamarans->status }}
+    <span class="badge badge-success">{{$lamarans->status}}</span>
     @endif</td>
     <td>
+      @if($lamarans->status == "Lulus")
       <a href="{{ route('lamaran.terima', $lamarans->id_lamaran) }}" class="btn btn-sm btn-success">Terima</a>   
       <a href="{{ route('lamaran.tidaklulus', $lamarans->id_lamaran) }}" class="btn btn-sm btn-danger">Tidak Lulus</a>
-      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail{{$lamarans->id_lamaran}}">
+      <a><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail{{$lamarans->id_lamaran}}">
       Detail
-      </button>
+      </button></a>
+      @else
+      <span class="badge badge-success">Pelamar sudah diterima</span>
+      @endif
     </td>
   </tr>
     @endforeach

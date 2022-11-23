@@ -78,4 +78,23 @@ footer {
   color: #fff;
 }
 
+.card-header {
+  border-bottom: 0 solid rgba(0, 0, 0, 0.125);
+  border-left:1px solid grey;
+  border-top:1px solid grey;
+  border-right:1px solid grey;
+}
+
+.card-body {
+  border-bottom: 0 solid rgba(0, 0, 0, 0.125);
+  border-left:1px solid grey;
+  border-right:1px solid grey;
+}
+
+.card-footer {
+  border-bottom: 1px solid grey;
+  border-left:1px solid grey;
+  border-right:1px solid grey;
+  margin-bottom: 1em;
+}
 

@@ -37,99 +37,6 @@
     position: relative;
 }
 </style>
-
-
-{{-- <div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row py-4">
-                            <div class="col-lg-6 mx-auto">
-                    
-                                <!-- Upload image input-->
-                                <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                                    <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-                                    <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
-                                    <div class="input-group-append">
-                                        <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
-                                    </div>
-                                </div>
-                    
-                                <!-- Uploaded image area-->
-                                <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
-                    
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -139,10 +46,152 @@
   </div>
   <form method="POST" action="{{ route('perusahaan.lowongan.update', $lowongan->id_lowongan) }}">
       @csrf
-    <div class="modal-body">
+      <div class="modal-body">
+        <div id="alert"></div>
+        <div class="mb-3">
+          <label class="form-label">Tipe Pekerjaan</label>
+          <select type="text" class="form-select" name="tipe">
+              <option value="Pilih Pengalaman Kerja" selected disabled>-- Pilih Tipe Pekerjaan --</option>
+              @if($lowongan->tipe == "Magang")
+              <option value="Magang" selected>Magang</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Full-time">Full-time</option>
+              <option value="Freelance">Freelance</option>
+              @elseif($lowongan->tipe == "Part-time")
+              <option value="Magang">Magang</option>
+              <option value="Part-time" selected>Part-time</option>
+              <option value="Full-time">Full-time</option>
+              <option value="Freelance">Freelance</option>
+              @elseif($lowongan->tipe == "Full-time")
+              <option value="Magang">Magang</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Full-time" selected>Full-time</option>
+              <option value="Freelance">Freelance</option>
+              @elseif($lowongan->tipe == "Freelance")
+              <option value="Magang">Magang</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Full-time">Full-time</option>
+              <option value="Freelance" selected>Freelance</option>
+              @endif
+          </select>
+      </div>
+  
+        <div class="mb-3">
+          <label class="form-label">Posisi</label>
+          <input type="text" class="form-control @error('posisi') is-invalid @enderror" value="{{$lowongan->posisi}}" name="posisi" placeholder="Posisi ...">
+          @error('posisi')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+     @enderror
+      </div>
+        <div class="row mb-3">                       
+          <label class="form-label">Jobdesk</label>
+          <div class="col-md-16">
+           <textarea name="jobdesk" class="my-editor form-control  @error('jobdesk') is-invalid @enderror" id="my-editor1" cols="30" rows="10">{{$lowongan->jobdesk}}</textarea>
+           @error('jobdesk')
+           <span class="invalid-feedback" role="alert">
+             <strong>{{ $message }}</strong>
+           </span>
+      @enderror
+          </div>
+        </div>
+        <div class="row mb-3">                       
+          <label class="form-label">Kualifikasi</label>
+          <div class="col-md-16">
+           <textarea name="kualifikasi" class="my-editor form-control  @error('kualifikasi') is-invalid @enderror" id="my-editor" cols="30" rows="10">{{$lowongan->kualifikasi}}</textarea>
+           @error('kualifikasi')
+           <span class="invalid-feedback" role="alert">
+             <strong>{{ $message }}</strong>
+           </span>
+      @enderror
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Skill</label>
+          <input type="text" class="form-control  @error('skill') is-invalid @enderror" value="{{$lowongan->skill}}" name="skill" placeholder="Skill ...">
+           @error('skill')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+           @enderror
+      </div>
+      <div class="row mb-3">                       
+          <label class="form-label">Tunjangan dan Keuntungan</label>
+          <div class="col-md-16">
+           <textarea name="benefit" class="my-editor form-control  @error('benefit') is-invalid @enderror" id="my-editor2" cols="30" rows="10">{{$lowongan->benefit}}</textarea>
+           @error('benefit')
+           <span class="invalid-feedback" role="alert">
+             <strong>{{ $message }}</strong>
+           </span>
+      @enderror
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Pengalaman Kerja</label>
+          <select type="text" class="form-select" name="pengalaman">
+              <option value="Pilih Pengalaman Kerja" disabled>-- Pilih Pengalaman Kerja --</option>
+              @if($lowongan->pengalaman == 'Kurang Dari 1 Tahun')
+              <option value="Kurang Dari 1 Tahun" selected>Kurang Dari 1 Tahun</option>
+              <option value="1-3 Tahun">1-3 Tahun</option>
+              <option value="3-5 Tahun">3-5 Tahun</option>
+              <option value="5-10 Tahun">5-10 Tahun</option>
+              <option value="Lebih dari 10 Tahun">Lebih dari 10 Tahun</option>
+              @elseif($lowongan->pengalaman == '1-3 Tahun')
+              <option value="Kurang Dari 1 Tahun" >Kurang Dari 1 Tahun</option>
+              <option value="1-3 Tahun" selected>1-3 Tahun</option>
+              <option value="3-5 Tahun">3-5 Tahun</option>
+              <option value="5-10 Tahun">5-10 Tahun</option>
+              <option value="Lebih dari 10 Tahun">Lebih dari 10 Tahun</option>
+              @elseif($lowongan->pengalaman == '3-5 Tahun')
+              <option value="Kurang Dari 1 Tahun" >Kurang Dari 1 Tahun</option>
+              <option value="1-3 Tahun">1-3 Tahun</option>
+              <option value="3-5 Tahun" selected>3-5 Tahun</option>
+              <option value="5-10 Tahun">5-10 Tahun</option>
+              <option value="Lebih dari 10 Tahun">Lebih dari 10 Tahun</option>
+              @elseif($lowongan->pengalaman == '5-10 Tahun')
+              <option value="Kurang Dari 1 Tahun" >Kurang Dari 1 Tahun</option>
+              <option value="1-3 Tahun">1-3 Tahun</option>
+              <option value="3-5 Tahun">3-5 Tahun</option>
+              <option value="5-10 Tahun" selected>5-10 Tahun</option>
+              <option value="Lebih dari 10 Tahun">Lebih dari 10 Tahun</option>
+              @else
+              <option value="Kurang Dari 1 Tahun" >Kurang Dari 1 Tahun</option>
+              <option value="1-3 Tahun">1-3 Tahun</option>
+              <option value="3-5 Tahun">3-5 Tahun</option>
+              <option value="5-10 Tahun">5-10 Tahun</option>
+              <option value="Lebih dari 10 Tahun" selected>Lebih dari 10 Tahun</option>
+              @endif
+          </select>
+      </div>
+  
+      <div id="show" class="mb-3">
+          <label class="form-label">Gaji</label>
+          <input type="text" class="form-control  @error('gaji') is-invalid @enderror" value="{{$lowongan->gaji}}" name="gaji" placeholder="Gaji ...">
+           @error('gaji')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+           @enderror
+      </div>
+      @if($lowongan->statusgaji == "Tampilkan")
+      <input type="checkbox" name="statusgaji" value="tampilkangaji" checked>
+          <label>Tampilkan Gaji</label><br/><br/>
+        @else
+        <input type="checkbox" name="statusgaji" value="tampilkangaji">
+        <label>Tampilkan Gaji</label><br/><br/>
+        @endif
+      </div>
+      <div class="modal-footer">
+        {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+        <div id="tombol_login">
+          <input class="btn btn-primary" type="submit" value="Buat">
+        </div>
+      </div>
+    {{-- <div class="modal-body">
       <div id="alert"></div>
       <div class="mb-3">
-        <label class="form-label">Posisis</label>
+        <label class="form-label">Posisi</label>
         <input type="text" class="form-control" name="posisi" value="{{ $lowongan->posisi }}">
       </div>
       <div class="row mb-3">                       
@@ -161,32 +210,11 @@
         <label class="form-label">Skill</label>
         <input type="test" class="form-control" name="skill" value="{{ $lowongan->skill }}">
     </div>
-    {{-- <div class="mb-3">
-        <label class="form-label">Website Perusahaan</label>
-        <input type="test" class="form-control" name="website" placeholder="Website Perusahaan ...">
-    </div>
-    <div class="row mb-3">                       
-        <label class="form-label">Deskripsi Perusahaan</label>
-        <div class="col-md-16">
-         <textarea name="detail" class="my-editor form-control" id="my-editor" cols="30" rows="10"></textarea>
-        </div>
-    </div>
-    <div class="mb-3">
-            <!-- Upload image input-->
-            <label class="form-label">Logo</label>
-                <input type="file" onchange="readURL(this);" class="form-control"  name="logo" placeholder="Logo ...">
-            <!-- Uploaded image area-->
-            <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
-
-       
-    </div> --}}
-    </div>
     <div class="modal-footer">
-      {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
       <div id="tombol_login">
         <input class="btn btn-primary" type="submit" value="Edit">
       </div>
-    </div>
+    </div> --}}
   </form>
 </div>
     </div>
@@ -224,5 +252,6 @@ $(function () {
 <script>
     CKEDITOR.replace('my-editor');
     CKEDITOR.replace('my-editor1');
+    CKEDITOR.replace('my-editor2');
     </script>
 @endpush

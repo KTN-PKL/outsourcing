@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\lowongan;
 use Illuminate\Support\Facades\Crypt;
 use Auth;
+use Carbon\Carbon;
 
 class c_lowongan extends Controller
 {
@@ -40,23 +41,55 @@ class c_lowongan extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'tipe' => 'required',
             'posisi' => 'required',
             'jobdesk' => 'required',
             'kualifikasi' => 'required',
             'skill' => 'required',
+            'benefit' => 'required',
+            'pengalaman' => 'required',
+           
+            
+            
         ],[
+            'tipe.required'=>'Tipe Pekerjaan Wajib terisi',
             'posisi.required'=>'Posisi Wajib terisi',
             'jobdesk.required'=>'Jobdesk wajib terisi',
             'kualifikasi.required'=>'Kualifikasi Wajib terisi',
             'skill.required'=>'Skill wajib terisi',
+            'benefit.required'=>'Skill wajib terisi',
         ]);
-        $data = [
+        if($request->statusgaji <> null){
+            $current_date_time = Carbon::now()->toDateTimeString(); 
+            $data = [
             'id_perusahaan' => Auth::user()->id,
+            'tipe' => $request->tipe,
             'posisi' => $request->posisi,
             'jobdesk' => $request->jobdesk,
             'kualifikasi' => $request->kualifikasi,
             'skill' => $request->skill,
-        ];
+            'benefit' => $request->benefit,
+            'pengalaman' => $request->pengalaman,
+            'gaji' => $request->gaji,
+            'statusgaji'=>'Tampilkan',
+            'created_at'=> $current_date_time,
+            ];
+        }else{
+            $current_date_time = Carbon::now()->toDateTimeString(); 
+            $data = [
+            'id_perusahaan' => Auth::user()->id,
+            'tipe' => $request->tipe,
+            'posisi' => $request->posisi,
+            'jobdesk' => $request->jobdesk,
+            'kualifikasi' => $request->kualifikasi,
+            'skill' => $request->skill,
+            'benefit' => $request->benefit,
+            'pengalaman' => $request->pengalaman,
+            'gaji' => "Perusahaan Tidak Menampilkan Gaji",
+            'statusgaji' => "Sembunyikan",
+            'created_at'=> $current_date_time,
+            ];
+        }
         $this->lowongan->addData($data);
         return redirect()->route('perusahaan.lowongan.index')->with('create', 'Lowongan Berhasil Dibuat');
     }
@@ -72,18 +105,55 @@ class c_lowongan extends Controller
     public function update(Request $request, $id_lowongan)
     {
         $request->validate([
+            'tipe' => 'required',
             'posisi' => 'required',
             'jobdesk' => 'required',
             'kualifikasi' => 'required',
             'skill' => 'required',
+            'benefit' => 'required',
+            'pengalaman' => 'required',
+           
+            
+            
+        ],[
+            'tipe.required'=>'Tipe Pekerjaan Wajib terisi',
+            'posisi.required'=>'Posisi Wajib terisi',
+            'jobdesk.required'=>'Jobdesk wajib terisi',
+            'kualifikasi.required'=>'Kualifikasi Wajib terisi',
+            'skill.required'=>'Skill wajib terisi',
+            'benefit.required'=>'Skill wajib terisi',
         ]);
-        $data = [
+        if($request->statusgaji <> null){
+            $current_date_time = Carbon::now()->toDateTimeString(); 
+            $data = [
             'id_perusahaan' => Auth::user()->id,
+            'tipe' => $request->tipe,
             'posisi' => $request->posisi,
             'jobdesk' => $request->jobdesk,
             'kualifikasi' => $request->kualifikasi,
             'skill' => $request->skill,
-        ];
+            'benefit' => $request->benefit,
+            'pengalaman' => $request->pengalaman,
+            'gaji' => $request->gaji,
+            'statusgaji'=>'Tampilkan',
+            'created_at'=> $current_date_time,
+            ];
+        }else{
+            $current_date_time = Carbon::now()->toDateTimeString(); 
+            $data = [
+            'id_perusahaan' => Auth::user()->id,
+            'tipe' => $request->tipe,
+            'posisi' => $request->posisi,
+            'jobdesk' => $request->jobdesk,
+            'kualifikasi' => $request->kualifikasi,
+            'skill' => $request->skill,
+            'benefit' => $request->benefit,
+            'pengalaman' => $request->pengalaman,
+            'gaji' => "0",
+            'statusgaji' => "Sembunyikan",
+            'created_at'=> $current_date_time,
+            ];
+        }
         $this->lowongan->editData($id_lowongan, $data);
         return redirect()->route('perusahaan.lowongan.index')->with('edit', 'Lowongan Berhasil Diupdate');
     }
