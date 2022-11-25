@@ -35,33 +35,52 @@ Portal Kerja
     <td>{{$lamarans->namapel}}</td>
     <td>{{$lamarans->posisi}}</td>
     <td>
+      @if($lamarans->jadwal == "++++")
         <input type="date" name="tanggal{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
         value="{{ $data[0] }}"
-        @endif >
+        @endif>
+      @elseif(($lamarans->jadwal <> null))
+        <input style="background-color: rgb(220, 219, 219)" type="date" name="tanggal{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+        value="{{ $data[0] }}"
+        @endif readonly>
+      @else
+      <input type="date" name="tanggal{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+      value="{{ $data[0] }}"
+      @endif>
+      @endif  
     </td>
     <td>
-        <input type="time" name="mulai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
-        value="{{ $data[1] }}"
-        @endif> - <input type="time" name="selesai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
-        value="{{ $data[2] }}"
-        @endif>
+      @if($lamarans->jadwal == "++++")
+          <input type="time" name="mulai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[1] }}"
+          @endif> - <input type="time" name="selesai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[2] }}"
+          @endif >
+      @elseif($lamarans->jadwal <> null)
+          <input style="background-color: rgb(220, 219, 219)" type="time" name="mulai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[1] }}"
+          @endif readonly> - <input style="background-color: rgb(220, 219, 219)" type="time" name="selesai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[2] }}"
+          @endif readonly > 
+      @else
+          <input type="time" name="mulai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[1] }}"
+          @endif> - <input type="time" name="selesai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[2] }}"
+          @endif > 
+      @endif   
     </td>
     <td>
       <div class="col">
-        <select onclick="display({{$lamarans->id_lamaran}})" id="selectA{{$lamarans->id_lamaran}}" name="tipewawancara{{ $lamarans->id_lamaran }}" type="text" class="form-select @error('tipewawancara') is-invalid @enderror" data-bs-toggle="dropdown"> 
-          @if($lamarans->tipewawancara=="Offline")
-          <option selected value="Offline">Offline</option>
-          <option value="Online">Online</option>
-          @elseif(($lamarans->tipewawancara=="Online"))
-          <option value="Offline">Offline</option>
-          <option selected value="Online">Online</option>
-          @else
+        @if($lamarans->tipewawancara <> null)
+        <input style="background-color: rgb(220, 219, 219);width:50%" type="text" name="tipewawancara{{ $lamarans->id_lamaran }}" value="{{$lamarans->tipewawancara}}" readonly>
+        @elseif(($lamarans->tipewawancara == null))
+          <select onchange="display({{$lamarans->id_lamaran}})" id="selectA{{$lamarans->id_lamaran}}" name="tipewawancara{{ $lamarans->id_lamaran }}" type="text" class="form-select @error('tipewawancara') is-invalid @enderror" data-bs-toggle="dropdown"> 
           <option selected disabled>Pilih</option>
           <option value="Offline">Offline</option>
           <option value="Online">Online</option>
-          @endif
-          
         </select>
+        @endif 
         <script>
           function display(id){
             var x = document.getElementById('selectA'+id).value;
@@ -69,10 +88,14 @@ Portal Kerja
             if(x=="Online"){
               document.getElementById('onlineform'+id).style.display="block";
               document.getElementById('offlineform'+id).style.display="none";
+              document.getElementById('check'+id).style.display="none";
+              document.getElementById('times'+id).style.display="none";
 
             } else if(x=="Offline"){
               document.getElementById('onlineform'+id).style.display="none";
               document.getElementById('offlineform'+id).style.display="block";
+              document.getElementById('check'+id).style.display="none";
+              document.getElementById('times'+id).style.display="none";
 
             }
          
@@ -81,8 +104,8 @@ Portal Kerja
         </script>
       </div>
     </td>
+
     <td>
-     
       <div style="display: none" id="onlineform{{$lamarans->id_lamaran}}" class="mb-3">
         <input type="text" class="form-control" name="linkwawancara{{ $lamarans->id_lamaran }}" placeholder="Link Wawancara" value="{{$lamarans->linkwawancara}}">
       </div>
@@ -90,9 +113,9 @@ Portal Kerja
         <input type="text" class="form-control" name="alamatwawancara{{ $lamarans->id_lamaran }}" placeholder="Lokasi Wawancara " value="{{$lamarans->alamatwawancara}}">
       </div>
       @if($lamarans->linkwawancara <> null || $lamarans->alamatwawancara <> null )
-      <span id="check{{$lamarans->id_lamaran}}" class="badge badge-success" > <i class="fa fa-check"></i> </span>
+      <a style="text-align: center" class="btn btn-primary" data-toggle="modal" data-target="#edit{{$lamarans->id_lamaran}}"><i class="fa fa-edit"></i></a> 
       @else
-      <span id="times{{$lamarans->id_lamaran}}" class="badge badge-danger" > <i class="fa fa-times"></i> </span>
+      <span id="times{{$lamarans->id_lamaran}}" style="display:none" class="badge badge-danger" > <i class="fa fa-times"></i> </span>
       @endif
     </td>
     <td>
@@ -100,7 +123,7 @@ Portal Kerja
       <span class="badge badge-success">Lengkap </span>
       @elseif($lamarans->jadwal <> "++++" && $lamarans->alamatwawancara <> null && $lamarans->tipewawancara <> null)
       <span class="badge badge-success">Lengkap </span>
-      @else
+      @else 
       <span class="badge badge-danger" >Belum <br> Lengkap</span>
       @endif
     </td>
@@ -134,6 +157,95 @@ Portal Kerja
             </svg>  Download CV</a></p>
 
           </div>
+          <div class="modal-footer">
+              <a href="#" class="btn btn-outline-light pull-left">Yes</a>
+              <button type="button" class="btn btn-outline-light" data-dismiss="modal">No</button>
+          </div>
+      </div>
+  </div>
+</div>
+@endforeach
+
+
+{{-- Modal edit jadwal --}}
+@foreach ($lamaran as $lamarans)                  
+<div class="modal fade" id="edit{{$lamarans->id_lamaran}}">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h6 class="modal-title">Detail Wawancara</h6>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3" >
+              <label for="namapel">Nama Pelamar</label>
+              <input type="text" class="form-control" value="{{$lamarans->namapel}}" readonly>
+            </div>
+            <div class="mb-3" >
+              <label for="namapel">Posisi</label>
+              <input type="text" class="form-control" value="{{$lamarans->posisi}}" readonly>
+            </div>
+            <label for="tipewawancara">Tipe Wawancara</label>
+            <select onclick="displayModal({{$lamarans->id_lamaran}})" id="selectAModal{{$lamarans->id_lamaran}}" name="tipewawancara{{ $lamarans->id_lamaran }}" type="text" class="form-select @error('tipewawancara') is-invalid @enderror" data-bs-toggle="dropdown"> 
+              @if($lamarans->tipewawancara=="Offline")
+              <option selected value="Offline">Offline</option>
+              <option value="Online">Online</option>
+              @elseif(($lamarans->tipewawancara=="Online"))
+              <option value="Offline">Offline</option>
+              <option selected value="Online">Online</option>
+              @endif
+            </select>
+            <div class="mb-3" style="display: none" id="onlineformModal{{$lamarans->id_lamaran}}">
+              <label for="linkwawancara">Link Wawancara</label>
+              <input type="text" class="form-control" name="linkwawancara{{ $lamarans->id_lamaran }}" placeholder="Link Wawancara" value="{{$lamarans->linkwawancara}}">
+            </div>
+            <div  class="mb-3"  style="display: none"id="offlineformModal{{$lamarans->id_lamaran}}">
+              <label for="alamatwawancara">Lokasi Wawancara</label>
+              <input type="text" class="form-control" name="alamatwawancara{{ $lamarans->id_lamaran }}" placeholder="Lokasi Wawancara " value="{{$lamarans->alamatwawancara}}">
+            </div>
+            <div  class="mb-3">
+              <label for="alamatwawancara">Tanggal Wawancara</label>
+              <input class="form-control" type="date" name="tanggal{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+              value="{{ $data[0] }}"
+              @endif>
+            </div>
+          
+            <div  class="mb-3">
+              <label for="alamatwawancara">Waktu Wawancara</label>
+              <div class="form-row">
+                <div class="col">  
+                  <input class="form-control" type="time" name="mulai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+                  value="{{ $data[1] }}"
+                  @endif>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="time" name="selesai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+                  value="{{ $data[2] }}"
+                  @endif > 
+                </div>
+                </div>
+              </div>
+            </div>
+          <script>
+            function displayModal(id){
+              var x = document.getElementById('selectAModal'+id).value;
+          
+              if(x=="Online"){
+                document.getElementById('onlineformModal'+id).style.display="block";
+                document.getElementById('offlineformModal'+id).style.display="none";
+  
+              } else if(x=="Offline"){
+                document.getElementById('onlineformModal'+id).style.display="none";
+                document.getElementById('offlineformModal'+id).style.display="block";
+  
+              }
+           
+            }
+           
+          </script>
+
           <div class="modal-footer">
               <a href="#" class="btn btn-outline-light pull-left">Yes</a>
               <button type="button" class="btn btn-outline-light" data-dismiss="modal">No</button>
