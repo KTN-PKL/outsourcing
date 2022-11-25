@@ -58,7 +58,7 @@ Portal Kerja
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                   </button>
-                                  <form method="POST" action="{{ route('wawancara.link',$lowongans->id_lowongan) }}">
+                                  {{-- <form method="POST" action="{{ route('wawancara.link',$lowongans->id_lowongan) }}"> --}}
                                     @csrf
                               </div>
                               <div class="modal-body">

@@ -179,6 +179,8 @@ Portal Kerja
               </button>
           </div>
           <div class="modal-body">
+            <form action="{{route('wawancara.edit',$lamarans->id_lamaran)}}" method="POST" >
+              @csrf
             <div class="mb-3" >
               <label for="namapel">Nama Pelamar</label>
               <input type="text" class="form-control" value="{{$lamarans->namapel}}" readonly>
@@ -188,26 +190,41 @@ Portal Kerja
               <input type="text" class="form-control" value="{{$lamarans->posisi}}" readonly>
             </div>
             <label for="tipewawancara">Tipe Wawancara</label>
-            <select onclick="displayModal({{$lamarans->id_lamaran}})" id="selectAModal{{$lamarans->id_lamaran}}" name="tipewawancara{{ $lamarans->id_lamaran }}" type="text" class="form-select @error('tipewawancara') is-invalid @enderror" data-bs-toggle="dropdown"> 
-              @if($lamarans->tipewawancara=="Offline")
-              <option selected value="Offline">Offline</option>
-              <option value="Online">Online</option>
-              @elseif(($lamarans->tipewawancara=="Online"))
-              <option value="Offline">Offline</option>
-              <option selected value="Online">Online</option>
-              @endif
+            <select id="selectAModal{{$lamarans->id_lamaran}}" onclick="displayModal({{$lamarans->id_lamaran}})" name="tipewawancara" type="text" class="form-select @error('tipewawancara') is-invalid @enderror" data-bs-toggle="dropdown"> 
+              <option @if($lamarans->tipewawancara=="Offline") selected @endif value="Offline">Offline</option>
+              <option @if($lamarans->tipewawancara=="Online") selected @endif value="Online">Online</option>
+              <script>
+                function displayModal(id){
+                  var x = document.getElementById('selectAModal'+id).value;
+              
+                  if(x=="Online"){
+                    document.getElementById('onlineformModal'+id).style.display="block";
+                    document.getElementById('offlineformModal'+id).style.display="none";
+      
+                  } else if(x=="Offline"){
+                    document.getElementById('onlineformModal'+id).style.display="none";
+                    document.getElementById('offlineformModal'+id).style.display="block";
+      
+                  }
+               
+                }
+               
+              </script>
+    
+              
             </select>
+            <div></div>
             <div class="mb-3" style="display: none" id="onlineformModal{{$lamarans->id_lamaran}}">
               <label for="linkwawancara">Link Wawancara</label>
-              <input type="text" class="form-control" name="linkwawancara{{ $lamarans->id_lamaran }}" placeholder="Link Wawancara" value="{{$lamarans->linkwawancara}}">
+              <input type="text" class="form-control" name="linkwawancara" placeholder="Link Wawancara" value="{{$lamarans->linkwawancara}}">
             </div>
             <div  class="mb-3"  style="display: none"id="offlineformModal{{$lamarans->id_lamaran}}">
               <label for="alamatwawancara">Lokasi Wawancara</label>
-              <input type="text" class="form-control" name="alamatwawancara{{ $lamarans->id_lamaran }}" placeholder="Lokasi Wawancara " value="{{$lamarans->alamatwawancara}}">
+              <input type="text" class="form-control" name="alamatwawancara" placeholder="Lokasi Wawancara " value="{{$lamarans->alamatwawancara}}">
             </div>
             <div  class="mb-3">
               <label for="alamatwawancara">Tanggal Wawancara</label>
-              <input class="form-control" type="date" name="tanggal{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+              <input class="form-control" type="date" name="tanggal" @if ($lamarans->jadwal <> null)
               value="{{ $data[0] }}"
               @endif>
             </div>
@@ -216,36 +233,22 @@ Portal Kerja
               <label for="alamatwawancara">Waktu Wawancara</label>
               <div class="form-row">
                 <div class="col">  
-                  <input class="form-control" type="time" name="mulai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+                  <input class="form-control" type="time" name="mulai" @if ($lamarans->jadwal <> null)
                   value="{{ $data[1] }}"
                   @endif>
                 </div>
                 <div class="col">
-                  <input class="form-control" type="time" name="selesai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+                  <input class="form-control" type="time" name="selesai" @if ($lamarans->jadwal <> null)
                   value="{{ $data[2] }}"
                   @endif > 
                 </div>
                 </div>
               </div>
+              <button type="submit" class="btn btn-primary">SAVE</button>
+            </form>
             </div>
-          <script>
-            function displayModal(id){
-              var x = document.getElementById('selectAModal'+id).value;
-          
-              if(x=="Online"){
-                document.getElementById('onlineformModal'+id).style.display="block";
-                document.getElementById('offlineformModal'+id).style.display="none";
-  
-              } else if(x=="Offline"){
-                document.getElementById('onlineformModal'+id).style.display="none";
-                document.getElementById('offlineformModal'+id).style.display="block";
-  
-              }
-           
-            }
-           
-          </script>
-
+         
+         
           <div class="modal-footer">
               <a href="#" class="btn btn-outline-light pull-left">Yes</a>
               <button type="button" class="btn btn-outline-light" data-dismiss="modal">No</button>

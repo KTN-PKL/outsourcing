@@ -83,6 +83,10 @@ Daftar Pelamar
               </button>
           </div>
           <div class="modal-body">
+            <div id="pembungkus" style="position: relative" class="col-md-4 offset-3">
+              <img src="{{asset('/foto/'.$lamarans->foto)}}" alt="">
+              <a style="position: absolute; top:100px;left:70px" href="{{asset('/foto/'.$lamarans->foto)}}" download> <button type="button" class="btn btn-outline-secondary">Download</button></a>
+            </div>
             <table>
               <tr>
                 <td style="width:50%">Nama</td>

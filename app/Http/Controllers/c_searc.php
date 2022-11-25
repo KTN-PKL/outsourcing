@@ -14,7 +14,7 @@ class c_searc extends Controller
 
     public function kata()
     {
-        $data = $this->lowongan->allData();
+        $data = $this->lowongan->aktifData();
         $kata = " ";
         foreach ($data as $data1) {
             $data2 = strtolower($data1->posisi);
@@ -80,7 +80,7 @@ class c_searc extends Controller
         $h = $this->cek($cari);
         $z = count($h);
         $data3[0] = 0;
-        $data = $this->lowongan->allData();
+        $data = $this->lowongan->aktifData();
         $data1 = $this->lowongan->jumlah();
         for ($u=1; $u < $z; $u++) { 
             $data2 = str_replace(' ', '',  $data[0]->posisi);

@@ -82,23 +82,64 @@ Daftar Perusahaan
                             </div>
                             <div class="modal-body">
                               @if($perusahaans->fotodepan <> null)
-                              <div class="col-md-4 offset-md-3"><h4><span class="badge badge-success">Foto Sisi Depan Kantor</span></h4>
-                              <img src="{{asset('verifikasi/fotokantor/fotodepan/'.$perusahaans->fotodepan)}}" width="150px" height="200px" alt="...">
+                              <div style="position:relative" class="col-md-4 offset-3"><h4><span class="badge badge-success">Foto Sisi Depan Kantor</span></h4>
+                              <img src="{{asset('verifikasi/fotokantor/fotodepan/'.$perusahaans->fotodepan)}}" style="display:block;margin-left:25%" width="150px" height="200px" alt="...">
+                              <a style="position: absolute; top:100px;left:70px" href="{{asset('verifikasi/fotokantor/fotodepan'.$perusahaans->fotodepan)}}" download> <button type="button" class="btn btn-outline-secondary">Download</button></a>
                               </div> 
                               <div class="row">
-                                <div  class="col-md-6"><h4><span class="badge badge-success" style="display: flex">Foto Sisi Kiri Kantor</span></h4>
-                                  <img src="{{asset('verifikasi/fotokantor/fotokiri/'.$perusahaans->fotokiri)}}" width="150px" height="200px" alt="...">
+                                @if($perusahaans->fotokiri<>null)
+                                <div style="position: relative"  class="col-md-6"><h4><span class="badge badge-success" style="display: flex">Foto Sisi Kiri Kantor</span></h4>
+                                  <img src="{{asset('verifikasi/fotokantor/fotokiri/'.$perusahaans->fotokiri)}}" style="display:block;margin:auto" width="150px" height="150px" alt="...">
+                                  <a style="position: absolute; top:100px;left:70px" href="{{asset('verifikasi/fotokantor/fotokiri'.$perusahaans->fotokiri)}}" download> <button type="button" class="btn btn-outline-secondary">Download</button></a>
                                 </div>
-                                <div class="col-md-6"><h4><span class="badge badge-success" style="display: flex" >Foto Sisi Kanan Kantor</span></h4>
-                                  <img src="{{asset('verifikasi/fotokantor/fotokanan/'.$perusahaans->fotokanan)}}" width="150px" height="200px" alt="...">
+                                @else
+                                <div style="position: relative"  class="col-md-6"><h4><span class="badge badge-success" style="display: flex">Foto Sisi Kiri Kantor</span></h4>
+                                  <i class="fa fa-image"></i>
+                                  <br>
+                                  <small>Tidak Ada Gambar</small>
                                 </div>
-                                <div class="col-md-6"><h4><span class="badge badge-success">Foto Sisi Belakang Kantor</span></h4>
-                                  <img src="{{asset('verifikasi/fotokantor/fotobelakang/'.$perusahaans->fotobelakang)}}" width="150px" height="200px" alt="...">
-                                </div>
-                                <div class="col-md-6"><h4><span class="badge badge-success">Foto Sisi Dalam Kantor</span></h4>
-                                  <img src="{{asset('verifikasi/fotokantor/fotodalam/'.$perusahaans->fotodalam)}}" width="150px" height="200px" alt="...">
-                                </div>
+                                @endif
 
+                                @if($perusahaans->fotokanan<>null)
+                                <div style="position: relative;" class="col-md-6"><h4><span class="badge badge-success" style="display: flex" >Foto Sisi Kanan Kantor</span></h4>
+                                  <center>
+                                  <img src="{{asset('verifikasi/fotokantor/fotokanan/'.$perusahaans->fotokanan)}}"  style="display:block;margin:auto" width="150px" height="200px" alt="...">
+                                  <a style="position: absolute; top:100px;left:70px" href="{{asset('verifikasi/fotokantor/fotokanan'.$perusahaans->fotokanan)}}" download> <button type="button" class="btn btn-outline-secondary">Download</button></a>
+                                </div>
+                                @else
+                                <div style="position: relative"  class="col-md-6"><h4><span class="badge badge-success" style="display: flex">Foto Sisi Kanan Kantor</span></h4>
+                                  <center>
+                                  <i style="display: block" class="fa fa-image fa-9x"></i>
+                                  <small>Tidak Ada Gambar</small>
+                                </div>
+                                @endif
+
+                                @if($perusahaans->fotobelakang<>null)
+                                <div style="position: relative" class="col-md-6"><h4><span class="badge badge-success">Foto Sisi Belakang Kantor</span></h4>
+                                  <center>
+                                  <img src="{{asset('verifikasi/fotokantor/fotobelakang/'.$perusahaans->fotobelakang)}}" width="150px" height="150px" alt="...">
+                                  <a style="position: absolute; top:100px;left:70px" href="{{asset('verifikasi/fotokantor/fotobelakang'.$perusahaans->fotobelakang)}}" download> <button type="button" class="btn btn-outline-secondary">Download</button></a>
+                                </div>
+                                @else
+                                <div style="position: relative"  class="col-md-6"><h4><span class="badge badge-success" style="display: flex">Foto Sisi Belakang Kantor</span></h4>
+                                  <center>
+                                  <i style="display: block" class="fa fa-image fa-9x"></i>
+                                  <small>Tidak Ada Gambar</small>
+                                </div>
+                                @endif
+
+                                @if($perusahaans->fotodalam<>null)
+                                <div style="position: relative" class="col-md-6"><h4><span class="badge badge-success">Foto Sisi Dalam Kantor</span></h4>
+                                  <img src="{{asset('verifikasi/fotokantor/fotodalam/'.$perusahaans->fotodalam)}}" width="150px" height="150px" alt="...">
+                                  <a style="position: absolute; top:100px;left:70px" href="{{asset('verifikasi/fotokantor/fotodalam'.$perusahaans->fotodalam)}}" download> <button type="button" class="btn btn-outline-secondary">Download</button></a>
+                                </div>
+                                @else
+                                <div style="position: relative"  class="col-md-6"><h4><span class="badge badge-success" style="display: flex">Foto Sisi Dalam Kantor</span></h4>
+                                  <center>
+                                  <i style="display: block" class="fa fa-image fa-9x"></i>
+                                  <small>Tidak Ada Gambar</small>
+                                </div>
+                                @endif
                               </div>
                             </div>
                             <div class="modal-body"> 

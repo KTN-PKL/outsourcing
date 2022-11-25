@@ -61,7 +61,8 @@ Route::controller(c_perusahaan::class)->group(function () {
 Route::controller(c_wawancara::class)->group(function () {
     Route::get('/perusahaan/wawancara', 'index')->name('wawancara.index');
     Route::get('/perusahaan/wawancara/jadwal/{id_lowongan}', 'jadwal')->name('wawancara.jadwal');
-    Route::post('/perusahaan/wawancara/link/{id_lowongan}', 'link')->name('wawancara.link');
+    // Route::post('/perusahaan/wawancara/link/{id_lowongan}', 'link')->name('wawancara.link');
+    Route::post('/perusahaan/wawancara/edit/{id_lamaran}', 'edit')->name('wawancara.edit');
     Route::post('/perusahaan/wawancara/simpan/{id}', 'simpan')->name('wawancara.simpan');
 });
 

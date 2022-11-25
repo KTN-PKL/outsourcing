@@ -15,7 +15,7 @@ class c_landingpage extends Controller
     public function landingPage()
     {
         $data=[
-            'lowongan'=>$this->lowongan->allData(),
+            'lowongan'=>$this->lowongan->aktifData(),
         ]; 
         return view('user.user',$data);       
     }
