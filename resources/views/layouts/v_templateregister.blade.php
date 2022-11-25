@@ -119,8 +119,12 @@
           @endguest
            @auth
           <ul class="navbar-nav ms-3">
+            <li class="nav-item">
+                <div class="icon-demo d-flex align-items-center justify-content-center p-3 py-6">
+                  <i class="fa fa-bell"><sup id="jumlah" class="badge badge-warning"></sup></i>
+                </div>
+            </li>
             <li class="nav-item dropdown">
-              <div id="jumlah"></div>
       
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{url('/')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                    {{Auth::user()->name}}
@@ -348,10 +352,10 @@ integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0Ec
 @auth
 <script>
    $(document).ready(function() {
-         read()
+         notif()
      });
 
-     function read() {
+     function notif() {
          $.get("{{ url('user/read') }}", {}, function(data, status) {
              $("#jumlah").html(data);  
          });

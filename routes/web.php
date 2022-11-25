@@ -100,6 +100,9 @@ Route::controller(c_lamaran::class)->group(function(){
     Route::get('user/read', 'read');
     Route::get('user/lamaran', 'lamaran');
     Route::get('user/wawancara', 'wawancara');
+    Route::get('user/wawancaranotif', 'wawancaranotif');
+    Route::get('user/bacastatus', 'bacastatus');
+    Route::get('user/bacawawancara', 'bacawawancara');
 });
 
 Route::controller(c_pelamar::class)->group(function () {

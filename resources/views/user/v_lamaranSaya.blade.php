@@ -14,9 +14,9 @@
             <ul class="col-md-12" id="nav">    
            <li id="f1"><a class="nav-link active" href="#" onclick="dis1()"><h6>Lamaran Saya</h6></a></li>
            <li id="f2" style="display:none"><a class="nav-link" href="#" onclick="dis1()"><h6>Lamaran Saya</h6></a></li>
-           <li id="f3"><a class="nav-link" href="#" onclick="dis2()"><h6>Wawancara</h6></a></li>
-           <li id="f4" style="display:none"><a class="nav-link active" href="#" onclick="dis2()"><h6>Wawancara</h6></a></li>
-           </ul>
+           <li id="f3"><a class="nav-link" href="#" onclick="dis2()"><h6>Wawancara<small id="f5"  class = "badge badge-primary"></small></h6></a></li>
+           <li id="f4" style="display:none"><a class="nav-link active" href="#" onclick="dis2()"><h6>Wawancara<small id="f6"  class = "badge badge-primary"></small></h6></a></li>
+          
            </div>
     </div>
 
@@ -37,7 +37,10 @@
     document.getElementById("f4").style.display="none";
     document.getElementById("f3").style.display="block";
     $.get("{{ url('user/lamaran') }}", {}, function(data, status) {
-             $("#lamaran").html(data);  
+             $("#lamaran").html(data);
+             bacastatus(),
+             f5(),
+             notif()
          });
   }
   function dis2() {
@@ -46,7 +49,26 @@
     document.getElementById("f3").style.display="none";
     document.getElementById("f4").style.display="block";
     $.get("{{ url('user/wawancara') }}", {}, function(data, status) {
-             $("#lamaran").html(data);  
+             $("#lamaran").html(data); 
+             bacawawancara(),
+             f5(),
+             notif()
+         });
+  }
+  function f5() {
+    $.get("{{ url('user/wawancaranotif') }}", {}, function(data, status) {
+             $("#f5").html(data); 
+             $("#f6").html(data);  
+         });
+  }
+  function bacastatus()
+  {
+    $.get("{{ url('user/bacastatus') }}", {}, function(data, status) {
+         });
+  }
+  function bacawawancara()
+  {
+    $.get("{{ url('user/bacawawancara') }}", {}, function(data, status) {
          });
   }
 </script>

@@ -103,7 +103,7 @@ class c_lamaran extends Controller
         $this->lamaran->editData($id_lamaran, $data);
     }
 
-    public function bacanotifstatus()
+    public function bacastatus()
     {
         $data = [
             'notifstatus' => "read",
@@ -119,7 +119,13 @@ class c_lamaran extends Controller
         return $data;
     }
 
-    public function bacanotifwawancara()
+    public function wawancaranotif()
+    {
+        $data = $this->lamaran->notifwawancara(); 
+        return $data;
+    }
+
+    public function bacawawancara()
     {
         $data = [
             'notifwawancara' => "read",
