@@ -97,6 +97,9 @@ Route::controller(c_lamaran::class)->group(function(){
     Route::get('/perusahaan/pelamar/lulus/{id_lamaran}', 'lulus')->name('lamaran.lulus');
     Route::get('/perusahaan/pelamar/tidak/{id_lamaran}', 'tidaklulus')->name('lamaran.tidaklulus');
     Route::get('/perusahaan/pelamar/terima/{id_lamaran}', 'terima')->name('lamaran.terima');
+    Route::get('user/read', 'read');
+    Route::get('user/lamaran', 'lamaran');
+    Route::get('user/wawancara', 'wawancara');
 });
 
 Route::controller(c_pelamar::class)->group(function () {

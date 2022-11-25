@@ -23,11 +23,7 @@ class c_lamaran extends Controller
         //     'lamaran' => $this->lamaran->allData(),
         // ];
         if (Auth::user()->level == '3') {
-            $lamaran = [
-                'lamaran' => $this->lamaran->userData(),
-                  ];
-          
-            return view('user.v_lamaranSaya', $lamaran);
+            return view('user.v_lamaranSaya');
         } elseif (Auth::user()->level == '2') {
             $lamaran = [
                 'lamaran' => $this->lamaran->perusahaanData(),
@@ -36,6 +32,23 @@ class c_lamaran extends Controller
             return view('perusahaan.v_pelamar', $lamaran);
         }
         return view('user.v_lamaran');
+    }
+
+    public function lamaran()
+    {
+        $lamaran = [
+            'lamaran' => $this->lamaran->userData(),
+              ];
+      
+        return view('user.v_lamaran', $lamaran);
+    }
+    public function wawancara()
+    {
+        $lamaran = [
+            'lamaran' => $this->lamaran->userData(),
+              ];
+      
+        return view('user.v_wawancara', $lamaran);
     }
 
     public function create(Request $request, $id_lowongan)
@@ -72,6 +85,46 @@ class c_lamaran extends Controller
             return view('user.v_lamaranSaya', $lamaran)->with('create', 'Lamaran Berhasil Dikirim');
         }
         
+    }
+
+    public function newnotifstatus($id_lamaran)
+    {
+        $data = [
+            'notifstatus' => "new",
+        ];
+        $this->lamaran->editData($id_lamaran, $data);
+    }
+
+    public function newnotifwawancara($id_lamaran)
+    {
+        $data = [
+            'notifwawancara' => "new",
+        ];
+        $this->lamaran->editData($id_lamaran, $data);
+    }
+
+    public function bacanotifstatus()
+    {
+        $data = [
+            'notifstatus' => "read",
+        ];
+        $this->lamaran->editDatau(Auth::user()->id, $data);
+    }
+
+    public function read()
+    {
+        $status = $this->lamaran->notifstatus();
+        $wawancara = $this->lamaran->notifwawancara();
+        $data = $status + $wawancara;
+        return $data;
+    }
+
+    public function bacanotifwawancara()
+    {
+        $data = [
+            'notifwawancara' => "read",
+        ];
+        $this->lamaran->editDatau(Auth::user()->id, $data);
     }
 
     public function lulus($id_lamaran)

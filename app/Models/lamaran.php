@@ -49,6 +49,21 @@ class lamaran extends Model
         DB::table('lamarans')->where('id_lamaran', $id_lamaran)->update($data);
     }
 
+    public function editDatau($id_user, $data)
+    {
+        DB::table('lamarans')->where('id_$id_user', $id_user)->update($data);
+    }
+
+    public function notifstatus()
+    {
+        return DB::table('lamarans')->where('id_user', Auth::user()->id)->where('notifstatus', 'new')->count();
+    }
+
+    public function notifwawancara()
+    {
+        return DB::table('lamarans')->where('id_user', Auth::user()->id)->where('notifwawancara', 'new')->count();
+    }
+
     public function deleteData($id_lamaran)
     {
         DB::table('lamarans')->where('id_lamaran', $id_lamaran)->delete();
