@@ -12,8 +12,8 @@ class lowongan extends Model
 
     public $table = 'lowongans';
 
-    protected $fileable = [
-        'id_lowongan', 'id_perusahaan','tipe', 'posisi', 'jobdesk', 'kualifikasi', 'skill','gaji','benefit','pengalaman','statusgaji',
+    protected $fillable = [
+        'id_lowongan', 'id_perusahaan','statuslowongan','tipe', 'posisi', 'jobdesk', 'kualifikasi', 'skill','gaji','benefit','pengalaman','statusgaji','created_at'
     ];
 
     public function data()
@@ -55,4 +55,6 @@ class lowongan extends Model
     {
         return DB::table('lowongans')->count();
     }
+
+    const CREATED_AT = null;
 }

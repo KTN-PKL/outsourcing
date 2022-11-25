@@ -72,6 +72,7 @@
                           <div class="card-body">
                              
                               <ul class="fa-ul">
+                                <li><i class="fa-li fa fa-clock"></i>{{$lowongans->tipe}}</li>
                                 <li><i class="fa-li fa fa-map-marker"></i>{{$lowongans->alamat}}</li>
                                 @if($lowongans->statusgaji == "Tampilkan")
                                 <li><i class="fa-li fa fa-money"></i>IDR {{$lowongans->gaji}}</li>
@@ -81,12 +82,12 @@
                                 <li><i class="fa-li fa fa-suitcase"></i>{{$lowongans->pengalaman}}</li>
                                
                               </ul>
-                              
+                              <small> <i style="color: green">Diperbaharui {{ \Carbon\Carbon::parse($lowongans->waktu)->diffForHumans() }}
+                              </i></small>
+
                          </div>
                           <div class="card-footer">
-                           
-                            
-                            <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" style="width:320px" class="btn btn-primary">Detail <span class="badge bg-secondary"></span> </a><br>
+                            <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" style="width:100%;" class="btn btn-primary">Detail </a><br>
                           </div>
                         </div>       
                       
@@ -115,57 +116,7 @@
          
         </div>
       </div>
-
-    {{-- <section id="search" class="search py-5">
-      <div class="search-bar px-2">
-        <div class="container">
-          <div class="card search-card">
-            <label for="Search" class="form-label"><i class="fas fa-search"></i> Cari Pekerjaan 
-              <br /></label>
-            <div class="mb-3 text-center">
-             
-              <form action="{{ route('cari') }}" method="POST">
-                @csrf
-              <input type="text" name="cari"  class="form-control"  />
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="tablesec">
-      <div class="container shadow">
-        <div class="card-table">
-          <h3 class="text-center py-2">Data Loker</h3>
-          <div id="result"></div>
-           --}}
-
-          {{-- daftar loker --}}
-         
-          {{-- <div class="row">
-            @foreach($lowongan as $lowongans)
-          <div class="col-md-4 mb-3">
-            <div class="card shadow" style="margin-left: 1em; margin-top:1em;">
-                <div class="card-header">
-                    <h4>{{$lowongans->posisi}}</h4>
-                </div>
-                <div class="card-body" style="width:24rem">
-                     <p><img height="30px" width="60px" src="{{asset('/logo/'. $lowongans->logo)}}" alt="logo">{{$lowongans->nama}}</p> <br>
-                    <i class="bi bi-geo-alt-fill" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                      <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-                    </svg>{{$lowongans->alamat}}</i><br>
-                    
-                    <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" class="btn btn-primary mt-3">Detail <span class="badge bg-secondary"></span> </a><br>
-                    
-                  
-                  </div>
-            </div>
-          </div>   
-          @endforeach 
-      </div> --}}
-      
-      
+    
     </section>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
       <path
@@ -288,6 +239,7 @@
   <script type="text/javascript">
     $(document).ready(function(){
     
+      
       $.ajaxSetup({
         headers:{
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -343,14 +295,17 @@
                              
                               <br>
                               <ul class="fa-ul">
+                                <li><i class="fa-li fa fa-clock"></i>`+data[i].tipe+`</li>
                                 <li><i class="fa-li fa fa-map-marker"></i>`+data[i].alamat+`</li>
                                 <li><i class="fa-li fa fa-money"></i>`+data[i].gaji+`</li>
                                 <li><i class="fa-li fa fa-suitcase"></i>`+data[i].pengalaman+`</li>
                               </ul>
+                              <small> <i style="color: green">Diperbaharui
+                              </i></small>
                          </div>
                           <div class="card-footer">
                             
-                            <a href="{{url('/detailLowongan')}}/`+data[i].id_lowongan+`" class="btn btn-primary" style="width:320px">Detail <span class="badge bg-secondary"></span> </a><br>
+                            <a href="{{url('/detailLowongan')}}/`+data[i].id_lowongan+`" class="btn btn-primary" style="width:100%">Detail <span class="badge bg-secondary"></span> </a><br>
                           </div>
                         </div>`
               }

@@ -80,11 +80,26 @@ Daftar Perusahaan
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-header">
-                              @if($perusahaans->fotokantor <> null)
-                              <div class="col-md-4 offset-md-4">
-                              <img src="{{asset('fotokantor/'.$perusahaans->fotokantor)}}" width="150px" height="200px" alt="...">
+                            <div class="modal-body">
+                              @if($perusahaans->fotodepan <> null)
+                              <div class="col-md-4 offset-md-3"><h4><span class="badge badge-success">Foto Sisi Depan Kantor</span></h4>
+                              <img src="{{asset('verifikasi/fotokantor/fotodepan/'.$perusahaans->fotodepan)}}" width="150px" height="200px" alt="...">
                               </div> 
+                              <div class="row">
+                                <div  class="col-md-6"><h4><span class="badge badge-success" style="display: flex">Foto Sisi Kiri Kantor</span></h4>
+                                  <img src="{{asset('verifikasi/fotokantor/fotokiri/'.$perusahaans->fotokiri)}}" width="150px" height="200px" alt="...">
+                                </div>
+                                <div class="col-md-6"><h4><span class="badge badge-success" style="display: flex" >Foto Sisi Kanan Kantor</span></h4>
+                                  <img src="{{asset('verifikasi/fotokantor/fotokanan/'.$perusahaans->fotokanan)}}" width="150px" height="200px" alt="...">
+                                </div>
+                                <div class="col-md-6"><h4><span class="badge badge-success">Foto Sisi Belakang Kantor</span></h4>
+                                  <img src="{{asset('verifikasi/fotokantor/fotobelakang/'.$perusahaans->fotobelakang)}}" width="150px" height="200px" alt="...">
+                                </div>
+                                <div class="col-md-6"><h4><span class="badge badge-success">Foto Sisi Dalam Kantor</span></h4>
+                                  <img src="{{asset('verifikasi/fotokantor/fotodalam/'.$perusahaans->fotodalam)}}" width="150px" height="200px" alt="...">
+                                </div>
+
+                              </div>
                             </div>
                             <div class="modal-body"> 
                               <table>
@@ -100,7 +115,7 @@ Daftar Perusahaan
                                     <a href="/admin/perusahaan/downloadnib/{{$perusahaans->nib}}" class="btn btn-primary"><i class="fa fa-cloud-download-alt" ></i> Download NIB</a> 
                                 </div>
                                 <div class="col-md-4">
-                                  <a href="/admin/perusahaan/downloadakta/{{$perusahaans->akta}}" class="btn btn-primary"><i class="fa fa-cloud-download-alt" ></i> Download Akta</a>
+                                  <a href="/admin/perusahaan/downloadktp/{{$perusahaans->ktp}}" class="btn btn-primary"><i class="fa fa-cloud-download-alt" ></i> Download KTP</a>
                                 </div>
                                 <div class="col-md-4">
                                   <a href="/admin/perusahaan/downloadpkp/{{$perusahaans->pkp}}" class="btn btn-primary"> <i class="fa fa-cloud-download-alt" > </i> Download PKP</a></p>

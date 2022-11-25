@@ -60,9 +60,10 @@ class c_lowongan extends Controller
             'benefit.required'=>'Skill wajib terisi',
         ]);
         if($request->statusgaji <> null){
-            $current_date_time = Carbon::now()->toDateTimeString(); 
+            $current_date_time = Carbon::now(); 
             $data = [
             'id_perusahaan' => Auth::user()->id,
+            'statuslowongan'=> 'Aktif',
             'tipe' => $request->tipe,
             'posisi' => $request->posisi,
             'jobdesk' => $request->jobdesk,
@@ -72,12 +73,13 @@ class c_lowongan extends Controller
             'pengalaman' => $request->pengalaman,
             'gaji' => $request->gaji,
             'statusgaji'=>'Tampilkan',
-            'created_at'=> $current_date_time,
+            'waktu'=> $current_date_time,
             ];
         }else{
-            $current_date_time = Carbon::now()->toDateTimeString(); 
+            $current_date_time = Carbon::now(); 
             $data = [
             'id_perusahaan' => Auth::user()->id,
+            'statuslowongan'=> 'Aktif',
             'tipe' => $request->tipe,
             'posisi' => $request->posisi,
             'jobdesk' => $request->jobdesk,
@@ -85,9 +87,9 @@ class c_lowongan extends Controller
             'skill' => $request->skill,
             'benefit' => $request->benefit,
             'pengalaman' => $request->pengalaman,
-            'gaji' => "Perusahaan Tidak Menampilkan Gaji",
+            'gaji' => "0",
             'statusgaji' => "Sembunyikan",
-            'created_at'=> $current_date_time,
+            'waktu'=> $current_date_time,
             ];
         }
         $this->lowongan->addData($data);
@@ -124,7 +126,7 @@ class c_lowongan extends Controller
             'benefit.required'=>'Skill wajib terisi',
         ]);
         if($request->statusgaji <> null){
-            $current_date_time = Carbon::now()->toDateTimeString(); 
+            $current_date_time = Carbon::now(); 
             $data = [
             'id_perusahaan' => Auth::user()->id,
             'tipe' => $request->tipe,
@@ -136,10 +138,10 @@ class c_lowongan extends Controller
             'pengalaman' => $request->pengalaman,
             'gaji' => $request->gaji,
             'statusgaji'=>'Tampilkan',
-            'created_at'=> $current_date_time,
+            'waktu'=> $current_date_time,
             ];
         }else{
-            $current_date_time = Carbon::now()->toDateTimeString(); 
+            $current_date_time = Carbon::now(); 
             $data = [
             'id_perusahaan' => Auth::user()->id,
             'tipe' => $request->tipe,
@@ -151,7 +153,7 @@ class c_lowongan extends Controller
             'pengalaman' => $request->pengalaman,
             'gaji' => "0",
             'statusgaji' => "Sembunyikan",
-            'created_at'=> $current_date_time,
+            'waktu'=> $current_date_time,
             ];
         }
         $this->lowongan->editData($id_lowongan, $data);
@@ -180,5 +182,24 @@ class c_lowongan extends Controller
             'lowongan' => $this->lowongan->perusahaanData($id_perusahaan),
         ];
         return view('user/v_lowonganperusahaan', $data);
+    }
+
+    public function lowonganAktif($id_lowongan)
+    {
+        $status = "Aktif";
+        $data = [
+            'statuslowongan' => $status,
+        ];
+        $this->lowongan->editData($id_lowongan, $data);
+        return redirect()->back();
+    }
+    public function lowonganNonaktif($id_lowongan)
+    {
+        $status = "Non-Aktif";
+        $data = [
+            'statuslowongan' => $status,
+        ];
+        $this->lowongan->editData($id_lowongan, $data);
+        return redirect()->back();
     }
 }

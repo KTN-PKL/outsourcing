@@ -76,6 +76,8 @@ Route::controller(c_lowongan::class)->group(function () {
     Route::get('/admin/lowongan/{id_perusahaan}', 'indexadmin')->name('admin.lowongan.perusahaan');
     Route::post('/cari', 'cari')->name('cari');
     Route::get('/lowonganperusahaan/{id_perusahaan}', 'dataperusahaan');
+    Route::get('/perusahaan/lowongan/aktif/{id_lowongan}', 'lowonganAktif')->name('lowongan.aktif');
+    Route::get('/perusahaan/lowongan/nonaktif/{id_lowongan}', 'lowonganNonaktif')->name('lowongan.nonaktif');
 });
 
 Route::controller(c_register::class)->group(function () {

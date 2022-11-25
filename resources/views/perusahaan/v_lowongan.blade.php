@@ -34,12 +34,14 @@ Daftar Lowongan
 <br>
 <br>
 
-<div style="width:500px;margin-left:2em;" class="card">
-  <table style="width:500px" class="table table-bordered table-hover">
+<div style="margin-left:2em;" class="card">
+  <table style="width:100%" class="table table-bordered table-hover">
     <tr>
-      <th style="width:50px">No</th>
-      <th>Posisi</th>
-      <th style="width:150px">Action</th>
+      <th style="width:5%">No</th>
+      <th style="width:20%" >Tipe Lowongan</th>
+      <th style="width:20%">Posisi</th>
+      <th style="width:10%" >Status</th>
+      <th style="width:30%">Action</th>
     </tr>
     @php
         $i=0;
@@ -50,23 +52,34 @@ Daftar Lowongan
     @endphp
     <tr>
     <td>{{$i}}</td>
+    <td>{{$lowongans->tipe}}</td>
     <td>{{$lowongans->posisi}}</td>
     <td>
+      @if($lowongans->statuslowongan == "Aktif")
+      <span class="badge badge-success">Aktif</span>
+      @else
+      <span class="badge badge-danger">Tidak Aktif</span>
+      @endif
+    </td>
+    <td>
       <a href="{{ route('perusahaan.lowongan.edit', $lowongans->id_lowongan) }}" class="btn btn-sm btn-warning">Edit</a>
-      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{$lowongans->id_lowongan}}">
-        Delete
-      </button>
+      <a><button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{$lowongans->id_lowongan}}">Delete</button></a>
+      @if($lowongans->statuslowongan == "Aktif")
+      <a href="{{ route('lowongan.nonaktif', $lowongans->id_lowongan) }}"class="btn btn-sm btn-danger">Nonaktifkan</a>
+      @else
+      <a href="{{route('lowongan.aktif', $lowongans->id_lowongan)}}" class="btn btn-sm btn-success">Aktifkan</a>
+      @endif
     </td>
   </tr>
 @endforeach
   </table>
-  <table style="width: 100%;margin-left:auto;margin-right:auto">
+  {{-- <table style="width: 100%;margin-left:auto;margin-right:auto">
     <tr>
       <td style="width: 40%"></td>
       <td> {{ $lowongan->links('vendor.pagination.bootstrap-4') }}</td>
       <td style="width: 40%"></td>
     </tr>
-  </table>
+  </table> --}}
 </div>
 
 

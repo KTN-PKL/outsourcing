@@ -22,11 +22,15 @@ return new class extends Migration
             $table->string('website');
             $table->string('industri');
             $table->string('ukuran');
-            $table->string('akta')->nullable();
+            $table->string('ktp')->nullable();
             $table->string('nib')->nullable();
             $table->string('npwp')->nullable();
             $table->string('pkp')->nullable();
-            $table->string('fotokantor')->nullable();
+            $table->string('fotodepan')->nullable();
+            $table->string('fotobelakang')->nullable();
+            $table->string('fotokiri')->nullable();
+            $table->string('fotokanan')->nullable();
+            $table->string('fotodalam')->nullable();
             $table->timestamps();
         });
     }

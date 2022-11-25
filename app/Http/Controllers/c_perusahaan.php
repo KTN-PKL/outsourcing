@@ -334,61 +334,122 @@ class c_perusahaan extends Controller
     public function validasi(Request $request)
     {
         $request->validate([
-            'fotokantor' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
+            'fotodepan' => 'required|mimes:png,jpg,jpeg,bpm,pdf|max:2048',
+            'fotokiri' => 'mimes:png,jpg,jpeg,bpm|max:2048',
+            'fotokanan' => 'mimes:png,jpg,jpeg,bpm|max:2048',
+            'fotobelakang' => 'mimes:png,jpg,jpeg,bpm|max:2048',
+            'fotodalam' => 'mimes:png,jpg,jpeg,bpm|max:2048',
             'nib' => 'required|mimes:pdf',
             'npwp' => 'required',
-            'akta' => 'required|mimes:pdf',
+            'ktp' => 'required|mimes:pdf,png,jpg,jpeg,bpm',
             'pkp' => 'max:3000',
         ],[
             'npwp.required'=>'NPWP Wajib terisi',
             'nib.required'=>'NIB Wajib terisi',
             'nib.mimes'=>'NIB harus format PDF',
-            'akta.required'=>'Akta Wajib terisi',
-            'akta.mimes'=>'Akta harus format PDF',
-            'fotokantor.required'=>'Foto Kantor Wajib terisi',
-            'fotokantor.mimes'=>'Foto Kantor Harus Format png,jpg,jpeg,bpm',
-            'fotokantor.max'=>'Foto maksimal berukuran 2048kb',
+            'ktp.required'=>'ktp Wajib terisi',
+            'ktp.mimes'=>'ktp harus format pdf,png,jpg,jpeg,bpm ',
+            'fotodepan.required'=>'Foto Depan Kantor Wajib terisi',
+            'fotodepan.mimes'=>'Foto Depan Kantor Harus Format png,jpg,jpeg,bpm',
+            'fotodepan.max'=>'Foto maksimal berukuran 2048kb',
+            'fotokiri.mimes'=>'Foto Sisi Kiri Kantor Harus Format png,jpg,jpeg,bpm',
+            'fotokiri.max'=>'Foto maksimal berukuran 2048kb',
+            'fotokanan.mimes'=>'Foto Sisi kanan Kantor Harus Format png,jpg,jpeg,bpm',
+            'fotokanan.max'=>'Foto maksimal berukuran 2048kb',
+            'fotobelakang.mimes'=>'Foto Sisi belakang Kantor Harus Format png,jpg,jpeg,bpm',
+            'fotobelakang.max'=>'Foto maksimal berukuran 2048kb',
+            'fotodalam.mimes'=>'Foto Sisi dalam Kantor Harus Format png,jpg,jpeg,bpm',
+            'fotodalam.max'=>'Foto maksimal berukuran 2048kb',
         ]);
 
         $email = Auth::user()->email;
-        $file  = $request->fotokantor;
-        $filename = "Foto".$email.'.'.$file->extension();
-        $file->move(public_path('fotokantor'),$filename);
-        $file1  = $request->akta;
-        $filename1 = "Akta".$email.'.'.$file1->extension();
-        $file1->move(public_path('akta'),$filename1);
+        $file  = $request->fotodepan;
+        $filename = "Fotodepan".$email.'.'.$file->extension();
+        $file->move(public_path('verifikasi/fotokantor/fotodepan'),$filename);
+        $file1  = $request->ktp;
+        $filename1 = "KTP".$email.'.'.$file1->extension();
+        $file1->move(public_path('verifikasi/ktp'),$filename1);
         $file2  = $request->nib;
         $filename2 = "NIB".$email.'.'.$file2->extension();
-        $file2->move(public_path('nib'),$filename2);
-       
+        $file2->move(public_path('verifikasi/nib'),$filename2);
         $id_perusahaan = Auth::user()->id;
+
         if ($request->pkp == "") {
         
            $data = [
-               'akta' => $filename1,
+               'ktp' => $filename1,
                'nib' => $filename2,
                'npwp' => $request->npwp,
-               'fotokantor' => $filename,
+               'fotodepan' => $filename,
            ];
         } else {
         
             $file3  = $request->pkp;
             $filename3 = "PKP".$email.'.'.$file3->extension();
-            $file3->move(public_path('pkp'),$filename3);
+            $file3->move(public_path('verifikasi/pkp'),$filename3);
     
             $data = [
-                'akta' => $filename1,
+                'ktp' => $filename1,
                 'nib' => $filename2,
                 'npwp' => $request->npwp,
-                'fotokantor' => $filename,
+                'fotodepan' => $filename,
                 'pkp' => $filename3,
             ];
         }
+
         $data1  = [
             'status' => 0,
         ];
         $this->perusahaan->editData($id_perusahaan, $data);
         $this->m_user->editData($id_perusahaan, $data1);
+
+        if ($request->fotokiri <> null)
+        {
+            $file4  = $request->fotokiri;
+            $filename4 = "FOTOKIRI".$email.'.'.$file4->extension();
+            $file4->move(public_path('verifikasi/fotokantor/fotokiri'),$filename4);
+    
+            $data = [
+                'fotokiri' => $filename4,
+            ];
+            $this->perusahaan->editData($id_perusahaan, $data);
+        }
+
+        if ($request->fotokanan <> null)
+        {
+            $file5  = $request->fotokanan;
+            $filename5 = "FOTOkanan".$email.'.'.$file5->extension();
+            $file5->move(public_path('verifikasi/fotokantor/fotokanan'),$filename5);
+    
+            $data = [
+                'fotokanan' => $filename5,
+            ];
+            $this->perusahaan->editData($id_perusahaan, $data);
+        }
+
+        if ($request->fotobelakang <> null)
+        {
+            $file6  = $request->fotobelakang;
+            $filename6 = "FOTObelakang".$email.'.'.$file6->extension();
+            $file6->move(public_path('verifikasi/fotokantor/fotobelakang'),$filename6);
+    
+            $data = [
+                'fotobelakang' => $filename6,
+            ];
+            $this->perusahaan->editData($id_perusahaan, $data);
+        }
+        if ($request->fotodalam <> null)
+        {
+            $file7  = $request->fotodalam;
+            $filename7 = "fotodalam".$email.'.'.$file7->extension();
+            $file7->move(public_path('verifikasi/fotokantor/fotodalam'),$filename7);
+    
+            $data = [
+                'fotodalam' => $filename7,
+            ];
+            $this->perusahaan->editData($id_perusahaan, $data);
+        }
+       
         return redirect()->back();
     }
 

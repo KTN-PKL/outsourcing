@@ -35,6 +35,22 @@
         <tr>
           <td><a style="text-decoration: none"  href="/detailperusahaan/{{ $lowongan->id_perusahaan }}" style="color: rgb(255, 255, 255)">{{ $lowongan->nama }}</a></td>
         </tr>
+        <tr>
+          <td style="height:20px" ></td>
+        </tr>
+        <tr style="margin-top:4em" >
+          <td><ul class="fa-ul">
+            <li><i class="fa-li fa fa-clock"></i>{{$lowongan->tipe}}</li>
+            @if($lowongan->statusgaji == "Tampilkan")
+            <li><i class="fa-li fa fa-money"></i>IDR {{$lowongan->gaji}}</li>
+            @else
+            <li><i class="fa-li fa fa-money"></i>Perusahaan Tidak Menampilkan Gaji</li>
+            @endif
+            <li><i class="fa-li fa fa-suitcase"></i>{{$lowongan->pengalaman}}</li>
+           
+          </ul>
+        </td>
+        </tr>
         </table>
       </div>
       </div>

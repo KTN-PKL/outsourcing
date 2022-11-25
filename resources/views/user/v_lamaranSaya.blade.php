@@ -25,14 +25,17 @@
   </section>
 @section('content2') 
 <div style="margin-left:2em;margin-right:2em;" class="jumbotron p-5 rounded-3">
-        <div style="width:800px;" class="card">
-            <table style="width:800px" class="table table-bordered table-hover" id="f5">
+  <div class="table-responsive" style="width:50%;background-color:white;" id="f5">
+            <table class="table table-bordered" >
+              <thead>
               <tr>
-                <th style="width:20px">No</th>
-                <th style="width:300px">Perusahaan</th>
-                <th style="width:300px">Posisi</th>
-                <th style="width:180px">Status</th>
+                <th>No</th>
+                <th>Perusahaan</th>
+                <th>Posisi</th>
+                <th>Status</th>
               </tr>
+            </thead>
+            <tbody>
               @php
               $i = 0;
                @endphp
@@ -44,56 +47,69 @@
               <td>{{ $i }}</td>
               <td>{{$lamarans->nama}}</td>
               <td>{{$lamarans->posisi}}</td>
-              <td>@if ($lamarans->status == "Diterima")
+              <td>
+              @if ($lamarans->status == "Diterima")
                 <span class="badge badge-success">Diterima di perusahaan</span>
-              @else
-                  @if ($lamarans->jadwal <> null)
+              @elseif ($lamarans->tipewawancara <> null)
                   <span class="badge badge-primary">Tahap Wawancara</span>
-                  @else
+              @else
                   <span class="badge badge-primary">Tahap Pengajuan CV</span> 
-                  @endif
-              @endif</td>
+              @endif
+              </td>
             </tr>
-              @endforeach        
+              @endforeach  
+            </tbody>      
             </table>
-            
-            <table style="width:800px; display:none" class="table table-bordered table-hover" id="f6">
+        </div> 
+
+        <div class="table-responsive" style="width:100%;background-color:white;display:none;" id="f6" >
+            <table style="width:100%" class="table table-bordered" >
+              <thead>
               <tr>
-                <th style="width:20px">No</th>
-                <th style="width:200px">Perusahaan</th>
-                <th style="width:180px">Posisi</th>
-                <th style="width:200px">Jadwal</th>
-                <th  style="width:200px">Link</th>
+                <th >No</th>
+                <th >Perusahaan</th>
+                <th >Posisi</th>
+                <th >Wawancara</th>
+                <th >Jadwal</th>
+                <th >
+                 Detail Wawancara
+                </th>
               </tr>
-              @foreach($lamaran as $lamarans)
+            </thead>
+            @foreach($lamaran as $lamarans)
               @if ($lamarans->jadwal <> null)
+              <tbody>
               <tr>
               <td>1</td>
               <td>{{$lamarans->nama}}</td>
               <td>{{$lamarans->posisi}}</td>
+              <td>{{$lamarans->tipewawancara}}</td>
               @php
                   $data = explode("++", $lamarans->jadwal)
               @endphp
               
               <td>{{$data[0].", ".$data[1]."-".$data[2]}}</td>
-              <td><a target="_blank" class="btn btn-sm btn-primary" href="{{ $lamarans->wawancara }}">Menuju Wawancara</a></td>
-              
+              <td>
+              @if($lamarans->tipewawancara == "Online" && $lamarans->linkwawancara == null)
+              <a target="_blank" class="btn btn-sm btn-primary" disabled>Menunggu</a>
+              @elseif($lamarans->tipewawancara == "Online" && $lamarans->linkwawancara <> null)
+              <a target="_blank" class="btn btn-sm btn-primary" href="{{ $lamarans->linkwawancara }}">Menuju Wawancara</a>
+              @elseif($lamarans->tipewawancara == "Offline" && $lamarans->alamatwawancara <> null)
+              <ul class="fa-ul">
+                <li><i class="fa-li fa fa-map-marker"></i> {{$lamarans->alamatwawancara}}</li>
+              </ul>
+              @else
+               <a href=""><span class="badge badge-success"> <i class="fa fa-phone"></i> Lakukan Panggilan </span></a> 
+            </td>
+              @endif  
             </tr>
+          </tbody>
             @endif
-              @endforeach        
-            </table>
-
-          
-          </div>
-                    
-                    
-                </div>
-            </table>
-             
-
-            </div>
-    </div>
-</div> 
+             @endforeach        
+            </table>     
+        </div>            
+  </div>
+    
 <script>
   function dis1() {
     document.getElementById("f2").style.display="none";

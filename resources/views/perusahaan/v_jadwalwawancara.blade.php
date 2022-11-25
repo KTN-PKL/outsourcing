@@ -9,15 +9,17 @@ Portal Kerja
 <br>
 <h3 style="margin-left:1em" ><b>Jadwal Wawancara</b></h3>
 <br>
-<div style="width:auto;margin-left:2em" class="card">
+<div style="width:95%;margin-left:2em" class="card">
   <table style="width:auto" class="table table-bordered table-hover">
     <tr>
-      <th style="width: 4%">No</th>
-      <th style="width: 28%">Nama Pelamar</th>
+      <th style="width: 3%">No</th>
+      <th style="width: 10%">Nama Pelamar</th>
       <th style="width: 15%">Posisi</th>
-      <th style="width: 20%">Tanggal</th>
+      <th style="width: 10%">Tanggal</th>
       <th style="width: 20%">Waktu</th>
-      <th style="width: 20%">Status</th>
+      <th style="width: 15%">Jenis Wawancara</th>
+      <th style="width: 20%">Detail Wawancara</th>
+      <th style="width:5%">Status</th>
       @php
       $i = 0;
       @endphp
@@ -45,10 +47,61 @@ Portal Kerja
         @endif>
     </td>
     <td>
-      @if($lamarans->statusjadwal == null)
-      <span class="badge badge-danger">Belum Mengirim Jadwal</span>
+      <div class="col">
+        <select onclick="display({{$lamarans->id_lamaran}})" id="selectA{{$lamarans->id_lamaran}}" name="tipewawancara{{ $lamarans->id_lamaran }}" type="text" class="form-select @error('tipewawancara') is-invalid @enderror" data-bs-toggle="dropdown"> 
+          @if($lamarans->tipewawancara=="Offline")
+          <option selected value="Offline">Offline</option>
+          <option value="Online">Online</option>
+          @elseif(($lamarans->tipewawancara=="Online"))
+          <option value="Offline">Offline</option>
+          <option selected value="Online">Online</option>
+          @else
+          <option selected disabled>Pilih</option>
+          <option value="Offline">Offline</option>
+          <option value="Online">Online</option>
+          @endif
+          
+        </select>
+        <script>
+          function display(id){
+            var x = document.getElementById('selectA'+id).value;
+        
+            if(x=="Online"){
+              document.getElementById('onlineform'+id).style.display="block";
+              document.getElementById('offlineform'+id).style.display="none";
+
+            } else if(x=="Offline"){
+              document.getElementById('onlineform'+id).style.display="none";
+              document.getElementById('offlineform'+id).style.display="block";
+
+            }
+         
+          }
+         
+        </script>
+      </div>
+    </td>
+    <td>
+     
+      <div style="display: none" id="onlineform{{$lamarans->id_lamaran}}" class="mb-3">
+        <input type="text" class="form-control" name="linkwawancara{{ $lamarans->id_lamaran }}" placeholder="Link Wawancara" value="{{$lamarans->linkwawancara}}">
+      </div>
+      <div  style="display: none" id="offlineform{{$lamarans->id_lamaran}}" class="mb-3">
+        <input type="text" class="form-control" name="alamatwawancara{{ $lamarans->id_lamaran }}" placeholder="Lokasi Wawancara " value="{{$lamarans->alamatwawancara}}">
+      </div>
+      @if($lamarans->linkwawancara <> null || $lamarans->alamatwawancara <> null )
+      <span id="check{{$lamarans->id_lamaran}}" class="badge badge-success" > <i class="fa fa-check"></i> </span>
       @else
-      <span class="badge badge-success">Sudah Mengirim Jadwal</span>
+      <span id="times{{$lamarans->id_lamaran}}" class="badge badge-danger" > <i class="fa fa-times"></i> </span>
+      @endif
+    </td>
+    <td>
+      @if($lamarans->jadwal <> "++++" && $lamarans->linkwawancara <> null && $lamarans->tipewawancara <> null)
+      <span class="badge badge-success">Lengkap </span>
+      @elseif($lamarans->jadwal <> "++++" && $lamarans->alamatwawancara <> null && $lamarans->tipewawancara <> null)
+      <span class="badge badge-success">Lengkap </span>
+      @else
+      <span class="badge badge-danger" >Belum <br> Lengkap</span>
       @endif
     </td>
   </tr>
@@ -57,9 +110,8 @@ Portal Kerja
   <div class="card-footer"><button class="btn btn-sm btn-success col-md-2 offset-md-10">Simpan</button></div>
 </form>
 </div>
-@endsection
 
-
+{{-- Detail Pelamar --}}
 @foreach ($lamaran as $lamarans)                  
 <div class="modal fade" id="detail{{$lamarans->id_lamaran}}">
   <div class="modal-dialog">
@@ -91,3 +143,5 @@ Portal Kerja
   </div>
 </div>
 @endforeach
+@endsection
+

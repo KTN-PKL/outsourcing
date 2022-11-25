@@ -7,14 +7,15 @@ Portal Kerja
 @endsection
 @section('content')
 
-<h2 style="margin-left: 1em" ><b>Jobdesk</h2>
+<h2 style="margin-left: 1em" ><b>Jobdesk</b></h2>
 <br>
-<div style="width:600px;margin-left:2em" class="card">
-  <table style="width:600px" class="table table-bordered table-hover">
+<div style="width:70%;margin-left:2em" class="card">
+  <table style="width:100%" class="table table-bordered table-hover">
     <tr>
-      <th style="width:50px">No</th>
-      <th style="width:250px">Posisi</th>
-      <th style="width:200px">Action</th>
+      <th style="width:10%">No</th>
+      <th style="width:35%">Tipe Pekerjaan</th>
+      <th style="width:35%">Posisi</th>
+      <th style="width:20%">Action</th>
     </tr>
     @php
         $i=0;
@@ -26,12 +27,10 @@ Portal Kerja
     @endphp
     <tr>
     <td>{{$i}}</td>
+    <td>{{$lowongans->tipe}}</td>
     <td>{{$lowongans->posisi}}</td>
     <td>
       <a href="{{ route('wawancara.jadwal', $lowongans->id_lowongan) }}" class="btn btn-sm btn-success">Jadwal</a>
-      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#wawancara{{$lowongans->id_lowongan}}">
-        Link Wawancara
-      </button>
     </td>
   </tr>
 @endforeach
@@ -45,8 +44,7 @@ Portal Kerja
   </table>
 </div>
 
-@endsection
-                
+
 
                   {{-- Modal Detail Loker --}}
                     <!-- Modal Detail Loker -->
@@ -87,5 +85,6 @@ Portal Kerja
                     </div>
                     @endforeach
 
-
+                    @endsection
+                
 

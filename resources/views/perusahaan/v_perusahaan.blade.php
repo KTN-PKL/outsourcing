@@ -41,9 +41,9 @@ Portal Kerja
 
     <div style="margin-left:2em;margin-right:2em" class="mb-3">
       <!-- Upload PDF input-->
-      <label class="form-label">Akte Pendirian</label>
-          <input type="file" onchange="readURL(this);" class="form-control  @error('akta') is-invalid @enderror"  name="akta">
-          @error('akta')
+      <label class="form-label">KTP Penanggung Jawab</label>
+          <input type="file" onchange="readURL(this);" class="form-control  @error('ktp') is-invalid @enderror"  name="ktp">
+          @error('ktp')
           <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
           </span>
@@ -51,19 +51,78 @@ Portal Kerja
       </div>
 
       <div style="margin-left:2em;margin-right:2em" class="mb-3">
-      <!-- Upload image input-->
-      <label class="form-label"> Foto Kantor </label>
-          <input type="file" onchange="readURL(this);" class="form-control @error('fotokantor') is-invalid @enderror"  name="fotokantor">
-          @error('fotokantor')
-          <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-                </div>       
-                     
+        <!-- Upload image input-->
+          <label class="form-label"> Foto Depan Kantor </label>
+            <input type="file" onchange="readURL(this);" class="form-control @error('fotodepan') is-invalid @enderror"  name="fotodepan">
+            @error('fotodepan')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>  
+
+      <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <div style="margin-left:2em;margin-right:2em" class="mb-3">
+            <!-- Upload image input-->
+            <label class="form-label"> Foto Sisi Kiri Kantor <small style="color: gray">opsional</small></label>
+                <input type="file" onchange="readURL(this);" class="form-control @error('fotokiri') is-invalid @enderror"  name="fotokiri">
+                @error('fotokiri')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+          </div>  
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div style="margin-left:2em;margin-right:2em" class="mb-3">
+            <!-- Upload image input-->
+            <label class="form-label"> Foto Sisi Kanan Kantor <small style="color: gray">opsional</small></label>
+                <input type="file" onchange="readURL(this);" class="form-control @error('fotokanan') is-invalid @enderror"  name="fotokanan">
+                @error('fotokanan')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+          </div>      
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div style="margin-left:2em;margin-right:2em" class="mb-3">
+            <!-- Upload image input-->
+            <label class="form-label"> Foto Belakang Kantor <small style="color: gray">opsional</small></label>
+                <input type="file" onchange="readURL(this);" class="form-control @error('fotobelakang') is-invalid @enderror"  name="fotobelakang">
+                @error('fotobelakang')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+          </div>     
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div style="margin-left:2em;margin-right:2em" class="mb-3">
+            <!-- Upload image input-->
+            <label class="form-label"> Foto Dalam Kantor <small style="color: gray">opsional</small> </label>
+                <input type="file" onchange="readURL(this);" class="form-control @error('fotodalam') is-invalid @enderror"  name="fotodalam">
+                @error('fotodalam')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+          </div>  
+          </div>           
+        </div>
+      </div>
+            
       <div style="margin-left:2em;margin-right:2em" class="mb-3">
             <!-- Upload image input-->
-            <label class="form-label"> PKP (Opsional) </label>
+            <label class="form-label"> PKP <small style="color: gray">opsional</small></label>
                 <input type="file" onchange="readURL(this);" class="form-control  @error('fotokantor') is-invalid @enderror "  name="pkp">
                 @error('pkp')
                 <span class="invalid-feedback" role="alert">

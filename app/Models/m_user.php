@@ -35,4 +35,9 @@ class m_user extends Model
     {
         DB::table('users')->where('id', $id)->delete();
     }
+    public function userData()
+    {
+        // return DB::table('lamarans')->join('lowongans', 'lamarans.id_lowongan', '=', 'lowongans.id_lowongan')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('id_user', Auth::user()->id)->get();
+        return DB::table('users')->join('pelamars', 'users.id', '=', 'pelamars.id_user')->where('id_user', Auth::user()->id)->get();
+    }
 }
