@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('statusjadwal')->nullable();
             $table->string('tipewawancara')->nullable();
             $table->string('linkwawancara')->nullable();
+            $table->string('notifstatus')->nullable();
+            $table->string('notifwawancara')->nullable();
             $table->string('alamatwawancara')->nullable();
             $table->timestamps();
         });
