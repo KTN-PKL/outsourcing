@@ -8,7 +8,7 @@ Portal Kerja
 
 @section('content')
 <div class="container" >
-  @if($perusahaan->status == "0")
+  @if($perusahaan->status == null)
   <div class="row">
     <div class="col-md-12">
         <div class="card">
