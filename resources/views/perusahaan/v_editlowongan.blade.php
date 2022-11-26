@@ -126,6 +126,12 @@
            </span>
       @enderror
           </div>
+          <div>
+            <input type="checkbox" name="statustnk" value="tampil" @if ($lowongan->statustnk == "Tampilkan")
+            checked
+            @endif>
+          <label>Tampilkan Tunjangan dan Keuntungan</label><br/><br/>
+          </div>
         </div>
         <div class="mb-3">
           <label class="form-label">Pengalaman Kerja</label>
@@ -185,7 +191,7 @@
       <div class="modal-footer">
         {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
         <div id="tombol_login">
-          <input class="btn btn-primary" type="submit" value="Buat">
+          <input class="btn btn-primary" type="submit" value="Edit">
         </div>
       </div>
     {{-- <div class="modal-body">

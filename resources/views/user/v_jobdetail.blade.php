@@ -86,9 +86,13 @@
       <br>
       <h4>JOBDESK</h4>
       <div class="desc">
+        @if ($lowongan->statustnk == "Tampilkan")
         @php
           echo $lowongan->jobdesk;
-      @endphp
+      @endphp  
+      @else
+       Perusahaan Tidak Menampilkan Tunjangan Dan Benefit   
+      @endif
       </div>
     </div>
      <div class="col-sm">
@@ -107,7 +111,7 @@
       @else
       <h4>GAJI</h4>
       <div class="desc">
-        <i>{{$lowongan->gaji}}</i>
+        <i>Perusahaan Tidak Menampilkan Gaji</i>
       </div>
       @endif
     </div>
