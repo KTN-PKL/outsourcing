@@ -44,7 +44,7 @@
             @if($lowongan->statusgaji == "Tampilkan")
             <li><i class="fa-li fa fa-money"></i>IDR {{$lowongan->gaji}}</li>
             @else
-            <li><i class="fa-li fa fa-money"></i>Perusahaan Tidak Menampilkan Gaji</li>
+            <li><i class="fa-li fa fa-money"></i><i>Perusahaan Tidak Menampilkan Gaji</i></li>
             @endif
             <li><i class="fa-li fa fa-suitcase"></i>{{$lowongan->pengalaman}}</li>
            
@@ -73,22 +73,32 @@
       <h4>SKILL</h4>
       <div class="desc">
         @php
-          echo $lowongan->skill;
-      @endphp
+        $skill = explode("+" , $lowongan->skill);
+    @endphp
+    @foreach ($skill as $item)
+    <span class="badge badge-secondary">{{ $item }}</span>
+    @endforeach
+     
       </div>
       <br>
       <h4>TUNJANGAN</h4>
       <div class="desc">
+        @if ($lowongan->statustnk == "Tampilkan")
         @php
           echo $lowongan->benefit;
       @endphp
+        @else
+        <i>Perusahaan Tidak Menampilkan Tunjangan Dan Benefit</i>    
+       @endif
       </div>
       <br>
       <h4>JOBDESK</h4>
       <div class="desc">
+       
         @php
           echo $lowongan->jobdesk;
-      @endphp
+      @endphp  
+    
       </div>
     </div>
      <div class="col-sm">
@@ -98,18 +108,6 @@
         echo $lowongan->kualifikasi;
     @endphp
       </div>
-      <br>
-      @if ($lowongan->statusgaji == "Tampilkan")
-      <h4>GAJI</h4>
-      <div class="desc">
-        <i class="fa fa-money">{{$lowongan->gaji}}</i>
-      </div>
-      @else
-      <h4>GAJI</h4>
-      <div class="desc">
-        <i>{{$lowongan->gaji}}</i>
-      </div>
-      @endif
     </div>
   </div>
 </div>

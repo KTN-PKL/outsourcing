@@ -88,12 +88,17 @@
          <span class="invalid-feedback" role="alert">
            <strong>{{ $message }}</strong>
          </span>
-    @enderror
+    @enderror 
         </div>
       </div>
       <div class="mb-3">
         <label class="form-label">Skill</label>
+        <input type="text" name="jumlah" value="1" id="jumlah" hidden>
+        <div class="input-group col-md-6 mb-3">
         <input type="text" class="form-control  @error('skill') is-invalid @enderror" value="{{ old('skill') }}" name="skill" placeholder="Skill ...">
+        <span class="input-group-text" id="T1" type = "button" onclick="plus(1)"><i class="fa fa-plus"></i></span>
+        </div>
+        <div id="plus1"></div>
          @error('skill')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -192,7 +197,21 @@ $(function () {
 });
 
 </script>
-    
+<script>
+  function plus(id)
+  {
+    var x = id + 1;
+    document.getElementById("T" + id).style.display="none";
+    $("#jumlah").val(x)
+    $("#plus" + id).html(`
+    <div class="input-group col-md-6 mb-3">
+    <input type="text" class="form-control" name="skill`+id+`" placeholder="Skill ...">
+    <span class="input-group-text" id="T`+x+`" type = "button" onclick="plus(`+x+`)"><i class="fa fa-plus"></i></span>
+    </div>
+    <div id="plus`+x+`"></div>
+    `);
+  }
+</script> 
 @endsection
 @push('scripts')
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>

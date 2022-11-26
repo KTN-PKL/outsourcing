@@ -109,7 +109,30 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Skill</label>
-          <input type="text" class="form-control  @error('skill') is-invalid @enderror" value="{{$lowongan->skill}}" name="skill" placeholder="Skill ...">
+          @php
+              $skill = explode("+" , $lowongan->skill);
+              $j = count($skill);
+              $l = $j - 1;
+          @endphp
+          <input type="text" name="jumlah" value="{{ $j }}" id="jumlah" hidden>
+          <div class="input-group col-md-6 mb-3">
+          <input type="text" class="form-control" value="{{$skill[0]}}" name="skill" placeholder="Skill ...">
+          @if ($j == 1)
+          <span class="input-group-text" id={{ "T".$j }} type = "button" onclick="plus({{ $j }})"><i class="fa fa-plus"></i></span> 
+          @endif
+          </div>
+          @for ($i = 1; $i < $l; $i++)
+          <div class="input-group col-md-6 mb-3">
+          <input type="text" class="form-control" value="{{$skill[$i]}}" name={{ "skill".$i }} placeholder="Skill ...">
+          </div>
+          @endfor
+          @if ($j > 1)
+          <div class="input-group col-md-6 mb-3">
+            <input type="text" class="form-control" name={{ "skill".$l }} value="{{ $skill[$l] }}" placeholder="Skill ...">
+            <span class="input-group-text" id={{ "T".$j }} type = "button" onclick="plus({{ $j }})"><i class="fa fa-plus"></i></span>
+            </div>
+          @endif
+            <div id={{ "plus".$j }}></div>
            @error('skill')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -125,6 +148,12 @@
              <strong>{{ $message }}</strong>
            </span>
       @enderror
+          </div>
+          <div>
+            <input type="checkbox" name="statustnk" value="tampil" @if ($lowongan->statustnk == "Tampilkan")
+            checked
+            @endif>
+          <label>Tampilkan Tunjangan dan Keuntungan</label><br/><br/>
           </div>
         </div>
         <div class="mb-3">
@@ -185,7 +214,7 @@
       <div class="modal-footer">
         {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
         <div id="tombol_login">
-          <input class="btn btn-primary" type="submit" value="Buat">
+          <input class="btn btn-primary" type="submit" value="Edit">
         </div>
       </div>
     {{-- <div class="modal-body">
@@ -245,6 +274,21 @@ $(function () {
 });
 
 </script>
+<script>
+  function plus(id)
+  {
+    var x = id + 1;
+    document.getElementById("T" + id).style.display="none";
+    $("#jumlah").val(x)
+    $("#plus" + id).html(`
+    <div class="input-group col-md-6 mb-3">
+    <input type="text" class="form-control" name="skill`+id+`" placeholder="Skill ...">
+    <span class="input-group-text" id="T`+x+`" type = "button" onclick="plus(`+x+`)"><i class="fa fa-plus"></i></span>
+    </div>
+    <div id="plus`+x+`"></div>
+    `);
+  }
+</script> 
     
 @endsection
 @push('scripts')
