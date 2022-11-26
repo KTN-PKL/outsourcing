@@ -46,51 +46,37 @@ class c_lowongan extends Controller
             'jobdesk' => 'required',
             'kualifikasi' => 'required',
             'skill' => 'required',
-            'benefit' => 'required',
             'pengalaman' => 'required',
-           
-            
-            
         ],[
             'tipe.required'=>'Tipe Pekerjaan Wajib terisi',
             'posisi.required'=>'Posisi Wajib terisi',
             'jobdesk.required'=>'Jobdesk wajib terisi',
             'kualifikasi.required'=>'Kualifikasi Wajib terisi',
             'skill.required'=>'Skill wajib terisi',
-            'benefit.required'=>'Skill wajib terisi',
         ]);
+        $current_date_time = Carbon::now(); 
+        $data = [
+        'id_perusahaan' => Auth::user()->id,
+        'statuslowongan'=> 'Aktif',
+        'tipe' => $request->tipe,
+        'posisi' => $request->posisi,
+        'jobdesk' => $request->jobdesk,
+        'kualifikasi' => $request->kualifikasi,
+        'skill' => $request->skill,
+        'pengalaman' => $request->pengalaman,
+        'waktu'=> $current_date_time,
+        ];
         if($request->statusgaji <> null){
-            $current_date_time = Carbon::now(); 
-            $data = [
-            'id_perusahaan' => Auth::user()->id,
-            'statuslowongan'=> 'Aktif',
-            'tipe' => $request->tipe,
-            'posisi' => $request->posisi,
-            'jobdesk' => $request->jobdesk,
-            'kualifikasi' => $request->kualifikasi,
-            'skill' => $request->skill,
-            'benefit' => $request->benefit,
-            'pengalaman' => $request->pengalaman,
-            'gaji' => $request->gaji,
-            'statusgaji'=>'Tampilkan',
-            'waktu'=> $current_date_time,
-            ];
+            $data['gaji'] = $request->gaji;
+            $data['statusgaji'] = "Tampilkan";
         }else{
-            $current_date_time = Carbon::now(); 
-            $data = [
-            'id_perusahaan' => Auth::user()->id,
-            'statuslowongan'=> 'Aktif',
-            'tipe' => $request->tipe,
-            'posisi' => $request->posisi,
-            'jobdesk' => $request->jobdesk,
-            'kualifikasi' => $request->kualifikasi,
-            'skill' => $request->skill,
-            'benefit' => $request->benefit,
-            'pengalaman' => $request->pengalaman,
-            'gaji' => "0",
-            'statusgaji' => "Sembunyikan",
-            'waktu'=> $current_date_time,
-            ];
+            $data['statusgaji'] = "Sembunyikan";
+        }
+        if($request->statustnk <> null){
+            $data['benefit'] = $request->benefit;
+            $data['statustnk'] = "Tampilkan";
+        }else{
+            $data['statustnk'] = "Sembunyikan";
         }
         $this->lowongan->addData($data);
         return redirect()->route('perusahaan.lowongan.index')->with('create', 'Lowongan Berhasil Dibuat');
@@ -114,9 +100,6 @@ class c_lowongan extends Controller
             'skill' => 'required',
             'benefit' => 'required',
             'pengalaman' => 'required',
-           
-            
-            
         ],[
             'tipe.required'=>'Tipe Pekerjaan Wajib terisi',
             'posisi.required'=>'Posisi Wajib terisi',
