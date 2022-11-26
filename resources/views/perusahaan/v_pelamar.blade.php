@@ -10,8 +10,9 @@ Daftar Pelamar
 {{-- <h2 style="margin-left:1em"><b>Daftar Pelamar</b><a href="{{ route('perusahaan.lamaran.datalulus') }}" class="btn btn-success  offset-md-7">Peserta Lulus</a></h2> --}}
 
 <br>
-<div style="width:auto;margin-left:2em;" class="card">
-  <table style="width:auto;" class="table table-bordered table-hover">
+<div style="width:75%;margin-left:2em;" class="card">
+  <div class="table-responsive">
+  <table style="width:auto;" class="table">
     <tr>
       <th>No</th>
       <th width="150px">Nama Pelamar</th>
@@ -62,6 +63,7 @@ Daftar Pelamar
     @endforeach
 
   </table>
+</div> 
   <table style="width: 100%;margin-left:auto;margin-right:auto">
     <tr>
       <td style="width: 40%"></td>

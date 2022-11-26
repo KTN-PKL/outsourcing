@@ -18,37 +18,65 @@
       <strong>{{session()->get('eror')}}</strong>
 </div>
   @endif
-
-
- <h2>Detail Loker</h2>
- <div class="card  bg-secondary">
- <table width = "100%" border = "0">
-    <td  colspan="2" height = "60" >
-    </td>
-    <tr valign = "top">
-       <td  width = "10%">
-        <img  width="250" height="200"  src="{{asset('/logo/'. $perusahaan->logo)}}" alt="logo">
-       </td>
-        
-       <td  width = "80%" >
-        <h3 style="color:beige">{{$perusahaan->nama}} </h3>
-       <h6>@php echo $perusahaan->deskripsi; @endphp</h6>
-        <br>
-       <table width = "100%" border = "0">
-           <tr>
-               <td width = "8%">Alamat</td><td>: {{ $perusahaan->alamat }}</td>
-               <td width = "8%">Situs</td><td>: {{ $perusahaan->website }}</td>
-           </tr>
-           <tr>
-               <td width = "8%">Industri</td><td>: {{ $perusahaan->industri }}</td>
-               <td width = "8%">Ukruan</td><td>: {{ $perusahaan->ukuran }}</td>
-           </tr>
-       </table>
-       </td>
-    </tr>
-    <td  colspan="2" height = "60" >
-    </td> 
- </table>
+  <div class="card" style="background-color:white;margin-left:3em;margin-right:3em">
+    <div class="card-body">
+      <center>
+      <img src="{{asset('/logo/'.$perusahaan->logo)}}" height="200px" alt="">
+    </center>
+    </div>
+    <div class="card-body" style="background-color: white">
+      <div class="row">
+        <div class="col-md-3">
+          <center>
+            <img class="img-fluid img-thumbnail" src="{{asset('/logo/'. $perusahaan->logo)}}" alt="" style="width:80%;height:auto;margin-top:5px">
+          </center>
+        </div>
+        <div class="col-md-9">
+          <table>
+          <tr>
+            <td><h2><b>{{ $perusahaan->nama}}</b></h2></td>
+          </tr>
+          <tr>
+            <td style="height:20px" ><h6>{{$perusahaan->deskripsi}}</h6>
+              <div class="row">
+                <div class="col-md-6">
+                  <table>
+                    <tr>
+                      <td style="width:60%"><h6 style="color:grey">Kota</h6></td>
+                      <td><h6>: {{$perusahaan->alamat}}</h6></td>
+                    </tr>
+                    <tr>
+                      <td><h6 style="color:grey">Industri</h6></td>
+                      <td><h6>: {{$perusahaan->industri}}</h6></td>
+                    </tr>
+                    
+                  </table>
+                </div>
+                <div class="col-md-6">
+                  <table>
+                    <tr>
+                      <td style="width:30%"><h6 style="color:grey">Situs</h6></td>
+                      <td><h6>: <a style="text-decoration: none" href="{{$perusahaan->website}}">{{$perusahaan->website}}</a></h6></td>
+                    </tr>
+                    <tr>
+                      <td><h6 style="color:grey">Ukuran</h6></td>
+                      <td><h6>: {{$perusahaan->ukuran}}</h6></td>
+                    </tr>
+                    
+                  </table>
+                </div>
+              </div>
+            </td>
+          </tr>
+         
+        </table>
+        </div>
+         
+        </div>
+        </div>
+    </div>
+</div>
+ 
  
  {{-- <div class="card col-sm-6 bg-primary"> --}}
  

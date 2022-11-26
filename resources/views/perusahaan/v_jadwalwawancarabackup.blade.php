@@ -10,16 +10,15 @@ Portal Kerja
 <h3 style="margin-left:1em" ><b>Jadwal Wawancara</b></h3>
 <br>
 <div style="width:95%;margin-left:2em" class="card">
-  <div class="table-responsive">
-  <table style="width:auto" class="table">
+  <table style="width:auto" class="table table-bordered table-hover">
     <tr>
       <th style="width: 3%">No</th>
-      <th style="width: 15%">Nama Pelamar</th>
-      <th style="width: 20%">Posisi</th>
+      <th style="width: 10%">Nama Pelamar</th>
+      <th style="width: 15%">Posisi</th>
       <th style="width: 10%">Tanggal</th>
       <th style="width: 20%">Waktu</th>
       <th style="width: 15%">Jenis Wawancara</th>
-      <th style="width: 15%">Aksi</th>
+      <th style="width: 20%">Detail Wawancara</th>
       <th style="width:5%">Status</th>
       @php
       $i = 0;
@@ -37,36 +36,87 @@ Portal Kerja
     <td>{{$lamarans->posisi}}</td>
     <td>
       @if($lamarans->jadwal == "++++")
-       <span>Belum</span>
-      @elseif(($lamarans->jadwal == null))
-      <span>Belum</span>
+        <input type="date" name="tanggal{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+        value="{{ $data[0] }}"
+        @endif>
+      @elseif(($lamarans->jadwal <> null))
+        <input style="background-color: rgb(220, 219, 219)" type="date" name="tanggal{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+        value="{{ $data[0] }}"
+        @endif readonly>
       @else
-      {{$data[0]}}
+      <input type="date" name="tanggal{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+      value="{{ $data[0] }}"
+      @endif>
       @endif  
     </td>
     <td>
       @if($lamarans->jadwal == "++++")
-         <span>Belum</span>
-      @elseif($lamarans->jadwal == null)
-         <span>Belum</span>
+          <input type="time" name="mulai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[1] }}"
+          @endif> - <input type="time" name="selesai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[2] }}"
+          @endif >
+      @elseif($lamarans->jadwal <> null)
+          <input style="background-color: rgb(220, 219, 219)" type="time" name="mulai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[1] }}"
+          @endif readonly> - <input style="background-color: rgb(220, 219, 219)" type="time" name="selesai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[2] }}"
+          @endif readonly > 
       @else
-      {{$data[1]}} -  {{$data[2]}}
+          <input type="time" name="mulai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[1] }}"
+          @endif> - <input type="time" name="selesai{{ $lamarans->id_lamaran }}" @if ($lamarans->jadwal <> null)
+          value="{{ $data[2] }}"
+          @endif > 
       @endif   
     </td>
     <td>
       <div class="col">
         @if($lamarans->tipewawancara <> null)
-        <span>{{$lamarans->tipewawancara}}</span>
+        <input style="background-color: rgb(220, 219, 219);width:50%" type="text" name="tipewawancara{{ $lamarans->id_lamaran }}" value="{{$lamarans->tipewawancara}}" readonly>
         @elseif(($lamarans->tipewawancara == null))
-         <span>Belum</span>
+          <select onchange="display({{$lamarans->id_lamaran}})" id="selectA{{$lamarans->id_lamaran}}" name="tipewawancara{{ $lamarans->id_lamaran }}" type="text" class="form-select @error('tipewawancara') is-invalid @enderror" data-bs-toggle="dropdown"> 
+          <option selected disabled>Pilih</option>
+          <option value="Offline">Offline</option>
+          <option value="Online">Online</option>
         </select>
         @endif 
+        <script>
+          function display(id){
+            var x = document.getElementById('selectA'+id).value;
+        
+            if(x=="Online"){
+              document.getElementById('onlineform'+id).style.display="block";
+              document.getElementById('offlineform'+id).style.display="none";
+              document.getElementById('check'+id).style.display="none";
+              document.getElementById('times'+id).style.display="none";
+
+            } else if(x=="Offline"){
+              document.getElementById('onlineform'+id).style.display="none";
+              document.getElementById('offlineform'+id).style.display="block";
+              document.getElementById('check'+id).style.display="none";
+              document.getElementById('times'+id).style.display="none";
+
+            }
+         
+          }
+         
+        </script>
       </div>
     </td>
 
     <td>
-     
-      <a style="text-align: center" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit{{$lamarans->id_lamaran}}"><i class="fa fa-edit">Atur Jadwal</i></a> 
+      <div style="display: none" id="onlineform{{$lamarans->id_lamaran}}" class="mb-3">
+        <input type="text" class="form-control" name="linkwawancara{{ $lamarans->id_lamaran }}" placeholder="Link Wawancara" value="{{$lamarans->linkwawancara}}">
+      </div>
+      <div  style="display: none" id="offlineform{{$lamarans->id_lamaran}}" class="mb-3">
+        <input type="text" class="form-control" name="alamatwawancara{{ $lamarans->id_lamaran }}" placeholder="Lokasi Wawancara " value="{{$lamarans->alamatwawancara}}">
+      </div>
+      @if($lamarans->linkwawancara <> null || $lamarans->alamatwawancara <> null )
+      <a style="text-align: center" class="btn btn-primary" data-toggle="modal" data-target="#edit{{$lamarans->id_lamaran}}"><i class="fa fa-edit"></i></a> 
+      @else
+      <span id="times{{$lamarans->id_lamaran}}" style="display:none" class="badge badge-danger" > <i class="fa fa-times"></i> </span>
+      @endif
     </td>
     <td>
       @if($lamarans->jadwal <> "++++" && $lamarans->linkwawancara <> null && $lamarans->tipewawancara <> null)
@@ -80,7 +130,8 @@ Portal Kerja
   </tr>
     @endforeach
   </table>
-</div>
+  <div class="card-footer"><button class="btn btn-sm btn-success col-md-2 offset-md-10">Simpan</button></div>
+</form>
 </div>
 
 {{-- Detail Pelamar --}}
