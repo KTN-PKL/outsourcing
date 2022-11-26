@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('posisi');
             $table->text('jobdesk');
             $table->text('kualifikasi');
-            $table->text('benefit');
+            $table->string('statustnk')->nullable();
+            $table->text('benefit')->nullable();
             $table->string('skill');
             $table->string('pengalaman');
             $table->string('gaji')->nullable();
