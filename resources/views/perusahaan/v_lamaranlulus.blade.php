@@ -9,13 +9,13 @@ Portal Kerja
 <br>
 <h3 style="margin-left:1em" ><b>Peserta Lulus</b></h3>
 <br>
-<div style="width:1000px;margin-left:2em" class="card">
-  <table style="width:1000px" class="table table-bordered table-hover">
+<div style="width:95%;margin-left:2em" class="card">
+  <table style="width:100%" class="table table-bordered table-hover">
     <tr>
       <th>No</th>
       <th>Nama Pelamar</th>
       <th>Umur</th>
-      <th width="150px">Jenis Kelamin</th>
+      <th >Jenis Kelamin</th>
       <th>Posisi</th>
       <th>Status</th>
       <th>Action</th>
@@ -59,10 +59,63 @@ Portal Kerja
     </tr>
   </table>
 </div>
-@endsection
 
 
 @foreach ($lamaran as $lamarans)                  
+<div class="modal fade" id="detail{{$lamarans->id_lamaran}}">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h6 class="modal-title">Detail Pelamar</h6>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <div id="pembungkus" style="position: relative" class="col-md-4 offset-3">
+              <img src="{{asset('/foto/'.$lamarans->foto)}}" alt="">
+              <a style="position: absolute; top:100px;left:70px" href="{{asset('/foto/'.$lamarans->foto)}}" download> <button type="button" class="btn btn-outline-secondary">Download</button></a>
+            </div>
+            <table>
+              <tr>
+                <td style="width:50%">Nama</td>
+                <td>: {{$lamarans->namapel}}</td>
+              </tr>
+              <tr>
+                <td style="width:50%">Alamat</td>
+                <td>: {{$lamarans->alamatpel}}</td>
+              </tr>
+              <tr>
+                <td style="width:50%">Gender</td>
+                <td>: {{$lamarans->alamatpel}}</td>
+              </tr>
+              {{-- <tr>
+                <td style="width:50%">Email</td>
+                <td>: {{$lamarans->email}}</td>
+              </tr> --}}
+              <tr>
+                <td style="width:50%">Nomor Telepon</td>
+                <td>: {{$lamarans->no_telp}}</td>
+              </tr>
+              <tr>
+                <td style="width:50%;height:50%">File Dokumen</td>
+                <td>: <a href="{{ route('perusahaan.lamaran.downloadcv', $lamarans->resume) }}" class="btn btn-primary"> <i class="fa fa-cloud-download-alt"></i> Download CV</a></td>
+              </tr>
+          </table>
+          </div>
+          <div class="modal-footer">
+              <a href="#" class="btn btn-outline-light pull-left">Yes</a>
+              <button type="button" class="btn btn-outline-light" data-dismiss="modal">No</button>
+          </div>
+      </div>
+      <!-- /.modal-content -->
+  </div>
+</div>
+@endforeach
+
+@endsection
+
+{{-- @foreach ($lamaran as $lamarans)                  
 <div class="modal fade" id="detail{{$lamarans->id_lamaran}}">
   <div class="modal-dialog">
       <div class="modal-content">
@@ -92,4 +145,4 @@ Portal Kerja
       <!-- /.modal-content -->
   </div>
 </div>
-@endforeach
+@endforeach --}}

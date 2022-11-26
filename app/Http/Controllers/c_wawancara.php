@@ -24,24 +24,20 @@ class c_wawancara extends Controller
         return view('perusahaan.v_wawancara', $data);
     }
 
-    // public function link(Request $request, $id_lamaran)
-    // {
-    //     if ($request->tipewawancara == "Offline")
-    //     {
-    //     $data = [
-    //         'tipewawancara' => $request->tipewawancara,
-    //         'alamatwawancara'=>$request->alamatwawancara
-    //     ];
-    //      }else{
-    //     $data = [
-    //         'tipewawancara'=> $request->tipewawancara,
-    //         'linkwawancara'=>$request->linkwawancara
-    //     ];
-    //     }
-
-    //     $this->lamaran->editData($id_lamaran, $data);
-    //     return redirect()->back();
-    // }
+    public function edit(Request $request, $id_lamaran)
+    {
+        $editjadwal = $request->tanggal."++".$request->mulai."++".$request->selesai; 
+        $data = [
+                'jadwal'=>$editjadwal,
+                'tipewawancara'=> $request->tipewawancara,
+                'linkwawancara'=> $request->linkwawancara,
+                'alamatwawancara'=> $request->alamatwawancara,
+            ];
+            $this->lamaran->editData($id_lamaran, $data);
+            return redirect()->back();
+        }
+     
+    
 
     public function jadwal($id_lowongan)
     {

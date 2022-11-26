@@ -26,6 +26,11 @@ class lowongan extends Model
         return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->paginate(8);
     }
 
+    public function aktifData()
+    {
+        return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('lowongans.statuslowongan', 'Aktif')->paginate(8);
+    }
+
     public function perusahaanData($id_perusahaan)
     {
         return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('lowongans.id_perusahaan', $id_perusahaan)->paginate(8);
