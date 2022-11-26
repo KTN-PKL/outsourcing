@@ -40,22 +40,22 @@ class c_lowongan extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'tipe' => 'required',
-        //     'posisi' => 'required',
-        //     'jobdesk' => 'required',
-        //     'kualifikasi' => 'required',
-        //     'skill' => 'required',
-        //     'pengalaman' => 'required',
-        // ],[
-        //     'tipe.required'=>'Tipe Pekerjaan Wajib terisi',
-        //     'posisi.required'=>'Posisi Wajib terisi',
-        //     'jobdesk.required'=>'Jobdesk wajib terisi',
-        //     'kualifikasi.required'=>'Kualifikasi Wajib terisi',
-        //     'skill.required'=>'Skill wajib terisi',
-        // ]);
+        $request->validate([
+            'tipe' => 'required',
+            'posisi' => 'required',
+            'jobdesk' => 'required',
+            'kualifikasi' => 'required',
+            'skill' => 'required',
+            'pengalaman' => 'required',
+        ],[
+            'tipe.required'=>'Tipe Pekerjaan Wajib terisi',
+            'posisi.required'=>'Posisi Wajib terisi',
+            'jobdesk.required'=>'Jobdesk wajib terisi',
+            'kualifikasi.required'=>'Kualifikasi Wajib terisi',
+            'skill.required'=>'Skill wajib terisi',
+        ]);
         $skill = $request->skill;
-        if ($request->jumlah <> 0) {
+        if ($request->jumlah <> 1) {
             for ($i=1; $i < $request->jumlah ; $i++) { 
                 $skill = $skill."+".$request->{"skill".$i};
             }
@@ -112,6 +112,12 @@ class c_lowongan extends Controller
             'kualifikasi.required'=>'Kualifikasi Wajib terisi',
             'skill.required'=>'Skill wajib terisi',
         ]);
+        $skill = $request->skill;
+        if ($request->jumlah <> 1) {
+            for ($i=1; $i < $request->jumlah ; $i++) { 
+                $skill = $skill."+".$request->{"skill".$i};
+            }
+        }
         $current_date_time = Carbon::now(); 
         $data = [
         'statuslowongan'=> 'Aktif',
@@ -119,7 +125,7 @@ class c_lowongan extends Controller
         'posisi' => $request->posisi,
         'jobdesk' => $request->jobdesk,
         'kualifikasi' => $request->kualifikasi,
-        'skill' => $request->skill,
+        'skill' => $skill,
         'pengalaman' => $request->pengalaman,
         'waktu'=> $current_date_time,
         ];

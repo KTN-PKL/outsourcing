@@ -93,7 +93,7 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Skill</label>
-        <input type="text" name="jumlah" value="0" id="jumlah" hidden>
+        <input type="text" name="jumlah" value="1" id="jumlah" hidden>
         <div class="input-group col-md-6 mb-3">
         <input type="text" class="form-control  @error('skill') is-invalid @enderror" value="{{ old('skill') }}" name="skill" placeholder="Skill ...">
         <span class="input-group-text" id="T1" type = "button" onclick="plus(1)"><i class="fa fa-plus"></i></span>
