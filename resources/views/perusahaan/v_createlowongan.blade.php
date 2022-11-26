@@ -102,7 +102,7 @@
     </div>
     <div class="row mb-3">                       
         <label class="form-label">Tunjangan dan Keuntungan</label>
-        </div>
+    </div>
         <div class="col-md-16">
          <textarea name="benefit" class="my-editor form-control  @error('benefit') is-invalid @enderror" id="my-editor2" cols="30" rows="10">{{ old('benefit') }}</textarea>
          @error('benefit')
@@ -115,31 +115,34 @@
           <input type="checkbox" name="statustnk" value="tampil">
         <label>Tampilkan Tunjangan dan Keuntungan</label><br/><br/>
         </div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Pengalaman Kerja</label>
-        <select type="text" class="form-select" name="pengalaman">
-            <option value="Pilih Pengalaman Kerja" selected disabled>-- Pilih Pengalaman Kerja --</option>
-            <option value="Kurang Dari 1 Tahun">Kurang Dari 1 Tahun</option>
-            <option value="1-3 Tahun">1-3 Tahun</option>
-            <option value="3-5 Tahun">3-5 Tahun</option>
-            <option value="5-10 Tahun">5-10 Tahun</option>
-            <option value="Lebih dari 10 Tahun">Lebih dari 10 Tahun</option> 
-        </select>
-    </div>
 
-    <div id="show" class="mb-3">
-        <label class="form-label">Gaji</label>
-        <input type="text" class="form-control  @error('gaji') is-invalid @enderror" value="{{ old('gaji') }}" name="gaji" placeholder="Gaji ...">
-         @error('gaji')
-              <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-              </span>
-         @enderror
-    </div>
-    <input type="checkbox" name="statusgaji" value="tampilkangaji">
-        <label>Tampilkan Gaji</label><br/><br/>
-    </div>
+
+        <div class="mb-3">
+          <label class="form-label">Pengalaman Kerja</label>
+          <select type="text" class="form-select" name="pengalaman">
+              <option value="Pilih Pengalaman Kerja" selected disabled>-- Pilih Pengalaman Kerja --</option>
+              <option value="Kurang Dari 1 Tahun">Kurang Dari 1 Tahun</option>
+              <option value="1-3 Tahun">1-3 Tahun</option>
+              <option value="3-5 Tahun">3-5 Tahun</option>
+              <option value="5-10 Tahun">5-10 Tahun</option>
+              <option value="Lebih dari 10 Tahun">Lebih dari 10 Tahun</option> 
+          </select>
+        </div>
+
+        <div id="show" class="mb-3">
+          <label class="form-label">Gaji</label>
+          <input type="text" class="form-control  @error('gaji') is-invalid @enderror" value="{{ old('gaji') }}" name="gaji" placeholder="Gaji ...">
+           @error('gaji')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+           @enderror
+       </div>
+       <div>
+      <input type="checkbox" name="statusgaji" value="tampilkangaji">
+          <label>Tampilkan Gaji</label><br/><br/>
+        </div>
+      </div>
     <div class="modal-footer">
       {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
       <div id="tombol_login">
