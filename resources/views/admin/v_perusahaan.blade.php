@@ -83,7 +83,7 @@ Daftar Perusahaan
                             <div class="modal-body">
                               @if($perusahaans->fotodepan <> null)
                               <div style="position:relative" class="col-md-4 offset-3"><h4><span class="badge badge-success">Foto Sisi Depan Kantor</span></h4>
-                              <img src="{{asset('verifikasi/fotokantor/fotodepan/'.$perusahaans->fotodepan)}}" style="display:block;margin-left:25%" width="150px" height="200px" alt="...">
+                              <img src="{{asset('verifikasi/fotokantor/fotodepan/'.$perusahaans->fotodepan)}}" style="display:block;margin:auto" width="450px" height="300px" alt="...">
                               <a style="position: absolute; top:100px;left:70px" href="{{asset('verifikasi/fotokantor/fotodepan'.$perusahaans->fotodepan)}}" download> <button type="button" class="btn btn-outline-secondary">Download</button></a>
                               </div> 
                               <div class="row">

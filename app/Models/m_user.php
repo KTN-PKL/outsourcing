@@ -13,7 +13,7 @@ class m_user extends Model
     public $table = 'users';
 
     protected $fileable = [
-        'id', 'name', 'email', 'password', 'level', 'status'
+        'id', 'name', 'email', 'password', 'level',
     ];
 
     public function addData($data)

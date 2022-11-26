@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\lamaran;
 use App\Models\pelamar;
 use App\Models\lowongan;
+use App\Models\perusahaan;
 use Auth;
 
 class c_lamaran extends Controller
@@ -15,6 +16,7 @@ class c_lamaran extends Controller
         $this->lamaran = new lamaran();
         $this->lowongan = new lowongan();
         $this->pelamar = new pelamar();
+        $this->perusahaan = new perusahaan();
     }
 
     public function index()
@@ -29,6 +31,7 @@ class c_lamaran extends Controller
                 'lamaran' => $this->lamaran->perusahaanData(),
             ];
           
+            
             return view('perusahaan.v_pelamar', $lamaran);
         }
         return view('user.v_lamaran');
@@ -179,6 +182,7 @@ class c_lamaran extends Controller
     public function dashboard()
     {
         $data = [
+            'perusahaan' =>$this->perusahaan->detailData(Auth::user()->id),
             'lamaran' => $this->lamaran->jumlah(),
         ];
         return view('perusahaan.v_perusahaan', $data);

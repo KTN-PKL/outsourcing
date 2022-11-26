@@ -46,13 +46,13 @@ class c_perusahaan extends Controller
         return view('admin.v_admin', $data);
     }
 
-    public function verifikasi($id)
+    public function verifikasi($id_perusahaan)
     {
-        $data = [
+        $data2 = [
             'status' => 1,
         ];
 
-        $this->m_user->editData($id, $data);
+        $this->perusahaan->editData($id_perusahaan, $data2);
         return redirect()->back()->with('verified', 'Perusahaan Terverifikasi');
     }
 
@@ -97,6 +97,13 @@ class c_perusahaan extends Controller
         ];
         $this->perusahaan->addData($data2);
         return redirect()->route('admin.perusahaan');
+    }
+
+    public function read()
+    {
+        $perusahaan = $this->perusahaan->detailData(Auth::user()->id);
+        $data = $perusahaan->status;
+        return $data;
     }
 
      public function update(Request $request, $id_perusahaan)
@@ -374,45 +381,28 @@ class c_perusahaan extends Controller
         $file2->move(public_path('verifikasi/nib'),$filename2);
         $id_perusahaan = Auth::user()->id;
 
-        if ($request->pkp == "") {
-        
-           $data = [
-               'ktp' => $filename1,
-               'nib' => $filename2,
-               'npwp' => $request->npwp,
-               'fotodepan' => $filename,
-           ];
-        } else {
-        
+        $data = [
+            'ktp' => $filename1,
+            'nib' => $filename2,
+            'npwp' => $request->npwp,
+            'fotodepan' => $filename,
+            'status' => 0,
+        ];
+        if ($request->pkp <> "") {
             $file3  = $request->pkp;
             $filename3 = "PKP".$email.'.'.$file3->extension();
             $file3->move(public_path('verifikasi/pkp'),$filename3);
     
-            $data = [
-                'ktp' => $filename1,
-                'nib' => $filename2,
-                'npwp' => $request->npwp,
-                'fotodepan' => $filename,
-                'pkp' => $filename3,
-            ];
+            $data['pkp'] = $filename3;
         }
-
-        $data1  = [
-            'status' => 0,
-        ];
-        $this->perusahaan->editData($id_perusahaan, $data);
-        $this->m_user->editData($id_perusahaan, $data1);
-
         if ($request->fotokiri <> null)
         {
             $file4  = $request->fotokiri;
             $filename4 = "FOTOKIRI".$email.'.'.$file4->extension();
             $file4->move(public_path('verifikasi/fotokantor/fotokiri'),$filename4);
     
-            $data = [
-                'fotokiri' => $filename4,
-            ];
-            $this->perusahaan->editData($id_perusahaan, $data);
+            $data['fotokiri'] = $filename4;
+           
         }
 
         if ($request->fotokanan <> null)
@@ -421,10 +411,7 @@ class c_perusahaan extends Controller
             $filename5 = "FOTOkanan".$email.'.'.$file5->extension();
             $file5->move(public_path('verifikasi/fotokantor/fotokanan'),$filename5);
     
-            $data = [
-                'fotokanan' => $filename5,
-            ];
-            $this->perusahaan->editData($id_perusahaan, $data);
+            $data['fotokanan'] = $filename5;
         }
 
         if ($request->fotobelakang <> null)
@@ -433,10 +420,7 @@ class c_perusahaan extends Controller
             $filename6 = "FOTObelakang".$email.'.'.$file6->extension();
             $file6->move(public_path('verifikasi/fotokantor/fotobelakang'),$filename6);
     
-            $data = [
-                'fotobelakang' => $filename6,
-            ];
-            $this->perusahaan->editData($id_perusahaan, $data);
+            $data['fotobelakang'] = $filename6;
         }
         if ($request->fotodalam <> null)
         {
@@ -444,11 +428,11 @@ class c_perusahaan extends Controller
             $filename7 = "fotodalam".$email.'.'.$file7->extension();
             $file7->move(public_path('verifikasi/fotokantor/fotodalam'),$filename7);
     
-            $data = [
-                'fotodalam' => $filename7,
-            ];
-            $this->perusahaan->editData($id_perusahaan, $data);
+            $data['fotodalam'] = $filename7;
+
         }
+        $this->perusahaan->editData($id_perusahaan, $data);
+
        
         return redirect()->back();
     }
