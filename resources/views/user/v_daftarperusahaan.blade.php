@@ -6,8 +6,6 @@
 <br> 
 <div class="container">
 <h2>DAFTAR PERUSAHAAN</h2>
-{{-- <div class="jumbotron p-5 rounded-3"> --}}
-  {{-- <section id="search" class="search py-5"> --}}
     <div class="search-bar px-2">
       <div class="container">
         <div class="card search-card">
@@ -18,30 +16,46 @@
         </div>
       </div>
     </div>
-  {{-- </section> --}}
-            <div class="col-md-12" id="full">
-               
-              <div class="row" id="full">
-              @foreach ($perusahaan as $perusahaans)
-                  <div class="col-md-3 ">
-                    <div class="card">
-                      <img src="{{asset('/logo/'. $perusahaans->logo)}}" width="250" height="200" style="display:block; margin:auto;" alt=>
-                    </div>
-                    <div class="card-header">
-                    <h6  class="card-title">{{ $perusahaans->nama }}</h6><br><br>{{ $perusahaans->alamat }}<br><a href="/detailperusahaan/{{ $perusahaans->id_perusahaan }}" class="btn btn-primary">Detail</a>
-                  </div> </div>
-  
-              @endforeach
-            </div>
-            </div>
-            <div class="col-md-12">
-                
+            <div class="col-sm-12" id="full">      
+               <div class="row" id="full">
+                  @foreach ($perusahaan as $perusahaans)
+                  <div class="col-sm-4 d-flex" >
+                      <div class="card card-body flex-fill">
+                        <div class="row">
+                        <div class="col-sm-3">
+                          <img class="img-fluid" src="{{asset('/logo/'. $perusahaans->logo)}}" alt="" style="width:auto;margin-top:5px">
+                        </div>
+                        <div class="col-sm-9">
+                          <table>
+                            <tr>
+                            <td>{{ $perusahaans->nama }}</td>
+                          </tr>
+                          <tr>
+                            <td><span style="color: grey">{{ $perusahaans->alamat }} {{$perusahaan}}</span></td>
+                          </tr>
+                          </table>
+                        </div>
+                        </div>
+                        <br>
+                        <ul class="fa-ul">
+                          <li><i class="fa-li fa fa-building"></i>{{$perusahaans->industri}}</li>
+                           
+                          </ul>
+                          <a href="{{url('/detailperusahaan')}}/{{$perusahaans->id_perusahaan}}" style="width:100%;" class="btn btn-primary">Detail </a><br>
+                        </div>
+                            
+                       </div>       
+                          
+                     
+      
+                  @endforeach
+                </div>
+              </div>
+            <div class="col-sm-12">
                 <div id="searchResult" class="row">
               </div>
-              
-              
             </div>
-          </div>
+          
           <table style="width: 100%;margin-left:auto;margin-right:auto">
             <tr>
               <td style="width: 40%"></td>
@@ -49,8 +63,6 @@
               <td style="width: 40%"></td>
             </tr>
           </table>
-    </div>
-
 </div>
 @endsection
 
@@ -90,15 +102,32 @@ $(document).ready(function(){
           for(let i=0; i<data.length;i++){
             gambar="'/logo/"+data[i].logo+"'";
             searchResultAjax+=
-             `<div class="col-md-3 ">
-              <div class="card">
-                <img src="./logo/`+data[i].logo+`" width="250" height="200" style="display:block; margin:auto;" alt=></div> 
-                <div class="card-header">
-                  <h6 id="searchResult" class="card-title">`+data[i].nama+`</h6>
-                  <br><br>`+data[i].alamat+`
-                  <br><a href="/detailperusahaan/`+data[i].id_perusahaan+`" class="btn btn-primary">Detail</a>
-                  </div>
-                </div>`
+             `        <div class="col-sm-4 d-flex" >
+                      <div class="card card-body flex-fill">
+                        <div class="row">
+                        <div class="col-sm-3">
+                          <img class="img-fluid" src="`+data[i].logo+`" alt="" style="width:auto;margin-top:5px">
+                        </div>
+                        <div class="col-sm-9">
+                          <table>
+                            <tr>
+                            <td>`+data[i].nama+`</td>
+                          </tr>
+                          <tr>
+                            <td><span style="color: grey">`+data[i].alamat+`</span></td>
+                          </tr>
+                          </table>
+                        </div>
+                        </div>
+                        <br>
+                        <ul class="fa-ul">
+                          <li><i class="fa-li fa fa-building"></i>`+data[i].industri+`</li>
+                           
+                          </ul>
+                          <a href="{{url('/detailperusahaan')}}/`+data[i].id_lowongan+`" style="width:100%;" class="btn btn-primary">Detail </a><br>
+                        </div>
+                            
+                       </div>    `
           }
           $('#searchResult').html(searchResultAjax);
         },

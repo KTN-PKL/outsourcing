@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\perusahaan;
 use App\Models\pelamar;
 use App\Models\m_user;
+use App\Models\lowongan;
 use Auth;
 use DB;
 
@@ -17,6 +18,7 @@ class c_perusahaan extends Controller
         $this->perusahaan = new perusahaan();
         $this->pelamar = new pelamar();
         $this->m_user = new m_user();
+        $this->lowongan = new lowongan();
     }
 
     public function index()
@@ -215,6 +217,15 @@ class c_perusahaan extends Controller
     {
         $data = [
             'perusahaan' => $this->perusahaan->allData(),
+        ];
+
+        return view('user.v_daftarperusahaan', $data);
+    }
+
+    public function test($id_perusahaan)
+    {
+        $data = [
+            'perusahaan' => $this->lowongan->jumlahLowongan($id_perusahaan),
         ];
 
         return view('user.v_daftarperusahaan', $data);

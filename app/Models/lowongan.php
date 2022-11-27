@@ -36,6 +36,11 @@ class lowongan extends Model
         return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('lowongans.id_perusahaan', $id_perusahaan)->paginate(8);
     }
 
+    public function jumlahLowongan($id_perusahaan)
+    {
+        return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')->where('lowongans.id_perusahaan', $id_perusahaan)->count();
+    }
+
     public function addData($data)
     {
         DB::table('lowongans')->insert($data);

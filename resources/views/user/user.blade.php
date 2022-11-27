@@ -50,11 +50,11 @@
           <div class="col-md-12" id="full">
             <div class="row" id="full">
               @foreach ($lowongan as $lowongans)
-              <div class="col-md-4">
-                  <div class="card-header">
+              <div class="col-md-4 d-flex">
+                  <div style="border-top:1px solid grey;border-bottom:1px solid grey" class="card-body flex-fill">
                     <div class="row">
-                    <div class="col-md-2">
-                      <img src="{{asset('/logo/'. $lowongans->logo)}}" alt="" style="width:40px;margin-top:5px">
+                    <div style="align-self: flex-start" class="col-md-2">
+                      <img class="img-fluid" src="{{asset('/logo/'. $lowongans->logo)}}" alt="" style="width:40px;margin-top:5px">
                     </div>
                     <div class="col-md-10">
                       <table>
@@ -67,10 +67,7 @@
                       </table>
                     </div>
                     </div>
-                    </div>
-                 
-                          <div class="card-body">
-                             
+                    <br>
                               <ul class="fa-ul">
                                 <li><i class="fa-li fa fa-clock"></i>{{$lowongans->tipe}}</li>
                                 <li><i class="fa-li fa fa-map-marker"></i>{{$lowongans->alamat}}</li>
@@ -82,19 +79,20 @@
                                 <li><i class="fa-li fa fa-suitcase"></i>{{$lowongans->pengalaman}}</li>
                                
                               </ul>
-                              <small> <i style="color: green">Diperbaharui {{ \Carbon\Carbon::parse($lowongans->waktu)->diffForHumans() }}
+                              <small style="align-self:flex-end"><i class="fa fa-clock" style="color: green">Diperbarui {{ \Carbon\Carbon::parse($lowongans->waktu)->diffForHumans() }}
                               </i></small>
 
-                         </div>
-                          <div class="card-footer">
-                            <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" style="width:100%;" class="btn btn-primary">Detail </a><br>
-                          </div>
+                     
+                              <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" class="stretched-link"></a>
+                            {{-- <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" style="width:100%;" class="btn btn-primary">Detail </a><br> --}}
+                        
                         </div>       
                       
                  
   
-              @endforeach
+            
             </div>
+            @endforeach
           </div>
           <div class="col-md-12">
               
