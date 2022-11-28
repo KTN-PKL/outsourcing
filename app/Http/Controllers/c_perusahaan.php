@@ -221,15 +221,12 @@ class c_perusahaan extends Controller
 
         return view('user.v_daftarperusahaan', $data);
     }
-
-    public function test($id_perusahaan)
+    public function readHitung($id)
     {
-        $data = [
-            'perusahaan' => $this->lowongan->jumlahLowongan($id_perusahaan),
-        ];
-
-        return view('user.v_daftarperusahaan', $data);
+        $perusahaan = $this->lowongan->jumlahLowongan($id);
+        return $perusahaan;
     }
+
 
     public function destroy($id)
     {
