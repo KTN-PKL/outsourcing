@@ -85,10 +85,13 @@ Daftar Pelamar
               </button>
           </div>
           <div class="modal-body">
-            <div id="pembungkus" style="position: relative" class="col-md-4 offset-3">
-              <img src="{{asset('/foto/'.$lamarans->foto)}}" alt="">
-              <a style="position: absolute; top:100px;left:70px" href="{{asset('/foto/'.$lamarans->foto)}}" download> <button type="button" class="btn btn-outline-secondary">Download</button></a>
+            <center>
+            <div id="pembungkus" style="position: relative">
+              <a id="download" style="position: absolute;" href="{{asset('foto/'.$lamarans->foto)}}" download> <button type="button" class="btn btn-outline-secondary"><i class="fa fa-download"></i></button></a>
+              <img class="img-thumbnail" src="{{asset('/foto/'.$lamarans->foto)}}" width="50%" alt="">
+             
             </div>
+            </center>
             <table>
               <tr>
                 <td style="width:50%">Nama</td>
@@ -102,10 +105,10 @@ Daftar Pelamar
                 <td style="width:50%">Gender</td>
                 <td>: {{$lamarans->alamatpel}}</td>
               </tr>
-              {{-- <tr>
+              <tr>
                 <td style="width:50%">Email</td>
                 <td>: {{$lamarans->email}}</td>
-              </tr> --}}
+              </tr>
               <tr>
                 <td style="width:50%">Nomor Telepon</td>
                 <td>: {{$lamarans->no_telp}}</td>
