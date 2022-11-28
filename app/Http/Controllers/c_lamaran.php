@@ -98,14 +98,6 @@ class c_lamaran extends Controller
         $this->lamaran->editData($id_lamaran, $data);
     }
 
-    public function newnotifwawancara($id_lamaran)
-    {
-        $data = [
-            'notifwawancara' => "new",
-        ];
-        $this->lamaran->editData($id_lamaran, $data);
-    }
-
     public function bacastatus()
     {
         $data = [
@@ -143,6 +135,7 @@ class c_lamaran extends Controller
             'status' => $status,
         ];
         $this->lamaran->editData($id_lamaran, $data);
+        $this->newnotifstatus($id_lamaran);
         return redirect()->back();
     }
 
