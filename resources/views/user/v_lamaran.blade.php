@@ -20,10 +20,11 @@
       <td>{{ $i }}</td>
       <td>{{$lamarans->nama}}</td>
       <td>{{$lamarans->posisi}}</td>
+      <td>{{ $lamarans->status }}</td>
       <td>
       @if ($lamarans->status == "Diterima")
         <span class="badge badge-success">Diterima di perusahaan</span>
-      @elseif ($lamarans->tipewawancara <> null)
+      @elseif ($lamarans->status == "Lulus")
           <span class="badge badge-primary">Tahap Wawancara</span>
       @else
           <span class="badge badge-primary">Tahap Pengajuan CV</span> 
