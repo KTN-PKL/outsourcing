@@ -51,7 +51,7 @@ class lamaran extends Model
 
     public function editDatau($id_user, $data)
     {
-        DB::table('lamarans')->where('id_$id_user', $id_user)->update($data);
+        DB::table('lamarans')->where('id_user', $id_user)->update($data);
     }
 
     public function notifstatus()

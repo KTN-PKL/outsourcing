@@ -34,6 +34,7 @@ class c_wawancara extends Controller
                 'alamatwawancara'=> $request->alamatwawancara,
             ];
             $this->lamaran->editData($id_lamaran, $data);
+            $this->newnotifwawancara($id_lamaran);
             return redirect()->back();
         }
      
@@ -66,5 +67,13 @@ class c_wawancara extends Controller
             $this->lamaran->editData($id_lamaran, $data);
         }
         return redirect()->back();
+    }
+
+    public function newnotifwawancara($id_lamaran)
+    {
+        $data = [
+            'notifwawancara' => "new",
+        ];
+        $this->lamaran->editData($id_lamaran, $data);
     }
 }
