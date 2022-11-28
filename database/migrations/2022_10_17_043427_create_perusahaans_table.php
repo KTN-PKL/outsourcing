@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('fotokiri')->nullable();
             $table->string('fotokanan')->nullable();
             $table->string('fotodalam')->nullable();
-            $table->string('status')->nullable();
+            $table->string('verifikasi')->nullable();
             $table->timestamps();
         });
     }

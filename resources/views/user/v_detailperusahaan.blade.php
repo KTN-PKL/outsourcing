@@ -148,24 +148,37 @@
                 data-slide-to='0'
                 class='active'
                 ></li>
+                
+            @if($perusahaan->fotobelakang<>null)
             <li
                 data-target='#carouselExampleIndicators'
                 data-slide-to='1'
                 ></li>
+           @endif
+
+          @if($perusahaan->fotokiri<>null)
             <li
                 data-target='#carouselExampleIndicators'
                 data-slide-to='2'
                 ></li>
+                @endif
+
+                @if($perusahaan->fotokanan<>null)
             <li
                 data-target='#carouselExampleIndicators'
                 data-slide-to='3'
                 ></li>
+                @endif
+
+                @if($perusahaan->fotodalam<>null)
             <li
                 data-target='#carouselExampleIndicators'
                 data-slide-to='4'
                 ></li>
+                @endif
           </ol>
           <div class='carousel-inner'>
+            <center>
             <div class='carousel-item active'>
               <img class='img-size' src='{{asset('/verifikasi/fotokantor/fotodepan/'. $perusahaan->fotodepan)}}' alt='1' />
             </div>

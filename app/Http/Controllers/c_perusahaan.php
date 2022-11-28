@@ -51,7 +51,7 @@ class c_perusahaan extends Controller
     public function verifikasi($id_perusahaan)
     {
         $data2 = [
-            'status' => 1,
+            'verifikasi' => 1,
         ];
 
         $this->perusahaan->editData($id_perusahaan, $data2);
@@ -104,7 +104,7 @@ class c_perusahaan extends Controller
     public function read()
     {
         $perusahaan = $this->perusahaan->detailData(Auth::user()->id);
-        $data = $perusahaan->status;
+        $data = $perusahaan->verifikasi;
         return $data;
     }
 
@@ -394,7 +394,7 @@ class c_perusahaan extends Controller
             'nib' => $filename2,
             'npwp' => $request->npwp,
             'fotodepan' => $filename,
-            'status' => 0,
+            'verifikasi' => 0,
         ];
         if ($request->pkp <> "") {
             $file3  = $request->pkp;

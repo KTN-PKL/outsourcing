@@ -25,7 +25,7 @@ Daftar Perusahaan
 </button>
 <br>
 <br>
-<div style="width:50%;margin-left:2em" class="card">
+<div style="width:75%;margin-left:2em" class="card">
   <div class="table-responsive">
   <table style="width:auto" class="table">
     <tr>
@@ -46,7 +46,7 @@ Daftar Perusahaan
     <td>{{$i}}</td>
     <td>{{$perusahaans->nama}}</td>
     <td>{{$perusahaans->industri}}</td>
-    @if ($perusahaans->status == 1)
+    @if ($perusahaans->verifikasi == 1)
     <td><span class="badge badge-success">Sudah di verifikasi</span></td>      
     @else
     <td><span class="badge badge-danger">Belum di verifikasi</span></td>
@@ -182,7 +182,7 @@ Daftar Perusahaan
                             </div>
                            
                             <div class="modal-footer">
-                              @if($perusahaans->status == 0)
+                              @if($perusahaans->verifikasi == 0)
                                 <a href="{{ route('admin.perusahaan.verifikasi', $perusahaans->id) }}" class="btn btn-outline-success float-left">Verifikasi</a>
                                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Batal Verifikasi</button>
                                 @else 

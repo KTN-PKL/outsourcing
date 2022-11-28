@@ -24,8 +24,6 @@ Portal Kerja
       @php
       $i = 0;
       @endphp
-       <form method="POST" action="{{ route('wawancara.simpan',$id) }}">
-        @csrf
     @foreach($lamaran as $lamarans)
     <tr>
       @php

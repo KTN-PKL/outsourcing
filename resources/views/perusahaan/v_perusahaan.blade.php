@@ -8,7 +8,7 @@ Portal Kerja
 
 @section('content')
 <div class="container" >
-  @if($perusahaan->status == null)
+  @if($perusahaan->verifikasi == null)
   <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -142,7 +142,7 @@ Portal Kerja
     </div>
 </div>
   @else
-  @if ($perusahaan->status == "1")
+  @if ($perusahaan->verifikasi == "1")
   <div class="card-header col-md-2 offset-md-5">   
     <div class="icon-demo d-flex align-items-center justify-content-center p-3 py-6">
       <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
