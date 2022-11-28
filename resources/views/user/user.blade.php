@@ -79,7 +79,7 @@
                                 <li><i class="fa-li fa fa-suitcase"></i>{{$lowongans->pengalaman}}</li>
                                
                               </ul>
-                              <small style="align-self:flex-end"><i class="fa fa-clock" style="color: green">Diperbarui {{ \Carbon\Carbon::parse($lowongans->waktu)->diffForHumans() }}
+                              <small ><i class="fa fa-clock" style="color: green">Diperbarui {{ \Carbon\Carbon::parse($lowongans->waktu)->diffForHumans() }}
                               </i></small>
 
                      
