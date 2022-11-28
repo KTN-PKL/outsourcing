@@ -362,6 +362,14 @@ integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0Ec
      }
 </script>
 @endauth
+<script>
+  function serahlu(){ 
+        var id = $("#prov").val();
+        $.get("{{ url('kota') }}/" + id, {}, function(data, status) {
+          $("#baca").html(data);
+      });
+    }
+</script>
 
 
 

@@ -11,6 +11,7 @@ namespace App\Models;
 
 use AzisHapidin\IndoRegion\Traits\ProvinceTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Province Model.
@@ -34,4 +35,11 @@ class Province extends Model
     {
         return $this->hasMany(Regency::class);
     }
+
+    public function allData()
+    {
+        return DB::table('provinces')->get();
+    }
+
 }
+

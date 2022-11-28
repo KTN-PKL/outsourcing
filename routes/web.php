@@ -88,6 +88,8 @@ Route::controller(c_register::class)->group(function () {
     Route::post('/register/create', 'cpelamar')->name('register.pelamar');
     Route::post('/register/createperusahaan', 'cperusahaan')->name('register.perusahaan');
     Route::get('/registerperusahaan', 'regperusahaan');
+    Route::get('/kota/{id}', 'readKota');
+    
 });
 
 Route::controller(c_lamaran::class)->group(function(){

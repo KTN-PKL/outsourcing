@@ -31,7 +31,7 @@
                             <td>{{ $perusahaans->nama }}</td>
                           </tr>
                           <tr>
-                            <td><span style="color: grey">{{ $perusahaans->alamat }} {{$perusahaan}}</span></td>
+                            <td><span style="color: grey">{{ $perusahaans->kota }}</span></td>
                           </tr>
                           </table>
                         </div>

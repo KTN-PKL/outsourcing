@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('website');
             $table->string('industri');
             $table->string('ukuran');
+            $table->string('prov');
+            $table->string('kota');
             $table->string('ktp')->nullable();
             $table->string('nib')->nullable();
             $table->string('npwp')->nullable();

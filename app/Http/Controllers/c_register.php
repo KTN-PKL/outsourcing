@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\perusahaan;
 use App\Models\pelamar;
 use App\Models\m_user;
+use App\Models\Province;
+use App\Models\Regency;
 
 
 class c_register extends Controller
@@ -16,6 +18,9 @@ class c_register extends Controller
         $this->perusahaan = new perusahaan();
         $this->pelamar = new pelamar();
         $this->m_user = new m_user();
+        $this->Regency = new Regency();
+        $this->Province = new Province();
+        
     }
 
     public function regpelamar()
@@ -25,9 +30,20 @@ class c_register extends Controller
 
     public function regperusahaan()
     {
-        return view('perusahaan/v_registerperusahaan');
+        $data = [
+            'Province'=>$this->Province->allData(),
+        ]; 
+        return view('perusahaan/v_registerperusahaan',$data);
     }
 
+    public function readKota($id)
+    {   
+        $data = [
+            'Regency'=>$this->Regency->allData($id),
+        ]; 
+        return view('perusahaan/v_kota',$data);
+        
+    }
     public function cpelamar(Request $request)
     {
         $request->validate([
@@ -95,6 +111,8 @@ class c_register extends Controller
             'industri' => 'required',
             'website' => 'required',
             'ukuran' => 'max:10',
+            'prov' => 'required',
+            'kota' => 'required',
         ],[
             'name.required'=>'Nama Wajib terisi',
             'email.required'=>'Email wajib terisi',
@@ -110,6 +128,8 @@ class c_register extends Controller
             'logo.max'=>'Ukuran Logo tidak melebihi 2048kb',
             'ukuran.max'=>'Pilih Ukuran Perusahaan',
             'deskripsi.required'=>'Deskripsi Perusahaan Wajib Diisi',
+            'prov.required'=>'Provinsi Perusahaan Wajib Diisi',
+            'kota.required'=>'Kota Perusahaan Wajib Diisi',
         ]);
         $level = 2;
         $name = $request->name;
@@ -134,6 +154,8 @@ class c_register extends Controller
             'industri' => $request->industri,
             'website' => $request->website,
             'ukuran' => $request->ukuran,
+            'prov'=> $request->prov,
+            'kota'=> $request->kota,
         ];
         $this->perusahaan->addData($data2);
         return redirect('/')->with('register', 'Akun Perusahaan Berhasil Dibuat. Silahkan Tunggu Persetujuan Verifikasi oleh Admin');

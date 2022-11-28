@@ -95,6 +95,22 @@
                         @enderror
                       </div>
                       <div class="mb-3">
+                        <label for="prov">Provinsi</label>
+                        <select name="prov" type="text" class="form-select @error('prov') is-invalid @enderror" value="{{ old('prov') }}" placeholder="prov" aria-label="prov" onchange="serahlu()" id="prov">
+                          @foreach($Province as $provinces)
+                          <option value="{{$provinces->id}}">{{$provinces->name}}</option>
+                          @endforeach
+                        </select>
+                          @error('ukuran')
+                          <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                      </div>
+                      <div id="baca" class="mb-3">
+                       
+                      </div>
+                      <div class="mb-3">
                         <label for="deskripsi" class="form-label">Alamat</label>
                         <input name="alamat" type="textarea" class="form-control @error('alamat') is-invalid @enderror" value="{{ old('alamat') }}" id="formGroupExampleInput6" placeholder="Masukkan Alamat">
                         @error('alamat')
@@ -133,7 +149,10 @@
       </div>
     </div>
 
-                  </form>
+  </form>
+    <script>
+     
+    </script>
 
   @endsection 
     
