@@ -95,19 +95,18 @@ $(document).ready(function(){
           'Content-Type':'application/json'
         },
         success: function(data){
-          var gambar='';
+      
           var searchResultAjax='';
           data = JSON.parse(data);
           console.log(data);
           $('#searchResult').show();
           for(let i=0; i<data.length;i++){
-            gambar="'/logo/"+data[i].logo+"'";
             searchResultAjax+=
-             `        <div class="col-sm-4 d-flex" >
+             `   <div class="col-sm-4 d-flex" onload="readHitung({{$perusahaans->id_perusahaan}})" >
                       <div class="card card-body flex-fill">
                         <div class="row">
                         <div class="col-sm-3">
-                          <img class="img-fluid" src="`+data[i].logo+`" alt="" style="width:auto;margin-top:5px">
+                          <img class="img-fluid" src="./logo/`+data[i].logo+`" alt="" style="width:auto;margin-top:5px">
                         </div>
                         <div class="col-sm-9">
                           <table>
@@ -115,7 +114,7 @@ $(document).ready(function(){
                             <td>`+data[i].nama+`</td>
                           </tr>
                           <tr>
-                            <td><span style="color: grey">`+data[i].alamat+`</span></td>
+                            <td><span style="color: grey">`+data[i].kota+`</span></td>
                           </tr>
                           </table>
                         </div>
@@ -123,12 +122,14 @@ $(document).ready(function(){
                         <br>
                         <ul class="fa-ul">
                           <li><i class="fa-li fa fa-building"></i>`+data[i].industri+`</li>
+                          <li><i id="lowongan"></i></li>
                            
                           </ul>
-                          <a href="{{url('/detailperusahaan')}}/`+data[i].id_lowongan+`" style="width:100%;" class="btn btn-primary">Detail </a><br>
+                          <a href="{{url('/detailperusahaan')}}/`+data[i].id_perusahaan+`" style="width:100%;" class="btn btn-primary">Detail </a><br>
                         </div>
                             
-                       </div>    `
+                       </div>       
+                          `
           }
           $('#searchResult').html(searchResultAjax);
         },

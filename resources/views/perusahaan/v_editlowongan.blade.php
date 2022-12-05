@@ -196,7 +196,7 @@
   
       <div id="show" class="mb-3">
           <label class="form-label">Gaji</label>
-          <input type="text" class="form-control  @error('gaji') is-invalid @enderror" value="{{$lowongan->gaji}}" name="gaji" placeholder="Gaji ...">
+          <input id="gajih" onkeyup="rupe()" type="text" class="form-control  @error('gaji') is-invalid @enderror" value="{{$lowongan->gaji}}" name="gaji" placeholder="Gaji ...">
            @error('gaji')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -217,33 +217,6 @@
           <input class="btn btn-primary" type="submit" value="Edit">
         </div>
       </div>
-    {{-- <div class="modal-body">
-      <div id="alert"></div>
-      <div class="mb-3">
-        <label class="form-label">Posisi</label>
-        <input type="text" class="form-control" name="posisi" value="{{ $lowongan->posisi }}">
-      </div>
-      <div class="row mb-3">                       
-        <label class="form-label">Jobdesk</label>
-        <div class="col-md-16">
-         <textarea name="jobdesk" class="my-editor form-control" id="my-editor1" cols="30" rows="10">{{ $lowongan->jobdesk }}</textarea>
-        </div>
-      </div>
-      <div class="row mb-3">                       
-        <label class="form-label">Kualifikasi</label>
-        <div class="col-md-16">
-         <textarea name="kualifikasi" class="my-editor form-control" id="my-editor" cols="30" rows="10">{{ $lowongan->kualifikasi }}</textarea>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Skill</label>
-        <input type="test" class="form-control" name="skill" value="{{ $lowongan->skill }}">
-    </div>
-    <div class="modal-footer">
-      <div id="tombol_login">
-        <input class="btn btn-primary" type="submit" value="Edit">
-      </div>
-    </div> --}}
   </form>
 </div>
     </div>
@@ -267,6 +240,8 @@
     }
 }
 
+  
+
 $(function () {
     $('#upload').on('change', function () {
         readURL(input);
@@ -287,6 +262,21 @@ $(function () {
     </div>
     <div id="plus`+x+`"></div>
     `);
+  }
+  function rupe()
+  {
+    var gajih = $("#gajih").val();
+            var number_string = gajih.replace(/[^,\d]/g, '').toString(),
+	        split = number_string.split(','),
+	        sisa  = split[0].length % 3,
+	        rupiah  = split[0].substr(0, sisa),
+	        ribuan  = split[0].substr(sisa).match(/\d{3}/gi);
+            if(ribuan){
+	    	separator = sisa ? '.' : '';
+		    rupiah += separator + ribuan.join('.');
+	        }
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            $("#gajih").val(rupiah)
   }
 </script> 
     

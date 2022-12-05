@@ -221,11 +221,7 @@ class c_perusahaan extends Controller
 
         return view('user.v_daftarperusahaan', $data);
     }
-    public function readHitung($id)
-    {
-        $perusahaan = $this->lowongan->jumlahLowongan($id);
-        return $perusahaan;
-    }
+   
 
 
     public function destroy($id)
@@ -349,7 +345,7 @@ class c_perusahaan extends Controller
     public function validasi(Request $request)
     {
         $request->validate([
-            'fotodepan' => 'required|mimes:png,jpg,jpeg,bpm,pdf|max:2048',
+            'fotodepan' => 'required|mimes:png,jpg,jpeg,bpm|max:2048',
             'fotokiri' => 'mimes:png,jpg,jpeg,bpm|max:2048',
             'fotokanan' => 'mimes:png,jpg,jpeg,bpm|max:2048',
             'fotobelakang' => 'mimes:png,jpg,jpeg,bpm|max:2048',

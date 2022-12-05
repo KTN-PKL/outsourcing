@@ -50,7 +50,6 @@ Route::controller(c_perusahaan::class)->group(function () {
     Route::get('/daftarPerusahaan', 'daftarPerusahaan')->name('user.daftarPerusahaan');
     Route::get('/admin/lowongan', 'lowongan')->name('admin.lowongan');
     Route::get('perusahaan/read', 'read');
-    Route::get('perusahaan/readHitung/{id}', 'readHitung');
     Route::get('/admin/dashboard', 'dashboard')->name('admin.dashboard');
     Route::get('/detailperusahaan/{id_perusahaan}', 'detail')->name('detailperusahaan');
     Route::get('/admin/perusahaan/destroy/{id}', 'destroy')->name('admin.perusahaan.destoy');
@@ -113,6 +112,7 @@ Route::controller(c_lamaran::class)->group(function(){
 Route::controller(c_pelamar::class)->group(function () {
     Route::get('/profil', 'index');
     Route::post('/profil/edit', 'edit')->name('profil.edit');
+    Route::get('/user', 'readfoto');
 
 });
 

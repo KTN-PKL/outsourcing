@@ -32,6 +32,7 @@ Portal Kerja
       <!-- Upload PDF input-->
       <label class="form-label">NIB</label>
           <input type="file" onchange="readURL(this);" class="form-control  @error('nib') is-invalid @enderror"  name="nib">
+          <small style="color:grey" >File : PDF</small>
           @error('nib')
           <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -43,6 +44,7 @@ Portal Kerja
       <!-- Upload PDF input-->
       <label class="form-label">KTP Penanggung Jawab</label>
           <input type="file" onchange="readURL(this);" class="form-control  @error('ktp') is-invalid @enderror"  name="ktp">
+          <small style="color:grey" >File : PDF, JPG, JPEG, PNG, BPM</small>
           @error('ktp')
           <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -54,6 +56,7 @@ Portal Kerja
         <!-- Upload image input-->
           <label class="form-label"> Foto Depan Kantor </label>
             <input type="file" onchange="readURL(this);" class="form-control @error('fotodepan') is-invalid @enderror"  name="fotodepan">
+            <small style="color:grey" >File : JPG, JPEG, PNG, BPM</small>
             @error('fotodepan')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -68,6 +71,7 @@ Portal Kerja
             <!-- Upload image input-->
             <label class="form-label"> Foto Sisi Kiri Kantor <small style="color: gray">opsional</small></label>
                 <input type="file" onchange="readURL(this);" class="form-control @error('fotokiri') is-invalid @enderror"  name="fotokiri">
+                <small style="color:grey" >File : JPG, JPEG, PNG, BPM</small>
                 @error('fotokiri')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -82,6 +86,7 @@ Portal Kerja
             <!-- Upload image input-->
             <label class="form-label"> Foto Sisi Kanan Kantor <small style="color: gray">opsional</small></label>
                 <input type="file" onchange="readURL(this);" class="form-control @error('fotokanan') is-invalid @enderror"  name="fotokanan">
+                <small style="color:grey" >File : JPG, JPEG, PNG, BPM</small>
                 @error('fotokanan')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -96,6 +101,7 @@ Portal Kerja
             <!-- Upload image input-->
             <label class="form-label"> Foto Belakang Kantor <small style="color: gray">opsional</small></label>
                 <input type="file" onchange="readURL(this);" class="form-control @error('fotobelakang') is-invalid @enderror"  name="fotobelakang">
+                <small style="color:grey" >File : JPG, JPEG, PNG, BPM</small>
                 @error('fotobelakang')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -110,6 +116,7 @@ Portal Kerja
             <!-- Upload image input-->
             <label class="form-label"> Foto Dalam Kantor <small style="color: gray">opsional</small> </label>
                 <input type="file" onchange="readURL(this);" class="form-control @error('fotodalam') is-invalid @enderror"  name="fotodalam">
+                <small style="color:grey" >File : JPG, JPEG, PNG, BPM</small>
                 @error('fotodalam')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -124,6 +131,7 @@ Portal Kerja
             <!-- Upload image input-->
             <label class="form-label"> PKP <small style="color: gray">opsional</small></label>
                 <input type="file" onchange="readURL(this);" class="form-control  @error('fotokantor') is-invalid @enderror "  name="pkp">
+                <small style="color:grey" >File : PDF</small>
                 @error('pkp')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

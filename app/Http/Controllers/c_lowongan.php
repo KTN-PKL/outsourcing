@@ -72,6 +72,7 @@ class c_lowongan extends Controller
         'pengalaman' => $request->pengalaman,
         'waktu'=> $current_date_time,
         ];
+       
         if($request->statusgaji <> null){
             $data['gaji'] = $request->gaji;
             $data['statusgaji'] = "Tampilkan";

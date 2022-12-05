@@ -21,7 +21,7 @@
 
 
  
- <div class="card" style="background-color: rgb(201, 200, 200)">
+ <div class="card" style="background-color: rgb(255, 254, 254);margin-left:3em;margin-right:3em;border-color:grey">
     <div class="card-header">
       <div class="row">
       <div class="col-md-2">
@@ -68,20 +68,23 @@
  </div>
 </div>
 <div class="container">
+ <h4><b>DESKRIPSI PEKERJAAN</b></h4>
+ <br>
   <div class="row">
     <div class="col-sm">
-      <h4>SKILL</h4>
-      <div class="desc">
-        @php
-        $skill = explode("+" , $lowongan->skill);
-    @endphp
-    @foreach ($skill as $item)
-    <span class="badge badge-secondary">{{ $item }}</span>
-    @endforeach
-     
-      </div>
+    <h5>SKILL WAJIB</h5>
+    <div class="desc">
+      @php
+      $skill = explode("+" , $lowongan->skill);
+  @endphp
+  @foreach ($skill as $item)
+  <span class="badge badge-secondary">{{ $item }}</span>
+  @endforeach
+    </div>
+    <a style="position: absolute" class="btn btn-sm" id="buttonReadmore" onclick="lihatPekerjaan()">... Lihat Lebih Banyak <i class="fa fa-arrow-down"></i></a>
+    <div id="deskripsipekerjaan" style="display: none">
       <br>
-      <h4>TUNJANGAN</h4>
+      <h5>TUNJANGAN</h5>
       <div class="desc">
         @if ($lowongan->statustnk == "Tampilkan")
         @php
@@ -92,7 +95,7 @@
        @endif
       </div>
       <br>
-      <h4>JOBDESK</h4>
+      <h5>JOBDESK</h5>
       <div class="desc">
        
         @php
@@ -100,16 +103,53 @@
       @endphp  
     
       </div>
+      <h5>KUALIFIKASI</h5>
+      <div class="desc">
+        @php
+        echo $lowongan->kualifikasi;
+    @endphp <a class="btn btn-sm" id="buttonClosed" onclick="disablePekerjaan()">Lihat Lebih Sedikit <i class="fa fa-arrow-up"></i></a>
+      </div>
     </div>
-     <div class="col-sm">
-      <h4>KUALIFIKASI</h4>
+     {{-- <div class="col-sm">
+      <h5>KUALIFIKASI</h5>
       <div class="desc">
         @php
         echo $lowongan->kualifikasi;
     @endphp
       </div>
-    </div>
+    </div> --}}
   </div>
+</div>
+  <br>
+  <br>  
+  <div id="tentang" class="col-md-9" style="display: block">
+    <div class="card">
+      <div class="card-body" style="border: 1px solid grey">
+        <h5><b>Tentang Perusahaan</b></h5>
+          <div class="row">
+            <div class="col-md-2">  
+              <img class="img-thumbnail" src="{{asset('/logo/'. $lowongan->logo)}}" alt="" style="width:150px;margin-top:5px">
+            </div>
+            <div class="col-md-10">
+              <table>
+                <tr>
+                <td><a style="text-decoration: none" href="{{url('/detailperusahaan')}}/{{$lowongan->id_perusahaan}}"target="_blank"><b>{{ $lowongan->nama }}</b><a></td>
+              </tr>
+              <tr>
+                <td><a class="btn btn-outline-primary" style="border-radius:50%" href="{{$lowongan->website}}" target="_blank"><i class="fa fa-globe"></i></a></td>
+              </tr>
+              </table>
+            </div>
+          </div>
+          <br>
+          <h5><b>Alamat Perusahaan</b></h5>
+          <div class="desc">
+            @php
+             echo $lowongan->alamat;
+            @endphp
+          </div>
+      </div>
+    </div>
 </div>
 
 
@@ -149,11 +189,12 @@
        </form>
      </div>
    </div>
+  </div>
  </div>
 
  
 
- @endsection 
+
 
 
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -171,4 +212,15 @@
    });
 
  </script>
+ <script>
+  function lihatPekerjaan() {
+    document.getElementById("deskripsipekerjaan").style.display="block";
+    document.getElementById("buttonReadmore").style.display="none";
+     }
+  function disablePekerjaan() {
+    document.getElementById("deskripsipekerjaan").style.display="none";
+    document.getElementById("buttonReadmore").style.display="block";
+     }
+ </script>
  
+ @endsection 

@@ -69,8 +69,8 @@
                 <div class="col-md-5">
                   <table>
                     <tr>
-                      <td style="width:40%"><h6 style="color:grey">Kota</h6></td>
-                      <td><h6>{{$perusahaan->kota}}</h6></td>
+                      <td style="width:35%"><h6 style="color:grey">Kantor</h6></td>
+                      <td><h6 style="text-transform: capitalize">{{$perusahaan->kota}}</h6></td>
                     </tr>
                     <tr>
                       <td><h6 style="color:grey">Industri</h6></td>

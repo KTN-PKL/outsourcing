@@ -50,7 +50,7 @@
           <div class="col-md-12" id="full">
             <div class="row" id="full">
               @foreach ($lowongan as $lowongans)
-              <div class="col-md-4 d-flex">
+              <div class="col col-md-4 d-flex">
                   <div style="border-top:1px solid grey;border-bottom:1px solid grey" class="card-body flex-fill">
                     <div class="row">
                     <div style="align-self: flex-start" class="col-md-2">
@@ -70,8 +70,11 @@
                     <br>
                               <ul class="fa-ul">
                                 <li><i class="fa-li fa fa-clock"></i>{{$lowongans->tipe}}</li>
-                                <li><i class="fa-li fa fa-map-marker"></i>{{$lowongans->alamat}}</li>
+                                <li><i class="fa-li fa fa-map-marker"></i><span>{{$lowongans->kota}}</span></li>
                                 @if($lowongans->statusgaji == "Tampilkan")
+                                @php
+                                
+                                @endphp
                                 <li><i class="fa-li fa fa-money"></i>IDR {{$lowongans->gaji}}</li>
                                 @else
                                 <li><i class="fa-li fa fa-money"></i>Perusahaan Tidak Menampilkan Gaji</li>
@@ -94,6 +97,7 @@
             </div>
             @endforeach
           </div>
+        </div>
           <div class="col-md-12">
               
               <div id="searchResult" class="row">
@@ -112,7 +116,7 @@
           </table>
          
          
-        </div>
+       
       </div>
     
     </section>
@@ -270,11 +274,11 @@
               $('#searchResult').show();
               for(let i=0; i<data.length;i++){
                 searchResultAjax += 
-                ` <div class="col-md-4">
-                  <div class="card-header">
+                ` <div class="col col-md-4 d-flex">
+                  <div style="border-top:1px solid grey;border-bottom:1px solid grey" class="card-body flex-fill">
                     <div class="row">
-                    <div class="col-md-2">
-                      <img src="./logo/`+data[i].logo+`" alt="" style="width:40px;margin-top:5px">
+                    <div style="align-self: flex-start" class="col-md-2">
+                      <img class="img-fluid" src="./logo/`+data[i].logo+`" alt="" style="width:40px;margin-top:5px">
                     </div>
                     <div class="col-md-10">
                       <table>
@@ -287,25 +291,31 @@
                       </table>
                     </div>
                     </div>
-                    </div>
-                 
-                          <div class="card-body">
-                             
-                              <br>
+                    <br>
                               <ul class="fa-ul">
                                 <li><i class="fa-li fa fa-clock"></i>`+data[i].tipe+`</li>
-                                <li><i class="fa-li fa fa-map-marker"></i>`+data[i].alamat+`</li>
-                                <li><i class="fa-li fa fa-money"></i>`+data[i].gaji+`</li>
+                                <li><i class="fa-li fa fa-map-marker"></i>`+data[i].kota+`</li>
+                                @if($lowongans->statusgaji == "Tampilkan")
+                                <li><i class="fa-li fa fa-money"></i>IDR `+data[i].gaji+`</li>
+                                @else
+                                <li><i class="fa-li fa fa-money"></i>Perusahaan Tidak Menampilkan Gaji</li>
+                                @endif
                                 <li><i class="fa-li fa fa-suitcase"></i>`+data[i].pengalaman+`</li>
+                               
                               </ul>
-                              <small> <i style="color: green">Diperbaharui
-                              </i></small>
-                         </div>
-                          <div class="card-footer">
                             
-                            <a href="{{url('/detailLowongan')}}/`+data[i].id_lowongan+`" class="btn btn-primary" style="width:100%">Detail <span class="badge bg-secondary"></span> </a><br>
-                          </div>
-                        </div>`
+                           
+
+                     
+                              <a href="{{url('/detailLowongan')}}/`+data[i].id_lowongan+`" class="stretched-link"></a>
+                            {{-- <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" style="width:100%;" class="btn btn-primary">Detail </a><br> --}}
+                        
+                        </div>       
+                      
+                 
+  
+            
+            </div>`
               }
               $('#searchResult').html(searchResultAjax);
             }
@@ -313,4 +323,12 @@
         }
       })
     })
+
+    function diffInHoursToNow(dateStr){
+   var inputDate = new Date(Date.parse(dateStr));
+   var diff = new Date().getTime() - inputDate.getTime();
+   //depending on what you want you can round this off with 
+   //Math.floor(diff/3600)/1000 or similar 
+   return diff/3600000;
+}
     </script>

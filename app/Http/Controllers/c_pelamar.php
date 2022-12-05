@@ -73,4 +73,10 @@ class c_pelamar extends Controller
         $this->pelamar->editData($id, $data2);
         return redirect()->back()->with('update','Berhasil Update Profil');
     }
+
+    public function readfoto()
+    {
+        $pelamar = $this->pelamar->pelamarData(Auth::user()->id);
+        return $pelamar->foto;
+    }
 }

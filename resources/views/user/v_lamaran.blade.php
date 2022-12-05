@@ -1,5 +1,5 @@
 <div class="table-responsive" style="width:50%;background-color:white;" id="f5">
-    <table class="table table-bordered" >
+    <table class="table">
       <thead>
       <tr>
         <th>No</th>
