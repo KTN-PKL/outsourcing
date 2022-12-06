@@ -172,22 +172,42 @@
 <script>
    function filter1()
    {
-    $("#tipe1").val("Full-time");
+    var cek = $("#tipe1").val();
+    if (cek == 0) {
+      $("#tipe1").val("Full-time");
+    } else {
+      $("#tipe1").val("0");
+    }
     filter()
    }
    function filter2()
    {
-    $("#tipe2").val("Part-time");
+    var cek = $("#tipe2").val();
+    if (cek == 0) {
+      $("#tipe2").val("Part-time");
+    } else {
+      $("#tipe2").val("0");
+    }
     filter()
    }
    function filter3()
    {
-    $("#tipe3").val("Magang");
+    var cek = $("#tipe3").val();
+    if (cek == 0) {
+      $("#tipe3").val("Magang");
+    } else {
+      $("#tipe3").val("0");
+    }
     filter()
    }
    function filter4()
    {
-    $("#tipe4").val("Freelance");
+    var cek = $("#tipe4").val();
+    if (cek == 0) {
+      $("#tipe4").val("Freelance");
+    } else {
+      $("#tipe4").val("0");
+    }
     filter()
    }
 </script>
