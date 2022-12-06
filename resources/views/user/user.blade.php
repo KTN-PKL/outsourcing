@@ -44,13 +44,87 @@
           <input onkeyup="cariLowongan()" id="search" type="search" name="search"  class="form-control" placeholder="Cari Berdasarkan Posisi Kerja">
         </div>
       </div>
+      <center>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h6>Filter Pencarian</h6>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <h6>Tipe Pekerjaan</h6>
+                <table>
+                  <tr>
+                    <td>
+                      <input type="checkbox" name="statusgaji" value="tampilkangaji">
+                      <label>Full-time</label>
+                    </td>
+                    <td>
+                      <input type="checkbox" name="statusgaji" value="tampilkangaji">
+                      <label>Part-time</label>
+                    </td>
+                  </tr>
+                  <tr>
+                     <td>
+                      <input type="checkbox" name="statusgaji" value="tampilkangaji">
+                      <label>Magang</label>
+                     </td>
+                     <td>
+                      <input type="checkbox" name="statusgaji" value="tampilkangaji">
+                      <label>Freelance</label>
+                     </td>
+                  </tr>
+                </table>
+              </div>
+              
+              <div class="col-md-6">
+                <h6>Pengalaman</h6>
+                <table>
+                  <tr>
+                    <td>  
+                      <input type="checkbox" name="statusgaji" value="tampilkangaji">
+                      <label>Kurang dari 1 Tahun</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" name="statusgaji" value="tampilkangaji">
+                      <label>1 - 3 Tahun</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" name="statusgaji" value="tampilkangaji">
+                      <label>3 - 5 Tahun</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" name="statusgaji" value="tampilkangaji">
+                      <label>5 - 10 Tahun</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" name="statusgaji" value="tampilkangaji">
+                      <label>Lebih dari 10 Tahun</label>
+                    </td>
+                  </tr>
+                  
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        </center>
     
 {{-- </section> --}}
 
           <div id="tablelowongan" class="col-md-12" id="full">
 
         </div>
-         
+       
           <table style="width: 100%;margin-left:auto;margin-right:auto">
             <tr>
               <td style="width: 40%"></td>
