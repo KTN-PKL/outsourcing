@@ -121,7 +121,7 @@
           <ul class="navbar-nav ms-8">
             <li class="nav-item">
                 <div class="icon-demo d-flex align-items-center justify-content-center p-3 py-6">
-                  <i class="fa fa-bell"><sup id="jumlah" class="badge badge-warning"></sup></i>
+                  <i class="fa fa-bell"> <a href="{{url('/lamaranSaya')}}"> <sup id="jumlah" class="badge badge-warning"></sup></a></i>
                 </div>
             </li>
             <li class="nav-item">
@@ -129,13 +129,6 @@
                
               </div>
           </li>
-          
-            {{-- <li class="navbar-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{url('/')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                <img src="{{asset('/foto/Logocek2@example.com.jpg')}}" width="2%" alt="Profile" class="rounded-circle">
-                <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-              </a><!-- End Profile Iamge Icon -->
-            </li> --}}
             
             <li  class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{url('/')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -269,7 +262,7 @@
   </div>
 
         <!-- Modal Register -->
-    <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -307,7 +300,7 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> --}}
   
   
   
