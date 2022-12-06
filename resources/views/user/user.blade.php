@@ -44,13 +44,87 @@
           <input onkeyup="cariLowongan()" id="search" type="search" name="search"  class="form-control" placeholder="Cari Berdasarkan Posisi Kerja">
         </div>
       </div>
+      <center>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h6>Filter Pencarian</h6>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <h6>Tipe Pekerjaan</h6>
+                <table>
+                  <tr>
+                    <td>
+                      <input onchange="filter()" type="checkbox" id="tipe1" value="Full-time">
+                      <label>Full-time</label>
+                    </td>
+                    <td>
+                      <input onchange="filter()" type="checkbox" id="tipe2" value="Part-time">
+                      <label>Part-time</label>
+                    </td>
+                  </tr>
+                  <tr>
+                     <td>
+                      <input onchange="filter()" type="checkbox" id="tipe3" value="Magang">
+                      <label>Magang</label>
+                     </td>
+                     <td>
+                      <input onchange="filter()" type="checkbox" id="tipe4" value="Freelance">
+                      <label>Freelance</label>
+                     </td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="col-md-6">
+                <h6>Pengalaman</h6>
+                <table>
+                  <tr>
+                    <td>  
+                      <input onchange="filter()" type="checkbox" id="pengalaman1" value="Kurang dari 1 Tahun">
+                      <label>Kurang dari 1 Tahun</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input onchange="filter()" type="checkbox" id="pengalaman2" value="1-3 Tahun">
+                      <label>1 - 3 Tahun</label>  
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input onchange="filter()" type="checkbox" id="pengalaman3" value="3-5 Tahun">
+                      <label>3 - 5 Tahun</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input onchange="filter()" type="checkbox" id="pengalaman4" value="5-10 Tahun">
+                      <label>5 - 10 Tahun</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input onchange="filter()" type="checkbox" id="pengalaman5" value="Lebih dari 10 Tahun">
+                      <label>Lebih dari 10 Tahun</label>
+                    </td>
+                  </tr>
+                  
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        </center>
     
 {{-- </section> --}}
 
           <div id="tablelowongan" class="col-md-12" id="full">
 
         </div>
-         
+       
           <table style="width: 100%;margin-left:auto;margin-right:auto">
             <tr>
               <td style="width: 40%"></td>
@@ -122,6 +196,36 @@
            });
            }
          
+       }
+
+       function filter(){
+        var tipe1 = $("#tipe1").val();
+        var tipe2 = $("#tipe2").val();
+        var tipe3 = $("#tipe3").val();
+        var tipe4 = $("#tipe4").val();
+        var pengalaman1 = $("#pengalaman1").val();
+        var pengalaman2 = $("#pengalaman2").val();
+        var pengalaman3 = $("#pengalaman3").val();
+        var pengalaman4 = $("#pengalaman4").val();
+        var pengalaman5 = $("#pengalaman5").val();
+        $.ajax({
+               type: "get",
+               url: "{{ url('filter') }}",
+               data: {
+               "tipe1": tipe1,
+               "tipe2": tipe2,
+               "tipe3": tipe3,
+               "tipe4": tipe4,
+               "pengalaman1": pengalaman1,
+               "pengalaman2": pengalaman2,
+               "pengalaman3": pengalaman3,
+               "pengalaman4": pengalaman4,
+               "pengalaman5": pengalaman5,
+               },
+           success: function(data, status) {
+               $("#tablelowongan").html(data);
+               }
+           });
        }
 </script>
 
