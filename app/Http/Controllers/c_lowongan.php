@@ -19,7 +19,7 @@ class c_lowongan extends Controller
     {
         $tipe = null;
         for ($i=1; $i < 5; $i++) { 
-            if ($request->{"tipe".$i} <> null) {
+            if ($request->{"tipe".$i} <> 0) {
                 if ($tipe == null) {
                     $tipe = $request->{"tipe".$i};
                 } else {
@@ -29,7 +29,7 @@ class c_lowongan extends Controller
         } $data1 = explode("++",$tipe);
         $pengalaman = null;
         for ($i=1; $i < 6; $i++) { 
-            if ($request->{"pengalaman".$i} <> null) {
+            if ($request->{"pengalaman".$i} <> 0) {
                 if ($pengalaman == null) {
                     $pengalaman = $request->{"pengalaman".$i};
                 } else {
@@ -37,6 +37,7 @@ class c_lowongan extends Controller
                 }
             }
         } $data2 = explode("++",$pengalaman);
+       
         $data = [
             'lowongan' => $this->lowongan->filter($data1,$data2),
         ];

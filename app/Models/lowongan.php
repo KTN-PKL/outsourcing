@@ -68,9 +68,9 @@ class lowongan extends Model
 
     public function filter($data1, $data2)
     {
-            return DB::table('lowongans')->join('perusahaan', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')
+            return DB::table('lowongans')->join('perusahaans', 'lowongans.id_perusahaan', '=', 'perusahaans.id_perusahaan')
             ->when($data1, function($queri, $data1) {
-                if ($data1 <> null) {
+                if ($data1[0] <> null) {
                     $queri->where('tipe', $data1[0]);
                     $j = count($data1);
                     $j = $j - 1;
@@ -81,7 +81,7 @@ class lowongan extends Model
                 }
             })
             ->when($data2, function($queri, $data2) {
-                if ($data2 <> null) {
+                if ($data2[0] <> null) {
                     $queri->where('pengalaman', $data2[0]);
                     $j = count($data2);
                     $j = $j - 1;
