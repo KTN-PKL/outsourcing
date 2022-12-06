@@ -28,7 +28,7 @@ class c_lowongan extends Controller
             }
         } $data1 = explode("++",$tipe);
         $pengalaman = null;
-        for ($i=1; $i < 5; $i++) { 
+        for ($i=1; $i < 6; $i++) { 
             if ($request->{"pengalaman".$i} <> null) {
                 if ($pengalaman == null) {
                     $pengalaman = $request->{"pengalaman".$i};
