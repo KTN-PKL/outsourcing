@@ -27,7 +27,7 @@
       @elseif ($lamarans->status == "Lulus")
           <span class="badge badge-primary">Tahap Wawancara</span>
       @else
-          <span class="badge badge-primary">Tahap Pengajuan CV</span> 
+          <span class="badge badge-primary">Dalam Review</span> 
       @endif
       </td>
     </tr>

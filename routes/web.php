@@ -31,14 +31,15 @@ Route::get('/test', function () {
 
 
 Route::get('/', [App\Http\Controllers\c_landingpage::class, 'landingPage'])->name('landingPage');
-Route::get('/cek', [App\Http\Controllers\c_searc::class, 'cari']);
-Route::post('/cek', [App\Http\Controllers\c_searc::class, 'cari']);
+Route::get('/cek', [App\Http\Controllers\c_searc::class, 'searchLowongan']);
+Route::get('/lowongan/table', [App\Http\Controllers\c_searc::class, 'table']);
+// Route::post('/cek', [App\Http\Controllers\c_searc::class, 'cari']);
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('search',[App\Http\Controllers\c_perusahaan::class, 'Search'] );
+Route::get('search',[App\Http\Controllers\c_perusahaan::class, 'Search'] );
 Route::get('search1',[App\Http\Controllers\c_perusahaan::class, 'cek'] );
 
 Route::controller(c_perusahaan::class)->group(function () {
@@ -57,6 +58,7 @@ Route::controller(c_perusahaan::class)->group(function () {
     Route::get('/admin/perusahaan/downloadakta/{akta}', 'download1')->name('admin.perusahaan.downloadakta');
     Route::get('/admin/perusahaan/downloadpkp/{pkp}', 'download2')->name('admin.perusahaan.downloadpkp');
     Route::get('/admin/perusahaan/downloadnib/{nib}', 'download3')->name('admin.perusahaan.downloadnib');
+    Route::get('/perusahaan/table', 'table')->name('perusahaan.table');
 });
 
 Route::controller(c_wawancara::class)->group(function () {
