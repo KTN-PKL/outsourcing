@@ -47,66 +47,10 @@
     
 {{-- </section> --}}
 
-          <div class="col-md-12" id="full">
-            <div class="row" id="full">
-              @foreach ($lowongan as $lowongans)
-              <div class="col col-md-4 d-flex">
-                  <div style="border-top:1px solid grey;border-bottom:1px solid grey" class="card-body flex-fill">
-                    <div class="row">
-                    <div style="align-self: flex-start" class="col-md-2">
-                      <img class="img-fluid" src="{{asset('/logo/'. $lowongans->logo)}}" alt="" style="width:40px;margin-top:5px">
-                    </div>
-                    <div class="col-md-10">
-                      <table>
-                        <tr>
-                        <td>{{ $lowongans->posisi }}</td>
-                      </tr>
-                      <tr>
-                        <td><a style="text-decoration: none" href="">{{ $lowongans->nama }}</a></td>
-                      </tr>
-                      </table>
-                    </div>
-                    </div>
-                    <br>
-                              <ul class="fa-ul">
-                                <li><i class="fa-li fa fa-clock"></i>{{$lowongans->tipe}}</li>
-                                <li><i class="fa-li fa fa-map-marker"></i><span>{{$lowongans->kota}}</span></li>
-                                @if($lowongans->statusgaji == "Tampilkan")
-                                @php
-                                
-                                @endphp
-                                <li><i class="fa-li fa fa-money"></i>IDR {{$lowongans->gaji}}</li>
-                                @else
-                                <li><i class="fa-li fa fa-money"></i>Perusahaan Tidak Menampilkan Gaji</li>
-                                @endif
-                                <li><i class="fa-li fa fa-suitcase"></i>{{$lowongans->pengalaman}}</li>
-                               
-                              </ul>
-                              <small ><i class="fa fa-clock" style="color: green">Diperbarui {{ \Carbon\Carbon::parse($lowongans->waktu)->diffForHumans() }}
-                              </i></small>
+          <div id="tablelowongan" class="col-md-12" id="full">
 
-                     
-                              <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" class="stretched-link"></a>
-                            {{-- <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" style="width:100%;" class="btn btn-primary">Detail </a><br> --}}
-                        
-                        </div>       
-                      
-                 
-  
-            
-            </div>
-            @endforeach
-          </div>
         </div>
-          <div class="col-md-12">
-              
-              <div id="searchResult" class="row">
-              
-              
-            </div>
-            
-        
-          </div>
+         
           <table style="width: 100%;margin-left:auto;margin-right:auto">
             <tr>
               <td style="width: 40%"></td>
@@ -149,96 +93,39 @@
       });
 
     </script>
-    {{-- <script>
-    function login() {
-      var formElement = document.getElementById("form-login");
-      var formData = new FormData(formElement);
-      const xhttp = new XMLHttpRequest();
 
-      xhttp.open("POST", "http://localhost/outsourcings/outsourcings/User/login/");
-      xhttp.onload = function() {
-        var obj = JSON.parse(this.response);
+<script>
+  $(document).ready(function() {
+       tablelowongan()
+   });
 
-        switch (obj.status) {
-          case 'sukses':
-            switch (obj.level) {
-              case 'admin':
-                window.location.href = "http://localhost/outsourcings/outsourcings/admin"
-                break;
-              case 'user':
-                window.location.href = "http://localhost/outsourcings/outsourcings/user"
-                break;
-              case 'perusahaan':
-                window.location.href = "http://localhost/outsourcings/outsourcings/perusahaan"
-                break;
+   function tablelowongan() {
+           $.get("{{ url('lowongan/table') }}", {}, function(data, status) {
+               $("#tablelowongan").html(data);
+           });
+       }
+    function cariPerusahaan() {
+           var search = $("#search").val();
+           if (search == "") {
+             tableperusahaan()
+           }
+           else{
+             $.ajax({
+               type: "get",
+               url: "{{ url('cek') }}",
+               data: {
+               "search": search,
+               },
+           success: function(data, status) {
+               $("#tablelowongan").html(data);
+               }
+           });
+           }
+         
+       }
+</script>
 
-              default:
-                break;
-            }
-            break;
-
-          case 'error':
-            document.getElementById("alert").innerHTML = `<div class="alert alert-danger" role="alert">
-                                                                    ${obj.pesan}
-                                                                  </div>`;
-            document.getElementById("tombol_login").innerHTML = `<input class="btn btn-primary" type="submit" value="Masuk">`;
-          default:
-            break;
-        }
-        console.log(obj);
-      }
-
-      xhttp.onprogress = function() {
-        document.getElementById("tombol_login").innerHTML = `<div class="loader"></div>`;
-      }
-
-      xhttp.send(formData);
-      return false;
-    }
-  </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('#Table_ID').DataTable();
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      load_data();
-
-      function load_data(query) {
-        $.ajax({
-          url: "http://localhost/outsourcings/outsourcings/Welcome/search",
-          method: "POST",
-          data: {
-            query: query
-          },
-          success: function(data) {
-            $('#result').html(data);
-          }
-        });
-      }
-      $('#lowongan').keyup(function() {
-        let search = $(this).val();
-        if (search != '') {
-          load_data(search);
-        } else {
-          load_data();
-        }
-      });
-      $('#wilayah').keyup(function() {
-        let search = $(this).val();
-        if (search != '') {
-          load_data(search);
-        } else {
-          load_data();
-        }
-      });
-    });
-  </script> --}}
-
-  <script type="text/javascript">
+  {{-- <script type="text/javascript">
     $(document).ready(function(){
     
       
@@ -324,4 +211,4 @@
    //Math.floor(diff/3600)/1000 or similar 
    return diff/3600000;
 }
-    </script>
+    </script> --}}

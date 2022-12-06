@@ -12,6 +12,13 @@ class c_searc extends Controller
         $this->lowongan = new lowongan();
     }
 
+    public function table(){
+        $data = [
+            'lowongan'=>$this->lowongan->aktifData(),
+        ];
+        return view('user.tablelowongan', $data);
+    }
+
     public function kata()
     {
         $data = $this->lowongan->aktifData();

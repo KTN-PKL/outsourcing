@@ -21,6 +21,13 @@ class c_perusahaan extends Controller
         $this->lowongan = new lowongan();
     }
 
+    public function table(){
+        $data = [
+            'perusahaan'=>$this->perusahaan->allData(),
+        ];
+        return view('user.tableperusahaan', $data);
+    }
+
     public function index()
     {
         $data = [
@@ -318,19 +325,30 @@ class c_perusahaan extends Controller
             }
         }
         $hasil = array_values (array_map ("unserialize", array_unique (array_map ("serialize", $data3))));
+        // if ($hasil[0] = 0) {
+        //     $hasil = null;
+        // }
         return $hasil;
     }
 
     public function Search(Request $request)
     {
-        // $cari = $request->cari;
-        // $data = [
-        //     'lowongan' =>$this->lowongan->cariData($cari),
-        // ];
-        // return view('user/user',$data);
         $inputSearch=$request['inputSearch'];
-        $keyResult = $this->cari($inputSearch);
-        echo json_encode($keyResult);
+        $test = $this->cari($inputSearch);
+        if($test[0] <> null){
+            $data = [
+                'perusahaan' =>$test,
+            ];
+        return view('user.tableperusahaan',$data);
+            
+        }else{
+            return 
+            '<center>
+            <div style="font-size:24px"><i class="fa fa-times" style="color:red"></i>Perusahaan Tidak Ditemukan
+            </div>
+            </center>';
+        }
+       
     }
 
     public function detail($id_perusahaan)
