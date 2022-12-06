@@ -41,7 +41,7 @@
       <div class="card search-card">
         <label><i class="fas fa-search"></i>Cari Loker<br /></label>
         <div class="mb-3 text-center">
-          <input id="search" type="" name=""  class="form-control" placeholder="Cari Berdasarkan Posisi Kerja">
+          <input onkeyup="cariLowongan()" id="search" type="search" name="search"  class="form-control" placeholder="Cari Berdasarkan Posisi Kerja">
         </div>
       </div>
     
@@ -104,10 +104,10 @@
                $("#tablelowongan").html(data);
            });
        }
-    function cariPerusahaan() {
+    function cariLowongan() {
            var search = $("#search").val();
            if (search == "") {
-             tableperusahaan()
+             tablelowongan()
            }
            else{
              $.ajax({
@@ -125,90 +125,4 @@
        }
 </script>
 
-  {{-- <script type="text/javascript">
-    $(document).ready(function(){
-    
-      
-      $.ajaxSetup({
-        headers:{
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      })
-      $('#search').on('keyup', function(){
-        $search = $(this).val();
-        if($search == ''){
-          document.getElementById("full").style.display="block";
-          $('#searchResult').html('');
-          $('#searchResult').hide('');
-          document.getElementById("searchResult").style.display="none";
-        }else{
-          document.getElementById("full").style.display="none";
-          $.ajax({
-            method:"post",
-            url:'cek',
-            data:JSON.stringify({
-              search:$search
-            }),
-            headers:{
-              'Accept':'application/json',
-              'Content-Type':'application/json'
-            },
-            success: function(data){
-              var searchResultAjax='';
-              data = JSON.parse(data);
-              console.log(data);
-              $('#searchResult').show();
-              for(let i=0; i<data.length;i++){
-                searchResultAjax += 
-                ` <div class="col col-md-4 d-flex">
-                  <div style="border-top:1px solid grey;border-bottom:1px solid grey" class="card-body flex-fill">
-                    <div class="row">
-                    <div style="align-self: flex-start" class="col-md-2">
-                      <img class="img-fluid" src="./logo/`+data[i].logo+`" alt="" style="width:40px;margin-top:5px">
-                    </div>
-                    <div class="col-md-10">
-                      <table>
-                        <tr>
-                        <td>`+data[i].posisi+`</td>
-                      </tr>
-                      <tr>
-                        <td><a style="text-decoration: none" href="">`+data[i].nama+`</a></td>
-                      </tr>
-                      </table>
-                    </div>
-                    </div>
-                    <br>
-                              <ul class="fa-ul">
-                                <li><i class="fa-li fa fa-clock"></i>`+data[i].tipe+`</li>
-                                <li><i class="fa-li fa fa-map-marker"></i>`+data[i].kota+`</li>
-                                @if(`+data[i].statusgaji+` == "Tampilkan")
-                                <li><i class="fa-li fa fa-money"></i>IDR `+data[i].gaji+`</li>
-                                @else
-                                <li><i class="fa-li fa fa-money"></i>Perusahaan Tidak Menampilkan Gaji</li>
-                                @endif
-                                <li><i class="fa-li fa fa-suitcase"></i>`+data[i].pengalaman+`</li>
-                               
-                              </ul>
-                              <a href="{{url('/detailLowongan')}}/`+data[i].id_lowongan+`" class="stretched-link"></a>
-                        </div>       
-                      
-                 
-  
-            
-            </div>`
-              }
-              $('#searchResult').html(searchResultAjax);
-            }
-          })
-        }
-      })
-    })
-
-    function diffInHoursToNow(dateStr){
-   var inputDate = new Date(Date.parse(dateStr));
-   var diff = new Date().getTime() - inputDate.getTime();
-   //depending on what you want you can round this off with 
-   //Math.floor(diff/3600)/1000 or similar 
-   return diff/3600000;
-}
-    </script> --}}
+ 

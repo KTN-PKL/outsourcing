@@ -79,11 +79,9 @@ class c_searc extends Controller
         return $h;
     }
 
-    public function cari(Request $request)
-    {
-        $search=$request['search'];
+    public function cari($cari){
+
         $n = 0;
-        $cari=strtolower($search);
         $h = $this->cek($cari);
         $z = count($h);
         $data3[0] = 0;
@@ -105,6 +103,25 @@ class c_searc extends Controller
         }
         
         $hasil =  array_values (array_map ("unserialize", array_unique (array_map ("serialize", $data3))));
-        echo json_encode($hasil);
+        // echo json_encode($hasil)
+        return $hasil;
+    }
+
+    public function searchLowongan(Request $request)
+    {
+        $search=$request['search'];
+        $test = $this->cari($search);
+        if($test[0] <> null){
+            $data = [
+                'lowongan' =>$test,
+            ];
+        return view('user.tablelowongan',$data);  
+        }else{
+            return 
+            '<center>
+            <div style="font-size:24px"><i class="fa fa-times" style="color:red"></i>Lowongan Tidak Ditemukan
+            </div>
+            </center>';
+        };
     }
 }
