@@ -34,12 +34,13 @@ Daftar Lowongan
 <br>
 <br>
 
-<div style="margin-left:2em;" class="card">
-  <table style="width:100%" class="table table-bordered table-hover">
+<div style="margin-left:2em;width:80%" class="card">
+  <div class="table-responsive">
+  <table style="width:100%" class="table">
     <tr>
-      <th style="width:5%">No</th>
+      <th style="width:10%">No</th>
       <th style="width:20%" >Tipe Lowongan</th>
-      <th style="width:20%">Posisi</th>
+      <th style="width:30%">Posisi</th>
       <th style="width:10%" >Status</th>
       <th style="width:30%">Action</th>
     </tr>
@@ -73,6 +74,7 @@ Daftar Lowongan
   </tr>
 @endforeach
   </table>
+</div>
   {{-- <table style="width: 100%;margin-left:auto;margin-right:auto">
     <tr>
       <td style="width: 40%"></td>

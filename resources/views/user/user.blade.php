@@ -267,7 +267,6 @@
               'Content-Type':'application/json'
             },
             success: function(data){
-  
               var searchResultAjax='';
               data = JSON.parse(data);
               console.log(data);
@@ -295,7 +294,7 @@
                               <ul class="fa-ul">
                                 <li><i class="fa-li fa fa-clock"></i>`+data[i].tipe+`</li>
                                 <li><i class="fa-li fa fa-map-marker"></i>`+data[i].kota+`</li>
-                                @if($lowongans->statusgaji == "Tampilkan")
+                                @if(`+data[i].statusgaji+` == "Tampilkan")
                                 <li><i class="fa-li fa fa-money"></i>IDR `+data[i].gaji+`</li>
                                 @else
                                 <li><i class="fa-li fa fa-money"></i>Perusahaan Tidak Menampilkan Gaji</li>
@@ -303,13 +302,7 @@
                                 <li><i class="fa-li fa fa-suitcase"></i>`+data[i].pengalaman+`</li>
                                
                               </ul>
-                            
-                           
-
-                     
                               <a href="{{url('/detailLowongan')}}/`+data[i].id_lowongan+`" class="stretched-link"></a>
-                            {{-- <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" style="width:100%;" class="btn btn-primary">Detail </a><br> --}}
-                        
                         </div>       
                       
                  
