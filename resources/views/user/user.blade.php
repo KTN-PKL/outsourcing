@@ -56,21 +56,21 @@
                 <table>
                   <tr>
                     <td>
-                      <input onchange="filter()" type="checkbox" id="tipe1" value="Full-time">
+                      <input onchange="filter()" type="checkbox" id="tipe1">
                       <label>Full-time</label>
                     </td>
                     <td>
-                      <input onchange="filter()" type="checkbox" id="tipe2" value="Part-time">
+                      <input onchange="filter()" type="checkbox" id="tipe2">
                       <label>Part-time</label>
                     </td>
                   </tr>
                   <tr>
                      <td>
-                      <input onchange="filter()" type="checkbox" id="tipe3" value="Magang">
+                      <input onchange="filter()" type="checkbox" id="tipe3">
                       <label>Magang</label>
                      </td>
                      <td>
-                      <input onchange="filter()" type="checkbox" id="tipe4" value="Freelance">
+                      <input onchange="filter()" type="checkbox" id="tipe4">
                       <label>Freelance</label>
                      </td>
                   </tr>
@@ -82,31 +82,31 @@
                 <table>
                   <tr>
                     <td>  
-                      <input onchange="filter()" type="checkbox" id="pengalaman1" value="Kurang dari 1 Tahun">
+                      <input onchange="filter()" type="checkbox" id="pengalaman1">
                       <label>Kurang dari 1 Tahun</label>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <input onchange="filter()" type="checkbox" id="pengalaman2" value="1-3 Tahun">
+                      <input onchange="filter()" type="checkbox" id="pengalaman2">
                       <label>1 - 3 Tahun</label>  
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <input onchange="filter()" type="checkbox" id="pengalaman3" value="3-5 Tahun">
+                      <input onchange="filter()" type="checkbox" id="pengalaman3">
                       <label>3 - 5 Tahun</label>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <input onchange="filter()" type="checkbox" id="pengalaman4" value="5-10 Tahun">
+                      <input onchange="filter()" type="checkbox" id="pengalaman4">
                       <label>5 - 10 Tahun</label>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <input onchange="filter()" type="checkbox" id="pengalaman5" value="Lebih dari 10 Tahun">
+                      <input onchange="filter()" type="checkbox" id="pengalaman5">
                       <label>Lebih dari 10 Tahun</label>
                     </td>
                   </tr>
@@ -168,11 +168,38 @@
 
     </script>
 
+
+<script>
+   function filte1()
+   {
+    $("#tipe1").val("Full-time");
+    filter()
+   }
+   function filte2()
+   {
+    $("#tipe2").val("Part-time");
+    filter()
+   }function filte3()
+   {
+    $("#tipe3").val("Magang");
+    filter()
+   }function filte4()
+   {
+    $("#tipe4").val("Freelance");
+    filter()
+   }
+</script>
+
+
+
+
+
 <script>
   $(document).ready(function() {
        tablelowongan()
    });
 
+  
    function tablelowongan() {
            $.get("{{ url('lowongan/table') }}", {}, function(data, status) {
                $("#tablelowongan").html(data);
