@@ -46,12 +46,12 @@
       </div>
       <center>
         <div class="col-md-12">
-          <div class="card">
+          <div class="card" style>
             <div class="card-header">
-              <h6>Filter Pencarian</h6>
+              <h6>Filter Pencarian</h6> <i onclick="desc1()" id="desc" class="fa fa-sort-desc"></i><i onclick="asc1()" style="display:none" id="asc" class="fa fa-sort-asc"></i>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6"  style="display: none" id="tampilanfilter1" >
                 <h6>Tipe Pekerjaan</h6>
                 <table>
                   <tr>
@@ -77,7 +77,7 @@
                 </table>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-6"  style="display: none" id="tampilanfilter2" >
                 <h6>Pengalaman</h6>
                 <table>
                   <tr>
@@ -170,6 +170,20 @@
 
 
 <script>
+  function desc1(){
+    document.getElementById('tampilanfilter1').style.display="block";
+    document.getElementById('tampilanfilter2').style.display="block";
+    document.getElementById('desc').style.display="none";
+    document.getElementById('asc').style.display="block";
+  }
+  function asc1(){
+    document.getElementById('tampilanfilter1').style.display="none";
+    document.getElementById('tampilanfilter2').style.display="none";
+    document.getElementById('desc').style.display="block";
+    document.getElementById('asc').style.display="none";
+  }
+
+
    function filter1()
    {
     var cek = $("#tipe1").val();

@@ -129,7 +129,7 @@ class c_searc extends Controller
                 }
             }
         } $data2a = explode("++",$pengalaman);
-        $search=$request['search'];
+        $search=strtolower($request['search']);
         $test = $this->cari($search, $data1a, $data2a);
         if($test[0] <> null){
             $data = [
