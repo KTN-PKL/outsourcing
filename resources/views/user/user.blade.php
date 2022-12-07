@@ -47,7 +47,7 @@
       <center>
         <div class="col-md-12">
           <div class="card" style>
-            <div class="card-header">
+            <div class="card-header" style="border:none;">
               <h6>Filter Pencarian</h6> <i onclick="desc1()" id="desc" class="fa fa-sort-desc"></i><i onclick="asc1()" style="display:none" id="asc" class="fa fa-sort-asc"></i>
             </div>
             <div class="row">

@@ -68,58 +68,61 @@
  </div>
 </div>
 <div class="container">
- <h4><b>DESKRIPSI PEKERJAAN</b></h4>
- <br>
-  <div class="row">
-    <div class="col-sm">
-    <h5>SKILL WAJIB</h5>
-    <div class="desc">
-      @php
-      $skill = explode("+" , $lowongan->skill);
-  @endphp
-  @foreach ($skill as $item)
-  <span class="badge badge-secondary">{{ $item }}</span>
-  @endforeach
-    </div>
-    <a style="position: absolute" class="btn btn-sm" id="buttonReadmore" onclick="lihatPekerjaan()">... Lihat Lebih Banyak <i class="fa fa-arrow-down"></i></a>
-    <div id="deskripsipekerjaan" style="display: none">
-      <br>
-      <h5>TUNJANGAN</h5>
-      <div class="desc">
-        @if ($lowongan->statustnk == "Tampilkan")
-        @php
-          echo $lowongan->benefit;
-      @endphp
-        @else
-        <i>Perusahaan Tidak Menampilkan Tunjangan Dan Benefit</i>    
-       @endif
-      </div>
-      <br>
-      <h5>JOBDESK</h5>
-      <div class="desc">
+  <div class="col-md-9">
+    <h4><b>DESKRIPSI PEKERJAAN</b></h4>
+    <br>
+     <div class="row">
+       <div class="col-sm">
+       <h5>SKILL WAJIB</h5>
+       <div class="desc">
+         @php
+         $skill = explode("+" , $lowongan->skill);
+     @endphp
+     @foreach ($skill as $item)
+     <span class="badge badge-secondary">{{ $item }}</span>
+     @endforeach
+       </div>
+       <a style="position: absolute" class="btn btn-sm" id="buttonReadmore" onclick="lihatPekerjaan()">... Lihat Lebih Banyak <i class="fa fa-arrow-down"></i></a>
+       <div id="deskripsipekerjaan" style="display: none">
+         <br>
+         <h5>TUNJANGAN</h5>
+         <div class="desc">
+           @if ($lowongan->statustnk == "Tampilkan")
+           @php
+             echo $lowongan->benefit;
+         @endphp
+           @else
+           <i>Perusahaan Tidak Menampilkan Tunjangan Dan Benefit</i>    
+          @endif
+         </div>
        
-        @php
-          echo $lowongan->jobdesk;
-      @endphp  
-    
-      </div>
-      <h5>KUALIFIKASI</h5>
-      <div class="desc">
-        @php
-        echo $lowongan->kualifikasi;
-    @endphp <a class="btn btn-sm" id="buttonClosed" onclick="disablePekerjaan()">Lihat Lebih Sedikit <i class="fa fa-arrow-up"></i></a>
-      </div>
-    </div>
-     {{-- <div class="col-sm">
-      <h5>KUALIFIKASI</h5>
-      <div class="desc">
-        @php
-        echo $lowongan->kualifikasi;
-    @endphp
-      </div>
-    </div> --}}
+         <h5>JOBDESK</h5>
+         <div class="desc">
+          
+           @php
+             echo $lowongan->jobdesk;
+         @endphp  
+       
+         </div>
+         <h5>KUALIFIKASI</h5>
+         <div class="desc">
+           @php
+           echo $lowongan->kualifikasi;
+       @endphp <a class="btn btn-sm" id="buttonClosed" onclick="disablePekerjaan()">Lihat Lebih Sedikit <i class="fa fa-arrow-up"></i></a>
+         </div>
+       </div>
+        {{-- <div class="col-sm">
+         <h5>KUALIFIKASI</h5>
+         <div class="desc">
+           @php
+           echo $lowongan->kualifikasi;
+       @endphp
+         </div>
+       </div> --}}
+     </div>
+   </div>
   </div>
-</div>
+
   <br>
   <br>  
   <div id="tentang" class="col-md-9" style="display: block">

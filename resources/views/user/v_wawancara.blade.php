@@ -12,11 +12,19 @@
         </th>
       </tr>
     </thead>
+    @php
+    $i = 0;
+     @endphp
     @foreach($lamaran as $lamarans)
       @if ($lamarans->jadwal <> null)
       <tbody>
       <tr>
-      <td>1</td>
+      <td>
+        @php
+        $i=$i+1;
+        @endphp
+        {{$i}}
+      </td>
       <td>{{$lamarans->nama}}</td>
       <td>{{$lamarans->posisi}}</td>
       <td>{{$lamarans->tipewawancara}}</td>
@@ -35,7 +43,7 @@
         <li><i class="fa-li fa fa-map-marker"></i> {{$lamarans->alamatwawancara}}</li>
       </ul>
       @else
-       <a href=""><span class="badge badge-success"> <i class="fa fa-phone"></i> Lakukan Panggilan </span></a> 
+       <a href=""><span class="badge badge-success"> <i class="fa fa-clock"></i> Menunggu Detail Lokasi</span></a> 
     </td>
       @endif  
     </tr>

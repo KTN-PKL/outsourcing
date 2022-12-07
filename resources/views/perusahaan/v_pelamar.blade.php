@@ -94,28 +94,34 @@ Daftar Pelamar
             </center>
             <table>
               <tr>
-                <td style="width:50%">Nama</td>
-                <td>: {{$lamarans->namapel}}</td>
+                <td style="width:30%">Nama</td>
+                <td>:</td>
+                <td>{{$lamarans->namapel}}</td>
               </tr>
               <tr>
-                <td style="width:50%">Alamat</td>
-                <td>: {{$lamarans->alamatpel}}</td>
+                <td style="width:30%;align-top">Alamat</td>
+                <td>:</td>
+                <td>{{$lamarans->alamatpel}}</td>
               </tr>
               <tr>
-                <td style="width:50%">Gender</td>
-                <td>: {{$lamarans->alamatpel}}</td>
+                <td style="width:30%">Gender</td>
+                <td>:</td>
+                <td>{{$lamarans->gender}}</td>
               </tr>
               <tr>
-                <td style="width:50%">Email</td>
-                <td>: {{$lamarans->email}}</td>
+                <td style="width:30%">Email</td>
+                <td>:</td>
+                <td>{{$lamarans->email}}</td>
               </tr>
               <tr>
-                <td style="width:50%">Nomor Telepon</td>
-                <td>: {{$lamarans->no_telp}}</td>
+                <td style="width:30%">Nomor Telepon</td>
+                <td>:</td>
+                <td>{{$lamarans->no_telp}}</td>
               </tr>
               <tr>
-                <td style="width:50%;height:50%">File Dokumen</td>
-                <td>: <a href="{{ route('perusahaan.lamaran.downloadcv', $lamarans->resume) }}" class="btn btn-primary"> <i class="fa fa-cloud-download-alt"></i> Download CV</a></td>
+                <td style="width:30%;height:50%">File Dokumen</td>
+                <td>:</td>
+                <td><a href="{{ route('perusahaan.lamaran.downloadcv', $lamarans->resume) }}" class="btn btn-primary"> <i class="fa fa-cloud-download-alt"></i> Download CV</a></td>
               </tr>
           </table>
           </div>

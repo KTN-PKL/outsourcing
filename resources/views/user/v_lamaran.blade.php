@@ -20,7 +20,6 @@
       <td>{{ $i }}</td>
       <td>{{$lamarans->nama}}</td>
       <td>{{$lamarans->posisi}}</td>
-      <td>{{ $lamarans->status }}</td>
       <td>
       @if ($lamarans->status == "Diterima")
         <span class="badge badge-success">Diterima di perusahaan</span>

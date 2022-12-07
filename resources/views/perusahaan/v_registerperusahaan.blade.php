@@ -97,6 +97,7 @@
                       <div class="mb-3">
                         <label for="prov">Provinsi</label>
                         <select name="prov" type="text" class="form-select @error('prov') is-invalid @enderror" value="{{ old('prov') }}" placeholder="prov" aria-label="prov" onchange="serahlu()" id="prov">
+                          <option selected disabled>-- Pilih Provinsi --</option>
                           @foreach($Province as $provinces)
                           <option value="{{$provinces->id}}">{{$provinces->name}}</option>
                           @endforeach
