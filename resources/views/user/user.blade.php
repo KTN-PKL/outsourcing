@@ -82,31 +82,31 @@
                 <table>
                   <tr>
                     <td>  
-                      <input onchange="filter()" type="checkbox" id="pengalaman1" value="0">
+                      <input onchange="filter5()" type="checkbox" id="pengalaman1" value="0">
                       <label>Kurang dari 1 Tahun</label>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <input onchange="filter()" type="checkbox" id="pengalaman2" value="0">
+                      <input onchange="filter6()" type="checkbox" id="pengalaman2" value="0">
                       <label>1 - 3 Tahun</label>  
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <input onchange="filter()" type="checkbox" id="pengalaman3" value="0">
+                      <input onchange="filter7()" type="checkbox" id="pengalaman3" value="0">
                       <label>3 - 5 Tahun</label>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <input onchange="filter()" type="checkbox" id="pengalaman4" value="0">
+                      <input onchange="filter8()" type="checkbox" id="pengalaman4" value="0">
                       <label>5 - 10 Tahun</label>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <input onchange="filter()" type="checkbox" id="pengalaman5" value="0">
+                      <input onchange="filter9()" type="checkbox" id="pengalaman5" value="0">
                       <label>Lebih dari 10 Tahun</label>
                     </td>
                   </tr>
@@ -207,6 +207,57 @@
       $("#tipe4").val("Freelance");
     } else {
       $("#tipe4").val("0");
+    }
+    filter()
+   }
+
+   function filter5()
+   {
+    var cek = $("#pengalaman1").val();
+    if (cek == 0) {
+      $("#pengalaman1").val("Kurang dari 1 Tahun");
+    } else {
+      $("#pengalaman1").val("0");
+    }
+    filter()
+   }
+   function filter6()
+   {
+    var cek = $("#pengalaman2").val();
+    if (cek == 0) {
+      $("#pengalaman2").val("1-3 Tahun");
+    } else {
+      $("#pengalaman2").val("0");
+    }
+    filter()
+   }
+   function filter7()
+   {
+    var cek = $("#pengalaman3").val();
+    if (cek == 0) {
+      $("#pengalaman3").val("3-5 Tahun");
+    } else {
+      $("#pengalaman3").val("0");
+    }
+    filter()
+   }
+   function filter8()
+   {
+    var cek = $("#pengalaman4").val();
+    if (cek == 0) {
+      $("#pengalaman4").val("5-10 Tahun");
+    } else {
+      $("#pengalaman4").val("0");
+    }
+    filter()
+   }
+   function filter9()
+   {
+    var cek = $("#pengalaman5").val();
+    if (cek == 0) {
+      $("#pengalaman5").val("Lebih dari 10 Tahun");
+    } else {
+      $("#pengalaman5").val("0");
     }
     filter()
    }
