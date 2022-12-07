@@ -19,9 +19,9 @@ class c_searc extends Controller
         return view('user.tablelowongan', $data);
     }
 
-    public function kata()
+    public function kata($data1a, $data2a)
     {
-        $data = $this->lowongan->aktifData();
+        $data = $this->lowongan->filter($data1a, $data2a);
         $kata = " ";
         foreach ($data as $data1) {
             $data2 = strtolower($data1->posisi);
@@ -35,7 +35,7 @@ class c_searc extends Controller
         return $kata;
     }
 
-    public function cek($cari)
+    public function cek($cari, $data1a, $data2a)
     {
         $str = explode(" ",$cari);
         $d = 0;
@@ -45,7 +45,7 @@ class c_searc extends Controller
         $ar = str_split($str[$l]);
         $a = strlen($str[$l]);
         $b = $a-1;
-        $kata = $this->kata();
+        $kata = $this->kata($data1a, $data2a);
         $arr = str_split($kata);
         $j = strlen($kata);
         $s = $j-$a;
@@ -79,14 +79,14 @@ class c_searc extends Controller
         return $h;
     }
 
-    public function cari($cari){
+    public function cari($cari, $data1a, $data2a){
 
         $n = 0;
-        $h = $this->cek($cari);
+        $h = $this->cek($cari, $data1a, $data2a);
         $z = count($h);
         $data3[0] = 0;
-        $data = $this->lowongan->aktifData();
-        $data1 = $this->lowongan->jumlah();
+        $data = $this->lowongan->filter($data1a, $data2a);
+        $data1 = $this->lowongan->jfilter($data1a, $data2a);
         for ($u=1; $u < $z; $u++) { 
             $data2 = str_replace(' ', '',  $data[0]->posisi);
                 $a = strlen($data2);
@@ -109,8 +109,28 @@ class c_searc extends Controller
 
     public function searchLowongan(Request $request)
     {
+        $tipe = null;
+        for ($i=1; $i < 5; $i++) { 
+            if ($request->{"tipe".$i} <> 0) {
+                if ($tipe == null) {
+                    $tipe = $request->{"tipe".$i};
+                } else {
+                    $tipe = $tipe."++".$request->{"tipe".$i};
+                }
+            }
+        } $data1a = explode("++",$tipe);
+        $pengalaman = null;
+        for ($i=1; $i < 6; $i++) { 
+            if ($request->{"pengalaman".$i} <> 0) {
+                if ($pengalaman == null) {
+                    $pengalaman = $request->{"pengalaman".$i};
+                } else {
+                    $pengalaman = $pengalaman."++".$request->{"pengalaman".$i};
+                }
+            }
+        } $data2a = explode("++",$pengalaman);
         $search=$request['search'];
-        $test = $this->cari($search);
+        $test = $this->cari($search, $data1a, $data2a);
         if($test[0] <> null){
             $data = [
                 'lowongan' =>$test,

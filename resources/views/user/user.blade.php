@@ -280,8 +280,17 @@
        }
     function cariLowongan() {
            var search = $("#search").val();
+           var tipe1 = $("#tipe1").val();
+           var tipe2 = $("#tipe2").val();
+          var tipe3 = $("#tipe3").val();
+        var tipe4 = $("#tipe4").val();
+        var pengalaman1 = $("#pengalaman1").val();
+        var pengalaman2 = $("#pengalaman2").val();
+        var pengalaman3 = $("#pengalaman3").val();
+        var pengalaman4 = $("#pengalaman4").val();
+        var pengalaman5 = $("#pengalaman5").val();
            if (search == "") {
-             tablelowongan()
+             filter()
            }
            else{
              $.ajax({
@@ -289,6 +298,15 @@
                url: "{{ url('cek') }}",
                data: {
                "search": search,
+               "tipe1": tipe1,
+               "tipe2": tipe2,
+               "tipe3": tipe3,
+               "tipe4": tipe4,
+               "pengalaman1": pengalaman1,
+               "pengalaman2": pengalaman2,
+               "pengalaman3": pengalaman3,
+               "pengalaman4": pengalaman4,
+               "pengalaman5": pengalaman5,
                },
            success: function(data, status) {
                $("#tablelowongan").html(data);
