@@ -178,6 +178,7 @@
     } else {
       $("#tipe1").val("0");
     }
+    $("#search").val("");
     filter()
    }
    function filter2()
@@ -188,6 +189,7 @@
     } else {
       $("#tipe2").val("0");
     }
+    $("#search").val("");
     filter()
    }
    function filter3()
@@ -198,6 +200,7 @@
     } else {
       $("#tipe3").val("0");
     }
+    $("#search").val("");
     filter()
    }
    function filter4()
@@ -208,6 +211,7 @@
     } else {
       $("#tipe4").val("0");
     }
+    $("#search").val("");
     filter()
    }
 
@@ -219,6 +223,7 @@
     } else {
       $("#pengalaman1").val("0");
     }
+    $("#search").val("");
     filter()
    }
    function filter6()
@@ -229,6 +234,7 @@
     } else {
       $("#pengalaman2").val("0");
     }
+    $("#search").val("");
     filter()
    }
    function filter7()
@@ -239,6 +245,7 @@
     } else {
       $("#pengalaman3").val("0");
     }
+    $("#search").val("");
     filter()
    }
    function filter8()
@@ -249,6 +256,7 @@
     } else {
       $("#pengalaman4").val("0");
     }
+    $("#search").val("");
     filter()
    }
    function filter9()
@@ -259,6 +267,7 @@
     } else {
       $("#pengalaman5").val("0");
     }
+    $("#search").val("");
     filter()
    }
 </script>
