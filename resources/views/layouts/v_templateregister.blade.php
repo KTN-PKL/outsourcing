@@ -88,73 +88,7 @@
     
    
     <nav class="navbar navbar-expand-lg fixed-top bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><h4>PORTAL KERJA</h4></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{url('/')}}">LOWONGAN KERJA</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url('/daftarPerusahaan')}}">PERUSAHAAN</a>
-            </li>
-          </ul>
-        </ul>
-          @guest
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link px-2" href="#" data-bs-toggle="modal" data-bs-target="#pilihRegister">DAFTAR</a>
-            </li>
-             <li class="nav-item">
-              <a class="nav-link px-2" href="{{ route('login')}}"  data-bs-toggle="modal" data-bs-target="#masuk">MASUK</a>
-            </li>
-            
-
-          </ul>
-        
-
-          @endguest
-           @auth
-          <ul class="navbar-nav ms-8">
-            <li class="nav-item">
-                <div class="icon-demo d-flex align-items-center justify-content-center p-3 py-6">
-                  <i class="fa fa-bell"> <a href="{{url('/lamaranSaya')}}"> <sup id="jumlah" class="badge badge-warning"></sup></a></i>
-                </div>
-            </li>
-            <li class="nav-item">
-              <div id="navbar">
-               
-              </div>
-          </li>
-            
-            <li  class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{url('/')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-             {{Auth::user()->name}}
-              </a>
-           
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a href="{{url('/profil')}}" class="dropdown-item fa fa-user"> Profil Saya</a>
-                <a href="{{url('/lamaranSaya')}}" class="dropdown-item fa fa-file"> Lamaran Saya</a>
-
-                  <a class="dropdown-item" href="{{ route('logout') }}"
-                     onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
-                     <i class="fa fa-sign-out"></i>{{ __('Logout') }}
-                  </a>
-
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                      @csrf
-                  </form>
-              </div>
-          </li>
-          
-        </ul>
-        @endauth
-        </div>
-      </div>
+      @include('layouts.nav')
     </nav>
 
 <br>
@@ -228,38 +162,8 @@
 
 
   <!-- Modal Login-->
-  <div class="modal fade" id="masuk" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-            <form id="form-login" method="POST" action="{{ route('login') }}">
-                @csrf
-          <div class="modal-body">
-            <div id="alert"></div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" name="email">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" name="password">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <h6>Tidak Punya Akun? <a href="#" data-bs-toggle="modal" data-bs-target="#pilihRegister" data-bs-dismiss="modal">Daftar</a>
-            </h6>
-            <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            <div id="tombol_login">
-              <input class="btn btn-primary" type="submit" value="Masuk">
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+  @include('login')
+  
 
         <!-- Modal Register -->
     {{-- <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -402,6 +306,7 @@ integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0Ec
 
 
 
+
   
   
   
@@ -433,7 +338,7 @@ integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0Ec
   });
   
   </script>
-  
+  @yield('scripts')
   
   </body>
 

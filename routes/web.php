@@ -20,6 +20,9 @@ use App\Http\Controllers\c_pelamar;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/dashboard', [App\Http\Controllers\c_login::class, 'dashboard'] );
+Route::post('/check', [App\Http\Controllers\c_login::class, 'check'])->name('login.check');
+Route::post('/', [App\Http\Controllers\c_login::class, 'logout'])->name('user.logout');
 
 Route::get('/link', function () {
     return view('user.v_link');
