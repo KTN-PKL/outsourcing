@@ -5,10 +5,10 @@
           <h5 class="modal-title" id="exampleModalLabel">Login</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('login.check') }}">
                 @csrf
           <div class="modal-body">
-            <div id="alert"></div>
+            <div  style="display: none" id="alert">Email atau Password Salah</div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
               <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email')}}">
@@ -33,7 +33,7 @@
             </h6>
             <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             <div id="tombol_login">
-              <input class="btn btn-primary" type="submit">
+              <input class="btn btn-primary" type="submit" value="Masuk">
             </div>
           </div>
         </form>
@@ -51,5 +51,12 @@
         $('#masuk').modal('show');
     });
     </script>
+    @elseif(session()->has('error'))
+    <script>
+      $(function() {
+          $('#masuk').modal('show');
+          document.getElementById('alert').style.display="block";
+      });
+      </script>
 @endif
 @endsection

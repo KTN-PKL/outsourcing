@@ -14,7 +14,7 @@ class c_login extends Controller
             'email' => 'required',
             'password' => 'required',
         ],[
-            'email.required'=>'email wajib terisi',
+            'email.required'=>'Email wajib terisi',
             'password.required'=>'Password wajib terisi',
         ]);
         $user = $request->email;
@@ -34,8 +34,8 @@ class c_login extends Controller
         }
         else
         {
-            session()->flash('error', 'email atau password salah');
-            return view('welcome');
+            session()->flash('error', 'Email atau password salah');
+            return redirect()->back();
         }
     }
 
