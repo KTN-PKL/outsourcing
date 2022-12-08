@@ -26,7 +26,7 @@ class lamaran extends Model
 
     public function perusahaanData()
     {
-        return DB::table('lamarans')->join('users', 'lamarans.id_user' ,'=', 'users.id')->join('lowongans', 'lamarans.id_lowongan', '=', 'lowongans.id_lowongan')->join('pelamars', 'lamarans.id_user', '=', 'pelamars.id_pelamar')->where('lamarans.id_perusahaan', Auth::user()->id)->paginate(8);
+        return DB::table('lamarans')->join('users', 'lamarans.id_user' ,'=', 'users.id')->join('lowongans', 'lamarans.id_lowongan', '=', 'lowongans.id_lowongan')->join('pelamars', 'lamarans.id_user', '=', 'pelamars.id_pelamar')->where('lamarans.id_perusahaan', Auth::user()->id)->paginate(1);
     }
 
     public function lulusData()
