@@ -98,6 +98,7 @@
         <input type="text" class="form-control  @error('skill') is-invalid @enderror" value="{{ old('skill') }}" name="skill" placeholder="Skill ...">
         <span class="input-group-text" id="T1" type = "button" onclick="plus(1)"><i class="fa fa-plus"></i></span>
         </div>
+        <div id="M1"></div>
         <div id="plus1"></div>
          @error('skill')
               <span class="invalid-feedback" role="alert">
@@ -202,14 +203,24 @@ $(function () {
   {
     var x = id + 1;
     document.getElementById("T" + id).style.display="none";
+    document.getElementById("M" + id).style.display="none";
     $("#jumlah").val(x)
     $("#plus" + id).html(`
     <div class="input-group col-md-6 mb-3">
     <input type="text" class="form-control" name="skill`+id+`" placeholder="Skill ...">
     <span class="input-group-text" id="T`+x+`" type = "button" onclick="plus(`+x+`)"><i class="fa fa-plus"></i></span>
+    <span class="input-group-text" id="M`+x+`" type = "button" onclick="mins(`+x+`)"><i class="fa fa-times"></i></span>
     </div>
     <div id="plus`+x+`"></div>
     `);
+  }
+  function mins(id)
+  {
+    var x = id - 1;
+    document.getElementById("T" + x).style.display="block";
+    document.getElementById("M" + x).style.display="block";
+    $("#jumlah").val(x)
+    $("#plus"+ x).html(`  `);
   }
 </script> 
 @endsection

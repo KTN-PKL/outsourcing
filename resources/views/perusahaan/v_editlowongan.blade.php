@@ -115,24 +115,37 @@
               $l = $j - 1;
           @endphp
           <input type="text" name="jumlah" value="{{ $j }}" id="jumlah" hidden>
+          <div id="M1"></div>
           <div class="input-group col-md-6 mb-3">
           <input type="text" class="form-control" value="{{$skill[0]}}" name="skill" placeholder="Skill ...">
           @if ($j == 1)
-          <span class="input-group-text" id={{ "T".$j }} type = "button" onclick="plus({{ $j }})"><i class="fa fa-plus"></i></span> 
+          <span class="input-group-text" id={{ "T".$j }} type = "button" onclick="plus({{ $j }})"><i class="fa fa-plus"></i></span>    
+          @else
+          <span class="input-group-text" id="T1" style="display: none" type = "button" onclick="plus(1)"><i class="fa fa-plus"></i></span>     
           @endif
           </div>
-          @for ($i = 1; $i < $l; $i++)
+          @for ($i = 1; $i < $l;)
+          <div id = "plus{{ $i }}">
           <div class="input-group col-md-6 mb-3">
           <input type="text" class="form-control" value="{{$skill[$i]}}" name={{ "skill".$i }} placeholder="Skill ...">
+          @php
+                $i = $i+1;
+          @endphp
+          <span class="input-group-text" id={{ "T".$i }} style="display: none" type = "button" onclick="plus({{ $i }})"><i class="fa fa-plus"></i></span>
+          <span class="input-group-text" id={{ "M".$i }} style="display: none" type = "button" onclick="mins({{ $i }})"><i class="fa fa-times"></i></span>
           </div>
+        </div>
           @endfor
           @if ($j > 1)
+          <div id = {{ "plus".$l }}>
           <div class="input-group col-md-6 mb-3">
             <input type="text" class="form-control" name={{ "skill".$l }} value="{{ $skill[$l] }}" placeholder="Skill ...">
             <span class="input-group-text" id={{ "T".$j }} type = "button" onclick="plus({{ $j }})"><i class="fa fa-plus"></i></span>
+            <span class="input-group-text" id={{ "M".$j }} type = "button" onclick="mins({{ $j }})"><i class="fa fa-times"></i></span>
             </div>
           @endif
             <div id={{ "plus".$j }}></div>
+          </div>
            @error('skill')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -254,15 +267,26 @@ $(function () {
   {
     var x = id + 1;
     document.getElementById("T" + id).style.display="none";
+    document.getElementById("M" + id).style.display="none";
     $("#jumlah").val(x)
     $("#plus" + id).html(`
     <div class="input-group col-md-6 mb-3">
     <input type="text" class="form-control" name="skill`+id+`" placeholder="Skill ...">
     <span class="input-group-text" id="T`+x+`" type = "button" onclick="plus(`+x+`)"><i class="fa fa-plus"></i></span>
+    <span class="input-group-text" id="M`+x+`" type = "button" onclick="mins(`+x+`)"><i class="fa fa-times"></i></span>
     </div>
     <div id="plus`+x+`"></div>
     `);
   }
+  function mins(id)
+  {
+    var x = id - 1;
+    document.getElementById("T" + x).style.display="block";
+    document.getElementById("M" + x).style.display="block";
+    $("#jumlah").val(x)
+    $("#plus"+ x).html(`  `);
+  }
+  
   function rupe()
   {
     var gajih = $("#gajih").val();
