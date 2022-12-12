@@ -8,7 +8,10 @@
             <form method="POST" action="{{ route('login.check') }}">
                 @csrf
           <div class="modal-body">
-            <div  style="display: none" id="alert">Email atau Password Salah</div>
+            <div style="display: none" class="alert alert-danger alert-block" id="alert">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+                  Email atau Password salah
+            </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
               <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email')}}">

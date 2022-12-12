@@ -1,7 +1,7 @@
 <div class="row" id="full">
   @foreach ($lowongan as $lowongans)
   <div class="col col-md-4 d-flex">
-      <div style="border-top:1px solid grey;border-bottom:1px solid grey" class="card-body flex-fill">
+      <div style="border-top:1px solid grey;border-bottom:1px solid grey;margin-bottom:1em;" class="card-body flex-fill">
         <div class="row">
         <div style="align-self: flex-start" class="col-md-2">
           <img class="img-fluid" src="{{asset('/logo/'. $lowongans->logo)}}" alt="" style="width:40px;margin-top:5px">

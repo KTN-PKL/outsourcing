@@ -137,7 +137,7 @@
 
         <div id="show" class="mb-3">
           <label class="form-label">Gaji</label>
-          <input type="text" class="form-control  @error('gaji') is-invalid @enderror" value="{{ old('gaji') }}" name="gaji" placeholder="Gaji ...">
+          <input id="gajih" onkeyup="rupe()"  type="text" class="form-control  @error('gaji') is-invalid @enderror" value="{{ old('gaji') }}" name="gaji" placeholder="Gaji ...">
            @error('gaji')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -221,6 +221,22 @@ $(function () {
     document.getElementById("M" + x).style.display="block";
     $("#jumlah").val(x)
     $("#plus"+ x).html(`  `);
+  }
+
+  function rupe()
+  {
+    var gajih = $("#gajih").val();
+            var number_string = gajih.replace(/[^,\d]/g, '').toString(),
+	        split = number_string.split(','),
+	        sisa  = split[0].length % 3,
+	        rupiah  = split[0].substr(0, sisa),
+	        ribuan  = split[0].substr(sisa).match(/\d{3}/gi);
+            if(ribuan){
+	    	separator = sisa ? '.' : '';
+		    rupiah += separator + ribuan.join('.');
+	        }
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            $("#gajih").val(rupiah)
   }
 </script> 
 @endsection
