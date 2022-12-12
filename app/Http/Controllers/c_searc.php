@@ -32,6 +32,15 @@ class c_searc extends Controller
                 $kata = $kata." ".$data3;
             }
         }
+        foreach ($data as $data1) {
+            $data2 = strtolower($data1->nama);
+            $data3 = str_replace(' ', '', $data2);
+            if ($kata == " ") {
+                $kata = $data3;
+            } else {
+                $kata = $kata." ".$data3;
+            }
+        }
         return $kata;
     }
 
@@ -90,16 +99,34 @@ class c_searc extends Controller
         for ($u=1; $u < $z; $u++) { 
             $data2 = str_replace(' ', '',  $data[0]->posisi);
                 $a = strlen($data2);
-            for ($i=1; $i <= $data1; $i++) {
-                if ($h[$u] <= $a) {
-                    $data3[$n] = $data[$i-1];
-                    $n = $n + 1;
-                    break;
+            $data5 = str_replace(' ', '',  $data[0]->perusahaan);
+                $b = strlen($data5);
+            if ($h[$u] <= $a) {
+                for ($i=1; $i <= $data1; $i++) {
+                    if ($h[$u] <= $a) {
+                        $data3[$n] = $data[$i-1];
+                        $n = $n + 1;
+                        break;
+                    }
+                        $data2 = str_replace(' ', '',  $data[$i]->posisi);
+                        $x = strlen($data2);
+                        $a = $a + $x + 1;
                 }
-                    $data2 = str_replace(' ', '',  $data[$i]->posisi);
-                    $x = strlen($data2);
-                    $a = $a + $x + 1;
             }
+            if ($h[$u] > $a) {
+                $k = $h[$u] - $a;
+                for ($i=1; $i <= $data1; $i++) {
+                    if ($k <= $b) {
+                        $data3[$n] = $data[$i-1];
+                        $n = $n + 1;
+                        break;
+                    }
+                        $data5 = str_replace(' ', '',  $data[$i]->nama);
+                        $x = strlen($data5);
+                        $b = $b + $x + 1;
+                }
+            }
+            
         }
         
         $hasil =  array_values (array_map ("unserialize", array_unique (array_map ("serialize", $data3))));
