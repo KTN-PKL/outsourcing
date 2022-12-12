@@ -79,6 +79,7 @@
                       <div class="mb-3">
                         <label for="website" class="form-label">Website</label>
                         <input name="website" type="text" class="form-control @error('website') is-invalid @enderror" value="{{ old('website') }}" id="formGroupExampleInput5" placeholder="Masukkan website">
+                        <small style="color:grey" >Contoh : <i>https://loker.kreasinusantara.co.id</i></small>
                         @error('website')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
