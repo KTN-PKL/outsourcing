@@ -156,6 +156,7 @@ class c_lamaran extends Controller
             'status' => $status,
         ];
         $this->lamaran->editData($id_lamaran, $data);
+        $this->newnotifstatus($id_lamaran);
         return redirect()->back();
     }
 
