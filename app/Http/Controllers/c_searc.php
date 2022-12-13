@@ -89,19 +89,28 @@ class c_searc extends Controller
     }
 
     public function cari($cari, $data1a, $data2a){
-
         $n = 0;
         $h = $this->cek($cari, $data1a, $data2a);
         $z = count($h);
         $data3[0] = 0;
         $data = $this->lowongan->filter($data1a, $data2a);
         $data1 = $this->lowongan->jfilter($data1a, $data2a);
+        foreach ($data as $data111) {
+            $data211 = strtolower($data111->posisi);
+            $data311 = str_replace(' ', '', $data211);
+            if ($kata == " ") {
+                $kata = $data311;
+            } else {
+                $kata = $kata." ".$data311;
+            }
+        }
+        $f = count($kata);
         for ($u=1; $u < $z; $u++) { 
             $data2 = str_replace(' ', '',  $data[0]->posisi);
                 $a = strlen($data2);
             $data5 = str_replace(' ', '',  $data[0]->perusahaan);
                 $b = strlen($data5);
-            if ($h[$u] <= $a) {
+            if ($h[$u] <= $f) {
                 for ($i=1; $i <= $data1; $i++) {
                     if ($h[$u] <= $a) {
                         $data3[$n] = $data[$i-1];
@@ -113,7 +122,7 @@ class c_searc extends Controller
                         $a = $a + $x + 1;
                 }
             }
-            if ($h[$u] > $a) {
+            if ($h[$u] > $f) {
                 $k = $h[$u] - $a;
                 for ($i=1; $i <= $data1; $i++) {
                     if ($k <= $b) {
