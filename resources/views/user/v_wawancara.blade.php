@@ -1,5 +1,5 @@
 <div class="table-responsive" style="width:100%;background-color:white;" >
-    <table style="width:100%" class="table" >
+    <table class="table" >
       <thead>
       <tr>
         <th >No</th>
@@ -12,12 +12,13 @@
         </th>
       </tr>
     </thead>
+    <tbody>
     @php
     $i = 0;
      @endphp
     @foreach($lamaran as $lamarans)
       @if ($lamarans->jadwal <> null)
-      <tbody>
+      
       <tr>
       <td>
         @php

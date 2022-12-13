@@ -1,4 +1,4 @@
-<div class="table-responsive" style="width:50%;background-color:white;" id="f5">
+<div class="table-responsive" style="width:100%;background-color:white;" id="f5">
     <table class="table">
       <thead>
       <tr>
