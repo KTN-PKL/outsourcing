@@ -1,6 +1,6 @@
 <div class="row" id="full">
   @foreach ($lowongan as $lowongans)
-  <div class="col col-md-4 d-flex">
+  <div class="col col-md-4 col-6 d-flex">
       <div style="border-top:1px solid grey;border-bottom:1px solid grey;margin-bottom:1em;" class="card-body flex-fill">
         <div class="row">
         <div style="align-self: flex-start" class="col-md-2">
@@ -36,8 +36,7 @@
                   </i></small>
 
          
-                  <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" class="stretched-link"></a>
-                {{-- <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" style="width:100%;" class="btn btn-primary">Detail </a><br> --}}
+                  <a href="{{url('/detailLowongan')}}/{{$lowongans->id_lowongan}}" class="stretched-link" target="_blank"></a>
             
             </div>       
           

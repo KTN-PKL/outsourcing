@@ -1,24 +1,22 @@
 <div class="table-responsive" style="width:100%;background-color:white;" >
     <table class="table" >
-      <thead>
+
+     <thead>
       <tr>
         <th >No</th>
         <th >Perusahaan</th>
         <th >Posisi</th>
         <th >Wawancara</th>
         <th >Jadwal</th>
-        <th >
-         Detail Wawancara
-        </th>
+        <th >Detail Wawancara</th>
       </tr>
     </thead>
-    <tbody>
+
     @php
     $i = 0;
      @endphp
     @foreach($lamaran as $lamarans)
       @if ($lamarans->jadwal <> null)
-      
       <tr>
       <td>
         @php
@@ -48,7 +46,7 @@
     </td>
       @endif  
     </tr>
-  </tbody>
+
     @endif
      @endforeach        
     </table>     

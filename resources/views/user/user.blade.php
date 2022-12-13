@@ -41,7 +41,7 @@
       <div class="card search-card">
         <label><i class="fas fa-search"></i>Cari Loker<br /></label>
         <div class="mb-3 text-center">
-          <input onkeyup="cariLowongan()" id="search" type="search" name="search"  class="form-control" placeholder="Cari Berdasarkan Posisi Kerja">
+          <input onkeyup="cariLowongan()" id="search" type="search" name="search"  class="form-control" placeholder="Masukkan kata kunci">
         </div>
       </div>
       <center>

@@ -136,7 +136,7 @@
             <div class="col-md-10">
               <table>
                 <tr>
-                <td><a style="text-decoration: none" href="{{url('/detailperusahaan')}}/{{$lowongan->id_perusahaan}}"target="_blank"><b>{{ $lowongan->nama }}</b><a></td>
+                <td><a style="text-decoration: none" href="{{url('/detailperusahaan')}}/{{$lowongan->id_perusahaan}}" target="_blank"><b>{{ $lowongan->nama }}</b><a></td>
               </tr>
               <tr>
                 <td><a class="btn btn-outline-primary" style="border-radius:50%" href="{{$lowongan->website}}" target="_blank"><i class="fa fa-globe"></i></a></td>

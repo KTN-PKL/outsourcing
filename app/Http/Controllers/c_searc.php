@@ -93,6 +93,7 @@ class c_searc extends Controller
         $h = $this->cek($cari, $data1a, $data2a);
         $z = count($h);
         $data3[0] = 0;
+        $kata = " ";
         $data = $this->lowongan->filter($data1a, $data2a);
         $data1 = $this->lowongan->jfilter($data1a, $data2a);
         foreach ($data as $data111) {
@@ -104,7 +105,7 @@ class c_searc extends Controller
                 $kata = $kata." ".$data311;
             }
         }
-        $f = count($kata);
+        $f = strlen($kata);
         for ($u=1; $u < $z; $u++) { 
             $data2 = str_replace(' ', '',  $data[0]->posisi);
                 $a = strlen($data2);

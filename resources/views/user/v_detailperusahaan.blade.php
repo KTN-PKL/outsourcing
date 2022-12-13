@@ -59,19 +59,20 @@
           </center>
         </div>
         <div class="col-md-10">
-          <table style="border:none">
+          <table style="border:none;width:100%">
           <tr>
             <td><h2><b>{{ $perusahaan->nama}}</b></h2></td>
           </tr>
           <tr>
-            <td style="height:20px" ><h6>{{$perusahaan->deskripsi}}</h6>
+            <td><h6>{{$perusahaan->deskripsi}}</h6>
               <div class="row">
-                <div class="col-md-5">
-                  <table>
+                <div class="col-md-6">
+                  <table style="width:100%">
                     <tr>
-                      <td style="width:35%"><h6 style="color:grey">Kantor</h6></td>
+                      <td style="width:15%"><h6 style="color:grey">Kantor</h6></td>
                       <td><h6 style="text-transform: capitalize">{{$perusahaan->kota}}</h6></td>
                     </tr>
+
                     <tr>
                       <td><h6 style="color:grey">Industri</h6></td>
                       <td><h6>{{$perusahaan->industri}}</h6></td>
@@ -79,10 +80,10 @@
                     
                   </table>
                 </div>
-                <div class="col-md-7">
-                  <table>
+                <div class="col-md-6">
+                  <table style="width:100%">
                     <tr>
-                      <td style="width:30%"><h6 style="color:grey">Situs</h6></td>
+                      <td style="width:15%"><h6 style="color:grey">Situs</h6></td>
                       <td><a style="text-decoration: none" href="{{$perusahaan->website}}"><h6>{{$perusahaan->website}}</h6></a></td>
                     </tr>
                     <tr>
@@ -93,6 +94,7 @@
                   </table>
                  </div>
               </div>
+              <br>
               <a style="float:right;margin-bottom:1em;" href="/lowonganperusahaan/{{ $perusahaan->id_perusahaan}}" class="btn btn-primary">Lihat Lowongan di {{ $perusahaan->nama }}</a> 
             </td>
           </tr>

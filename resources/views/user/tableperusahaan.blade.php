@@ -23,7 +23,7 @@
       <li><i id="lowongan"></i></li>
        
       </ul>
-      <a href="{{url('/detailperusahaan')}}/{{$perusahaans->id_perusahaan}}" style="width:100%;" class="btn btn-primary">Detail </a><br>
+      <a  href="{{url('/detailperusahaan')}}/{{$perusahaans->id_perusahaan}}" class="stretched-link" target="_blank"></a>
     </div>
 </div>
 @endforeach
