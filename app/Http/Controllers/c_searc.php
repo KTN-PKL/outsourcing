@@ -123,7 +123,7 @@ class c_searc extends Controller
                 }
             }
             if ($h[$u] > $f) {
-                $k = $h[$u] - $a;
+                $k = $h[$u] - $f;
                 for ($i=1; $i <= $data1; $i++) {
                     if ($k <= $b) {
                         $data3[$n] = $data[$i-1];
