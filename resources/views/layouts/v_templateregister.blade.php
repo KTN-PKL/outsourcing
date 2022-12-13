@@ -274,7 +274,9 @@ integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0Ec
 
      function readfoto() {
          $.get("{{ url('user') }}" , {}, function(data, status) {
-             $("#navbar").html(`<img width="40px" height="40px" alt="Profile" class="rounded-circle" src="/foto/`+data+`" >`);  
+             $("#navbar").html(`<img width="40px" height="40px" alt="Profile" class="rounded-circle" src="{{asset('/foto/`+data+`')}}" >`);  
+
+             
          });
      }
   
