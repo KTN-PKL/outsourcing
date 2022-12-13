@@ -108,7 +108,7 @@ class c_searc extends Controller
         for ($u=1; $u < $z; $u++) { 
             $data2 = str_replace(' ', '',  $data[0]->posisi);
                 $a = strlen($data2);
-            $data5 = str_replace(' ', '',  $data[0]->perusahaan);
+            $data5 = str_replace(' ', '',  $data[0]->nama);
                 $b = strlen($data5);
             if ($h[$u] <= $f) {
                 for ($i=1; $i <= $data1; $i++) {
