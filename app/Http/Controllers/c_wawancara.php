@@ -26,6 +26,13 @@ class c_wawancara extends Controller
 
     public function edit(Request $request, $id_lamaran)
     {
+        $request->validate([
+            
+            'linkwawancara' => 'url',
+        ],[
+            
+            'linkwawancara.url'=>'Jadwal gagal diupdate, Link wawancara gunakan format url https atau http',
+        ]);
         $editjadwal = $request->tanggal."++".$request->mulai."++".$request->selesai; 
         $data = [
                 'jadwal'=>$editjadwal,
@@ -35,7 +42,7 @@ class c_wawancara extends Controller
             ];
             $this->lamaran->editData($id_lamaran, $data);
             $this->newnotifwawancara($id_lamaran);
-            return redirect()->back();
+            return redirect()->back()->withErrors(['msg' => 'Jadwal berhasil diupdate']);;
         }
      
     

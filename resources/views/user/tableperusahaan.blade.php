@@ -1,6 +1,6 @@
 <div  class="row" id="full">
 @foreach ($perusahaan as $perusahaans)
-<div  class="col-sm-4 d-flex">
+<div  class="col-sm-4  col-6 d-flex">
 <div class="card card-body flex-fill">
     <div class="row">
     <div class="col-sm-3">

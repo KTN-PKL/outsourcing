@@ -8,6 +8,11 @@ Portal Kerja
 @section('content')
 <br>
 <h3 style="margin-left:1em" ><b>Jadwal Wawancara</b></h3>
+@if($errors->any())
+<div class="alert alert-warning">
+<h6>{{$errors->first()}}</h6>
+</div>
+@endif
 <br>
 <div style="width:95%;margin-left:2em" class="card">
   <div class="table-responsive">
@@ -206,4 +211,5 @@ Portal Kerja
 </div>
 @endforeach
 @endsection
+
 
