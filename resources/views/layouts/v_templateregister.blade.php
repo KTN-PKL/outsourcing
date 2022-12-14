@@ -165,47 +165,6 @@
   <!-- Modal Login-->
   @include('login')
   
-
-        <!-- Modal Register -->
-    {{-- <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Registrasi</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form method="POST" action="{{ route('register') }}">
-              @csrf
-            <div class="modal-body">
-              <div id="alert"></div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Full Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Full Name ...">
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" name="email" placeholder="Email Address ...">
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" placeholder="Password ...">
-                <input type="hidden" name="level" value="user">
-              </div>
-              <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Confirm Password</label>
-                  <input type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password ...">
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <div id="tombol_login">
-                <input class="btn btn-primary" type="submit" value="Register">
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div> --}}
   
   
   
@@ -341,7 +300,7 @@ integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0Ec
   });
   
   </script>
-  @yield('scripts')
+  {{-- @yield('scripts') --}}
   
   </body>
 

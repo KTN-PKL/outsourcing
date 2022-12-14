@@ -14,8 +14,8 @@
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email')}}">
-              @error('email')
+              <input type="email" class="form-control @error('email1') is-invalid @enderror" name="email1" value="{{old('email1')}}">
+              @error('email1')
               <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
               </span>
@@ -23,8 +23,8 @@
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{old('password')}}">
-              @error('password')
+              <input type="password" class="form-control @error('password1') is-invalid @enderror" name="password1" value="{{old('password1')}}">
+              @error('password1')
               <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
               </span>
@@ -45,10 +45,10 @@
   </div>
   
 
-@section('scripts')
-@parent
+{{-- @section('scripts')
+@parent --}}
 
-@if($errors->has('email') || $errors->has('password'))
+@if($errors->has('email1') || $errors->has('password1'))
     <script>
     $(function() {
         $('#masuk').modal('show');
@@ -62,4 +62,4 @@
       });
       </script>
 @endif
-@endsection
+{{-- @endsection --}}

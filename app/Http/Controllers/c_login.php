@@ -11,14 +11,14 @@ class c_login extends Controller
     public function check(Request $request)
     {
         $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'email1' => 'required',
+            'password1' => 'required',
         ],[
-            'email.required'=>'Email wajib terisi',
-            'password.required'=>'Password wajib terisi',
+            'email1.required'=>'Email wajib terisi',
+            'password1.required'=>'Password wajib terisi',
         ]);
-        $user = $request->email;
-        $pass = $request->password;
+        $user = $request->email1;
+        $pass = $request->password1;
 
         if(auth()->attempt(array('email'=>$user,'password'=>$pass)))
         {
