@@ -38,7 +38,7 @@ Daftar Pelamar
     <td>@if ($lamarans->status == "")
       <span class="badge badge-primary">Baru</span>
     @elseif($lamarans->status == "Lulus")
-    <span class="badge badge-success">{{ $lamarans->status }}</span>
+    <span class="badge badge-warning">{{ $lamarans->status }}</span>
     @elseif($lamarans->status == "Diterima")
     <span class="badge badge-success">{{ $lamarans->status }}</span>
     @else
